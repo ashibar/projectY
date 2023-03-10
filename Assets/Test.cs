@@ -6,7 +6,7 @@ public class Test : MonoBehaviour
 {
     // ▲윗쪽의 "MonoBehaviour"가 "Test"와 마찬가지로 청록색으로 바뀌어있는지 확인
     private void Start()
-    // ▲윗쪽의 "Start"가 "void"와 마찬가지로 파란색으로 바뀌어있는지 확인
+    // ▲윗쪽의 "Start"가 "void"와 마찬가지로 파란색으로 바뀌어있는지 확인, 노란색이면 왼쪽의 private를 지우고 다시 확인
     {
         Debug.Log("Hello world!!!");
     }
