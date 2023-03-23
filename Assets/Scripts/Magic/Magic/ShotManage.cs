@@ -9,6 +9,12 @@ public class ShotManage : MonoBehaviour
 {
     //public GameObject[] preFabSpell;
     Camera cam;
+    [SerializeField]
+    private Spell_Stat_so stat_so;
+    [SerializeField]
+    private Spell_Stat stat;
+
+    public Vector2 dir_toMouse;
 
     [SerializeField]
     protected bool iscooltime = false;
@@ -41,7 +47,7 @@ public class ShotManage : MonoBehaviour
     
     public void Update()
     {
-        Shoot();   
+        Shoot();
     }
     
     protected int DoingSpell() //몇번째 스펠인지 정해준다.
@@ -59,12 +65,12 @@ public class ShotManage : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log(Spells + " " + DoingSpell());
-            Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-            Vector2 dir = new Vector2(len.x, len.y).normalized;
+            //Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            //Vector2 dir = new Vector2(len.x, len.y).normalized;
             
             GameObject Spell = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
 
-            Spell.GetComponent<Rigidbody2D>().velocity = dir * Spell_speed;
+            Spell.GetComponent<Rigidbody2D>().velocity = dir_toMouse * Spell_speed;
             isShooted = true;
             End_Shoot(Spell); // 제작중
         }
@@ -78,7 +84,7 @@ public class ShotManage : MonoBehaviour
             time += Time.deltaTime;
             if (time > direction)
             {
-
+                
                 time = 0;
             }
         }
