@@ -7,7 +7,7 @@ public class SpellProjectile : MonoBehaviour
 {
     [SerializeField]
     private float duration;
-    private bool isDeleted = false;
+    
     private void Start()
     {
         AutoDelete(duration);
@@ -19,20 +19,19 @@ public class SpellProjectile : MonoBehaviour
 
         while(Time.time < end)
         {
+            
             await Task.Yield();
         }
-        if(!isDeleted) Destroy(gameObject);
+        Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
-            isDeleted = true;
-            Destroy(gameObject);
-
+          //  Destroy(collision.gameObject);
+           // Destroy(gameObject);
         }
-
+        
     }
 }
