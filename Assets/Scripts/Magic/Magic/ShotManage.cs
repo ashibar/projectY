@@ -42,11 +42,7 @@ public class ShotManage : MonoBehaviour
     
     public void Update()
     {
-        if (isUseSpell)
-        {
-            StartCoroutine(ResetSkillCoroutine(cooltime));
-        }
-
+        if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
 
         if (Input.GetMouseButtonDown(0))
         {

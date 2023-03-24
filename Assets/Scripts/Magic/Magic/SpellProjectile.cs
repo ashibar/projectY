@@ -17,7 +17,6 @@ public class SpellProjectile : MonoBehaviour
     {
         float end = Time.time + duration;
 
-
         while(Time.time < end)
         {
             
@@ -30,8 +29,8 @@ public class SpellProjectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+          //  Destroy(collision.gameObject);
+           // Destroy(gameObject);
         }
         
     }
