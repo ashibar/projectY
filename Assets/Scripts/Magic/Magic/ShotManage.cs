@@ -50,17 +50,8 @@ public class ShotManage : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
-            if(isChecked)
-            {
-                Shoot();
-                isUseSpell = true;
-                isChecked = false;
-            }
-                
-            
+            if(isChecked) Shoot();
         }
-
     }
     
     protected int DoingSpell() //몇번째 스펠인지 정해준다.
@@ -76,6 +67,8 @@ public class ShotManage : MonoBehaviour
     public virtual void Shoot()
     {
         {
+            isUseSpell = true;
+            isChecked = false;
             Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
             Vector2 dir = new Vector2(len.x, len.y).normalized;
             
