@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stat_Player
   m_EditorClassIdentifier: 
   hp: 0
-  speed: 0
+  speed: 1
