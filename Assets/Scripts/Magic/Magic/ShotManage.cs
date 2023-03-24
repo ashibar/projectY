@@ -79,7 +79,7 @@ public class ShotManage : MonoBehaviour
     
     IEnumerator ResetSkillCoroutine(float coltimes) //스킬 쿨타임 
     {
-        const float baseTime = 1f; // BaseTime이 최소단위
+        const float baseTime = 0.1f; // BaseTime이 최소단위
         isUseSpell = false; //들어가자마자 자기 자신의 조건을 비활성화 // 안그러면 Update에서 무한하게 실행됨
         while (coltimes > 0) //쿨타임 메인 로직, coltimes를 받아서 baseTime초만큼씩 줄임
         {
