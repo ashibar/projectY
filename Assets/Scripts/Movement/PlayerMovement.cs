@@ -48,6 +48,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement(Vector2 dir)
     {
-        transform.Translate(dir * Time.deltaTime * moveSpeed);
+        player.transform.Translate(dir * Time.deltaTime * moveSpeed);
     }
 }

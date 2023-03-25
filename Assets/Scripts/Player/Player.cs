@@ -17,6 +17,7 @@ public class Player : Unit
     // stat은 상위 클래스인 Unit으로 올렸습니다.
     
     public MovementManager movementManger;
+    public PlayerMovement playerMovement;
     public MagicManager magicManager;
     public AnimationManager animationManager;
 
@@ -28,6 +29,7 @@ public class Player : Unit
         base.Awake();
         instance = GetComponent<Player>();
         movementManger = GetComponentInChildren<MovementManager>();
+        playerMovement = GetComponentInChildren<PlayerMovement>();
         magicManager = GetComponentInChildren<MagicManager>();
         animationManager = GetComponentInChildren<AnimationManager>();
     }
