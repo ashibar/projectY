@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Player player;
+    private PlayerMovement playermovement;
+    private AimPoint aimpoint;
+    private void Awake()
+    {
+        player = GetComponentInParent<Player>();
+        playermovement = GetComponentInChildren<PlayerMovement>();
+        aimpoint = GetComponentInChildren<AimPoint>();
+    }
     void Start()
     {
         
