@@ -28,6 +28,7 @@ public class SpellProjectile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            collision.GetComponent<Enemy>().Delete_FromCloneList();
             Destroy(collision.gameObject);
             isDeleted = true;
             Destroy(gameObject);
