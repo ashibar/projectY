@@ -59,8 +59,12 @@ public class SpawnManager : MonoBehaviour
     private void TestSpawn()
     {
         if (verbose)
+        {
             if (Input.GetKeyDown(KeyCode.P))
                 spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(Random.Range(-5, 5), Random.Range(-5, 5)));
+            if (Input.GetKeyDown(KeyCode.O))
+                spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(4, 0));
+        }
 
     }
 }
