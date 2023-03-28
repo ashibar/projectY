@@ -22,7 +22,7 @@ public class MagicManager : MonoBehaviour
     {
         foreach(ShotManage manager in shotManager)
         {
-            manager.dir_toMouse = player.dir_toMouse;
+            manager.dir_toMouse = player.dir_toShoot;
         }
     }
 }

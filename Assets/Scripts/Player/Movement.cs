@@ -30,6 +30,7 @@ public class Movement : MonoBehaviour
                 gameObject.AddComponent<Rigidbody2D>();
             rb2D = GetComponent<Rigidbody2D>();
         }
+        rb2D.gravityScale = 0;
     }
 
     public void MoveByDirection_transform(Vector2 dir, float spd) // 방향 좌표와 속도를 받아 좌표를 조금씩 움직여 이동합니다.

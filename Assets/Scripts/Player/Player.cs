@@ -21,8 +21,6 @@ public class Player : Unit
     public MagicManager magicManager;
     public AnimationManager animationManager;
 
-    public Vector2 dir_move = new Vector2();
-    public Vector2 dir_toMouse = new Vector2();
 
     protected override void Awake()
     {

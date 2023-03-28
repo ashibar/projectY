@@ -19,9 +19,15 @@ public class Unit : MonoBehaviour
     [SerializeField]
     public Stat stat;
 
+    // movement
+    // statuscheck
+    // 
+
     // stat 세부 정보는 Stat스크립트 참조해주세요
     // 더 필요한 스탯이 생기면 바로 바로 피드백 부탁드립니다.
 
+    public Vector2 dir_toMove = new Vector2();
+    public Vector2 dir_toShoot = new Vector2();
 
     protected virtual void Awake()
     {

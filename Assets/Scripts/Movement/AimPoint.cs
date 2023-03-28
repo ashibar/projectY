@@ -15,7 +15,7 @@ public class AimPoint : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        player.dir_toMouse = GetDirectionToMouse();
+        player.dir_toShoot = GetDirectionToMouse();
     }
 
     public Vector2 GetDirectionToMouse()

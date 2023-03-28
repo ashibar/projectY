@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 dir = ControlByKeyboard();
         MoveAnimation(CheckMove(dir));
-        player.dir_move = dir;
+        player.dir_toMove = dir;
         Movement(dir);
     }
 
