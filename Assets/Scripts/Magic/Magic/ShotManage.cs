@@ -17,9 +17,14 @@ public class ShotManage : MonoBehaviour
     [SerializeField] private Spell_Stat stat;
     [SerializeField] private GameObject[] Spells;
     //================================================
+    //public GameObject[] AllMagicData;
+    //이러한 형태의 스크립트를 한개 더 생성해 가져온다.
+    //아래쪽에 존재하는 모든 데이터는 그곳에서 관리
+    //
+    //================================================
     [SerializeField] protected float cooltime = 1;
     [SerializeField] float Spell_speed = 5f;
-    //================================================
+    
     [SerializeField] protected bool isFireSpell = true;
     [SerializeField] protected bool isIceSpell = false;
     [SerializeField] protected bool isEarthSpell = false;
@@ -43,7 +48,6 @@ public class ShotManage : MonoBehaviour
     public void Update()
     {
         if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
-
         if (Input.GetMouseButtonDown(0))
         {
             if(isChecked) Shoot();
@@ -63,6 +67,7 @@ public class ShotManage : MonoBehaviour
     public virtual void Shoot()
     {
         {
+            //
             isUseSpell = true;
             isChecked = false;
             Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
