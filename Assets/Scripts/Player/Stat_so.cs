@@ -7,6 +7,7 @@ public class Stat_so : ScriptableObject
 {
     [SerializeField] private float hp;
     [SerializeField] private float speed;
+    [SerializeField] private Buff buff;
 
     public float Hp { get => hp; set => hp = value; }
     public float Speed { get => speed; set => speed = value; }
@@ -15,5 +16,12 @@ public class Stat_so : ScriptableObject
     {
         this.hp = stat.Hp;
         this.speed = stat.Speed;
+    }
+
+    public enum Buff
+    {
+        buff1,
+        buff2,
+        buff3
     }
 }
