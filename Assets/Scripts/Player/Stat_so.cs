@@ -24,4 +24,6 @@ public class Stat_so : ScriptableObject
         buff2,
         buff3
     }
+
+    
 }
