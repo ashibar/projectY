@@ -55,10 +55,10 @@ public class AllMagicData : MonoBehaviour
         return SpellName;
     }
     /*
-    private void MagicAct(String name)
+    public void MagicAct(String name)
     {
        //공격은 따로 함수로 만들어서 관리
-        if (name == null) { 몬스터 공격}
+        if (name == "") { 몬스터 공격}
         else if (name == "F") { }
         else if (name == "L") { }
         else if (name == "W") { }
