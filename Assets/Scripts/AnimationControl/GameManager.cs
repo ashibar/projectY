@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject talkPanel;
     public Text TalkText;
-    public GameObjext scanObject;
+    public GameObject scanObject;
     public bool isAction;
 
     public void Action(GameObject ScanObj)
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //°ªÀúÀå
-            isAction = ture;            
+            isAction = true;            
             scanObject = ScanObj;
             TalkText.text = "this name is" + scanObject.name;
         }

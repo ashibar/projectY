@@ -1,0 +1,34 @@
+private Gameobject projectile_obj;
+
+private void Awake() {
+	projectile_obj = gameobject;
+}
+
+private void Process() {
+	LIst<system.Action> appliers = new List<system.Action>();
+	List<Part> parts = new List<Part>();
+
+	parts = GetComponentsInChildren<Part>();
+	
+	foreach (Part p in parts) {
+		appliers.add(p.applier)
+	}
+
+	foreach (system.Action app in appliers) {
+		app(projectile_obj);
+	}
+	
+}
+
+// Part.cs
+private virutual void Applier(Gameobject obj) {
+
+}
+
+// Bigger_part.cs
+private Stat_part stat;
+
+private override void Applier(Gameobject obj) {
+	new Vector2 scl = obj.transform.scale;
+	obj.transform.scale = new Vector2(scl.x * stat.scale_mult, scl.y * stat.scale_mult, scl.z);
+}
