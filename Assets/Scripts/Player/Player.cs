@@ -20,7 +20,7 @@ public class Player : Unit
     public PlayerMovement playerMovement;
     public MagicManager magicManager;
     public AnimationManager animationManager;
-
+    
 
     protected override void Awake()
     {

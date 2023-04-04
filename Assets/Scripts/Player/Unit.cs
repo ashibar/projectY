@@ -19,6 +19,8 @@ public class Unit : MonoBehaviour
     [SerializeField]
     public Stat stat;
 
+    [SerializeField]
+    public Stat stat_processed;
     // movement
     // statuscheck
     // 
@@ -28,6 +30,7 @@ public class Unit : MonoBehaviour
 
     public Vector2 dir_toMove = new Vector2();
     public Vector2 dir_toShoot = new Vector2();
+    public Vector2 pos_toShoot = new Vector2();
 
     protected virtual void Awake()
     {
