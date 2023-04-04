@@ -17,7 +17,7 @@ public class ShotManage : MonoBehaviour
     [SerializeField] private Spell_Stat stat;
     [SerializeField] private GameObject[] Spells;
     //================================================
-    //public GameObject[] AllMagicData;
+    public AllMagicData MagicData;
     //이러한 형태의 스크립트를 한개 더 생성해 가져온다.
     //아래쪽에 존재하는 모든 데이터는 그곳에서 관리
     //
@@ -33,10 +33,10 @@ public class ShotManage : MonoBehaviour
     [SerializeField] protected bool isChecked = true;
     [SerializeField] protected bool isUseSpell = false;
     //================================================
-    
-    
+    [SerializeField] protected String SkillRangeType = "SOLE";
 
-    
+
+
     protected void Start() { 
         if(!isChecked || isUseSpell) // 이렇게 안해주면 작동안함!!!!!!
         {
@@ -47,10 +47,20 @@ public class ShotManage : MonoBehaviour
     
     public void Update()
     {
-        if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
-        if (Input.GetMouseButtonDown(0))
+        if(SkillRangeType == "SOLE")
         {
-            if(isChecked) Shoot();
+            if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (isChecked) Shoot();
+            }
+        }else
+        {
+            if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (isChecked) RangeShoot();
+            }
         }
     }
     
@@ -75,10 +85,19 @@ public class ShotManage : MonoBehaviour
             
             GameObject Spell = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
             
-            Debug.Log(dir_toMouse);
             Spell.GetComponent<Rigidbody2D>().velocity = dir * Spell_speed; //dir_toMouse
             
         }
+    }
+     public virtual void RangeShoot()
+    {
+        isUseSpell = true;
+        isChecked = false;
+        Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        
+
+        GameObject Spell = Instantiate(Spells[DoingSpell()], len, Quaternion.identity);
+        Spell.GetComponent<Rigidbody2D>();
     }
 
     
