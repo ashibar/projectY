@@ -19,9 +19,6 @@ public class Unit : MonoBehaviour
     [SerializeField]
     public Stat stat;
 
-    [SerializeField]
-    public Stat stat_processed;
-
     // movement
     // statuscheck
     // 
