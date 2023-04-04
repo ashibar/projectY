@@ -25,18 +25,18 @@ public class ShotManage : MonoBehaviour
     [SerializeField] protected float cooltime = 1;
     [SerializeField] float Spell_speed = 5f;
     
-    [SerializeField] protected bool isFireSpell = true;
-    [SerializeField] protected bool isIceSpell = false;
-    [SerializeField] protected bool isEarthSpell = false;
+    [SerializeField] protected bool isSoleSpell = true;
+    [SerializeField] protected bool isBuffSpell = false;
+    [SerializeField] protected bool isMultiSpell = false;
     //================================================
 
     [SerializeField] protected bool isChecked = true;
     [SerializeField] protected bool isUseSpell = false;
     //================================================
-    
-    
+    [SerializeField] protected String SkillRangeType = "SOLE";
 
-    
+
+
     protected void Start() { 
         if(!isChecked || isUseSpell) // 이렇게 안해주면 작동안함!!!!!!
         {
@@ -44,30 +44,44 @@ public class ShotManage : MonoBehaviour
             isUseSpell = false;
         }
     }
-    
+
     public void Update()
     {
-        if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
-        if (Input.GetMouseButtonDown(0))
+        if (isSoleSpell) SkillRangeType = "SOLE";
+        if (isBuffSpell) SkillRangeType = "BUFF";
+        if (isMultiSpell) SkillRangeType = "MULTI";
         {
-            if(isChecked) Shoot();
+            if (SkillRangeType == "SOLE")
+            {
+                if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (isChecked) Shoot();
+                }
+            }
+            else
+            {
+                if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (isChecked) RangeShoot();
+                }
+            }
         }
     }
-    
     protected int DoingSpell() //몇번째 스펠인지 정해준다.
     {
+        Debug.Log("isWorked");
         int SpellNumbers = 0; // 만일 이상한 값이 있어도 0으로 기본값 설정
-        if (isFireSpell) SpellNumbers = 0;
-        if (isIceSpell) SpellNumbers = 1;
-        if (isEarthSpell) SpellNumbers = 2;
+        if (isSoleSpell) SpellNumbers = 0;
+        if (isBuffSpell) SpellNumbers = 1;
+        if (isMultiSpell) SpellNumbers = 2;
         return SpellNumbers;
     }
     
    
     public virtual void Shoot()
     {
-        {
-            //
             isUseSpell = true;
             isChecked = false;
             Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
@@ -75,13 +89,19 @@ public class ShotManage : MonoBehaviour
             
             GameObject Spell = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
             
-            Debug.Log(dir_toMouse);
             Spell.GetComponent<Rigidbody2D>().velocity = dir * Spell_speed; //dir_toMouse
             
-        }
+    }
+    public virtual void RangeShoot()
+    {
+        isUseSpell = true;
+        isChecked = false;
+        Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+        GameObject Spell = Instantiate(Spells[DoingSpell()], len, Quaternion.identity);
+        Spell.GetComponent<Rigidbody2D>();
     }
 
-    
     IEnumerator ResetSkillCoroutine(float coltimes) //스킬 쿨타임 
     {
         const float baseTime = 0.1f; // BaseTime이 최소단위
@@ -95,7 +115,5 @@ public class ShotManage : MonoBehaviour
         
         yield break;
     }
-
-
 
 }
