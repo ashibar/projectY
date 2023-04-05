@@ -543,11 +543,12 @@ MonoBehaviour:
   - {fileID: 4717003872253168443, guid: 5696800d25a6edd4997b2ec059aada22, type: 3}
   cooltime: 1
   Spell_speed: 5
-  isFireSpell: 1
-  isIceSpell: 0
-  isEarthSpell: 0
+  isSoleSpell: 1
+  isBuffSpell: 0
+  isMultiSpell: 0
   isChecked: 0
   isUseSpell: 1
+  SkillRangeType: SOLE
 --- !u!1 &1045788429
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +746,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b72d4b9f18ae543968b204b1a4cbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1414701752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414701753}
+  - component: {fileID: 1414701754}
+  m_Layer: 0
+  m_Name: BuffManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1414701753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414701752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1489009639}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1414701754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414701752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbca1bf0aaa6c34b847779822533b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1415560104
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +870,7 @@ MonoBehaviour:
   stat_so: {fileID: 11400000, guid: 9ae47e7ffe103844caf7814276c07908, type: 2}
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
+  pos_toShoot: {x: 0, y: 0}
   movementManger: {fileID: 1323484192}
   playerMovement: {fileID: 0}
   magicManager: {fileID: 1024295145}
@@ -953,6 +999,7 @@ Transform:
   - {fileID: 1323484191}
   - {fileID: 1024295144}
   - {fileID: 1415560105}
+  - {fileID: 1414701753}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
