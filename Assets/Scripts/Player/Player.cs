@@ -34,7 +34,7 @@ public class Player : Unit
 
     protected override void Start()
     {
-        
+        Test.SetText("aaa");
     }
 
     protected override void Update()
