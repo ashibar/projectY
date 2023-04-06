@@ -508,7 +508,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2082890799}
   m_Father: {fileID: 1489009639}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -544,11 +545,13 @@ MonoBehaviour:
   - {fileID: 4717003872253168443, guid: 5696800d25a6edd4997b2ec059aada22, type: 3}
   cooltime: 1
   Spell_speed: 5
+  ActiveRangeTime: 1
   isSoleSpell: 1
   isBuffSpell: 0
   isMultiSpell: 0
   isChecked: 0
   isUseSpell: 1
+  isRangeSpell: 0
   SkillRangeType: SOLE
 --- !u!1 &1045788429
 GameObject:
@@ -1409,3 +1412,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdc7dc2b96466545b81a61b89a6c7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2082890798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2082890799}
+  - component: {fileID: 2082890800}
+  m_Layer: 0
+  m_Name: ShotManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2082890799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082890798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024295144}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2082890800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082890798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96dde20d9b74c247b834f218f28e1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dir_toMouse: {x: 0, y: 0}
+  stat_so: {fileID: 0}
+  Spells: []
+  cooltime: 1
+  Spell_speed: 5
+  ActiveRangeTime: 1
+  isSoleSpell: 1
+  isBuffSpell: 0
+  isMultiSpell: 0
+  isChecked: 1
+  isUseSpell: 0
+  isRangeSpell: 0
+  SkillRangeType: SOLE
