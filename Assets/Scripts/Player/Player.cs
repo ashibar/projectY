@@ -35,7 +35,11 @@ public class Player : Unit
 
     protected override void Start()
     {
+<<<<<<< HEAD
 
+=======
+        Test.SetText("aaa");
+>>>>>>> ef5c2787372f22874b2c55311b9929bb54cd621c
     }
 
     protected override void Update()
