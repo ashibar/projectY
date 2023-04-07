@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject talkPanel;
-    public Text TalkText;
+    public TextMeshProUGUI TalkText;
     public GameObject scanObject;
     public bool isAction;
 
