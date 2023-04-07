@@ -1,34 +1,45 @@
-private Gameobject projectile_obj;
+private GameObject projectile_obj;
 
 private void Awake() {
-	projectile_obj = gameobject;
+	projectile_obj = gameObject;
 }
 
 private void Process() {
-	LIst<system.Action> appliers = new List<system.Action>();
+	List<system.Action<GameObject>> appliers = new LIst<system.Action<GameObject>>;
 	List<Part> parts = new List<Part>();
 
-	parts = GetComponentsInChildren<Part>();
+	parts.AddRange(GetComponentsInChildren<Part>());
 	
 	foreach (Part p in parts) {
 		appliers.add(p.applier)
 	}
 
-	foreach (system.Action app in appliers) {
+	foreach (system.Action<GameObject> app in appliers) {
 		app(projectile_obj);
 	}
+	// Bigger_part 모듈과 Move_part 모듈을 달고 있다면
+	// 가져온 똑같은 applier함수를 실행했지만
+	// 각각의 모듈것의 함수를 인식해 크기도 커지고 좌표도 바뀜
 	
 }
 
 // Part.cs
-private virutual void Applier(Gameobject obj) {
+public virutual void Applier(Gameobject obj) {
 
 }
 
 // Bigger_part.cs
 private Stat_part stat;
 
-private override void Applier(Gameobject obj) {
-	new Vector2 scl = obj.transform.scale;
-	obj.transform.scale = new Vector2(scl.x * stat.scale_mult, scl.y * stat.scale_mult, scl.z);
+public override void Applier(Gameobject obj) {
+	new Vector3 scl = obj.transform.scale;
+	obj.transform.scale = new Vector3(scl.x * stat.scale_mult, scl.y * stat.scale_mult, scl.z);
+}
+
+// Move_part.cs
+private Stat_part stat;
+
+public override void Applier(Gameobject obj) {
+	new Vector3 pos = obj.transform.position;
+	obj.transform.position = new Vector3(pos.x + stat.pos, pos.y + stat.pos, pos.z);
 }

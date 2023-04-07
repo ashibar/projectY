@@ -41,6 +41,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private bool verbose = false;
 
+
     private void Awake()
     {
         var objs = FindObjectsOfType<SpawnManager>();
