@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf50d5f0a032264ea8bed1f00ec6973, type: 3}
   m_Name: BuffSo
   m_EditorClassIdentifier: 
-  duration: 0
-  currentTime: 0
-  BuffType: 
-  value: 0
+  BuffName: 
+  bufftype: 0
+  Buff_duration: 0
+  Buff_currentTime: 0
+  Buff_value: 0
