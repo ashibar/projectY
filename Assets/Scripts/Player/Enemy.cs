@@ -27,6 +27,11 @@ public class Enemy : Unit
         movement = GetComponent<Movement>();
     }
 
+    protected override void Start()
+    {
+        
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -40,5 +45,10 @@ public class Enemy : Unit
     public void Delete_FromCloneList()
     {
         spawner_pointer.Delete_FromCloneList(gameObject);
+    }
+
+    public virtual void Applier(GameObject obj, Stat stat)
+    {
+
     }
 }

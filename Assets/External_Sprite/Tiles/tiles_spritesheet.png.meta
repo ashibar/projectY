@@ -1404,8 +1404,8 @@ TextureImporter:
         y: 650
         width: 70
         height: 70
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4150,7 +4150,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b9b264a2aaf51a345a5e0b66faac10c1
     internalID: 0
     vertices: []
     indices: 
@@ -4158,18 +4158,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tiles_spritesheet_39: 3268675256125745846
+      tiles_spritesheet_160: 2360675638696296545
       tiles_spritesheet_154: 6744677850816432832
-      tiles_spritesheet_126: -3949975178792881072
-      tiles_spritesheet_98: 9150760950918650641
+      tiles_spritesheet_51: 7354819767241589694
       tiles_spritesheet_17: 5373540985584688024
+      tiles_spritesheet_32: 7298000501565552139
       tiles_spritesheet_142: 363350627603320095
       tiles_spritesheet_168: -7536378745833669139
       tiles_spritesheet_97: 2191906192242300526
-      tiles_spritesheet_86: 1082601745400820809
+      tiles_spritesheet_69: -8119222545688373295
       tiles_spritesheet_21: -2196249997117488030
       tiles_spritesheet_31: -2806810967884856105
-      tiles_spritesheet_116: -4244610292500040813
+      tiles_spritesheet_45: 929381819395523932
       tiles_spritesheet_34: 3330278889610725932
       tiles_spritesheet_57: 6849605041401448728
       tiles_spritesheet_127: -770484430961000475
@@ -4188,10 +4188,10 @@ TextureImporter:
       tiles_spritesheet_6: -6937358322877616104
       tiles_spritesheet_60: 1174964182395916884
       tiles_spritesheet_1: 5340006420255305885
+      tiles_spritesheet_91: -1804568002877210158
       tiles_spritesheet_23: 3994142044280309398
       tiles_spritesheet_124: 321955493889097243
       tiles_spritesheet_93: 2143616592917246729
-      tiles_spritesheet_160: 2360675638696296545
       tiles_spritesheet_66: -363591699377576415
       tiles_spritesheet_63: -7046114690025375335
       tiles_spritesheet_92: -7354668286067149653
@@ -4320,12 +4320,12 @@ TextureImporter:
       tiles_spritesheet_112: 3509858289491932771
       tiles_spritesheet_73: 3069314312594938265
       tiles_spritesheet_40: 674656090716359192
-      tiles_spritesheet_91: -1804568002877210158
-      tiles_spritesheet_45: 929381819395523932
+      tiles_spritesheet_126: -3949975178792881072
+      tiles_spritesheet_39: 3268675256125745846
+      tiles_spritesheet_86: 1082601745400820809
+      tiles_spritesheet_98: 9150760950918650641
+      tiles_spritesheet_116: -4244610292500040813
       tiles_spritesheet_54: 423918074823741026
-      tiles_spritesheet_32: 7298000501565552139
-      tiles_spritesheet_69: -8119222545688373295
-      tiles_spritesheet_51: 7354819767241589694
       tiles_spritesheet_11: 4671763636491641915
   spritePackingTag: 
   pSDRemoveMatte: 0

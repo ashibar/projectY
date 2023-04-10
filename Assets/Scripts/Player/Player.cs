@@ -15,12 +15,13 @@ public class Player : Unit
 {
     public static Player instance;
     // stat은 상위 클래스인 Unit으로 올렸습니다.
-    
+
     public MovementManager movementManger;
     public PlayerMovement playerMovement;
     public MagicManager magicManager;
     public AnimationManager animationManager;
-    
+    public GameManager manger;
+
 
     protected override void Awake()
     {
@@ -34,17 +35,19 @@ public class Player : Unit
 
     protected override void Start()
     {
-        
+
     }
 
     protected override void Update()
     {
-        
+
     }
 
+    [SerializeField]
+    private GameManager gameManager;
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        gameManager.Action(collision.gameObject);
     }
 
     
