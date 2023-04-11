@@ -1,0 +1,21 @@
+rb2d = GetComponent<Rigidbody2D>() ? GetComponent<Rigidbody2D>() : gameObject.AddComponent<Rigidbody2D>();
+
+shotmanager
+ 발사 당시 1
+
+ - 발사 당시의 특성을 받아 발사할때 적용
+ - 나머지 2,3을 투사체에 전달
+
+projectile
+
+ buffer 2
+ buffer 3
+
+ -update 2
+  - buffer 2
+ ontrigger 3
+  - buffer 3 
+part
+ - 1 발사 당시 함수
+ - 2 발사 동안 함수
+ - 3 발사 후에 함수
