@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: itai
+  m_Name: roop_ice_001
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 9464f263da653bd45a204af88cb9c9df, type: 3}
-    - time: 0.033333335
-      value: {fileID: 21300000, guid: 9464f263da653bd45a204af88cb9c9df, type: 3}
+      value: {fileID: 21300000, guid: 81673e538db5c4047bd2c46ce148c6ef, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: 8dc068d400c978c44ab8a331f9abf781, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: e4f83b6042e649c4bb268f2b18be9c4a, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 2afde003e811b694c9e7c9fe70d256f6, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,19 +46,21 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 9464f263da653bd45a204af88cb9c9df, type: 3}
-    - {fileID: 21300000, guid: 9464f263da653bd45a204af88cb9c9df, type: 3}
+    - {fileID: 21300000, guid: 81673e538db5c4047bd2c46ce148c6ef, type: 3}
+    - {fileID: 21300000, guid: 8dc068d400c978c44ab8a331f9abf781, type: 3}
+    - {fileID: 21300000, guid: e4f83b6042e649c4bb268f2b18be9c4a, type: 3}
+    - {fileID: 21300000, guid: 2afde003e811b694c9e7c9fe70d256f6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.050000004
+    m_StopTime: 0.26666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
