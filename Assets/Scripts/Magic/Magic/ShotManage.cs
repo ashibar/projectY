@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class ShotManage : MonoBehaviour
 {
+    enum MAGICTYPE{SOLE,MULTY,RANGE };
     //public GameObject[] preFabSpell;
     public Vector2 dir_toMouse;
     //================================================
@@ -34,7 +35,6 @@ public class ShotManage : MonoBehaviour
 
     [SerializeField] protected bool isChecked = true;
     [SerializeField] protected bool isUseSpell = false;
-    [SerializeField] protected bool isRangeSpell = false;
     //================================================
     [SerializeField] protected String SkillRangeType = "SOLE";
 
@@ -52,7 +52,7 @@ public class ShotManage : MonoBehaviour
     {
         if (isSoleSpell) SkillRangeType = "SOLE";
         if (isBuffSpell) SkillRangeType = "BUFF";
-        if (isMultiSpell) SkillRangeType = "MULTI";
+        if (isMultiSpell) SkillRangeType = "MULTY";
         {
             if (SkillRangeType == "SOLE")
             {
@@ -78,6 +78,7 @@ public class ShotManage : MonoBehaviour
         if (isSoleSpell) SpellNumbers = 0;
         if (isBuffSpell) SpellNumbers = 1;
         if (isMultiSpell) SpellNumbers = 2;
+        
         return SpellNumbers;
     }
     
@@ -86,11 +87,17 @@ public class ShotManage : MonoBehaviour
     {
             isUseSpell = true;
             isChecked = false;
-            
+            ////
             GameObject Spell = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
-            
-            Spell.GetComponent<Rigidbody2D>().velocity = dir_toMouse * Spell_speed;  //후에 추가 예정
-            
+            Spell.GetComponent<Rigidbody2D>().velocity = dir_toMouse * Spell_speed;
+            //여기까지는 기존 샷
+
+            //Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+            //GameObject Spell = Instantiate(Spells[DoingSpell()], len, Quaternion.identity);
+            //Spell.GetComponent<Rigidbody2D>();
+            //여기까지가 RangeShoot
+
     }
     public virtual void RangeShoot()
     {
@@ -115,22 +122,6 @@ public class ShotManage : MonoBehaviour
         }
         isChecked = true; //Shoot 활성화 로직
         
-        yield break;
-    }
-    IEnumerator ReduceRangeCoroutine(float ReduceTime) //스킬 쿨타임 
-    {
-        Debug.Log("Worked");
-        const float baseTime = 0.1f; // BaseTime이 최소단위
-        
-        isRangeSpell = false; //들어가자마자 자기 자신의 조건을 비활성화 // 안그러면 Update에서 무한하게 실행됨
-        while (ReduceTime > 0) //쿨타임 메인 로직, coltimes를 받아서 baseTime초만큼씩 줄임
-        {
-            ReduceTime -= baseTime;
-            
-            yield return new WaitForSeconds(baseTime);
-        }
-        isChecked = true; //Shoot 활성화 로직
-
         yield break;
     }
 }

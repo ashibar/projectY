@@ -19,33 +19,39 @@ public class SpellProjectile : MonoBehaviour
     private void Start()
     {
         if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
-        if (isRange) AutoReduce(duration);
-        else AutoDelete(duration);
+        //if (isRange) AutoReduce(duration);
+        //else 
+            AutoDelete(duration);
     }
-
+    private void Update()
+    {
+        
+    }
     private async void AutoDelete(float duration)
     {
         float end = Time.time + duration;
 
         while(Time.time < end)
         {
+            //transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
+            //transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
             await Task.Yield();
         }
         if(!isDeleted) Destroy(gameObject);
     }
-    private async void AutoReduce(float duration)
-    {
-        float end = Time.time + duration;
-        while (Time.time < end)
-        {
-            transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed/duration * Time.deltaTime, 
-                transform.localScale.y - 1f * ReduceSpeed/duration * Time.deltaTime);
-            
-            await Task.Yield();
-        }
-        Debug.Log(transform.localScale.x);
-        if (!isDeleted) Destroy(gameObject);
-    }
+    //private async void AutoReduce(float duration)
+    //{
+    //    float end = Time.time + duration;
+    //    while (Time.time < end)
+    //    {
+    //        transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
+    //            transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
+    //        await Task.Yield();
+    //    }
+    //    Debug.Log(transform.localScale.x);
+
+    //    if (!isDeleted) Destroy(gameObject);
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,9 +59,12 @@ public class SpellProjectile : MonoBehaviour
         {
             collision.GetComponent<Enemy>().Delete_FromCloneList();
             Destroy(collision.gameObject);
+            // Destory => Enemy 에서 관리
+            // 데미지 연산은 SpellStat에 있는 값으로 데미지 연산은 여기서.
+
+            //이곳에 AutoReduce작성
             isDeleted = true;
             Destroy(gameObject);
-
         }
 
     }
