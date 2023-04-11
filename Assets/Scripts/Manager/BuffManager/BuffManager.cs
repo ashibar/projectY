@@ -19,38 +19,36 @@ public class BuffManager : MonoBehaviour
     public void Awake()
     {
         unit = GetComponentInParent<Unit>();
-        buff = GetComponentInChildren<Buff>();
-        buff = new Buff(buff_SO);
-
+        //buff = GetComponentInChildren<Buff>();
+        //buff = new Buff(buff_SO);
+        buffs.AddRange(GetComponentsInChildren<Buff>());
         
     }
     
     public void Update()
     {
         Getstat();
-        Setstat();
-        
+        Debug.Log("hp: " + unit.stat_processed.Hp.ToString() + ", armor: " + unit.stat_processed.Armor);
     }
     public void Getstat()
     {
-        Stat gstat = unit.stat;
-        if (gstat != null)
+        Stat gstat = new Stat(unit.stat);
+        Stat pstat = new Stat(unit.stat);
+        if (buffs.Count > 0)
         {
-           
+            foreach (Buff b in buffs)
+            {
+                Buffcheck(gstat, pstat, b);
+            }
         }
-        
-        
+        unit.stat_processed = pstat;
     }
-    public void Setstat()
+    public void Buffcheck(Stat gstat, Stat pstat, Buff buff)
     {
-       Stat sstat = unit.stat_processed;
-    }
-    public void Buffcheck(Buff_SO.BuffType type)
-    {
-        switch (type)
+        switch (buff.Buff_Type)
         {
             case Buff_SO.BuffType.Buff_Hp:
-                unit.stat_processed.Hp = Buffchanger(buff_SO.Buff_Type, unit.stat.Hp);
+                pstat.Hp = Buffchanger(gstat.Hp, buff.Buff_value);
                 break;
 
             case Buff_SO.BuffType.Buff_Mp:
@@ -58,7 +56,7 @@ public class BuffManager : MonoBehaviour
                 break;
 
             case Buff_SO.BuffType.Buff_Armmor:
-                unit.stat.Armor=Buffchanger(buff_SO.Buff_Type,unit.stat.Armor);
+                pstat.Armor = Buffchanger(gstat.Armor, buff.Buff_value);
                 break;
 
             case Buff_SO.BuffType.Buff_Speed:
@@ -82,22 +80,27 @@ public class BuffManager : MonoBehaviour
         yield return new WaitForSeconds(du);
 
     }
-    public float Buffchanger(Buff_SO.BuffType type,float val)
+    public float Buffchanger(float val_unit, float val_buff)
     {
-        if(buffs.Count > 0)
-        {
-            float temp = 0;
-            for (int i = 0; i <buffs.Count; i++)
-            {
-                if (buffs[i].Buff_Type.Equals(type))
-                    temp += val * buffs[i].Buff_value;
-            }
-            return val+temp;
-        }
-        else
-        {
-            return val;
-        }
+        return val_unit * val_buff;
+        
+        //if(buffs.Count > 0)
+        //{
+        //    float temp = 0;
+        //    for (int i = 0; i <buffs.Count; i++)
+        //    {
+        //        if (buffs[i].Buff_Type.Equals(type))
+        //            temp += val_unit * buffs[i].Buff_value;
+        //    }
+        //    return val_unit+temp;
+        //}
+        //else
+        //{
+        //    return val_unit;
+        //}
     }
-
+    public void BuffEndListener(Buff buff)
+    {
+        buffs.Remove(buff);
+    }
 }
