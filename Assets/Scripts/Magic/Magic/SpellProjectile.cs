@@ -12,22 +12,24 @@ public class SpellProjectile : MonoBehaviour
     [SerializeField]
     private float duration;
     [SerializeField]
-    private float ReduceSpeed = 0.2f; // 줄어드는 속도. 무조건 0~1 사이의 값만 작성해야됨.
+    protected float ReduceSpeed = 0.2f; // 줄어드는 속도. 무조건 0~1 사이의 값만 작성해야됨.
+
     private bool isDeleted = false;
     [SerializeField]
     private bool isRange = false;
-    private void Start()
+    protected virtual void Awake()
     {
         if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
-        //if (isRange) AutoReduce(duration);
-        //else 
-            AutoDelete(duration);
+    }
+    protected virtual void Start()
+    {
+        AutoDelete(duration);
     }
     private void Update()
     {
         
     }
-    private async void AutoDelete(float duration)
+    protected virtual async void AutoDelete(float duration)
     {
         float end = Time.time + duration;
 
@@ -48,12 +50,11 @@ public class SpellProjectile : MonoBehaviour
     //            transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
     //        await Task.Yield();
     //    }
-    //    Debug.Log(transform.localScale.x);
 
     //    if (!isDeleted) Destroy(gameObject);
     //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
         {
