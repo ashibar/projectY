@@ -31,6 +31,7 @@ public class SpellProjectile : MonoBehaviour
     }
     protected virtual async void AutoDelete(float duration)
     {
+
         float end = Time.time + duration;
 
         while(Time.time < end)
@@ -41,29 +42,27 @@ public class SpellProjectile : MonoBehaviour
         }
         if(!isDeleted) Destroy(gameObject);
     }
-    //private async void AutoReduce(float duration)
-    //{
-    //    float end = Time.time + duration;
-    //    while (Time.time < end)
-    //    {
-    //        transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
-    //            transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
-    //        await Task.Yield();
-    //    }
-
-    //    if (!isDeleted) Destroy(gameObject);
-    //}
+    private async void AutoReduce(float duration)
+    {
+        float end = Time.time + duration;
+        while (Time.time < end)
+        {
+            transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
+                transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
+            await Task.Yield();
+        }
+        if (!isDeleted) Destroy(gameObject);
+    }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().Delete_FromCloneList();
-            Destroy(collision.gameObject);
+            //collision.GetComponent<Enemy>().Delete_FromCloneList();
+            //Destroy(collision.gameObject);
             // Destory => Enemy 에서 관리
             // 데미지 연산은 SpellStat에 있는 값으로 데미지 연산은 여기서.
 
-            //이곳에 AutoReduce작성
             isDeleted = true;
             Destroy(gameObject);
         }
