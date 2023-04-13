@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DefaultStat", menuName = "Scriptable Object/Stat", order = int.MaxValue)]
+[CreateAssetMenu(fileName = "DefaultStat_spell", menuName = "Scriptable Object/Stat_spell", order = int.MaxValue)]
 public class Stat_Spell_so : ScriptableObject
 {
     public enum SpellType { SOLE, MULTY, RANGE };

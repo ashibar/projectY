@@ -31,7 +31,7 @@ public class SpellProjectile : MonoBehaviour
     }
     private void Update()
     {
-
+        UpdateProcess(stat_spell);
     }
     protected virtual async void AutoDelete(float duration)
     {

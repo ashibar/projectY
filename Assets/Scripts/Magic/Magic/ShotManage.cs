@@ -81,6 +81,9 @@ public class ShotManage : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKey(KeyCode.Mouse1)) {
+            //Shoot_Temp();
+        }
     }
     protected int DoingSpell() //몇번째 스펠인지 정해준다.
     {
@@ -158,13 +161,13 @@ public class ShotManage : MonoBehaviour
             await Task.Yield();
         }
         GameObject temp;
-        ShotProcess(stat_spell);
         for (int i = 0; i < 1/*stat_spell.투사체 갯수*/; i++)
         {
-            temp = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
+            temp = Instantiate(Spells[1], transform.position, Quaternion.identity);
             temp.GetComponent<SpellProjectile>().appliers_update.AddRange(appliers_OnUpdate);
             temp.GetComponent<SpellProjectile>().appliers_collides.AddRange(appliers_OnColide);
         }
+        ShotProcess(stat_spell);
     }
 
     private void SortParts(List<Parts> parts)
@@ -174,7 +177,7 @@ public class ShotManage : MonoBehaviour
         appliers_OnColide.Clear();
         foreach (Parts p in parts)
         {
-            switch (p.sort)
+            switch (p.Sort)
             {
                 case Parts.Parts_Sort.OnShot:
                     appliers_OnShot.Add(p.Applier);
