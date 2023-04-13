@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Parts : MonoBehaviour
 {
+    public enum Parts_Sort
+    {
+        OnShot,
+        OnUpdate,
+        OnColide
+    }
+    public Parts_Sort sort;
+
     protected virtual void Start()
     {
 
@@ -14,7 +22,7 @@ public class Parts : MonoBehaviour
 
     }
 
-    public virtual void Applier(GameObject proj, Stat_Spell stat)
+    public virtual void Applier(GameObject proj, Stat_Spell stat, Collider2D collision)
     {
 
     }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 /// <summary>
@@ -38,14 +40,22 @@ public class ShotManage : MonoBehaviour
     //================================================
     [SerializeField] protected String SkillRangeType = "SOLE";
 
-
-
+    // parts - 이용욱
+    [SerializeField] public Stat_Spell stat_spell;
+    [SerializeField] public List<Parts> parts = new List<Parts>();
+    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnShot = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnUpdate = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnColide = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    
+    
     protected void Start() { 
         if(!isChecked || isUseSpell) // 이렇게 안해주면 작동안함!!!!!!
         {
             isChecked = true;
             isUseSpell = false;
         }
+        SortParts(parts);
     }
 
     public void Update()
@@ -90,14 +100,15 @@ public class ShotManage : MonoBehaviour
             ////
             GameObject Spell = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
             Spell.GetComponent<Rigidbody2D>().velocity = dir_toMouse * Spell_speed;
-            //여기까지는 기존 샷
+        //여기까지는 기존 샷
 
-            //Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        //Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            //GameObject Spell = Instantiate(Spells[DoingSpell()], len, Quaternion.identity);
-            //Spell.GetComponent<Rigidbody2D>();
-            //여기까지가 RangeShoot
+        //GameObject Spell = Instantiate(Spells[DoingSpell()], len, Quaternion.identity);
+        //Spell.GetComponent<Rigidbody2D>();
+        //여기까지가 RangeShoot
 
+        
     }
     public virtual void RangeShoot()
     {
@@ -123,5 +134,67 @@ public class ShotManage : MonoBehaviour
         isChecked = true; //Shoot 활성화 로직
         
         yield break;
+    }
+
+    // 여기부터 새로 구현한 Shoot()함수 - 이용욱
+
+    private bool isCooltime;
+
+    private async void Shoot_Temp()
+    {
+       if (!isCooltime)
+        {
+            isCooltime = true;
+            await Shoot_Task(cooltime);
+            isCooltime = false;
+        }
+    }
+
+    private async Task Shoot_Task(float duration)
+    {
+        float end = Time.time + duration;
+        while (Time.time < end)
+        {
+            await Task.Yield();
+        }
+        GameObject temp;
+        ShotProcess(stat_spell);
+        for (int i = 0; i < 1/*stat_spell.투사체 갯수*/; i++)
+        {
+            temp = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
+            temp.GetComponent<SpellProjectile>().appliers_update.AddRange(appliers_OnUpdate);
+            temp.GetComponent<SpellProjectile>().appliers_collides.AddRange(appliers_OnColide);
+        }
+    }
+
+    private void SortParts(List<Parts> parts)
+    {
+        appliers_OnShot.Clear();
+        appliers_OnUpdate.Clear();
+        appliers_OnColide.Clear();
+        foreach (Parts p in parts)
+        {
+            switch (p.sort)
+            {
+                case Parts.Parts_Sort.OnShot:
+                    appliers_OnShot.Add(p.Applier);
+                    break;
+                case Parts.Parts_Sort.OnUpdate:
+                    appliers_OnUpdate.Add(p.Applier);
+                    break;
+                case Parts.Parts_Sort.OnColide:
+                    appliers_OnColide.Add(p.Applier);
+                    break;
+            }
+        }
+        
+    }
+
+    private void ShotProcess(Stat_Spell stat)
+    {
+        foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_OnShot)
+        {
+            app(null, stat, null);
+        }
     }
 }

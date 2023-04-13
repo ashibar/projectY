@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,6 +17,12 @@ public class SpellProjectile : MonoBehaviour
     private bool isDeleted = false;
     [SerializeField]
     private bool isRange = false;
+    [SerializeField]
+    public Stat_Spell stat_spell;
+    [SerializeField]
+    public List<Action<GameObject, Stat_Spell, Collider2D>> appliers_update = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    [SerializeField]
+    public List<Action<GameObject, Stat_Spell, Collider2D>> appliers_collides = new List<Action<GameObject, Stat_Spell, Collider2D>>();
     private void Start()
     {
         if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
@@ -53,6 +60,14 @@ public class SpellProjectile : MonoBehaviour
     //    if (!isDeleted) Destroy(gameObject);
     //}
 
+    private void UpdateProcess(Stat_Spell stat)
+    {
+        foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_update)
+        {
+            app(gameObject, stat, null);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
@@ -61,6 +76,12 @@ public class SpellProjectile : MonoBehaviour
             Destroy(collision.gameObject);
             // Destory => Enemy 에서 관리
             // 데미지 연산은 SpellStat에 있는 값으로 데미지 연산은 여기서.
+            
+            // 충돌시 작동될 applier - 이용욱
+            foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_collides)
+                app(gameObject, stat_spell, collision);
+            
+            
 
             //이곳에 AutoReduce작성
             isDeleted = true;
