@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 /***
- * ÀÛ¼ºÀÚ : ¹ÚÁ¾¼º
- * ¼öÁ¤ÀÏ : 23-4-6
- * ¼öÁ¤ ³»¿ë : AutoReduceÇÔ¼ö Ãß°¡// RangeSpellÀÎ °æ¿ì ReduceSpeed¿¡ ºñ·ÊÇØ¼­ Å©±â °¨¼Ò
+ * ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 23-4-6
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : AutoReduceï¿½Ô¼ï¿½ ï¿½ß°ï¿½// RangeSpellï¿½ï¿½ ï¿½ï¿½ï¿½ ReduceSpeedï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
  */
 public class SpellProjectile : MonoBehaviour
 {
     [SerializeField]
     private float duration;
     [SerializeField]
-    private float ReduceSpeed = 0.2f; // ÁÙ¾îµå´Â ¼Óµµ. ¹«Á¶°Ç 0~1 »çÀÌÀÇ °ª¸¸ ÀÛ¼ºÇØ¾ßµÊ.
+    protected float ReduceSpeed = 0.2f; // ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Óµï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0~1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ø¾ßµï¿½.
+
     private bool isDeleted = false;
     [SerializeField]
     private bool isRange = false;
@@ -26,16 +27,18 @@ public class SpellProjectile : MonoBehaviour
     private void Start()
     {
         if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
-        //if (isRange) AutoReduce(duration);
-        //else 
-            AutoDelete(duration);
+    }
+    protected virtual void Start()
+    {
+        AutoDelete(duration);
     }
     private void Update()
     {
         
     }
-    private async void AutoDelete(float duration)
+    protected virtual async void AutoDelete(float duration)
     {
+
         float end = Time.time + duration;
 
         while(Time.time < end)
@@ -46,16 +49,17 @@ public class SpellProjectile : MonoBehaviour
         }
         if(!isDeleted) Destroy(gameObject);
     }
-    //private async void AutoReduce(float duration)
-    //{
-    //    float end = Time.time + duration;
-    //    while (Time.time < end)
-    //    {
-    //        transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
-    //            transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
-    //        await Task.Yield();
-    //    }
-    //    Debug.Log(transform.localScale.x);
+    private async void AutoReduce(float duration)
+    {
+        float end = Time.time + duration;
+        while (Time.time < end)
+        {
+            transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
+                transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
+            await Task.Yield();
+        }
+        if (!isDeleted) Destroy(gameObject);
+    }
 
     //    if (!isDeleted) Destroy(gameObject);
     //}
@@ -72,18 +76,17 @@ public class SpellProjectile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().Delete_FromCloneList();
-            Destroy(collision.gameObject);
-            // Destory => Enemy ¿¡¼­ °ü¸®
-            // µ¥¹ÌÁö ¿¬»êÀº SpellStat¿¡ ÀÖ´Â °ªÀ¸·Î µ¥¹ÌÁö ¿¬»êÀº ¿©±â¼­.
+            //collision.GetComponent<Enemy>().Delete_FromCloneList();
+            //Destroy(collision.gameObject);
+            // Destory => Enemy ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SpellStatï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­.
             
-            // Ãæµ¹½Ã ÀÛµ¿µÉ applier - ÀÌ¿ë¿í
+            // ï¿½æµ¹ï¿½ï¿½ ï¿½Ûµï¿½ï¿½ï¿½ applier - ï¿½Ì¿ï¿½ï¿½
             foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_collides)
                 app(gameObject, stat_spell, collision);
             
             
 
-            //ÀÌ°÷¿¡ AutoReduceÀÛ¼º
             isDeleted = true;
             Destroy(gameObject);
         }
