@@ -49,6 +49,22 @@ public class Stat
         this.hp_current = stat.Hp;
     }
 
+    public Stat(Stat stat)
+    {
+        this.hp = stat.Hp;
+        this.speed = stat.Speed;
+        this.hp_regen = stat.Hp_regen;
+        this.armor = stat.Armor;
+        this.damage = stat.Damage;
+        this.speed_projectile = stat.Speed_projectile;
+        this.duration_projectile = stat.Duration_projectile;
+        this.range_projectile = stat.Range_projectile;
+        this.cooldown = stat.Cooldown;
+        this.amount = stat.Amount;
+
+        this.hp_current = stat.Hp;
+    }
+
     public float Hp { get => hp; set => hp = value; }
     public float Speed { get => speed; set => speed = value; }
     public float Hp_regen { get => hp_regen; set => hp_regen = value; }

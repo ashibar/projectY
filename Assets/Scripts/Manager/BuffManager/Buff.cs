@@ -13,11 +13,19 @@ public class Buff : MonoBehaviour
     {
         buffmanager = GetComponentInParent<BuffManager>();
     }
+
+    private void Start()
+    {
+        StartCoroutine(Destroy_Routine(buff_durationcrrent));
+    }
     
     private string buff_name;
+    [SerializeField]
     private Buff_SO.BuffType buff_type;
+    [SerializeField]
     private float buff_durationcrrent;
     private float buff_currenttime;
+    [SerializeField]
     private float buff_value;
     private float buff_redusespeed;
     public Buff(Buff_SO buff)
@@ -27,6 +35,22 @@ public class Buff : MonoBehaviour
         this.buff_currenttime = buff.Buff_currentTime;
         this.buff_value = buff.Buff_value;
         this.buff_durationcrrent = buff.Buff_duration;
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    private IEnumerator Destroy_Routine(float duration)
+    {
+        float end = Time.time + duration;
+        while (Time.time < end)
+        {
+            yield return null;
+        }
+        buffmanager.BuffEndListener(this);
+        Destroy(gameObject);
     }
 
     public string Buff_Name { get => buff_name; set => buff_name = value; }
