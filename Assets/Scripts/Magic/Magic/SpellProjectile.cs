@@ -24,12 +24,9 @@ public class SpellProjectile : MonoBehaviour
     public List<Action<GameObject, Stat_Spell, Collider2D>> appliers_update = new List<Action<GameObject, Stat_Spell, Collider2D>>();
     [SerializeField]
     public List<Action<GameObject, Stat_Spell, Collider2D>> appliers_collides = new List<Action<GameObject, Stat_Spell, Collider2D>>();
-    private void Start()
-    {
-        if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
-    }
     protected virtual void Start()
     {
+        if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
         AutoDelete(duration);
     }
     private void Update()
