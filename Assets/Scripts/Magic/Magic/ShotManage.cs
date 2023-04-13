@@ -41,14 +41,20 @@ public class ShotManage : MonoBehaviour
     [SerializeField] protected String SkillRangeType = "SOLE";
 
     // parts - 이용욱
+    [SerializeField] public Stat_Spell_so stat_Spell_So;
     [SerializeField] public Stat_Spell stat_spell;
     [SerializeField] public List<Parts> parts = new List<Parts>();
     [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers = new List<Action<GameObject, Stat_Spell, Collider2D>>();
     [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnShot = new List<Action<GameObject, Stat_Spell, Collider2D>>();
     [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnUpdate = new List<Action<GameObject, Stat_Spell, Collider2D>>();
     [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnColide = new List<Action<GameObject, Stat_Spell, Collider2D>>();
-    
-    
+
+    protected void Awake()
+    {
+        stat_spell = new Stat_Spell(stat_Spell_So);
+        parts.AddRange(GetComponentsInChildren<Parts>());
+    }
+
     protected void Start() { 
         if(!isChecked || isUseSpell) // 이렇게 안해주면 작동안함!!!!!!
         {
@@ -82,7 +88,7 @@ public class ShotManage : MonoBehaviour
             }
         }
         if (Input.GetKey(KeyCode.Mouse1)) {
-            //Shoot_Temp();
+            Shoot_Temp();
         }
     }
     protected int DoingSpell() //몇번째 스펠인지 정해준다.
@@ -148,7 +154,7 @@ public class ShotManage : MonoBehaviour
        if (!isCooltime)
         {
             isCooltime = true;
-            await Shoot_Task(cooltime);
+            await Shoot_Task(stat_spell.Spell_CoolTime);
             isCooltime = false;
         }
     }
@@ -166,8 +172,8 @@ public class ShotManage : MonoBehaviour
             temp = Instantiate(Spells[1], transform.position, Quaternion.identity);
             temp.GetComponent<SpellProjectile>().appliers_update.AddRange(appliers_OnUpdate);
             temp.GetComponent<SpellProjectile>().appliers_collides.AddRange(appliers_OnColide);
+            ShotProcess(temp, stat_spell);
         }
-        ShotProcess(stat_spell);
     }
 
     private void SortParts(List<Parts> parts)
@@ -193,11 +199,11 @@ public class ShotManage : MonoBehaviour
         
     }
 
-    private void ShotProcess(Stat_Spell stat)
+    private void ShotProcess(GameObject temp, Stat_Spell stat)
     {
         foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_OnShot)
         {
-            app(null, stat, null);
+            app(temp, stat, null);
         }
     }
 }

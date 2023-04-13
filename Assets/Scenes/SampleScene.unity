@@ -173,6 +173,68 @@ MonoBehaviour:
   buff_SO: {fileID: 0}
   buff: {fileID: 0}
   buffs: []
+--- !u!1001 &240362530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1024295144}
+    m_Modifications:
+    - target: {fileID: 5526281499905461310, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+--- !u!4 &240362531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6356089455931656772, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+  m_PrefabInstance: {fileID: 240362530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &312288217
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +906,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1024295144}
   - component: {fileID: 1024295145}
-  - component: {fileID: 1024295146}
   m_Layer: 0
   m_Name: MagicManager
   m_TagString: Untagged
@@ -863,7 +924,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 240362531}
   m_Father: {fileID: 1489009639}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -881,31 +943,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spell_object: []
   shotManager: []
---- !u!114 &1024295146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024295143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96dde20d9b74c247b834f218f28e1d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dir_toMouse: {x: 0, y: 0}
-  stat_so: {fileID: 0}
-  Spells:
-  - {fileID: 4717003872253168443, guid: 5696800d25a6edd4997b2ec059aada22, type: 3}
-  cooltime: 1
-  Spell_speed: 5
-  ActiveRangeTime: 1
-  isSoleSpell: 1
-  isBuffSpell: 0
-  isMultiSpell: 0
-  isChecked: 0
-  isUseSpell: 1
-  SkillRangeType: SOLE
 --- !u!1 &1045788429
 GameObject:
   m_ObjectHideFlags: 0

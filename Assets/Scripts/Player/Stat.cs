@@ -31,7 +31,7 @@ public class Stat
 
     // 인게임 내에서 지속적으로 변화될 수치
 
-    private float hp_current;               // 현재 체력
+    [SerializeField] private float hp_current;               // 현재 체력
 
     public Stat(Stat_so stat)
     {
