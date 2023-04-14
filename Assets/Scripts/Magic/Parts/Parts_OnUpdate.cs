@@ -10,23 +10,23 @@ public class Parts_OnUpdate : Parts
 
     public float Cooltime { get => cooltime; set => cooltime = value; }
 
-    public override void Applier(GameObject proj, Stat_Spell stat, Collider2D collision)
+    public override void Applier(Applier_parameter para)
     {
         
-        Async_Function(proj, stat);
+        Async_Function(para);
     }
 
-    protected async virtual void Async_Function(GameObject proj, Stat_Spell stat)
+    protected async virtual void Async_Function(Applier_parameter para)
     {
         if (!isCooltime)
         {
             isCooltime = true;
-            await Update_Function(proj, stat, cooltime);
+            await Update_Function(para, cooltime);
             isCooltime = false;
         }
     }
 
-    protected async virtual Task Update_Function(GameObject proj, Stat_Spell stat, float duration)
+    protected async virtual Task Update_Function(Applier_parameter para, float duration)
     {
         float end = Time.time + duration;
         while (Time.time < end)

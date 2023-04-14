@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,33 @@ public class Applier_parameter
     public Vector2 Dir_toShoot { get => dir_toShoot; set => dir_toShoot = value; }
     public Vector2 Pos_toShoot { get => pos_toShoot; set => pos_toShoot = value; }
     
+    public Applier_parameter()
+    {
+        this.proj = null;
+        this.stat = null;
+        this.collision = null;
+        this.dir_toMove = Vector2.zero;
+        this.dir_toShoot = Vector2.zero;
+        this.pos_toShoot = Vector2.zero;
+    }
+    public Applier_parameter(GameObject proj, Stat_Spell stat)
+    {
+        this.proj = proj;
+        this.stat = stat;
+        this.collision = null;
+        this.dir_toMove = Vector2.zero;
+        this.dir_toShoot = Vector2.zero;
+        this.pos_toShoot = Vector2.zero;
+    }
+    public Applier_parameter(GameObject proj, Stat_Spell stat, Collider2D collision)
+    {
+        this.proj = proj;
+        this.stat = stat;
+        this.collision = collision;
+        this.dir_toMove = Vector2.zero;
+        this.dir_toShoot = Vector2.zero;
+        this.pos_toShoot = Vector2.zero;
+    }
     public Applier_parameter(GameObject proj, Stat_Spell stat, Collider2D collision, Vector2 dir_toMove, Vector2 dir_toShoot, Vector2 pos_toShoot)
     {
         this.proj = proj;
@@ -28,4 +56,14 @@ public class Applier_parameter
         this.dir_toShoot = dir_toShoot;
         this.pos_toShoot = pos_toShoot;
     }
+    public Applier_parameter(Applier_parameter para)
+    {
+        this.proj = para.Proj;
+        this.stat = para.Stat;
+        this.collision = para.Collision;
+        this.dir_toMove = para.Dir_toMove;
+        this.dir_toShoot = para.Dir_toShoot;
+        this.pos_toShoot = para.pos_toShoot;
+    }
+
 }

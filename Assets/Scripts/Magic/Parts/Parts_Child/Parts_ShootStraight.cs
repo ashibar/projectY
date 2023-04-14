@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Parts_ShootStraight : Parts_OnShot
 {
-    public override void Applier(GameObject proj, Stat_Spell stat, Collider2D collision)
+    public override void Applier(Applier_parameter para)
     {
-        base.Applier(proj, stat, collision);
-        proj.GetComponent<Rigidbody2D>().velocity = Vector2.right * stat.Spell_Speed;
+        base.Applier(para);
+        para.Proj.GetComponent<Rigidbody2D>().velocity = Vector2.right * para.Stat.Spell_Speed;
     }
 }

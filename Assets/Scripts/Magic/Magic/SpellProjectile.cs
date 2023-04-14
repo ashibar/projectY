@@ -21,9 +21,9 @@ public class SpellProjectile : MonoBehaviour
     [SerializeField]
     public Stat_Spell stat_spell;
     [SerializeField]
-    public List<Action<GameObject, Stat_Spell, Collider2D>> appliers_update = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    public List<Action<Applier_parameter>> appliers_update = new List<Action<Applier_parameter>>();
     [SerializeField]
-    public List<Action<GameObject, Stat_Spell, Collider2D>> appliers_collides = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    public List<Action<Applier_parameter>> appliers_collides = new List<Action<Applier_parameter>>();
     protected virtual void Start()
     {
         if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
@@ -63,9 +63,9 @@ public class SpellProjectile : MonoBehaviour
 
     private void UpdateProcess(Stat_Spell stat)
     {
-        foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_update)
+        foreach (Action<Applier_parameter> app in appliers_update)
         {
-            app(gameObject, stat, null);
+            app(new Applier_parameter(gameObject, stat));
         }
     }
 
@@ -79,8 +79,8 @@ public class SpellProjectile : MonoBehaviour
             // ������ ������ SpellStat�� �ִ� ������ ������ ������ ���⼭.
 
             // �浹�� �۵��� applier - �̿��?
-            foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_collides)
-                app(gameObject, stat_spell, collision);
+            foreach (Action<Applier_parameter> app in appliers_collides)
+                app(new Applier_parameter(gameObject, stat_spell, collision));
 
 
 

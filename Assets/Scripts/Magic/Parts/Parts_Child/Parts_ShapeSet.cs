@@ -6,9 +6,9 @@ public class Parts_ShapeSet : Parts_OnShot
 {
     [SerializeField] private Animator animator;
 
-    public override void Applier(GameObject proj, Stat_Spell stat, Collider2D collision)
+    public override void Applier(Applier_parameter para)
     {
-        base.Applier(proj, stat, collision);
+        base.Applier(para);
         //proj.GetComponent<Animator>().runtimeAnimatorController = animator;
     }
 }

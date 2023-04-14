@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Parts_ColliderStatApplier : Parts_OnColide
 {
-    protected override void CollisionProcess(GameObject proj, Stat_Spell stat, Collider2D collision)
+    protected override void CollisionProcess(Applier_parameter para)
     {
-        base.CollisionProcess(proj, stat, collision);
-        collision.GetComponent<Unit>().stat.Hp_current -= stat.Spell_DMG;
-        Destroy(proj);
+        base.CollisionProcess(para);
+        para.Collision.GetComponent<Unit>().stat.Hp_current -= para.Stat.Spell_DMG;
+        Destroy(para.Proj);
     }
 }

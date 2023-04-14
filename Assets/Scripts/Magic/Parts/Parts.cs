@@ -37,7 +37,7 @@ public class Parts : MonoBehaviour
 
     }
 
-    public virtual void Applier(GameObject proj, Stat_Spell stat, Collider2D collision)
+    public virtual void Applier(Applier_parameter para)
     {
 
     }

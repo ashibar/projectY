@@ -44,10 +44,10 @@ public class ShotManage : MonoBehaviour
     [SerializeField] public Stat_Spell_so stat_Spell_So;
     [SerializeField] public Stat_Spell stat_spell;
     [SerializeField] public List<Parts> parts = new List<Parts>();
-    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers = new List<Action<GameObject, Stat_Spell, Collider2D>>();
-    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnShot = new List<Action<GameObject, Stat_Spell, Collider2D>>();
-    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnUpdate = new List<Action<GameObject, Stat_Spell, Collider2D>>();
-    [SerializeField] private List<Action<GameObject, Stat_Spell, Collider2D>> appliers_OnColide = new List<Action<GameObject, Stat_Spell, Collider2D>>();
+    [SerializeField] private List<Action<Applier_parameter>> appliers = new List<Action<Applier_parameter>>();
+    [SerializeField] private List<Action<Applier_parameter>> appliers_OnShot = new List<Action<Applier_parameter>>();
+    [SerializeField] private List<Action<Applier_parameter>> appliers_OnUpdate = new List<Action<Applier_parameter>>();
+    [SerializeField] private List<Action<Applier_parameter>> appliers_OnColide = new List<Action<Applier_parameter>>();
 
     protected void Awake()
     {
@@ -161,11 +161,7 @@ public class ShotManage : MonoBehaviour
 
     private async Task Shoot_Task(float duration)
     {
-        float end = Time.time + duration;
-        while (Time.time < end)
-        {
-            await Task.Yield();
-        }
+        
         GameObject temp;
         for (int i = 0; i < 1/*stat_spell.Åõ»çÃ¼ °¹¼ö*/; i++)
         {
@@ -173,6 +169,12 @@ public class ShotManage : MonoBehaviour
             temp.GetComponent<SpellProjectile>().appliers_update.AddRange(appliers_OnUpdate);
             temp.GetComponent<SpellProjectile>().appliers_collides.AddRange(appliers_OnColide);
             ShotProcess(temp, stat_spell);
+        }
+        
+        float end = Time.time + duration;
+        while (Time.time < end)
+        {
+            await Task.Yield();
         }
     }
 
@@ -201,9 +203,9 @@ public class ShotManage : MonoBehaviour
 
     private void ShotProcess(GameObject temp, Stat_Spell stat)
     {
-        foreach (Action<GameObject, Stat_Spell, Collider2D> app in appliers_OnShot)
+        foreach (Action<Applier_parameter> app in appliers_OnShot)
         {
-            app(temp, stat, null);
+            app(new Applier_parameter(temp, stat));
         }
     }
 }
