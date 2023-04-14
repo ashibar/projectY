@@ -149,6 +149,8 @@ public class ShotManage : MonoBehaviour
 
     private bool isCooltime;
 
+    // 발사 함수
+    // stat_spell에서 쿨타임을 받아 발사 주기 결정
     private async void Shoot_Temp()
     {
        if (!isCooltime)
@@ -159,9 +161,11 @@ public class ShotManage : MonoBehaviour
         }
     }
 
+    // Task 반환 발사 내부 함수
     private async Task Shoot_Task(float duration)
     {
-        
+        // 투사체 원본을 복제하고, appliers_update/collides를 복제본에 넣음
+        // 복제본의 발사 처리기 작동
         GameObject temp;
         for (int i = 0; i < 1/*stat_spell.투사체 갯수*/; i++)
         {
@@ -171,6 +175,7 @@ public class ShotManage : MonoBehaviour
             ShotProcess(temp, stat_spell);
         }
         
+        // 쿨타임동안 기다리도록 Task를 반환
         float end = Time.time + duration;
         while (Time.time < end)
         {
@@ -178,11 +183,15 @@ public class ShotManage : MonoBehaviour
         }
     }
 
+    // Parts 정렬 함수
     private void SortParts(List<Parts> parts)
     {
+        // appliers 초기화
         appliers_OnShot.Clear();
         appliers_OnUpdate.Clear();
         appliers_OnColide.Clear();
+        
+        // parts의 appliers종류에 따라 list에 분배
         foreach (Parts p in parts)
         {
             switch (p.Sort)
@@ -201,6 +210,7 @@ public class ShotManage : MonoBehaviour
         
     }
 
+    // 발사 처리기 작동 함수
     private void ShotProcess(GameObject temp, Stat_Spell stat)
     {
         foreach (Action<Applier_parameter> app in appliers_OnShot)

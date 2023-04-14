@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Parts_OnUpdate : Parts
 {
+    // 틱 주기
     [SerializeField] private float cooltime;
     [SerializeField] private bool isCooltime = false;
 
@@ -26,6 +27,7 @@ public class Parts_OnUpdate : Parts
         }
     }
 
+    // 매 주기마다 실행될 함수
     protected async virtual Task Update_Function(Applier_parameter para, float duration)
     {
         float end = Time.time + duration;
