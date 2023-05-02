@@ -60,26 +60,20 @@ public class BuffManager : MonoBehaviour
                 break;
 
             case Buff_SO.BuffType.Buff_Speed:
-
+                pstat.Speed = Buffchanger(gstat.Speed, buff.Buff_value);
                 break;
 
             case Buff_SO.BuffType.Buff_AttackSpeed:
-
+                
                 break;
 
             case Buff_SO.BuffType.Buff_AttackDamage:
-
+                pstat.Damage = Buffchanger(gstat.Damage, buff.Buff_value);
                 break;
+            
         }
     }
-    IEnumerator OnBuffCoroutine(float du, float va, float cur)
-    {
-        
-        
-
-        yield return new WaitForSeconds(du);
-
-    }
+    
     public float Buffchanger(float val_unit, float val_buff)
     {
         return val_unit * val_buff;
