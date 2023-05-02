@@ -1262,6 +1262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat_so: {fileID: 11400000, guid: 9ae47e7ffe103844caf7814276c07908, type: 2}
+  stat:
+    hp_current: 0
+  stat_processed:
+    hp_current: 0
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
   pos_toShoot: {x: 0, y: 0}

@@ -17,7 +17,7 @@ public class Enemy : Unit
     private Movement movement;
 
     public Spawner spawner_pointer;
-
+    // public Ai Enemy_ai;
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +25,7 @@ public class Enemy : Unit
         if (GetComponent<Movement>() == null)
             gameObject.AddComponent<Movement>();
         movement = GetComponent<Movement>();
+        // Enemy_ai = getcomponentInChildren<Enemy_ai>();
     }
 
     protected override void Start()
