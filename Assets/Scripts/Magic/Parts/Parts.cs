@@ -9,14 +9,14 @@ public class Parts : MonoBehaviour
         OnShot,
         OnUpdate,
         OnColide
-    }
+    }                               // 발사당시 | 발사동안 | 충돌당시
     public enum Parts_Ability
     {
         none,
         stat,
         visual,
         throw_or_area
-    }
+    }                            // 없음 | 스탯적용 | 시각효과 | 투사체or장판형
     [SerializeField] private Parts_Sort sort;
     [SerializeField] private Parts_Ability ability;
     [SerializeField] protected Stat_Spell_so stat_spell_so;
@@ -37,7 +37,7 @@ public class Parts : MonoBehaviour
 
     }
 
-    public virtual void Applier(GameObject proj, Stat_Spell stat, Collider2D collision)
+    public virtual void Applier(Applier_parameter para)
     {
 
     }

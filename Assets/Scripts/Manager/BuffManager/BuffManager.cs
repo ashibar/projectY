@@ -28,7 +28,7 @@ public class BuffManager : MonoBehaviour
     public void Update()
     {
         Getstat();
-        Debug.Log("hp: " + unit.stat_processed.Hp.ToString() + ", armor: " + unit.stat_processed.Armor);
+        //Debug.Log("hp: " + unit.stat_processed.Hp.ToString() + ", armor: " + unit.stat_processed.Armor);
     }
     public void Getstat()
     {

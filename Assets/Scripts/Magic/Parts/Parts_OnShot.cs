@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Parts_OnShot : Parts
 {
-    public override void Applier(GameObject proj, Stat_Spell stat, Collider2D collision)
+    public override void Applier(Applier_parameter para)
     {
-        Apply_Stat(stat);
+        Apply_Stat(para.Stat);
         
     }
 
