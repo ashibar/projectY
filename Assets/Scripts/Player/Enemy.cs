@@ -17,7 +17,7 @@ public class Enemy : Unit
     private Movement movement;
 
     public Spawner spawner_pointer;
-    // public Ai Enemy_ai;
+    public Action_AI action_ai;
     protected override void Awake()
     {
         base.Awake();
@@ -25,7 +25,8 @@ public class Enemy : Unit
         if (GetComponent<Movement>() == null)
             gameObject.AddComponent<Movement>();
         movement = GetComponent<Movement>();
-        // Enemy_ai = getcomponentInChildren<Enemy_ai>();
+
+        action_ai = GetComponentInChildren<Action_AI>();
     }
 
     protected override void Start()
@@ -38,7 +39,8 @@ public class Enemy : Unit
         base.Update();
 
         //movement.MoveByDirection_transform(new Vector2(-1, -1), stat.Speed);
-        movement.MoveToPosition_transform(Player.instance.transform.position, stat.Speed);
+        //movement.MoveToPosition_transform(Player.instance.transform.position, stat.Speed);
+        action_ai.ai_process();
     }
 
     // 스포너에 저장된 본인의 정보를 지움
