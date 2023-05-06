@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7531231395964145877}
   - component: {fileID: 7531231395964145882}
   - component: {fileID: 7531231395964145878}
-  - component: {fileID: 7531231395964145879}
   - component: {fileID: 7531231395964145873}
+  - component: {fileID: 5377495711941910357}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -117,19 +117,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat_so: {fileID: 11400000, guid: fb966d096c95d9445be6e62c4baa7ed5, type: 2}
+  stat:
+    hp_current: 0
+  stat_processed:
+    hp_current: 0
+  dir_toMove: {x: 0, y: 0}
+  dir_toShoot: {x: 0, y: 0}
+  pos_toShoot: {x: 0, y: 0}
   spawner_pointer: {fileID: 0}
---- !u!114 &7531231395964145879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7531231395964145883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b43edc4f584532478ecbd5c22296c51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  action_ai: {fileID: 0}
 --- !u!50 &7531231395964145873
 Rigidbody2D:
   serializedVersion: 4
@@ -151,3 +147,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5377495711941910357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531231395964145883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32670fce1aca5f498a9eac3c067909b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  target: {fileID: 0}
