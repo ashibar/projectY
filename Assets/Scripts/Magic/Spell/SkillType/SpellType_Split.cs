@@ -9,7 +9,7 @@ public class SpellType_Split : MonoBehaviour
     [SerializeField] public float Duration = 200f;
     [SerializeField] public float SpellAngle = 60f;
     [SerializeField] public float SpellRange = 2f;
-    [SerializeField] private float SpinRotationColider = 5f;
+    [SerializeField] private float SpinRotationColider = 5f; //Colider의 회전
 
     private bool isAttacked = false;
 
@@ -37,12 +37,13 @@ public class SpellType_Split : MonoBehaviour
         Vector2 mouse_Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 player_Pos = transform.position;
         Vector2 Direction = (mouse_Pos - player_Pos).normalized;
+        //스킬을 입력받자마자 값을 저장하고 딜레이를 주도록 수정
 
         yield return new WaitForSeconds(Delay);
 
         
 
-        Quaternion baseRotation = Quaternion.AngleAxis(35f, Vector3.forward);
+        Quaternion baseRotation = Quaternion.AngleAxis(35f, Vector3.forward); // 현재 이미지가 위쪽이 기준이기에 마우스 정 중앙에 이미지 오도록 수정
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, Direction);
 
         GameObject Spells = Instantiate(SpellPrefab, player_Pos, rotation * baseRotation);
@@ -60,8 +61,7 @@ public class SpellType_Split : MonoBehaviour
         //Colider을 Spells의 자식객체로 생성하여 Spells의 회전값에서 독립되도록 설정
         //이렇게 하지 않으면 완전히 이상하게 회전함
         
-        //현재 파악된 문제 : 여러개의 스킬이 동시에 생성되면 Colider의 회전값이 
-        //완전히 어그러져 이상하게 출력됨. 이는 
+        
 
         GameObject colliderObject = new GameObject("Collider");
         colliderObject.transform.parent = Spells.transform.parent;
