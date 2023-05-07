@@ -1,11 +1,11 @@
-<mxfile host="Electron" modified="2023-05-06T09:45:19.290Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="bw_7o-MQFvQ7oJNpeGae" version="21.2.8" type="device">
+<mxfile host="Electron" modified="2023-05-06T11:53:48.596Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="-7qIkGz_JKF0yti2qvsh" version="21.2.8" type="device">
   <diagram name="페이지-1" id="E7m3agP-u76zCWIemhPm">
-    <mxGraphModel dx="2245" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1418" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="3oXvr0XFDzQJuZy9kKZo-1" value="StageInfo_so" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="160" y="210" width="200" height="86" as="geometry" />
+          <mxGeometry x="264" y="200" width="200" height="86" as="geometry" />
         </mxCell>
         <mxCell id="3oXvr0XFDzQJuZy9kKZo-15" value="+ eventList: List&amp;lt;EventInfo_so&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="3oXvr0XFDzQJuZy9kKZo-1" vertex="1">
           <mxGeometry y="26" width="200" height="26" as="geometry" />
@@ -17,7 +17,7 @@
           <mxGeometry y="60" width="200" height="26" as="geometry" />
         </mxCell>
         <mxCell id="3oXvr0XFDzQJuZy9kKZo-5" value="EventInfo_so" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="370" y="210" width="160" height="242" as="geometry" />
+          <mxGeometry x="484" y="200" width="160" height="242" as="geometry" />
         </mxCell>
         <mxCell id="3oXvr0XFDzQJuZy9kKZo-12" value="+ id: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="3oXvr0XFDzQJuZy9kKZo-5" vertex="1">
           <mxGeometry y="26" width="160" height="26" as="geometry" />
@@ -46,11 +46,11 @@
         <mxCell id="3oXvr0XFDzQJuZy9kKZo-8" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="3oXvr0XFDzQJuZy9kKZo-5" vertex="1">
           <mxGeometry y="216" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="3oXvr0XFDzQJuZy9kKZo-13" value="EventSort&lt;br&gt;&lt;br&gt;- None&lt;br&gt;- RawMessage&lt;br&gt;- Spawn&lt;br&gt;-&amp;nbsp;" style="html=1;whiteSpace=wrap;align=left;" parent="1" vertex="1">
-          <mxGeometry x="580" y="210" width="120" height="100" as="geometry" />
+        <mxCell id="3oXvr0XFDzQJuZy9kKZo-13" value="EventSort&lt;br&gt;&lt;br&gt;-&amp;nbsp; None&lt;br&gt;-&amp;nbsp; RawMessage&lt;br&gt;-&amp;nbsp; Spawn&lt;br&gt;-&amp;nbsp; StageStart&lt;br&gt;-&amp;nbsp; StageEnd&lt;br&gt;-&amp;nbsp; ResultWindow&lt;br&gt;-&amp;nbsp; CutScene" style="html=1;whiteSpace=wrap;align=left;" parent="1" vertex="1">
+          <mxGeometry x="664" y="200" width="120" height="130" as="geometry" />
         </mxCell>
         <mxCell id="iZJFteHxTLMgJ9VRQvQH-1" value="StageManager" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-80" y="210" width="200" height="112" as="geometry" />
+          <mxGeometry x="44" y="200" width="200" height="112" as="geometry" />
         </mxCell>
         <mxCell id="iZJFteHxTLMgJ9VRQvQH-2" value="+ stageInfo: StageInfo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="iZJFteHxTLMgJ9VRQvQH-1">
           <mxGeometry y="26" width="200" height="26" as="geometry" />

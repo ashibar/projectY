@@ -51,4 +51,9 @@ public class Unit : MonoBehaviour
     {
 
     }
+
+    protected virtual void OnCollisionStay2D(Collision2D collision)
+    {
+
+    }
 }

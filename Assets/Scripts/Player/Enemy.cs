@@ -54,4 +54,20 @@ public class Enemy : Unit
     {
 
     }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }
+
+    protected override void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }
 }

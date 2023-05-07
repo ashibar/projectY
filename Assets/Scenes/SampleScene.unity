@@ -192,7 +192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!70 &168438261
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 299450280}
   - component: {fileID: 299450279}
   - component: {fileID: 299450283}
+  - component: {fileID: 299450284}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -511,6 +512,28 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.48, y: 0.48}
   m_Direction: 0
+--- !u!114 &299450284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299450278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70683101085f3e428c19588fc425bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat_so: {fileID: 11400000, guid: 4a937ff03c9bc4a4cb8925fe4a076682, type: 2}
+  stat:
+    hp_current: 0
+  stat_processed:
+    hp_current: 0
+  dir_toMove: {x: 0, y: 0}
+  dir_toShoot: {x: 0, y: 0}
+  pos_toShoot: {x: 0, y: 0}
+  spawner_pointer: {fileID: 0}
+  action_ai: {fileID: 299450279}
 --- !u!1 &312288217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +1603,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
