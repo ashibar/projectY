@@ -14,7 +14,7 @@ public class Melee_base_Ai : MonoBehaviour
     private void Awake()
     {
         //게임 오브젝트에서 사용할 컴포넌트 가져오기
-        
+        target = Player.instance.GetComponent<Rigidbody2D>();
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         
