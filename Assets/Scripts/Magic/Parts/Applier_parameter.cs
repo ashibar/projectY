@@ -12,6 +12,8 @@ public class Applier_parameter
     private Vector2 dir_toMove = new Vector2();
     private Vector2 dir_toShoot = new Vector2();
     private Vector2 pos_toShoot = new Vector2();
+    private Unit owner;
+    private string target_tag;
     private ShotManage generater;
 
     public GameObject Proj { get => proj; set => proj = value; }
@@ -20,6 +22,8 @@ public class Applier_parameter
     public Vector2 Dir_toMove { get => dir_toMove; set => dir_toMove = value; }
     public Vector2 Dir_toShoot { get => dir_toShoot; set => dir_toShoot = value; }
     public Vector2 Pos_toShoot { get => pos_toShoot; set => pos_toShoot = value; }
+    public Unit Owner { get => owner; set => owner = value; }
+    public string Target_tag { get => target_tag; set => target_tag = value; }
     public ShotManage Generater { get => generater; set => generater = value; }
 
     public Applier_parameter()

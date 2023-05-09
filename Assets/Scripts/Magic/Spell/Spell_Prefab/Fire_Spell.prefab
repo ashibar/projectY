@@ -47,9 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir_toMouse: {x: 0, y: 0}
-  stat_so: {fileID: 11400000, guid: d7da4261cf8b1ba4d81baa881f59c882, type: 2}
   Spells:
-  - {fileID: 4717003872253168443, guid: 5696800d25a6edd4997b2ec059aada22, type: 3}
   - {fileID: 8430506874983573609, guid: 11728c8449ed1954f86ac4eef656342a, type: 3}
   cooltime: 1
   Spell_speed: 5

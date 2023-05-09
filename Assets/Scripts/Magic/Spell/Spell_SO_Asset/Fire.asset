@@ -18,7 +18,7 @@ MonoBehaviour:
   spell_Duration: 1
   spell_Range_Duration: 2
   spell_Range_TicDMG: 3
-  spell_Multy_EA: 0
+  spell_Multy_EA: 1
   spell_Multy_Radius: 0
   spell_Range_Area: 0
   spell_Type: 0

@@ -15,7 +15,9 @@ public class ShotManage : MonoBehaviour
 {
     enum MAGICTYPE{SOLE,MULTY,RANGE };
     //public GameObject[] preFabSpell;
-    public Vector2 dir_toMouse;
+    public Vector2 dir_toMove;
+    public Vector2 dir_toShoot;
+    public Vector2 pos_toShoot;
     //================================================
     [SerializeField] private GameObject[] Spells;
     //================================================
@@ -46,6 +48,7 @@ public class ShotManage : MonoBehaviour
     [SerializeField] private List<Action<Applier_parameter>> appliers_OnShot = new List<Action<Applier_parameter>>();
     [SerializeField] private List<Action<Applier_parameter>> appliers_OnUpdate = new List<Action<Applier_parameter>>();
     [SerializeField] private List<Action<Applier_parameter>> appliers_OnColide = new List<Action<Applier_parameter>>();
+    [SerializeField] private List<Action<Applier_parameter>> appliers_OnInstantiate = new List<Action<Applier_parameter>>();
 
     protected void Awake()
     {
@@ -54,41 +57,44 @@ public class ShotManage : MonoBehaviour
     }
 
     protected void Start() { 
-        if(!isChecked || isUseSpell) // 이렇게 안해주면 작동안함!!!!!!
-        {
-            isChecked = true;
-            isUseSpell = false;
-        }
         SortParts(parts);
+
+        //if(!isChecked || isUseSpell) // 이렇게 안해주면 작동안함!!!!!!
+        //{
+        //    isChecked = true;
+        //    isUseSpell = false;
+        //}
     }
 
     public void Update()
     {
-        if (isSoleSpell) SkillRangeType = "SOLE";
-        if (isBuffSpell) SkillRangeType = "BUFF";
-        if (isMultiSpell) SkillRangeType = "MULTY";
-        {
-            if (SkillRangeType == "SOLE")
-            {
-                if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (isChecked) Shoot();
-                }
-            }
-            else
-            {
-                if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (isChecked) RangeShoot();
-                }
-            }
-        }
-        if (Input.GetKey(KeyCode.Mouse1)) {
+        if (Input.GetKey(KeyCode.Mouse0)) {
             Shoot_Temp();
         }
+
+        //if (isSoleSpell) SkillRangeType = "SOLE";
+        //if (isBuffSpell) SkillRangeType = "BUFF";
+        //if (isMultiSpell) SkillRangeType = "MULTY";
+        //{
+        //    if (SkillRangeType == "SOLE")
+        //    {
+        //        if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
+        //        if (Input.GetMouseButtonDown(0))
+        //        {
+        //            if (isChecked) Shoot();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (isUseSpell) StartCoroutine(ResetSkillCoroutine(cooltime));
+        //        if (Input.GetMouseButtonDown(0))
+        //        {
+        //            if (isChecked) RangeShoot();
+        //        }
+        //    }
+        //}
     }
+
     protected int DoingSpell() //몇번째 스펠인지 정해준다.
     {
         int SpellNumbers = 0; // 만일 이상한 값이 있어도 0으로 기본값 설정
@@ -106,7 +112,7 @@ public class ShotManage : MonoBehaviour
             isChecked = false;
             ////
             GameObject Spell = Instantiate(Spells[DoingSpell()], transform.position, Quaternion.identity);
-            Spell.GetComponent<Rigidbody2D>().velocity = dir_toMouse * Spell_speed;
+            Spell.GetComponent<Rigidbody2D>().velocity = dir_toShoot * Spell_speed;
         //여기까지는 기존 샷
 
         //Vector2 len = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -165,9 +171,9 @@ public class ShotManage : MonoBehaviour
         // 투사체 원본을 복제하고, appliers_update/collides를 복제본에 넣음
         // 복제본의 발사 처리기 작동
         GameObject temp;
-        for (int i = 0; i < 1/*stat_spell.투사체 갯수*/; i++)
+        for (int i = 0; i < stat_spell.Spell_Multy_EA; i++)
         {
-            temp = Instantiate(Spells[1], transform.position, Quaternion.identity);
+            temp = Instantiate(Spells[0], transform.position, Quaternion.identity);
             temp.GetComponent<SpellProjectile>().appliers_update.AddRange(appliers_OnUpdate);
             temp.GetComponent<SpellProjectile>().appliers_collides.AddRange(appliers_OnColide);
             ShotProcess(temp, stat_spell);
@@ -203,6 +209,9 @@ public class ShotManage : MonoBehaviour
                 case Parts.Parts_Sort.OnColide:
                     appliers_OnColide.Add(p.Applier);
                     break;
+                case Parts.Parts_Sort.OnInstantiate:
+                    appliers_OnInstantiate.Add(p.Applier);
+                    break;
             }
         }
         
@@ -213,7 +222,7 @@ public class ShotManage : MonoBehaviour
     {
         foreach (Action<Applier_parameter> app in appliers_OnShot)
         {
-            app(new Applier_parameter(temp, stat));
+            app(new Applier_parameter(temp, stat, null, dir_toMove, dir_toShoot, pos_toShoot));
         }
     }
 

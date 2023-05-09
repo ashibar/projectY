@@ -13,7 +13,7 @@
  *
  * ** 마법 **
  *      
- *      ShotManage : link:/...\Magic\Spell\ShotManage.cs
+ *      ShotManage : link:...\Magic\Spell\ShotManage.cs
  *              - 마법 발사 모듈
  *                  - 투사체 파츠들을 하위 모듈로 보유
  *                  - 파츠들의 applier를 적용해 투사체 clone을 생성

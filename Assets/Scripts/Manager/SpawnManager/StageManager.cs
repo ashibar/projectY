@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-
-
 public class StageManager : MonoBehaviour
 {
     public StageInfo_so stageInfo_so;

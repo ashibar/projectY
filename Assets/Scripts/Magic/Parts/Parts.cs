@@ -8,7 +8,8 @@ public class Parts : MonoBehaviour
     {
         OnShot,
         OnUpdate,
-        OnColide
+        OnColide,
+        OnInstantiate
     }                               // 발사당시 | 발사동안 | 충돌당시
     public enum Parts_Ability
     {

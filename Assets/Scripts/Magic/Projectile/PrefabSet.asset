@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa97b973090d0d4490998520997d8be, type: 3}
   m_Name: PrefabSet
   m_EditorClassIdentifier: 
-  SpellPrefab: []
+  SpellPrefab:
+  - {fileID: 8430506874983573609, guid: 11728c8449ed1954f86ac4eef656342a, type: 3}
