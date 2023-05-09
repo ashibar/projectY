@@ -7,9 +7,8 @@ public class SpellType_Split : MonoBehaviour
     [SerializeField] public GameObject SpellPrefab;
     [SerializeField] public float Delay = 1f;
     [SerializeField] public float Duration = 200f;
-    [SerializeField] public float SpellAngle = 60f;
+    [SerializeField] public float SpellAngle = 90f;
     [SerializeField] public float SpellRange = 2f;
-    [SerializeField] private float SpinRotationColider = 5f; //Colider의 회전
 
     private bool isAttacked = false;
 
@@ -34,46 +33,21 @@ public class SpellType_Split : MonoBehaviour
     private IEnumerator PerformAttack()
     {
         isAttacked = true;
-        Vector2 mouse_Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 player_Pos = transform.position;
-        Vector2 Direction = (mouse_Pos - player_Pos).normalized;
-        //스킬을 입력받자마자 값을 저장하고 딜레이를 주도록 수정
 
         yield return new WaitForSeconds(Delay);
 
-        
+        Vector2 mouse_Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 player_Pos = transform.position;
+        Vector2 Direction = (mouse_Pos - player_Pos).normalized;
 
-        Quaternion baseRotation = Quaternion.AngleAxis(35f, Vector3.forward); // 현재 이미지가 위쪽이 기준이기에 마우스 정 중앙에 이미지 오도록 수정
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, Direction);
-
-        GameObject Spells = Instantiate(SpellPrefab, player_Pos, rotation * baseRotation);
+        GameObject Spells = Instantiate(SpellPrefab, player_Pos, rotation);
+        Debug.Log(player_Pos.x);
+        Debug.Log(player_Pos.y);
         Destroy(Spells, Duration);
 
-        // Spells 객체의 회전값을 조정합니다.
-        Spells.transform.rotation = rotation * baseRotation;
-
-
-
-        //Colider 값 변경
         PolygonCollider2D collider = Spells.AddComponent<PolygonCollider2D>();
         collider.points = CreateFanPoints(SpellAngle, SpellRange);
-
-        //Colider을 Spells의 자식객체로 생성하여 Spells의 회전값에서 독립되도록 설정
-        //이렇게 하지 않으면 완전히 이상하게 회전함
-        
-        
-
-        GameObject colliderObject = new GameObject("Collider");
-        colliderObject.transform.parent = Spells.transform.parent;
-        colliderObject.transform.position = Spells.transform.position;
-
-        //Colider을 기존 회전값 + 추가 각도로 회전 시켜 생성
-        Quaternion coliderRotation = Quaternion.AngleAxis(-SpinRotationColider, Vector3.forward);
-        colliderObject.transform.rotation = coliderRotation * rotation * baseRotation;
-
-        PolygonCollider2D colliderComponent = colliderObject.AddComponent<PolygonCollider2D>();
-        colliderComponent.points = collider.points;
-
 
         StartCoroutine(DestroyAttack(Spells, Duration));
 

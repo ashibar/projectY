@@ -6,14 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     private Player player;
     private MovementManager movementmanager;
-    private Rigidbody2D rigidbody2d;
 
     public float moveSpeed = 10;
     // Start is called before the first frame update
     private void Awake()
     {
         player = GetComponentInParent<Player>();
-        rigidbody2d = player.GetComponent<Rigidbody2D>();
     }
 
     void Start()

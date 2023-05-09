@@ -73,8 +73,16 @@ public class SpellProjectile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            //collision.GetComponent<Enemy>().Delete_FromCloneList();
+            //Destroy(collision.gameObject);
+            // Destory => Enemy ���� ����
+            // ������ ������ SpellStat�� �ִ� ������ ������ ������ ���⼭.
+
+            // �浹�� �۵��� applier - �̿��?
             foreach (Action<Applier_parameter> app in appliers_collides)
                 app(new Applier_parameter(gameObject, stat_spell, collision));
+
+
 
             isDeleted = true;
             Destroy(gameObject);
