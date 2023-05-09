@@ -12,6 +12,7 @@ public class Applier_parameter
     private Vector2 dir_toMove = new Vector2();
     private Vector2 dir_toShoot = new Vector2();
     private Vector2 pos_toShoot = new Vector2();
+    private ShotManage generater;
 
     public GameObject Proj { get => proj; set => proj = value; }
     public Stat_Spell Stat { get => stat; set => stat = value; }
@@ -19,7 +20,8 @@ public class Applier_parameter
     public Vector2 Dir_toMove { get => dir_toMove; set => dir_toMove = value; }
     public Vector2 Dir_toShoot { get => dir_toShoot; set => dir_toShoot = value; }
     public Vector2 Pos_toShoot { get => pos_toShoot; set => pos_toShoot = value; }
-    
+    public ShotManage Generater { get => generater; set => generater = value; }
+
     public Applier_parameter()
     {
         this.proj = null;

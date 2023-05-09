@@ -17,8 +17,6 @@ public class ShotManage : MonoBehaviour
     //public GameObject[] preFabSpell;
     public Vector2 dir_toMouse;
     //================================================
-    [SerializeField] private Spell_Stat_so stat_so;
-    [SerializeField] private Spell_Stat stat;
     [SerializeField] private GameObject[] Spells;
     //================================================
     //public GameObject[] AllMagicData;
@@ -217,5 +215,11 @@ public class ShotManage : MonoBehaviour
         {
             app(new Applier_parameter(temp, stat));
         }
+    }
+
+    // 원본 투사체 설정
+    public void SetSpell(GameObject origin)
+    {
+        Spells[0] = origin;
     }
 }

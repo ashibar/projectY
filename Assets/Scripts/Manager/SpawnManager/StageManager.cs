@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 public class StageManager : MonoBehaviour
 {
     public StageInfo_so stageInfo_so;
@@ -19,13 +21,21 @@ public class StageManager : MonoBehaviour
         
     }
 
-    //private async void Async_Function()
-    //{
-    //    for (int i = 0; i < stageInfo_so.eventList.Count; i++)
-    //    {
-            
-    //    }
-    //}
+    public int SearchMassage(int moduleID)
+    {
+        if (massageBuffer.Count == 0)
+            return -1;
 
-    
+        for (int i = 0; i < massageBuffer.Count; i++)
+        {
+            if (massageBuffer[i] == moduleID)
+            {
+                int tmp = massageBuffer[i];
+                massageBuffer.RemoveAt(i);
+                return tmp;
+            }
+        }
+
+        return -1;
+    }
 }

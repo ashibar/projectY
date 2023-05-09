@@ -10,10 +10,12 @@ public class EventInfo_so : ScriptableObject
     [SerializeField] private bool isLoop;
     [SerializeField] private bool isSequential;
     [SerializeField] private float durationToStart;
+    [SerializeField] private int message;
 
     public int Id { get => id; set => id = value; }
     public EventSort Sort { get => sort; set => sort = value; }
     public bool IsLoop { get => isLoop; set => isLoop = value; }
     public bool IsSequential { get => isSequential; set => isSequential = value; }
     public float DurationToStart { get => durationToStart; set => durationToStart = value; }
+    public int Message { get => message; set => message = value; }
 }
