@@ -47,7 +47,7 @@ public class Player : Unit
     private GameManager gameManager;
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        gameManager.Action(collision.gameObject);
+        //gameManager.Action(collision.gameObject);
     }
 
     

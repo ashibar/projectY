@@ -26,7 +26,6 @@ public class Range_base_Ai : MonoBehaviour
         
        
         float Distance = Vector2.Distance(target.position, rigid.position);
-        Debug.Log(Distance);
         if (Distance >= ATK_Range)
         {
             MobMove();

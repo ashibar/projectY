@@ -39,6 +39,9 @@ public class SpawnManager : MonoBehaviour
     private List<Spawner> spawner = new List<Spawner>();
 
     [SerializeField]
+    private float range_test = 10;
+
+    [SerializeField]
     private bool verbose = false;
 
 
@@ -65,6 +68,10 @@ public class SpawnManager : MonoBehaviour
                 spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(Random.Range(-5, 5), Random.Range(-5, 5)));
             if (Input.GetKeyDown(KeyCode.O))
                 spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(4, 0));
+            if (Input.GetKeyDown(KeyCode.I))
+                spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].spawntestpoint());
+            if (Input.GetKeyDown(KeyCode.U))
+                spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(range_test));
         }
 
     }
