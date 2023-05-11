@@ -16,18 +16,18 @@ public class Stat
 {
     // 패시브/버프등으로 변화될 수치
 
-    private float hp;                       // 최대 체력
-    private float speed;                    // 이동 속도
-    private float hp_regen;                 // 체력 리젠
-    private float armor;                    // 방어력
+    [SerializeField] private float hp;                       // 최대 체력
+    [SerializeField] private float speed;                    // 이동 속도
+    [SerializeField] private float hp_regen;                 // 체력 리젠
+    [SerializeField] private float armor;                    // 방어력
 
-    private float damage;                   // 공격력 배수
-    private float speed_projectile;         // 투사체 속도 배수
-    private float duration_projectile;      // 투사체 지속시간 배수
-    private float range_projectile;         // 투사체 범위 배수
+    [SerializeField] private float damage;                   // 공격력 배수
+    [SerializeField] private float speed_projectile;         // 투사체 속도 배수
+    [SerializeField] private float duration_projectile;      // 투사체 지속시간 배수
+    [SerializeField] private float range_projectile;         // 투사체 범위 배수
 
-    private float cooldown;                 // 쿨다운 배수 (기본0)
-    private float amount;                   // 투사체 추가 수 (기본1)
+    [SerializeField] private float cooldown;                 // 쿨다운 배수 (기본0)
+    [SerializeField] private float amount;                   // 투사체 추가 수 (기본1)
 
     // 인게임 내에서 지속적으로 변화될 수치
 
