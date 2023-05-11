@@ -21,7 +21,7 @@ public class SpellDash : MonoBehaviour
 
     private void Start()
     {
-        unit = GetComponent<Unit>();
+        unit = GetComponentInParent<Unit>();
         SpeedTmp = unit.stat.Speed;
     }
     void Update()
@@ -35,8 +35,8 @@ public class SpellDash : MonoBehaviour
     private IEnumerator PerforDash()
     {
         DashSpeed = SpeedTmp * 10;
-        unit.stat.Speed = DashSpeed;
+        unit.stat_processed.Speed = DashSpeed;
         yield return new WaitForSeconds(DashTime);
-        unit.stat.Speed = SpeedTmp;
+        unit.stat_processed.Speed = SpeedTmp;
     }
 }

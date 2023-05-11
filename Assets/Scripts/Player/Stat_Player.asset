@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 0
   name_unit: 
   hp: 100
-  speed: 1
+  speed: 10
   hp_regen: 0
   armor: 1
   damage: 0
