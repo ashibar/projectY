@@ -31,7 +31,7 @@ public class Boss_base_Ai : MonoBehaviour
         }
         else
         {
-            //µ¹Áø
+            
             
         }
 
