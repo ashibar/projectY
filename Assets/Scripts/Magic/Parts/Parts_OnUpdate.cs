@@ -8,6 +8,7 @@ public class Parts_OnUpdate : Parts
     // 틱 주기
     [SerializeField] private float cooltime;
     [SerializeField] private bool isCooltime = false;
+    [SerializeField] private bool isInterrupted = false;
 
     public float Cooltime { get => cooltime; set => cooltime = value; }
 
@@ -34,8 +35,15 @@ public class Parts_OnUpdate : Parts
         while (Time.time < end)
         {
             // 매 프레임마다 실행될 것
+            if (isInterrupted)
+                await Task.FromResult(false);
             await Task.Yield();
         }
         // duration 후에 실행될 것
+    }
+
+    private void OnDestroy()
+    {
+        isInterrupted = true;
     }
 }

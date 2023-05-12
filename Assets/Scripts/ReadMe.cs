@@ -52,10 +52,12 @@
  *                      
  * ** 스테이지 모듈 **     
  * 
- *      StageManager : link:...\Manager\SpawnManager\StageManager.cs
+ *      StageManager : link:...\Manager\StageManager\StageManager.cs
  *              - 모듈에 메시지를 전송하는 이벤트 관리
- *                  - EventInfo    (변동형 이벤트 정보) : link:...\Manager\SpawnManager\EventInfo.cs
- *                  - EventInfo_so (기본값 이벤트 정보) : link:...\Manager\SpawnManager\EventInfo_so.cs
+ *                  - StageInfo    (변동형 스테이지 정보) : link:...\Manager\StageManager\StageInfo.cs
+ *                  - StageInfo_so (기본값 스테이지 정보) : link:...\Manager\StageManager\StageInfo_so.cs
+ *                  - EventInfo    (변동형 이벤트 정보)   : link:...\Manager\StageManager\EventInfo.cs
+ *                  - EventInfo_so (기본값 이벤트 정보)   : link:...\Manager\StageManager\EventInfo_so.cs
  *      
  *
  *      SpawnManager : link:...\Manager\SpawnManager\SpawnManager.cs

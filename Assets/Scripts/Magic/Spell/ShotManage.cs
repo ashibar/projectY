@@ -151,8 +151,8 @@ public class ShotManage : MonoBehaviour
 
     // 여기부터 새로 구현한 Shoot()함수 - 이용욱
 
-    private bool isCooltime;
-
+    [SerializeField] private bool isCooltime;
+    [SerializeField] private bool isInterrupted;
     // 발사 함수
     // stat_spell에서 쿨타임을 받아 발사 주기 결정
     private async void Shoot_Temp()
@@ -183,6 +183,8 @@ public class ShotManage : MonoBehaviour
         float end = Time.time + duration;
         while (Time.time < end)
         {
+            if (isInterrupted)
+                await Task.FromResult(false);
             await Task.Yield();
         }
     }
@@ -230,5 +232,12 @@ public class ShotManage : MonoBehaviour
     public void SetSpell(GameObject origin)
     {
         Spells[0] = origin;
+    }
+
+    // 파괴시 함수
+    // async문을 강제로 빠져나옴
+    private void OnDestroy()
+    {
+        isInterrupted = true;
     }
 }

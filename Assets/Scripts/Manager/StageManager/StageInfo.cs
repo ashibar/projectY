@@ -11,9 +11,9 @@ public class StageInfo
     public List<EventInfo> event_seq = new List<EventInfo>();
     public List<EventInfo> event_req = new List<EventInfo>();
     
-    public StageInfo(List<EventInfo_so> eventList_so)
+    public StageInfo(StageInfo_so stageinfo_so)
     {
-        this.eventList_so = eventList_so;
+        this.eventList_so = stageinfo_so.eventList_so;
         SortSeqential();
     }
 

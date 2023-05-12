@@ -11,7 +11,7 @@ public class Melee_base_Ai : Action_AI
  
     Rigidbody2D rigid;
     SpriteRenderer spriter;
-    private void Awake()
+    protected override void Awake()
     {
         GameObject player = GameObject.FindWithTag("Player");
         target =player.GetComponent<Rigidbody2D>();

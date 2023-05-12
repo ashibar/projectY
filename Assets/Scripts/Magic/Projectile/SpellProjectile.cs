@@ -17,8 +17,6 @@ public class SpellProjectile : MonoBehaviour
 
     private bool isDeleted = false;
     [SerializeField]
-    private bool isRange = false;
-    [SerializeField]
     public Stat_Spell stat_spell;
     [SerializeField]
     public List<Action<Applier_parameter>> appliers_update = new List<Action<Applier_parameter>>();
@@ -42,6 +40,8 @@ public class SpellProjectile : MonoBehaviour
         {
             //transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
             //transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
+            if (isDeleted)
+                await Task.FromResult(false);
             await Task.Yield();
         }
         if (!isDeleted) Destroy(gameObject);
@@ -51,8 +51,11 @@ public class SpellProjectile : MonoBehaviour
         float end = Time.time + duration;
         while (Time.time < end)
         {
+            if (isDeleted)
+                await Task.FromResult(false);
             transform.localScale = new Vector2(transform.localScale.x - 1f * ReduceSpeed / duration * Time.deltaTime,
                 transform.localScale.y - 1f * ReduceSpeed / duration * Time.deltaTime);
+            
             await Task.Yield();
         }
         if (!isDeleted) Destroy(gameObject);
@@ -88,5 +91,10 @@ public class SpellProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        isDeleted = true;
     }
 }
