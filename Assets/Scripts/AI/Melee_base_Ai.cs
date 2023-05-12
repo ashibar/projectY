@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Melee_base_Ai : MonoBehaviour
+public class Melee_base_Ai : Action_AI
 {
     public float speed;
     

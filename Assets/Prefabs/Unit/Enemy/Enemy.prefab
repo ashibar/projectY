@@ -118,14 +118,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat_so: {fileID: 11400000, guid: fb966d096c95d9445be6e62c4baa7ed5, type: 2}
   stat:
+    hp: 0
+    speed: 0
+    hp_regen: 0
+    armor: 0
+    damage: 0
+    speed_projectile: 0
+    duration_projectile: 0
+    range_projectile: 0
+    cooldown: 0
+    amount: 0
     hp_current: 0
   stat_processed:
+    hp: 0
+    speed: 0
+    hp_regen: 0
+    armor: 0
+    damage: 0
+    speed_projectile: 0
+    duration_projectile: 0
+    range_projectile: 0
+    cooldown: 0
+    amount: 0
     hp_current: 0
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
   pos_toShoot: {x: 0, y: 0}
   spawner_pointer: {fileID: 0}
-  action_ai: {fileID: 0}
+  action_ai: {fileID: 5377495711941910357}
 --- !u!50 &7531231395964145873
 Rigidbody2D:
   serializedVersion: 4

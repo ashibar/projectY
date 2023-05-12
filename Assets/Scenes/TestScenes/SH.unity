@@ -814,6 +814,7 @@ MonoBehaviour:
   spawnpoint: []
   spawnManager: []
   spawnpointvector: {x: 0, y: 0}
+  range: 0
 --- !u!1 &1204552247
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner:
   - {fileID: 1656440385}
+  range_test: 5
   verbose: 1
 --- !u!4 &1350227493
 Transform:
@@ -1280,6 +1282,8 @@ MonoBehaviour:
   original:
   - {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
   clones: []
+  spawnMain:
+  - {fileID: 1195136499}
 --- !u!4 &1656440386
 Transform:
   m_ObjectHideFlags: 0
@@ -1419,9 +1423,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 1757282724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27128f77e62e8114490fd1bf0e27bdea, type: 3}
+  m_Script: {fileID: 11500000, guid: c3e132cb7b9d1d745a8798e3d70b9819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stat_so: {fileID: 0}
+  stat:
+    hp: 0
+    speed: 0
+    hp_regen: 0
+    armor: 0
+    damage: 0
+    speed_projectile: 0
+    duration_projectile: 0
+    range_projectile: 0
+    cooldown: 0
+    amount: 0
+    hp_current: 0
+  stat_processed:
+    hp: 0
+    speed: 0
+    hp_regen: 0
+    armor: 0
+    damage: 0
+    speed_projectile: 0
+    duration_projectile: 0
+    range_projectile: 0
+    cooldown: 0
+    amount: 0
+    hp_current: 0
+  dir_toMove: {x: 0, y: 0}
+  dir_toShoot: {x: 0, y: 0}
+  pos_toShoot: {x: 0, y: 0}
+  movementManger: {fileID: 0}
+  playerMovement: {fileID: 0}
+  magicManager: {fileID: 0}
+  animationManager: {fileID: 0}
+  manger: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!70 &1757282728
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1627,7 +1665,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780481259}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

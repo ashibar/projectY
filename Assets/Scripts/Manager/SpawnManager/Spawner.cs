@@ -19,6 +19,9 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private List<GameObject> clones = new List<GameObject>();
 
+    [SerializeField]
+    public List<SpawnMain> spawnMain = new List<SpawnMain>(); 
+
     // 외부에서 스포너의 오리지널 프리팹을 추가하고자 할때 사용하는 함수
     public virtual void AddOriginal(List<GameObject> original_list)
     {
