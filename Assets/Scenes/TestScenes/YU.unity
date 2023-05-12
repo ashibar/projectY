@@ -236,8 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddbba58bc8b4a34399536c3b0f26153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageInfo_so: {fileID: 11400000, guid: 6ca6c55fc50d9044781ed68a37f49add, type: 2}
+  stageInfo_so: {fileID: 11400000, guid: 6ea1ed4b7bd206043bf8de1857b9f7b4, type: 2}
   messageBuffer: 
+  isCooltime: 0
+  eventIndex: 0
+  interruptedIndex: -1
 --- !u!4 &1554961936
 Transform:
   m_ObjectHideFlags: 0

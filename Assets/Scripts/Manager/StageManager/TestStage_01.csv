@@ -1,0 +1,6 @@
+﻿StageName,TestStage_01,,,,,
+id,sort,isLoop,isSeq,isReq,duration,message
+1,0,0,1,0,2,1000
+2,0,0,1,0,3,1001
+3,0,0,1,0,4,1002
+4,0,0,1,0,5,1003
