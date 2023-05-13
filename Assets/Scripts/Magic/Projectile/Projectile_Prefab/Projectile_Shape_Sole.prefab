@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1726307423854690592}
   - component: {fileID: 7383474872160994009}
   - component: {fileID: -7927908889062882998}
-  - component: {fileID: -3847291380689124981}
   m_Layer: 0
   m_Name: Projectile_Shape_Sole
   m_TagString: Untagged
@@ -103,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 10
   ReduceSpeed: 0.2
-  isRange: 0
   stat_spell:
     spell_DMG: 0
     spell_Speed: 0
@@ -171,20 +169,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-3847291380689124981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8430506874983573609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3be757a74368d449915a50bab7b7ed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpellPrefab: {fileID: 0}
-  Delay: 1
-  Duration: 200
-  SpellAngle: 90
-  SpellRange: 2

@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: Fire_Spell
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 180473a0d55161c4caac80c209f805b2, type: 3}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96dde20d9b74c247b834f218f28e1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir_toMouse: {x: 0, y: 0}
+  dir_toMove: {x: 0, y: 0}
+  dir_toShoot: {x: 0, y: 0}
+  pos_toShoot: {x: 0, y: 0}
   Spells:
   - {fileID: 8430506874983573609, guid: 11728c8449ed1954f86ac4eef656342a, type: 3}
   cooltime: 1
@@ -70,6 +72,8 @@ MonoBehaviour:
     spell_Multy_Radius: 0
     spell_Range_Area: 0
   parts: []
+  isCooltime: 0
+  isInterrupted: 0
 --- !u!1001 &2524107216360681807
 PrefabInstance:
   m_ObjectHideFlags: 0
