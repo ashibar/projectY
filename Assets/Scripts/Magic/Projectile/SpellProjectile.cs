@@ -10,6 +10,7 @@ using UnityEngine;
  */
 public class SpellProjectile : MonoBehaviour
 {
+    [SerializeField] Stat_Spell stat;
     [SerializeField]
     private float duration;
     [SerializeField]
@@ -22,6 +23,11 @@ public class SpellProjectile : MonoBehaviour
     public List<Action<Applier_parameter>> appliers_update = new List<Action<Applier_parameter>>();
     [SerializeField]
     public List<Action<Applier_parameter>> appliers_collides = new List<Action<Applier_parameter>>();
+
+    protected virtual void Awake()
+    {
+        duration = stat.Spell_Duration;
+    }
     protected virtual void Start()
     {
         if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;

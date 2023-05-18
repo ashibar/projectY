@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 1344070166}
   - component: {fileID: 1344070165}
   - component: {fileID: 1344070164}
+  - component: {fileID: 1344070167}
   m_Layer: 0
   m_Name: Square
   m_TagString: Wall
@@ -762,6 +763,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1344070167
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344070163}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1344728801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -842,6 +864,7 @@ GameObject:
   - component: {fileID: 1569633794}
   - component: {fileID: 1569633793}
   - component: {fileID: 1569633792}
+  - component: {fileID: 1569633795}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Wall
@@ -873,7 +896,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1569633793
 SpriteRenderer:
@@ -942,6 +965,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1569633795
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569633791}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1594348862
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,10 +1031,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  SpeedTmp: 0
-  DashSpeed: 0
-  DashTime: 1
+  rb: {fileID: 0}
+  DashSpeed: 30
+  DashTime: 0.1
   dash_Dir: 50
+  DashToward: {x: 0, y: 0}
 --- !u!1 &1696437353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,7 +1325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  SpeedTmp: 0
+  rb: {fileID: 0}
   DashSpeed: 0
   DashTime: 1
   dash_Dir: 50
+  DashToward: {x: 0, y: 0}

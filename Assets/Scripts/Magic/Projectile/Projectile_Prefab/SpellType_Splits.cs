@@ -10,11 +10,11 @@ public class SpellType_Splits : MonoBehaviour
     [SerializeField] public float SpellAngle = 90f;
     [SerializeField] public float SpellRange = 2f;
     [SerializeField] public Vector2 mouse_dir = new(0, 0);
+    [SerializeField] Stat_Spell stat;
 
-    
     private void Start()
     {
-        
+        Duration = stat.Spell_Duration;
         PerformAttack();
     }
     
