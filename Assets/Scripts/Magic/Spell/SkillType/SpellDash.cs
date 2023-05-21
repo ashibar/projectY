@@ -14,48 +14,23 @@ using UnityEngine.AI;
 public class SpellDash : MonoBehaviour
 {
     [SerializeField] Unit unit;
-    [SerializeField] Rigidbody2D rb;
-    //[SerializeField] private float SpeedTmp = 0f;
-    [SerializeField] private float DashSpeed = 10;
-    [SerializeField] private float DashTime = 1f;
-    [SerializeField] private float dash_Dir = 20f;
-    [SerializeField] private RaycastHit hitWall;
-    [SerializeField] private Vector2 DashToward;
-    private bool isDash = false;
-    private float total;
+    [SerializeField] BoxCollider2D razer;
+    [SerializeField] float delay,duration;
+    [SerializeField] float razerSize_x, razerSize_y;
+
     private void Start()
     {
         unit = GetComponentInParent<Unit>();
-        rb = GetComponentInParent<Rigidbody2D>();
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-           if (!isDash) StartCoroutine(VelocityDash());
-        }
-
-    }
-    
-    
-    private IEnumerator VelocityDash()
-    {
-        isDash = true;
-        Vector3 dash_pos = unit.dir_toMove;
-        total = Mathf.Abs(dash_pos.x) + Mathf.Abs(dash_pos.y);
-
-        if (total != 1 && total != 0) dash_pos = new Vector2(dash_pos.x / total, dash_pos.y / total);
-
-
-        Vector3 velo3 = new (dash_pos.x * DashSpeed, dash_pos.y * DashSpeed, 0);
-        Debug.Log(velo3);
-        rb.velocity = velo3;
-        Debug.Log(dash_pos+"||||");
+        razer = GetComponent<BoxCollider2D>();
         
-        yield return new WaitForSeconds(DashTime);
-        isDash = false;
-        rb.velocity = Vector3.zero;
     }
+    private IEnumerator RazerStart()
+    {
+        yield return new WaitForSeconds(delay);
+        razer.size = new Vector2(razerSize_x, razerSize_y);
+        yield return new WaitForSeconds(duration);
+    }
+
 
 
 }

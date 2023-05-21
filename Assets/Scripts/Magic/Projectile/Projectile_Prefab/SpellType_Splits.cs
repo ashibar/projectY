@@ -22,12 +22,12 @@ public class SpellType_Splits : MonoBehaviour
     private void PerformAttack()
     {
         //Vector2 mouse_Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 player_Pos = transform.position;
-        Vector2 Direction = (mouse_dir - player_Pos).normalized;
+       // Vector2 player_Pos = transform.position;
+        //Vector2 Direction = (mouse_dir - player_Pos).normalized;
 
 
         //Quaternion rotation = Quaternion.LookRotation(Vector3.forward, player_Pos);
-        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, mouse_dir);
+        //Quaternion rotation = Quaternion.LookRotation(Vector3.forward, mouse_dir);
         //이 위의 부분은 그냥 나중에 값 받아오면 됨
 
        // GameObject Spells = Instantiate(SpellPrefab, player_Pos, rotation);
@@ -40,12 +40,6 @@ public class SpellType_Splits : MonoBehaviour
 
     }
 
-    private IEnumerator DestroyAttack(GameObject attack, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(attack);
-        
-    }
 
     private Vector2[] CreateFanPoints(float angle, float radius)
     {
