@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 /**
  *  
@@ -16,78 +14,23 @@ using UnityEngine;
 public class SpellDash : MonoBehaviour
 {
     [SerializeField] Unit unit;
-    [SerializeField] private float SpeedTmp = 0f;
-    [SerializeField] private float DashSpeed;
-    [SerializeField] private float DashTime = 1f;
-    [SerializeField] private float dash_Dir = 50f;
-    private float total = 0;
-    private bool isDash = false;
+    [SerializeField] BoxCollider2D razer;
+    [SerializeField] float delay,duration;
+    [SerializeField] float razerSize_x, razerSize_y;
+
     private void Start()
     {
         unit = GetComponentInParent<Unit>();
+        razer = GetComponent<BoxCollider2D>();
         
-        SpeedTmp = unit.stat.Speed;
     }
-    void Update()
+    private IEnumerator RazerStart()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-
-            if(!isDash) StartCoroutine(PerforDash());
-            //if (!isDash) StartCoroutine(Dash());
-        }
-        
-    }
-    private IEnumerator PerforDash()
-    {
-        isDash = !isDash;
-        
-        Vector2 dash_pos = unit.dir_toMove;
-        total = Mathf.Abs(dash_pos.x) + Mathf.Abs(dash_pos.y);
-        
-        if (total != 1 && total != 0) dash_pos = new Vector2(dash_pos.x / total, dash_pos.y / total);
-        //대쉬 이동할때 나눠서 표현
-
-        //만약 텔레
-        for (int i = 0; i < 12; i++)
-        {
-            yield return new WaitForSeconds(1/15);
-            unit.transform.Translate(dash_pos * dash_Dir * Time.deltaTime * 5);
-        }
-        
-        yield return new WaitForSeconds(DashTime);
-        isDash = !isDash;
-
+        yield return new WaitForSeconds(delay);
+        razer.size = new Vector2(razerSize_x, razerSize_y);
+        yield return new WaitForSeconds(duration);
     }
 
-    //현재 수정중 : 버그( 벽 투과됨 // 가속도 받으면)
-    private IEnumerator Dash()
-    {
-        isDash = !isDash;
-        Vector3 dash_pos = unit.dir_toMove;
-        total = Mathf.Abs(dash_pos.x) + Mathf.Abs(dash_pos.y);
-
-        if (total != 1 && total != 0) dash_pos = new Vector2(dash_pos.x / total, dash_pos.y / total);
-
-        dash_pos = (Vector3)unit.dir_toMove * dash_Dir/30 + unit.transform.position;
-        //Debug.Log("dash: "+ Mathf.Abs(dash_pos.x) + Mathf.Abs(dash_pos.y));
-        RaycastHit hitWall;
-        bool ishit = Physics.Raycast(unit.transform.position, unit.dir_toMove, out hitWall,0.5f);
-        Debug.Log(ishit);
-        Debug.Log(hitWall.point);
-
-        if (ishit && hitWall.distance <= 0.2)
-        {
-            
-            unit.transform.position = hitWall.point;
-        }
-        else
-        {
-            unit.transform.position = dash_pos;
-        }
 
 
-        yield return new WaitForSeconds(DashTime);
-        isDash = !isDash;
-    }
 }

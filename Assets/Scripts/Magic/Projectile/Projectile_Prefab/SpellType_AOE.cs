@@ -5,16 +5,21 @@ using UnityEngine;
 public class SpellType_AOE : MonoBehaviour
 {
     [SerializeField] public float Circleradius = 3f;
+    [SerializeField] SpellProjectile proj;
 
     public float radius = 2.0f; // Circle의 반지름 (Test용)
-    public float spellTimes = 5.0f; // SpellProjectile의 Duration과 일치시키여야함
+    public float spellTimes; // SpellProjectile의 Duration과 일치시키여야함
 
     private Vector3 originalScale; 
     
+    
     private void Start()
     {
+        proj = GetComponent<SpellProjectile>();
+        spellTimes = proj.Duration;
         originalScale = transform.localScale;
-        
+        Debug.Log(spellTimes);
+        Debug.Log(proj.Duration);
         StartCoroutine(ShrinkCircle());
     }
 
@@ -23,7 +28,7 @@ public class SpellType_AOE : MonoBehaviour
     private IEnumerator ShrinkCircle()
     {
         float elapsedTime = 0.0f;
-        Debug.Log(spellTimes);
+        
         while (elapsedTime < spellTimes)
         {
             float t = elapsedTime / spellTimes; 
