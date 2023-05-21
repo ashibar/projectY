@@ -188,7 +188,7 @@ MonoBehaviour:
   - sprite_list:
     - {fileID: 6506264019942852502, guid: c32455cdafcb2b745b7c8d63bc310ce2, type: 3}
     - {fileID: 7526281318054643600, guid: c32455cdafcb2b745b7c8d63bc310ce2, type: 3}
-    name_who_talk: sibal
+    name_who_talk: super
     log: nogada
   - sprite_list:
     - {fileID: 21300000, guid: 9464f263da653bd45a204af88cb9c9df, type: 3}
