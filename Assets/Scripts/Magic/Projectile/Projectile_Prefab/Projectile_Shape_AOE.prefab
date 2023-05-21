@@ -101,14 +101,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2652979f64187574192c0d619bf724b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
-  ReduceSpeed: 0.2
-  isRange: 0
-  stat_spell:
+  stat:
     spell_DMG: 0
     spell_Speed: 0
     spell_CoolTime: 0
     spell_Duration: 0
+    spell_Range_Duration: 0
+    spell_Range_TicDMG: 0
+    spell_Multy_EA: 0
+    spell_Multy_Radius: 0
+    spell_Range_Area: 0
+  duration: 10
+  ReduceSpeed: 0.2
+  stat_spell:
+    spell_DMG: 0
+    spell_Speed: 0
+    spell_CoolTime: 0
+    spell_Duration: 30
     spell_Range_Duration: 0
     spell_Range_TicDMG: 0
     spell_Multy_EA: 0
@@ -168,8 +177,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Circleradius: 3
+  stat:
+    spell_DMG: 0
+    spell_Speed: 0
+    spell_CoolTime: 0
+    spell_Duration: 0
+    spell_Range_Duration: 0
+    spell_Range_TicDMG: 0
+    spell_Multy_EA: 0
+    spell_Multy_Radius: 0
+    spell_Range_Area: 0
   radius: 3
-  spellTime: 50
+  spellTimes: 0
 --- !u!58 &131939322265535535
 CircleCollider2D:
   m_ObjectHideFlags: 0

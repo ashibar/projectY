@@ -10,13 +10,14 @@ using UnityEngine;
  */
 public class SpellProjectile : MonoBehaviour
 {
-    [SerializeField] Stat_Spell stat;
+    
     [SerializeField]
     private float duration;
     [SerializeField]
     protected float ReduceSpeed = 0.2f; // 줄어드는 속도. 무조건 0~1 사이의 값만 작성해야됨.
 
     private bool isDeleted = false;
+    
     [SerializeField]
     public Stat_Spell stat_spell;
     [SerializeField]
@@ -24,15 +25,17 @@ public class SpellProjectile : MonoBehaviour
     [SerializeField]
     public List<Action<Applier_parameter>> appliers_collides = new List<Action<Applier_parameter>>();
 
-    protected virtual void Awake()
-    {
-        duration = stat.Spell_Duration;
-    }
+
+    public float Duration { get => stat_spell.Spell_Duration; }
+
     protected virtual void Start()
     {
+        duration = stat_spell.Spell_Duration;
         if (ReduceSpeed <= 0 || ReduceSpeed >= 1) ReduceSpeed = 0.5f;
         AutoDelete(duration);
     }
+
+    
     private void Update()
     {
         UpdateProcess(stat_spell);

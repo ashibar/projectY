@@ -101,14 +101,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2652979f64187574192c0d619bf724b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
-  ReduceSpeed: 0.2
-  isRange: 0
-  stat_spell:
+  stat:
     spell_DMG: 0
     spell_Speed: 0
     spell_CoolTime: 0
     spell_Duration: 0
+    spell_Range_Duration: 0
+    spell_Range_TicDMG: 0
+    spell_Multy_EA: 0
+    spell_Multy_Radius: 0
+    spell_Range_Area: 0
+  duration: 10
+  ReduceSpeed: 0.2
+  stat_spell:
+    spell_DMG: 0
+    spell_Speed: 0
+    spell_CoolTime: 0
+    spell_Duration: 30
     spell_Range_Duration: 0
     spell_Range_TicDMG: 0
     spell_Multy_EA: 0
@@ -172,6 +181,17 @@ MonoBehaviour:
   Duration: 200
   SpellAngle: 90
   SpellRange: 2
+  mouse_dir: {x: 0, y: 0}
+  stat:
+    spell_DMG: 0
+    spell_Speed: 0
+    spell_CoolTime: 0
+    spell_Duration: 0
+    spell_Range_Duration: 0
+    spell_Range_TicDMG: 0
+    spell_Multy_EA: 0
+    spell_Multy_Radius: 0
+    spell_Range_Area: 0
 --- !u!60 &4474647026676259241
 PolygonCollider2D:
   m_ObjectHideFlags: 0

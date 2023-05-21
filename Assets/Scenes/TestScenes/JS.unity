@@ -214,6 +214,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3122223083263424959, guid: 522c06269cc8b304e851794940edb2ff, type: 3}
+      propertyPath: stat.spell_Duration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378549677632387698, guid: 522c06269cc8b304e851794940edb2ff, type: 3}
+      propertyPath: stat.spell_Duration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378549677632387698, guid: 522c06269cc8b304e851794940edb2ff, type: 3}
+      propertyPath: stat_spell.spell_Duration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5803037369036464723, guid: 522c06269cc8b304e851794940edb2ff, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -506,6 +518,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 430423048}
     m_Modifications:
+    - target: {fileID: 3659838022911374190, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
+      propertyPath: stat_spell.spell_Duration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5526281499905461310, guid: fa3ec78e0fa63cc4785f6d83e1596338, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -797,11 +813,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: affeade9874cf2347abb155e8d0db4d8, type: 3}
     - target: {fileID: 402276057893560241, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
       propertyPath: spellTimes
-      value: 50
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 402276057893560241, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
+      propertyPath: stat.spell_Duration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726307423854690592, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5378549677632387698, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
       propertyPath: duration
-      value: 50
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378549677632387698, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
+      propertyPath: stat.spell_Duration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378549677632387698, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
+      propertyPath: stat_spell.spell_Duration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5803037369036464723, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
       propertyPath: m_RootOrder
@@ -851,7 +883,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_Shape_AOE
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1726307423854690592, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 611687a96d7dea340adf69e7e9be45ae, type: 3}
 --- !u!1 &1569633791
 GameObject:
