@@ -570,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &527242374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,7 +692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1092437521
 Transform:
   m_ObjectHideFlags: 0
@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e132cb7b9d1d745a8798e3d70b9819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat_so: {fileID: 0}
+  stat_so: {fileID: 11400000, guid: 9ae47e7ffe103844caf7814276c07908, type: 2}
   stat:
     hp: 0
     speed: 0

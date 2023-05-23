@@ -60,6 +60,12 @@ public class SpawnManager : MonoBehaviour
         TestSpawn();
     }
 
+    private void EventListener()
+    {
+        
+        
+    }
+
     private void TestSpawn()
     {
         if (verbose)

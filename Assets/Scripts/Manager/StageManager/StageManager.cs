@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    
+    
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
 
@@ -35,7 +37,7 @@ public class StageManager : MonoBehaviour
 
         for (int i = 0; i < messageBuffer.Count; i++)
         {
-            if (messageBuffer[i] == moduleID)
+            if ((int)(messageBuffer[i] / 1000f) == moduleID)
             {
                 int tmp = messageBuffer[i];
                 messageBuffer.RemoveAt(i);
