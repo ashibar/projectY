@@ -10,6 +10,7 @@ public class EventInfo_so : ScriptableObject
     [SerializeField] private bool isLoop;
     [SerializeField] private bool isSequential;
     [SerializeField] private bool isRequires;
+    [SerializeField] private Condition condition;
     [SerializeField] private float durationToStart;
     [SerializeField] private int message;
 
@@ -18,6 +19,7 @@ public class EventInfo_so : ScriptableObject
     public bool IsLoop { get => isLoop; set => isLoop = value; }
     public bool IsSequential { get => isSequential; set => isSequential = value; }
     public bool IsRequires { get => isRequires; set => isRequires = value; }
+    public Condition Condition { get => condition; set => condition = value; }
     public float DurationToStart { get => durationToStart; set => durationToStart = value; }
     public int Message { get => message; set => message = value; }
 }
