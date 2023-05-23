@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 312288220}
   - component: {fileID: 312288219}
   - component: {fileID: 312288218}
+  - component: {fileID: 312288222}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -336,6 +337,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &312288222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312288217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 0}
 --- !u!1 &378835890
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner:
   - {fileID: 1978562111}
+  range_test: 10
   verbose: 1
 --- !u!4 &632814460
 Transform:
@@ -1042,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  isNpc: 0
+  istalk: 0
 --- !u!61 &1045788433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1263,8 +1279,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat_so: {fileID: 11400000, guid: 9ae47e7ffe103844caf7814276c07908, type: 2}
   stat:
+    hp: 0
+    speed: 0
+    hp_regen: 0
+    armor: 0
+    damage: 0
+    speed_projectile: 0
+    duration_projectile: 0
+    range_projectile: 0
+    cooldown: 0
+    amount: 0
     hp_current: 0
   stat_processed:
+    hp: 0
+    speed: 0
+    hp_regen: 0
+    armor: 0
+    damage: 0
+    speed_projectile: 0
+    duration_projectile: 0
+    range_projectile: 0
+    cooldown: 0
+    amount: 0
     hp_current: 0
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
@@ -1416,7 +1452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  isNpc: 0
+  istalk: 0
 --- !u!114 &1489009641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,6 +1667,7 @@ MonoBehaviour:
   original:
   - {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
   clones: []
+  spawnMain: []
 --- !u!4 &1978562112
 Transform:
   m_ObjectHideFlags: 0
