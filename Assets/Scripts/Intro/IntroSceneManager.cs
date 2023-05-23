@@ -8,4 +8,9 @@ public class IntroSceneManager : MonoBehaviour
     {
         LoadingSceneController.LoadScene("BattleScene");
     }
+
+    private void Something()
+    {
+        Debug.Log("aa");
+    }
 }
