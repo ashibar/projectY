@@ -58,12 +58,37 @@ public class SpawnManager : MonoBehaviour
     private void Update()
     {
         TestSpawn();
+        EventReciever();
+    }
+
+    private List<int> messageBuffer = new List<int>();
+    private void EventReciever()
+    {
+        int message = StageManager.Instance.SearchMassage(2);
+        if (message == -1)
+            return;
+        messageBuffer.Add(message);
     }
 
     private void EventListener()
     {
-        
-        
+
+        foreach (int m in messageBuffer)
+        {
+            int action = (int)(m / 1000f) % 100;
+            switch (action)
+            {
+                case 0:
+                    // 0번행동;
+                    break;
+                case 1:
+                    // 1번행동;
+                    break;
+
+            }
+        }
+
+
     }
 
     private void TestSpawn()

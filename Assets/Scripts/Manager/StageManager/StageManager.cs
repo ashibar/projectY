@@ -5,7 +5,27 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    
+    private static StageManager instance;
+    public static StageManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                var obj = FindObjectOfType<StageManager>();
+                if (obj != null)
+                {
+                    instance = obj;
+                }
+                else
+                {
+                    var newObj = new GameObject().AddComponent<StageManager>();
+                    instance = newObj;
+                }
+            }
+            return instance;
+        }
+    }
     
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
@@ -14,6 +34,12 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
+        var objs = FindObjectsOfType<StageManager>();
+        if (objs.Length != 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
         SetStageInfo(stageInfo_so); // 나중에 로딩할때 대체
     }
 
