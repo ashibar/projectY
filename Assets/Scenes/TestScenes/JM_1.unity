@@ -459,6 +459,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1824663275}
     m_Modifications:
+    - target: {fileID: 1612212930882337651, guid: c8a58f6346d81b24faa39b23a0cd5024, type: 3}
+      propertyPath: fade_duration
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3959021973394055701, guid: c8a58f6346d81b24faa39b23a0cd5024, type: 3}
       propertyPath: m_Name
       value: spell card image 1
@@ -677,6 +681,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1824663275}
     m_Modifications:
+    - target: {fileID: 1612212930882337651, guid: c8a58f6346d81b24faa39b23a0cd5024, type: 3}
+      propertyPath: fade_duration
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3959021973394055701, guid: c8a58f6346d81b24faa39b23a0cd5024, type: 3}
       propertyPath: m_Name
       value: spell card image 3
@@ -1529,6 +1537,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1824663275}
     m_Modifications:
+    - target: {fileID: 1612212930882337651, guid: c8a58f6346d81b24faa39b23a0cd5024, type: 3}
+      propertyPath: fade_duration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3959021973394055701, guid: c8a58f6346d81b24faa39b23a0cd5024, type: 3}
       propertyPath: m_Name
       value: spell card image 2
