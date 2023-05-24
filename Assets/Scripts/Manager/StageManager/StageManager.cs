@@ -56,10 +56,12 @@ public class StageManager : MonoBehaviour
     }
 
     // 다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수
-    public int SearchMassage(int moduleID)
+    public int SearchMassage(int moduleID, List<int> buffer)
     {
         if (messageBuffer.Count == 0)
             return -1;
+
+        List<int> addition = new List<int>();
 
         for (int i = 0; i < messageBuffer.Count; i++)
         {
@@ -67,11 +69,17 @@ public class StageManager : MonoBehaviour
             {
                 int tmp = messageBuffer[i];
                 messageBuffer.RemoveAt(i);
-                return tmp;
+                addition.Add(tmp);
             }
         }
 
-        return -1;
+        if (addition.Count > 0)
+        {
+            buffer.AddRange(addition);
+            return 0;
+        }
+        else
+            return -1;
     }
 
     // 스테이지 정보의 이벤트 순회 함수

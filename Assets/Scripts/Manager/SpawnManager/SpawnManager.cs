@@ -64,7 +64,7 @@ public class SpawnManager : MonoBehaviour
     private List<int> messageBuffer = new List<int>();
     private void EventReciever()
     {
-        int message = StageManager.Instance.SearchMassage(2);
+        int message = StageManager.Instance.SearchMassage(2, messageBuffer);
         if (message == -1)
             return;
         messageBuffer.Add(message);
