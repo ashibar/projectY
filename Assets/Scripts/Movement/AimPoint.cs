@@ -5,7 +5,8 @@ using UnityEngine;
 public class AimPoint : MonoBehaviour
 {
     private Player player;
-
+    private bool isActiveMove = true;
+    public bool IsActiveMove { get => isActiveMove; set => isActiveMove=value; }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -15,9 +16,12 @@ public class AimPoint : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        player.dir_toShoot = GetDirectionToMouse();
-        player.pos_toShoot = GetPositionToMouse();
-        
+        //여기에 조건문으로 입력막기
+        if (isActiveMove)
+        {
+            player.dir_toShoot = GetDirectionToMouse();
+            player.pos_toShoot = GetPositionToMouse();
+        }
     }
 
     public Vector2 GetDirectionToMouse()

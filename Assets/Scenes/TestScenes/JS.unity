@@ -1042,11 +1042,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  razer: {fileID: 0}
-  delay: 0
-  duration: 0
-  razerSize_x: 0
-  razerSize_y: 0
+  rb: {fileID: 0}
+  DashSpeed: 30
+  DashTime: 0.1
+  DashToward: {x: 0, y: 0}
 --- !u!1 &1696437353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,8 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  razer: {fileID: 0}
-  delay: 0
-  duration: 0
-  razerSize_x: 0
-  razerSize_y: 0
+  rb: {fileID: 0}
+  DashSpeed: 10
+  DashTime: 1
+  DashToward: {x: 0, y: 0}
