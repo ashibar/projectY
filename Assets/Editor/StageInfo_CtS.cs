@@ -47,7 +47,7 @@ public class StageInfo_CtS : CSV_to_SO
             event_instance.IsSequential = int.Parse(split[3]) == 0 ? false : true;
             event_instance.IsRequires = int.Parse(split[4]) == 0 ? false : true;
             event_instance.DurationToStart = float.Parse(split[5]);
-            event_instance.Message = int.Parse(split[6]);
+            event_instance.Message = new EventMessage(int.Parse(split[6]), split[7], split[8], float.Parse(split[9]));
 
             events.Add(event_instance);
         }

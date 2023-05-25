@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073f8a55cc5d0104abf4647814df3605, type: 3}
   m_Name: Event 1
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   sort: 0
   isLoop: 0
-  isSequential: 0
+  isSequential: 1
   isRequires: 0
-  durationToStart: 0
-  message: 0
+  condition:
+    sort: 0
+    target: {fileID: 0}
+    targetPos: {x: 0, y: 0}
+    targetArea: {fileID: 0}
+    targetTrigger: 0
+    targetString: 
+    targetNum: 0
+  durationToStart: 2
+  message:
+    moduleID: 1
+    actionSTR: aaa
+    targetSTR: zzz
+    targetNUM: 10

@@ -30,7 +30,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
 
-    public List<int> messageBuffer = new List<int>();
+    public List<EventMessage> messageBuffer = new List<EventMessage>();
 
     private void Awake()
     {
@@ -56,18 +56,18 @@ public class StageManager : MonoBehaviour
     }
 
     // 다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수
-    public int SearchMassage(int moduleID, List<int> buffer)
+    public int SearchMassage(int moduleID, List<EventMessage> buffer)
     {
         if (messageBuffer.Count == 0)
             return -1;
 
-        List<int> addition = new List<int>();
+        List<EventMessage> addition = new List<EventMessage>();
 
         for (int i = 0; i < messageBuffer.Count; i++)
         {
-            if ((int)(messageBuffer[i] / 1000f) == moduleID)
+            if (messageBuffer[i].ModuleID == moduleID) 
             {
-                int tmp = messageBuffer[i];
+                EventMessage tmp = messageBuffer[i];
                 messageBuffer.RemoveAt(i);
                 addition.Add(tmp);
             }

@@ -17,5 +17,17 @@ MonoBehaviour:
   isLoop: 0
   isSequential: 1
   isRequires: 0
+  condition:
+    sort: 0
+    target: {fileID: 0}
+    targetPos: {x: 0, y: 0}
+    targetArea: {fileID: 0}
+    targetTrigger: 0
+    targetString: 
+    targetNum: 0
   durationToStart: 3
-  message: 1000
+  message:
+    moduleID: 0
+    actionSTR: 
+    targetSTR: 
+    targetNUM: 0

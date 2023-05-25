@@ -1,6 +1,6 @@
-﻿StageName,TestStage_01,,,,,
-id,sort,isLoop,isSeq,isReq,duration,message
-1,0,0,1,0,2,1000
-2,0,0,1,0,3,1001
-3,0,0,1,0,4,1002
-4,0,0,1,0,5,1003
+﻿StageName,TestStage_01,,,,,,,,,,,,,
+id,sort,isLoop,isSeq,isReq,duration,moduleID,actionSTR,targetSTR,targetNum,condSort,trigger,pos,string,num
+1,0,0,1,0,2,1,aaa,zzz,10,0,0,,,
+2,0,0,1,0,3,1,bbb,yyy,20,0,0,,,
+3,0,0,1,0,4,1,ccc,xxx,30,0,0,,,
+4,0,0,1,0,5,1,ddd,www,40,0,0,,,

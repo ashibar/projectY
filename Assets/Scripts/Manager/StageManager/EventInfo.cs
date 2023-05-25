@@ -13,7 +13,7 @@ public class EventInfo
     [SerializeField] protected bool isRequires;
     [SerializeField] private Condition condition;
     [SerializeField] protected float durationToStart;
-    [SerializeField] protected int message;
+    [SerializeField] protected EventMessage message;
 
     [SerializeField] protected StageManager manager;
     [SerializeField] protected bool isinterrupted;
@@ -39,7 +39,7 @@ public class EventInfo
     public bool IsRequires { get => isRequires; set => isRequires = value; }
     public Condition Condition { get => condition; set => condition = value; }
     public float DurationToStart { get => durationToStart; set => durationToStart = value; }
-    public int Message { get => message; set => message = value; }
+    public EventMessage Message { get => message; set => message = value; }
     public StageManager Manager { get => manager; set => manager = value; }
     public bool Isinterrupted { get => isinterrupted; set => isinterrupted = value; }
     public bool IsRequired { get => isRequired; set => isRequired = value; }

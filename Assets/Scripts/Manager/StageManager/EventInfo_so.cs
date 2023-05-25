@@ -12,7 +12,7 @@ public class EventInfo_so : ScriptableObject
     [SerializeField] private bool isRequires;
     [SerializeField] private Condition condition;
     [SerializeField] private float durationToStart;
-    [SerializeField] private int message;
+    [SerializeField] private EventMessage message;
 
     public int Id { get => id; set => id = value; }
     public EventSort Sort { get => sort; set => sort = value; }
@@ -21,5 +21,5 @@ public class EventInfo_so : ScriptableObject
     public bool IsRequires { get => isRequires; set => isRequires = value; }
     public Condition Condition { get => condition; set => condition = value; }
     public float DurationToStart { get => durationToStart; set => durationToStart = value; }
-    public int Message { get => message; set => message = value; }
+    public EventMessage Message { get => message; set => message = value; }
 }

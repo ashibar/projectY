@@ -61,27 +61,24 @@ public class SpawnManager : MonoBehaviour
         EventReciever();
     }
 
-    private List<int> messageBuffer = new List<int>();
+    private List<EventMessage> messageBuffer = new List<EventMessage>();
     private void EventReciever()
     {
-        int message = StageManager.Instance.SearchMassage(2, messageBuffer);
-        if (message == -1)
+        int error = StageManager.Instance.SearchMassage(2, messageBuffer);
+        if (error == -1)
             return;
-        messageBuffer.Add(message);
     }
 
     private void EventListener()
     {
-
-        foreach (int m in messageBuffer)
+        foreach (EventMessage m in messageBuffer)
         {
-            int action = (int)(m / 1000f) % 100;
-            switch (action)
+            switch (m.ActionSTR)
             {
-                case 0:
+                case "Active Spawner":
                     // 0번행동;
                     break;
-                case 1:
+                case "InActive Spawner":
                     // 1번행동;
                     break;
 
