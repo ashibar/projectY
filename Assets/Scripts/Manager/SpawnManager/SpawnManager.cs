@@ -43,6 +43,8 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     private bool verbose = false;
+    [SerializeField]
+    private bool iscoroutineRunning = false;
 
 
     private void Awake()
@@ -77,9 +79,14 @@ public class SpawnManager : MonoBehaviour
             {
                 case "Active Spawner":
                     // 0번행동;
+                    if (!iscoroutineRunning)
+                    {
+                        StartCoroutine(mobspawn());
+                    }
                     break;
                 case "InActive Spawner":
                     // 1번행동;
+                    Bossspawn();
                     break;
 
             }
@@ -102,5 +109,21 @@ public class SpawnManager : MonoBehaviour
                 spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(range_test));
         }
 
+    }
+    IEnumerator mobspawn()
+    {
+        iscoroutineRunning = true;
+        spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].spawntestpoint());
+
+        yield return new WaitForSeconds(10f); //나중에다른  종료조건을 while 문으로 받아 체크해서 종료 킬카운트나 시간?
+        iscoroutineRunning = false;
+    }
+    private void Bossspawn()
+    {
+        if (verbose) 
+        {
+            spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(0, 10));
+            //캐릭터정면 상단에 보스 소환
+        }
     }
 }
