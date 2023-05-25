@@ -39,7 +39,10 @@ public class ShotManage : MonoBehaviour
     [SerializeField] protected bool isUseSpell = false;
     //================================================
     [SerializeField] protected String SkillRangeType = "SOLE";
-
+    //================================================
+    [SerializeField] private bool isActiveMagic = true;
+    public bool IsActiveMagic { get => isActiveMagic; set => isActiveMagic = value; }
+    //================================================
     // parts - ÀÌ¿ë¿í
     [SerializeField] public Stat_Spell_so stat_Spell_So;
     [SerializeField] public Stat_Spell stat_spell;
@@ -68,7 +71,7 @@ public class ShotManage : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0)) {
+        if (Input.GetKey(KeyCode.Mouse0)&&isActiveMagic) {
             Shoot_Temp();
         }
 

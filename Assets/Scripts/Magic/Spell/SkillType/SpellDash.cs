@@ -28,11 +28,8 @@ public class SpellDash : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-
-            //if (!isDash) StartCoroutine(Dash());
             if (!isDash) StartCoroutine(VelocityDash());
         }
-
     }
    
 

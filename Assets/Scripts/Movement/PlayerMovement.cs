@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private Player player;
     private MovementManager movementmanager;
+    private bool isMove = true;
 
+    public bool IsMove { get=>isMove; set => isMove = value; }
     public float moveSpeed = 10;
     // Start is called before the first frame update
     private void Awake()
@@ -24,8 +26,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 dir = ControlByKeyboard();
         MoveAnimation(CheckMove(dir));
-        player.dir_toMove = dir;
-        Movement(dir);
+        if(IsMove)
+        {
+            player.dir_toMove = dir;
+            Movement(dir);
+        }
     }
 
     private bool CheckMove(Vector2 dir)
