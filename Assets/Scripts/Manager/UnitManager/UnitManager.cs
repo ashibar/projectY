@@ -5,8 +5,11 @@ using UnityEngine;
 public class UnitManager : MonoBehaviour
 {
     private List<GameObject> clones = new List<GameObject>();
+    private Unit unit;
     public List<GameObject> Clones { get => clones;}
     private static UnitManager instance;
+
+    
     public static UnitManager Instance
     {
         get
@@ -27,7 +30,14 @@ public class UnitManager : MonoBehaviour
             return instance;
         }
     }
-
+    void Start()
+    {
+        if (unit == null)
+        {
+            unit = Player.instance;
+        }
+        clones.Add(unit.gameObject);
+    }
     public virtual void Delete_FromCloneList(GameObject clone)
     {
         int id = Clone_Comparer(clone);

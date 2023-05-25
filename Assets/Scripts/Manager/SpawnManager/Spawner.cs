@@ -20,8 +20,10 @@ public class Spawner : MonoBehaviour
     private List<GameObject> clones = new List<GameObject>();
 
     [SerializeField]
-    public List<SpawnMain> spawnMain = new List<SpawnMain>(); 
+    public List<SpawnMain> spawnMain = new List<SpawnMain>();
 
+    [SerializeField]
+    private UnitManager unitManager = new UnitManager();
     // 외부에서 스포너의 오리지널 프리팹을 추가하고자 할때 사용하는 함수
     public virtual void AddOriginal(List<GameObject> original_list)
     {
@@ -37,7 +39,8 @@ public class Spawner : MonoBehaviour
         clone.GetComponent<Enemy>().spawner_pointer = this;
         clone.name = clones.Count.ToString();
 
-        clones.Add(clone);
+        //clones.Add(clone);
+        unitManager.Clones.Add(clone);
     }
 
     // 클론 리스트에서 클론을 찾아 제거    
