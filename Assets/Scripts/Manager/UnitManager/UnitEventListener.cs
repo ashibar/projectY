@@ -1,20 +1,23 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitEventListener : MonoBehaviour
 {
     private List<EventMessage> messageBuffer = new List<EventMessage>();
+    private UnitManager allGameObj;
     private AimPoint inputData = null;
     private PlayerMovement move = null;
     private ShotManage shot = null;
-    private Unit unit = null;
+    
    
     void Start()
     {
         inputData = GetComponent<AimPoint>();
         move  = GetComponent<PlayerMovement>();
         shot = GetComponent<ShotManage>();
-        unit = GetComponent<Unit>();
+        allGameObj = GetComponent<UnitManager>();
+        
     }
 
     // Update is called once per frame
@@ -59,10 +62,8 @@ public class UnitEventListener : MonoBehaviour
                     shot.IsActiveMagic = false;
                     break;
                 case "Force remove":
-                    Destroy(unit);
+                    allGameObj.Delete_FromCloneList(gameObject);
                     break;
-                
-
             }
         }
 

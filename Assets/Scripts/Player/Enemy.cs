@@ -17,6 +17,7 @@ public class Enemy : Unit
     private Movement movement;
 
     public Spawner spawner_pointer;
+    public UnitManager unit_Manager;
     public Action_AI action_ai;
     protected override void Awake()
     {
@@ -47,7 +48,7 @@ public class Enemy : Unit
     // SpellProjectile Delete_FromCloneLIst()ÂüÁ¶
     public void Delete_FromCloneList()
     {
-        spawner_pointer.Delete_FromCloneList(gameObject);
+        unit_Manager.Delete_FromCloneList(gameObject);
     }
 
     public virtual void Applier(GameObject obj, Stat stat)
