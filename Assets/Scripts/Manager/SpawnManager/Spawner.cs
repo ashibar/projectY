@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ½ºÅ©¸³Æ® ÀÌ¸§ : Spawner
-/// ´ã´çÀÚ : ÀÌ¿ë¿í
-/// ¿ä¾à : ¿ÀºêÁ§Æ® ½ºÆù ½ºÅ©¸³Æ®
-/// ºñ°í : 
-/// ¾÷µ¥ÀÌÆ® ³»¿ª :
-///     - (23.03.25) : ½ºÅ©¸³Æ® »ı¼º
+/// ìŠ¤í¬ë¦½íŠ¸ ì´ë¦„ : Spawner
+/// ë‹´ë‹¹ì : ì´ìš©ìš±
+/// ìš”ì•½ : ì˜¤ë¸Œì íŠ¸ ìŠ¤í° ìŠ¤í¬ë¦½íŠ¸
+/// ë¹„ê³  : 
+/// ì—…ë°ì´íŠ¸ ë‚´ì—­ :
+///     - (23.03.25) : ìŠ¤í¬ë¦½íŠ¸ ìƒì„±
 /// </summary>
 
 public class Spawner : MonoBehaviour
@@ -20,15 +20,17 @@ public class Spawner : MonoBehaviour
     private List<GameObject> clones = new List<GameObject>();
 
     [SerializeField]
-    public List<SpawnMain> spawnMain = new List<SpawnMain>(); 
+    public List<SpawnMain> spawnMain = new List<SpawnMain>();
 
-    // ¿ÜºÎ¿¡¼­ ½ºÆ÷³ÊÀÇ ¿À¸®Áö³Î ÇÁ¸®ÆÕÀ» Ãß°¡ÇÏ°íÀÚ ÇÒ¶§ »ç¿ëÇÏ´Â ÇÔ¼ö
+    [SerializeField]
+    private UnitManager unitManager = new UnitManager();
+    // ì™¸ë¶€ì—ì„œ ìŠ¤í¬ë„ˆì˜ ì˜¤ë¦¬ì§€ë„ í”„ë¦¬íŒ¹ì„ ì¶”ê°€í•˜ê³ ì í• ë•Œ ì‚¬ìš©í•˜ëŠ” í•¨ìˆ˜
     public virtual void AddOriginal(List<GameObject> original_list)
     {
         original.AddRange(original_list);
     }
 
-    // Æ¯Á¤ À§Ä¡¿¡ Àû ¿ÀºêÁ§Æ®¸¦ ¼ÒÈ¯ÇÏ°í ³»ºÎ clones¸®½ºÆ®¿¡ ¿ÀºêÁ§Æ®¸¦ Ãß°¡
+    // íŠ¹ì • ìœ„ì¹˜ì— ì  ì˜¤ë¸Œì íŠ¸ë¥¼ ì†Œí™˜í•˜ê³  ë‚´ë¶€ clonesë¦¬ìŠ¤íŠ¸ì— ì˜¤ë¸Œì íŠ¸ë¥¼ ì¶”ê°€
     public virtual void Spawn_Enemy_AtPosition(int id, Vector2 pos)
     {
         if (!Integrity_Check(id)) return;
@@ -37,11 +39,11 @@ public class Spawner : MonoBehaviour
         clone.GetComponent<Enemy>().spawner_pointer = this;
         clone.name = clones.Count.ToString();
 
-        clones.Add(clone);
-        // UnitManager.Instance.clones.Add(clone);
+        //clones.Add(clone);
+        unitManager.Clones.Add(clone);
     }
 
-    // Å¬·Ğ ¸®½ºÆ®¿¡¼­ Å¬·ĞÀ» Ã£¾Æ Á¦°Å    
+    // í´ë¡  ë¦¬ìŠ¤íŠ¸ì—ì„œ í´ë¡ ì„ ì°¾ì•„ ì œê±°    
     public virtual void Delete_FromCloneList(GameObject clone)
     {
         int id = Clone_Comparer(clone);
@@ -58,8 +60,8 @@ public class Spawner : MonoBehaviour
         //Debug.Log("id : " + id.ToString());
     }
 
-    // Å¬·Ğ Å½»ö ÇÔ¼ö
-    // ÃßÈÄ ÀÌÁø Å½»öÀ¸·Î º¯°æ¿¹Á¤
+    // í´ë¡  íƒìƒ‰ í•¨ìˆ˜
+    // ì¶”í›„ ì´ì§„ íƒìƒ‰ìœ¼ë¡œ ë³€ê²½ì˜ˆì •
     private int Clone_Comparer(GameObject clone)
     {
         for (int i = 0; i < clones.Count; i++)
@@ -69,12 +71,12 @@ public class Spawner : MonoBehaviour
         return -1;
     }
 
-    // ¹«°á¼º °Ë»ç ÇÔ¼ö
-    // ´ÙÀ½ »óÈ²¿¡¼­ false¸¦ ¹İÈ¯ :
-    //      - Original ¸®½ºÆ®°¡ ºñ¾î ÀÖÀ½
-    //      - id°¡ ¸®½ºÆ® ¹üÀ§¿¡¼­ ¹ş¾î³²
-    //      - idÀÇ Gameobject°¡ nullÀÓ
-    // »ç¿ë ¿¹½Ã :
+    // ë¬´ê²°ì„± ê²€ì‚¬ í•¨ìˆ˜
+    // ë‹¤ìŒ ìƒí™©ì—ì„œ falseë¥¼ ë°˜í™˜ :
+    //      - Original ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìˆìŒ
+    //      - idê°€ ë¦¬ìŠ¤íŠ¸ ë²”ìœ„ì—ì„œ ë²—ì–´ë‚¨
+    //      - idì˜ Gameobjectê°€ nullì„
+    // ì‚¬ìš© ì˜ˆì‹œ :
     //      if (!Integrity_Check(id)) return;
     private bool Integrity_Check(int id)
     {

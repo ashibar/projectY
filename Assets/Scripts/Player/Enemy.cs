@@ -47,7 +47,7 @@ public class Enemy : Unit
     // SpellProjectile Delete_FromCloneLIst()ÂüÁ¶
     public void Delete_FromCloneList()
     {
-        spawner_pointer.Delete_FromCloneList(gameObject);
+        UnitManager.Instance.Delete_FromCloneList(gameObject);
     }
 
     public virtual void Applier(GameObject obj, Stat stat)
