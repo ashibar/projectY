@@ -5,25 +5,25 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    private static StageManager instance;
+    private static StageManager instance; // private instance
     public static StageManager Instance
     {
         get
         {
-            if (instance == null)
+            if (instance == null) // instance가 비어있다
             {
                 var obj = FindObjectOfType<StageManager>();
                 if (obj != null)
                 {
-                    instance = obj;
+                    instance = obj;                                             // 전체 찾아봤는데? 있네? 그걸 넣자
                 }
                 else
                 {
-                    var newObj = new GameObject().AddComponent<StageManager>();
+                    var newObj = new GameObject().AddComponent<StageManager>(); // 전체 찾아봤는데? 없네? 새로만들자
                     instance = newObj;
                 }
             }
-            return instance;
+            return instance; // 안비어있네? 그냥 그대로 가져와
         }
     }
     

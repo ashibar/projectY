@@ -38,6 +38,7 @@ public class Spawner : MonoBehaviour
         clone.name = clones.Count.ToString();
 
         clones.Add(clone);
+        // UnitManager.Instance.clones.Add(clone);
     }
 
     // 클론 리스트에서 클론을 찾아 제거    
