@@ -44,3 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 4010453101
+    locked: 0
+  - name: Enemy
+    uniqueID: 2885895909
+    locked: 0
+  - name: Maptile
+    uniqueID: 586189997
+    locked: 0
