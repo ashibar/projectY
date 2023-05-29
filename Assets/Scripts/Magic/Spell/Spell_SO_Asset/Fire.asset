@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   spell_DMG: 10
-  spell_Speed: 5
-  spell_CoolTime: 1
-  spell_Duration: 1
+  spell_Speed: 20
+  spell_CoolTime: 0.1
+  spell_Duration: 3
   spell_Range_Duration: 2
   spell_Range_TicDMG: 3
   spell_Multy_EA: 1

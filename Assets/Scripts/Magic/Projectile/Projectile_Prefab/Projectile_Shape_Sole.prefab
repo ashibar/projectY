@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1460572571
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 432fa27fe5df344469000c77d59903f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,16 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2652979f64187574192c0d619bf724b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat:
-    spell_DMG: 0
-    spell_Speed: 0
-    spell_CoolTime: 0
-    spell_Duration: 0
-    spell_Range_Duration: 0
-    spell_Range_TicDMG: 0
-    spell_Multy_EA: 0
-    spell_Multy_Radius: 0
-    spell_Range_Area: 0
   duration: 10
   ReduceSpeed: 0.2
   stat_spell:
