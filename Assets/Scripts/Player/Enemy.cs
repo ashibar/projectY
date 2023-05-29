@@ -41,6 +41,12 @@ public class Enemy : Unit
         //movement.MoveByDirection_transform(new Vector2(-1, -1), stat.Speed);
         //movement.MoveToPosition_transform(Player.instance.transform.position, stat.Speed);
         action_ai.ai_process();
+        if (stat.Hp_current <= 0)
+        {
+            Delete_FromCloneList();
+
+        }
+            
     }
 
     // 스포너에 저장된 본인의 정보를 지움
@@ -48,6 +54,7 @@ public class Enemy : Unit
     public void Delete_FromCloneList()
     {
         UnitManager.Instance.Delete_FromCloneList(gameObject);
+        Destroy(gameObject);
     }
 
     public virtual void Applier(GameObject obj, Stat stat)

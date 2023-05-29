@@ -60,8 +60,11 @@ public class ShotManage : MonoBehaviour
     }
 
     protected void Start() { 
+        foreach (Parts p in parts)
+        {
+            p.Stat_spell = stat_spell;
+        }
         SortParts(parts);
-
         //if(!isChecked || isUseSpell) // 이렇게 안해주면 작동안함!!!!!!
         //{
         //    isChecked = true;
@@ -179,6 +182,7 @@ public class ShotManage : MonoBehaviour
             temp = Instantiate(Spells[0], transform.position, Quaternion.identity);
             temp.GetComponent<SpellProjectile>().appliers_update.AddRange(appliers_OnUpdate);
             temp.GetComponent<SpellProjectile>().appliers_collides.AddRange(appliers_OnColide);
+            temp.GetComponent<SpellProjectile>().stat_spell = stat_spell;
             ShotProcess(temp, stat_spell);
         }
         
