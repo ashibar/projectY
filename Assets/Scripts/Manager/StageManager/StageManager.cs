@@ -56,6 +56,14 @@ public class StageManager : MonoBehaviour
     }
 
     // 다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수
+    /*
+     * Module List
+     *      1.
+     *      2. SpawnManager
+     *      3. UnitManager
+     *      4. AnimationManager
+     *      5. UIManager
+     */
     public int SearchMassage(int moduleID, List<EventMessage> buffer)
     {
         if (messageBuffer.Count == 0)

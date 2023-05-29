@@ -1,0 +1,4 @@
+﻿StageName,DemoStage_01,,,,,,,,,,,,,
+id,sort,isLoop,isSeq,isReq,duration,moduleID,actionSTR,targetSTR,targetNum,condSort,trigger,pos,string,num
+1,0,0,1,0,0,5,Fade In,,0,0,0,,,
+2,0,0,1,0,3,5,Fade Out,,0,0,0,,,

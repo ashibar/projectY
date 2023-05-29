@@ -30,7 +30,7 @@ public class UnitManager : MonoBehaviour
             return instance;
         }
     }
-    void Start()
+    private void Start()
     {
         if (unit == null)
         {
@@ -38,6 +38,12 @@ public class UnitManager : MonoBehaviour
         }
         clones.Add(unit.gameObject);
     }
+    private void Update()
+    {
+        EventReciever();
+        EventListener();
+    }
+
     public virtual void Delete_FromCloneList(GameObject clone)
     {
         int id = Clone_Comparer(clone);
@@ -60,5 +66,39 @@ public class UnitManager : MonoBehaviour
             if (clone == clones[i]) return i;
         }
         return -1;
+    }
+
+    [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
+    private void EventReciever()
+    {
+        int error = StageManager.Instance.SearchMassage(5, messageBuffer);
+        if (error == -1)
+            return;
+    }
+
+    private void EventListener()
+    {
+        bool isError = false;
+        foreach (EventMessage m in messageBuffer)
+        {
+            switch (m.ActionSTR)
+            {
+                case "Fade Out":
+                    
+                    break;
+                case "Fade In":
+                    
+                    break;
+                default:
+                    isError = true;
+                    break;
+            }
+
+            if (!isError)
+            {
+                messageBuffer.Remove(m);
+            }
+        }
+
     }
 }
