@@ -55,7 +55,7 @@ public class SpawnMain : MonoBehaviour
         return point;
     }
 
-    private Vector2 SpawnStraight(Vector2 center, float amount,bool isWidth ,bool isTop, bool isLeft)
+    public Vector2 SpawnStraight(Vector2 center, float amount,bool isWidth ,bool isTop, bool isLeft)
     {
         float screenWidth = Screen.width;
         float pointDivWidth = screenWidth / (amount - 1);
