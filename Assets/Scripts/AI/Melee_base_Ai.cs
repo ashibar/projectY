@@ -8,7 +8,9 @@ public class Melee_base_Ai : Action_AI
     public float speed;
     
     public Rigidbody2D target;
- 
+
+    private Unit unit;
+
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     protected override void Awake()
@@ -18,7 +20,8 @@ public class Melee_base_Ai : Action_AI
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         
-        
+        unit = GetComponent<Unit>();
+        speed = unit.stat.Speed;
     }
     public override void ai_process()
     {
