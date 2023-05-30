@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1460572571
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 432fa27fe5df344469000c77d59903f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 10
   ReduceSpeed: 0.2
-  isRange: 0
   stat_spell:
     spell_DMG: 0
     spell_Speed: 0
@@ -173,6 +172,7 @@ MonoBehaviour:
   SpellAngle: 90
   SpellRange: 2
   mouse_dir: {x: 0, y: 0}
+  proj: {fileID: 0}
 --- !u!60 &4474647026676259241
 PolygonCollider2D:
   m_ObjectHideFlags: 0

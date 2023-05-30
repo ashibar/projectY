@@ -32,11 +32,27 @@ public class SpawnMain : MonoBehaviour
     {
         range = _range;
         Vector2 mainPos = transform.position;
-        Vector3 randomOffset = Random.insideUnitSphere * range;
-        Vector2 randomPosition = mainPos + (Vector2)randomOffset;
+        Vector2 randomPosition = CircleVector(mainPos, _range);
 
         // 계산된 위치로 이동
         spawnpointvector = randomPosition;
         return spawnpointvector;
+    }
+    private Vector2 CircleVector(Vector2 center, float radius)
+    {
+        int pointCount = 100; // 좌표를 얼마나 세밀하게 계산할지 결정하는 포인트 개수
+        Vector2 point = new Vector2();
+        for (int i = 0; i < pointCount; i++)
+        {
+            float angle = Random.Range(0f, 2f * Mathf.PI); ;
+            float x = center.x + radius * Mathf.Cos(angle);
+            float y = center.y + radius * Mathf.Sin(angle);
+
+             point = new Vector2(x, y);
+
+            
+        }
+
+        return point;
     }
 }

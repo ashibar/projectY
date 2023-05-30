@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Player player;
     private MovementManager movementmanager;
+    private Rigidbody2D rb;
     private bool isMove = true;
 
     public bool IsMove { get=>isMove; set => isMove = value; }
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         player = GetComponentInParent<Player>();
+        rb = player.GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
             player.dir_toMove = dir;
             Movement(dir);
         }
+        rb.velocity = Vector2.zero;
     }
 
     private bool CheckMove(Vector2 dir)
