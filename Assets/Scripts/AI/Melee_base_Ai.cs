@@ -13,19 +13,27 @@ public class Melee_base_Ai : Action_AI
     SpriteRenderer spriter;
     protected override void Awake()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        GameObject player = Player.instance.gameObject;
         target =player.GetComponent<Rigidbody2D>();
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         
         
     }
+    public override void ai_process()
+    {
+        //base.ai_process();
+        Vector2 dir = target.position - rigid.position;
+        Vector2 nextvac = dir.normalized * unit.stat.Speed * Time.fixedDeltaTime;
+        rigid.MovePosition(rigid.position + nextvac);
+        rigid.velocity = Vector2.zero;
+    }
     void FixedUpdate()
     {
-        Vector2 dir = target.position - rigid.position;
-        Vector2 nextvac = dir.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position+nextvac);
-        rigid.velocity = Vector2.zero;
+        //Vector2 dir = target.position - rigid.position;
+        //Vector2 nextvac = dir.normalized * speed * Time.fixedDeltaTime;
+        //rigid.MovePosition(rigid.position+nextvac);
+        //rigid.velocity = Vector2.zero;
     }
 
 }
