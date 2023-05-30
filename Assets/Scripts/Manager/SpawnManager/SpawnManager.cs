@@ -131,7 +131,8 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < spawner[0].amount; i++)
         {
             //
-            spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(15));
+            spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(radius));
+ 
         }
 
         yield return new WaitForSeconds(spawner[0].spawn_cooltime); //나중에다른  종료조건을 while 문으로 받아 체크해서 종료 킬카운트나 시간?
