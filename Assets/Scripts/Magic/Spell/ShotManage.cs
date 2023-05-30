@@ -21,6 +21,7 @@ public class ShotManage : MonoBehaviour
     public Vector2 pos_toShoot;
     public Unit owner;
     public string target;
+    public bool isTrigger;
     //================================================
     [SerializeField] private GameObject[] Spells;
     //================================================
@@ -77,8 +78,9 @@ public class ShotManage : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKey(keycode)&&isActiveMagic) {
+        if ((isTrigger || Input.GetKey(keycode))&&isActiveMagic) {
             Shoot_Temp();
+            isTrigger = false;
         }
 
         //if (isSoleSpell) SkillRangeType = "SOLE";

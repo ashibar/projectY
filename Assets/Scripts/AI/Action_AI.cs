@@ -13,7 +13,7 @@ public class Action_AI : MonoBehaviour
     }
     protected virtual void Start()
     {
-        unit = GetComponentInParent<Unit>();
+        unit = GetComponent<Unit>();
     }
     protected virtual void Update()
     {
