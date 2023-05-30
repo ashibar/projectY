@@ -49,10 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 ControlByKeyboard()
     {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputY = Input.GetAxisRaw("Vertical");
 
-        return new Vector2(inputX, inputY);
+        return new Vector2(inputX, inputY).normalized;
     }
 
     private void Movement(Vector2 dir)
