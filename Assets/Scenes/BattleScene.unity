@@ -1046,8 +1046,8 @@ MonoBehaviour:
   spawnMain:
   - {fileID: 1516773536}
   unitManager: {fileID: 0}
-  amount: 30
-  spawn_cooltime: 5
+  amount: 20
+  spawn_cooltime: 10
 --- !u!1 &1361707508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,3 +1575,4 @@ MonoBehaviour:
   range_test: 10
   verbose: 0
   iscoroutineRunning: 0
+  radius: 25
