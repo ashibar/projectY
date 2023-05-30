@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   name_unit: Bat
-  hp: 10
-  speed: 30
+  hp: 15
+  speed: 5
   hp_regen: 0
   armor: 0
   damage: 0
