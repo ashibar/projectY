@@ -38,6 +38,8 @@ public class SpawnMain : MonoBehaviour
         spawnpointvector = randomPosition;
         return spawnpointvector;
     }
+
+
     private Vector2 CircleVector(Vector2 center, float radius)
     {
         int pointCount = 100; // 좌표를 얼마나 세밀하게 계산할지 결정하는 포인트 개수
@@ -49,10 +51,36 @@ public class SpawnMain : MonoBehaviour
             float y = center.y + radius * Mathf.Sin(angle);
 
              point = new Vector2(x, y);
-
-            
         }
+        return point;
+    }
 
+    private Vector2 SpawnStraight(Vector2 center, float amount,bool isWidth ,bool isTop, bool isLeft)
+    {
+        float screenWidth = Screen.width;
+        float pointDivWidth = screenWidth / (amount - 1);
+        float screenHight = Screen.height;
+        float pointDivHeight = screenHight / (amount - 1);
+
+        Vector2 point = new();
+        if(isWidth)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                float x = i * pointDivWidth;
+                float y = (isTop) ? Screen.height : -Screen.height;
+                point = new Vector2(x, y);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                float x = (isLeft) ? Screen.width : -Screen.width;
+                float y = i * pointDivHeight;
+                point = new Vector2(x, y);
+            }
+        }
         return point;
     }
 }

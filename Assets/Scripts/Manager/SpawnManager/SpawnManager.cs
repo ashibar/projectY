@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private bool iscoroutineRunning = false;
 
-
+    [SerializeField] private float radius = 25;
     private void Awake()
     {
         var objs = FindObjectsOfType<SpawnManager>();
@@ -122,11 +122,15 @@ public class SpawnManager : MonoBehaviour
         
 
     }
+    /*
+     Radius¸¦ º¯¼ö·Î »­
+     **/
     IEnumerator mobspawn()
     {
         iscoroutineRunning = true;
         for (int i = 0; i < spawner[0].amount; i++)
         {
+            //
             spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(15));
         }
 
