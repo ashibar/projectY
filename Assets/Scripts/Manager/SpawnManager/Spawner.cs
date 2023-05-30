@@ -36,11 +36,9 @@ public class Spawner : MonoBehaviour
     // 특정 위치에 적 오브젝트를 소환하고 내부 clones리스트에 오브젝트를 추가
     public virtual void Spawn_Enemy_AtPosition(int id, Vector2 pos)
     {
-        Debug.Log(id);
-        Debug.Log(pos);
         if (!Integrity_Check(id)) return;
 
-        GameObject clone = Instantiate(original[id], pos, Quaternion.identity);
+        GameObject clone = Instantiate(original[id], pos, Quaternion.identity, Holder.enemy_holder);
         clone.GetComponent<Enemy>().spawner_pointer = this;
         clone.name = clones.Count.ToString();
         

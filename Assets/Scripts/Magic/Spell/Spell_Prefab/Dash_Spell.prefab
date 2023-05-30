@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2986787447863138210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9200093905238565558}
+  - component: {fileID: 1234606670270080760}
+  m_Layer: 0
+  m_Name: Parts_Dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9200093905238565558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986787447863138210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5761206265092413687}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1234606670270080760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986787447863138210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cbb9abb7c96d745912b78effa72de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sort: 1
+  ability: 0
+  stat_spell_so: {fileID: 0}
+  stat_spell:
+    spell_DMG: 0
+    spell_Speed: 0
+    spell_CoolTime: 0
+    spell_Duration: 0
+    spell_Range_Duration: 0
+    spell_Range_TicDMG: 0
+    spell_Multy_EA: 0
+    spell_Multy_Radius: 0
+    spell_Range_Area: 0
+  cooltime: 0
+  isCooltime: 0
+  isInterrupted: 0
+  dash_speed: 0.05
+  dash_duration: 0.3
+--- !u!1 &3181744477199058931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5761206265092413687}
+  - component: {fileID: 9096740150842810771}
+  m_Layer: 0
+  m_Name: Dash_Spell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5761206265092413687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181744477199058931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9200093905238565558}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9096740150842810771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181744477199058931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96dde20d9b74c247b834f218f28e1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keycode: 32
+  dir_toMove: {x: 0, y: 0}
+  dir_toShoot: {x: 0, y: 0}
+  pos_toShoot: {x: 0, y: 0}
+  owner: {fileID: 0}
+  target: 
+  Spells:
+  - {fileID: 8559793608686965277, guid: 229b69fea3a02134e86ac2c6b015d04d, type: 3}
+  cooltime: 1
+  Spell_speed: 5
+  ActiveRangeTime: 1
+  isSoleSpell: 1
+  isBuffSpell: 0
+  isMultiSpell: 0
+  isChecked: 1
+  isUseSpell: 0
+  SkillRangeType: SOLE
+  isActiveMagic: 1
+  stat_Spell_So: {fileID: 11400000, guid: 8ce8b8f25f5679a448b2834d475cea2c, type: 2}
+  stat_spell:
+    spell_DMG: 0
+    spell_Speed: 0
+    spell_CoolTime: 0
+    spell_Duration: 0
+    spell_Range_Duration: 0
+    spell_Range_TicDMG: 0
+    spell_Multy_EA: 0
+    spell_Multy_Radius: 0
+    spell_Range_Area: 0
+  parts: []
+  isCooltime: 0
+  isInterrupted: 0

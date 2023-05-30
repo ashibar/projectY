@@ -6,9 +6,9 @@ using UnityEngine;
 public class Parts_OnUpdate : Parts
 {
     // ф╫ аж╠Б
-    [SerializeField] private float cooltime;
-    [SerializeField] private bool isCooltime = false;
-    [SerializeField] private bool isInterrupted = false;
+    [SerializeField] protected float cooltime;
+    [SerializeField] protected bool isCooltime = false;
+    [SerializeField] protected bool isInterrupted = false;
 
     public float Cooltime { get => cooltime; set => cooltime = value; }
 

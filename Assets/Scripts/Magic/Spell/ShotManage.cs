@@ -15,9 +15,12 @@ public class ShotManage : MonoBehaviour
 {
     enum MAGICTYPE{SOLE,MULTY,RANGE };
     //public GameObject[] preFabSpell;
+    public KeyCode keycode = KeyCode.Mouse0;
     public Vector2 dir_toMove;
     public Vector2 dir_toShoot;
     public Vector2 pos_toShoot;
+    public Unit owner;
+    public string target;
     //================================================
     [SerializeField] private GameObject[] Spells;
     //================================================
@@ -74,7 +77,7 @@ public class ShotManage : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0)&&isActiveMagic) {
+        if (Input.GetKey(keycode)&&isActiveMagic) {
             Shoot_Temp();
         }
 
@@ -176,14 +179,18 @@ public class ShotManage : MonoBehaviour
     {
         // 투사체 원본을 복제하고, appliers_update/collides를 복제본에 넣음
         // 복제본의 발사 처리기 작동
+        Applier_parameter para;
+        
         GameObject temp;
         for (int i = 0; i < stat_spell.Spell_Multy_EA; i++)
         {
-            temp = Instantiate(Spells[0], transform.position, Quaternion.identity);
+            temp = Instantiate(Spells[0], transform.position, Quaternion.identity, Holder.projectile_holder);
             temp.GetComponent<SpellProjectile>().appliers_update.AddRange(appliers_OnUpdate);
             temp.GetComponent<SpellProjectile>().appliers_collides.AddRange(appliers_OnColide);
             temp.GetComponent<SpellProjectile>().stat_spell = stat_spell;
-            ShotProcess(temp, stat_spell);
+            para = new Applier_parameter(temp, stat_spell, null, dir_toMove, dir_toShoot, pos_toShoot, owner, target);
+            temp.GetComponent<SpellProjectile>().para = para;
+            ShotProcess(temp, para);
         }
         
         // 쿨타임동안 기다리도록 Task를 반환
@@ -227,11 +234,11 @@ public class ShotManage : MonoBehaviour
     }
 
     // 발사 처리기 작동 함수
-    private void ShotProcess(GameObject temp, Stat_Spell stat)
+    private void ShotProcess(GameObject temp, Applier_parameter para)
     {
         foreach (Action<Applier_parameter> app in appliers_OnShot)
         {
-            app(new Applier_parameter(temp, stat, null, dir_toMove, dir_toShoot, pos_toShoot));
+            app(para);
         }
     }
 

@@ -15,6 +15,7 @@ public class SpellProjectile : MonoBehaviour
     private float duration;
     [SerializeField]
     protected float ReduceSpeed = 0.2f; // ÁÙ¾îµå´Â ¼Óµµ. ¹«Á¶°Ç 0~1 »çÀÌÀÇ °ª¸¸ ÀÛ¼ºÇØ¾ßµÊ.
+    [SerializeField] public Applier_parameter para;
 
     private bool isDeleted = false;
     
@@ -77,7 +78,7 @@ public class SpellProjectile : MonoBehaviour
     {
         foreach (Action<Applier_parameter> app in appliers_update)
         {
-            app(new Applier_parameter(gameObject, stat));
+            app(para);
         }
     }
 
@@ -91,8 +92,10 @@ public class SpellProjectile : MonoBehaviour
             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SpellStatï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­.
 
             // ï¿½æµ¹ï¿½ï¿½ ï¿½Ûµï¿½ï¿½ï¿½ applier - ï¿½Ì¿ï¿½ï¿?
+            Applier_parameter para_col = new Applier_parameter(para);
+            para_col.Collision = collision;
             foreach (Action<Applier_parameter> app in appliers_collides)
-                app(new Applier_parameter(gameObject, stat_spell, collision));
+                app(para_col);
 
 
 

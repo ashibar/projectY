@@ -62,6 +62,17 @@ public class Applier_parameter
         this.dir_toShoot = dir_toShoot;
         this.pos_toShoot = pos_toShoot;
     }
+    public Applier_parameter(GameObject proj, Stat_Spell stat, Collider2D collision, Vector2 dir_toMove, Vector2 dir_toShoot, Vector2 pos_toShoot, Unit owner, string target_tag)
+    {
+        this.proj = proj;
+        this.stat = stat;
+        this.collision = collision;
+        this.dir_toMove = dir_toMove;
+        this.dir_toShoot = dir_toShoot;
+        this.pos_toShoot = pos_toShoot;
+        this.owner = owner;
+        this.target_tag= target_tag;
+    }
     public Applier_parameter(Applier_parameter para)
     {
         this.proj = para.Proj;
@@ -70,6 +81,8 @@ public class Applier_parameter
         this.dir_toMove = para.Dir_toMove;
         this.dir_toShoot = para.Dir_toShoot;
         this.pos_toShoot = para.pos_toShoot;
+        this.owner = para.owner;
+        this.target_tag = para.target_tag;
     }
 
 }
