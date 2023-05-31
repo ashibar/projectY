@@ -31,10 +31,7 @@ public class Player : Unit
         playerMovement = GetComponentInChildren<PlayerMovement>();
         magicManager = GetComponentInChildren<MagicManager>();
         animationManager = GetComponentInChildren<AnimationManager>();
-        Collider collider1 = GameObject.FindWithTag("Projectile").GetComponent<Collider>();
-        Collider collider2 = GameObject.FindWithTag("Ground").GetComponent<Collider>();
-
-        Physics.IgnoreCollision(collider1, collider2, true);
+        
     }
 
     protected override void Start()

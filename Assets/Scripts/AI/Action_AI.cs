@@ -6,6 +6,7 @@ public class Action_AI : MonoBehaviour
 {
     protected Unit unit;
     private Movement movement;
+    [SerializeField] private bool isActive = true;
 
     protected virtual void Awake()
     {
@@ -17,7 +18,10 @@ public class Action_AI : MonoBehaviour
     }
     protected virtual void Update()
     {
-        ai_process();
+        if (isActive)
+        {
+            ai_process();
+        }
     }
     public virtual void ai_process()
     {
