@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff13feab14f21e4db60227e94522123, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  spell_DMG: 10
+  spell_DMG: 15
   spell_Speed: 20
-  spell_CoolTime: 0.1
+  spell_CoolTime: 0.5
   spell_Duration: 3
   spell_Range_Duration: 2
   spell_Range_TicDMG: 3

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name_unit: 
-  hp: 100
-  speed: 3
+  hp: 50
+  speed: 2.7
   hp_regen: 0
   armor: 1
   damage: 0

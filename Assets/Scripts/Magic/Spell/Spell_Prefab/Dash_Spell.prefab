@@ -60,8 +60,8 @@ MonoBehaviour:
   cooltime: 0
   isCooltime: 0
   isInterrupted: 0
-  dash_speed: 0.05
-  dash_duration: 0.3
+  dash_speed: 0.04
+  dash_duration: 0.1
 --- !u!1 &3181744477199058931
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   pos_toShoot: {x: 0, y: 0}
   owner: {fileID: 0}
   target: 
+  isTrigger: 0
   Spells:
   - {fileID: 8559793608686965277, guid: 229b69fea3a02134e86ac2c6b015d04d, type: 3}
   cooltime: 1
