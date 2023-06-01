@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 9090478179936201709}
   - component: {fileID: 9090478179936201682}
   - component: {fileID: 9090478179936201710}
+  - component: {fileID: 3290076427616049289}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -190,7 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cf45dd670d15e44afe69ca813fc597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
   target: {fileID: 0}
+  anim: {fileID: 0}
   ATK_Range: 10
   beforeDelay: 1
   dashSpeed: 25
@@ -222,6 +225,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &3290076427616049289
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090478179936201683}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37b24bde22a4f0240983d98254663574, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &9090478180726983553
 PrefabInstance:
   m_ObjectHideFlags: 0
