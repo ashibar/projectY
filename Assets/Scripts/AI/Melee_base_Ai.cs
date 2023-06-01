@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Melee_base_Ai : Action_AI
 {
     public float speed;
     
     public Rigidbody2D target;
-
-    private Unit unit;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;

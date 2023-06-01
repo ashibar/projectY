@@ -26,7 +26,7 @@ public class Enemy : Unit
             gameObject.AddComponent<Movement>();
         movement = GetComponent<Movement>();
 
-        action_ai = GetComponentInChildren<Action_AI>();
+        action_ai = GetComponent<Action_AI>();
     }
 
     protected override void Start()

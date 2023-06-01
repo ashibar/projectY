@@ -31,6 +31,7 @@ public class Player : Unit
         playerMovement = GetComponentInChildren<PlayerMovement>();
         magicManager = GetComponentInChildren<MagicManager>();
         animationManager = GetComponentInChildren<AnimationManager>();
+        
     }
 
     protected override void Start()
