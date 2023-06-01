@@ -128,6 +128,28 @@ public class StageManager : MonoBehaviour
 
         return -1;
     }
+    // 조건 검사
+    [SerializeField] public List<string> conditionTriggers = new List<string>();
+    private void ConditionCheck()
+    {
+        for (int i = 0; i < stageInfo.event_req.Count; i++)
+        {
+            foreach (string t in conditionTriggers)
+            {
+                if (stageInfo.event_req[i].Condition.CheckCondition(t))
+                {
+                    conditionTriggers.Remove(t);
+                    messageBuffer.Add(stageInfo.event_req[i].Message);
+                    stageInfo.event_req.RemoveAt(i);
+                    return;
+                }
+            }
+            if (stageInfo.event_req[i].Condition.CheckCondition(""))
+            {
+
+            }
+        }
+    }
     // 파괴시 모든 이벤트 중단
     private void OnDestroy()
     {
