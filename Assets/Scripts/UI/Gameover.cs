@@ -14,7 +14,9 @@ public class Gameover : MonoBehaviour
     
     public void isRetryCheck()
     {
+        Time.timeScale = 1;
         LoadingSceneController.LoadScene("BattleScene");
+        
     }
     
 }

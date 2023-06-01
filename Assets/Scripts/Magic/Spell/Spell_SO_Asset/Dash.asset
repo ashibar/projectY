@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spell_DMG: 0
   spell_Speed: 0
-  spell_CoolTime: 3
+  spell_CoolTime: 5
   spell_Duration: 3
   spell_Range_Duration: 0
   spell_Range_TicDMG: 0
