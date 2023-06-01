@@ -43,7 +43,8 @@ public class Boss_base_Ai : Action_AI
     private void MobMove()
     {
         Vector2 dir = target.position - rigid.position;
-        Vector2 nextvac = dir.normalized * unit.stat.Speed * Time.deltaTime;
+        Vector2 nextvac = dir.normalized;
+        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + nextvac, unit.stat.Speed * Time.deltaTime);
         rigid.MovePosition(rigid.position + nextvac);
         rigid.velocity = Vector2.zero;
     }
