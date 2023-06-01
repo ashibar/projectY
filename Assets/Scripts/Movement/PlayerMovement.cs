@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsMove { get=>isMove; set => isMove = value; }
     public float moveSpeed = 10;
+    private bool isbool = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -26,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         if(player.stat.Hp_current == 0)
+           {
+               player.stat.Hp_current -= 1;
+                Debug.Log("Game Over");
+           }
+        
         Vector2 dir = ControlByKeyboard();
         MoveAnimation(CheckMove(dir));
         if(IsMove)

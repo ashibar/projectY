@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     }
 
     [SerializeField] private ScreenFade screenFade;
+    [SerializeField] private Gameover gameover;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class UIManager : MonoBehaviour
     {
         EventReciever();
         EventListener();
+        gameoverListener();
     }
 
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
@@ -76,5 +78,15 @@ public class UIManager : MonoBehaviour
             }
         }
 
+    }
+    Player player = null;
+    private void gameoverListener()
+    {
+        player = Player.instance;
+        if (player.stat.Hp_current <= 0)
+        {
+            gameover.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }
