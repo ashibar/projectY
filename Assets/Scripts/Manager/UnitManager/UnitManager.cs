@@ -67,8 +67,8 @@ public class UnitManager : MonoBehaviour
         }
         return -1;
     }
-
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
+
     private void EventReciever()
     {
         int error = StageManager.Instance.SearchMassage(5, messageBuffer);
