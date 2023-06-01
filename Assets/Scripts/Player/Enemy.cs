@@ -74,7 +74,7 @@ public class Enemy : Unit
     }
     private async void MeleeDamange(Collision2D collision)
     {
-        Debug.Log("");
+        //Debug.Log("");
         if (!isCooltime)
         {
             isCooltime = true;
