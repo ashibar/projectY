@@ -143,12 +143,12 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 9090478179936201682, guid: 80733cdbd959a074ebc12148ddcd59f6, type: 3}
-      propertyPath: afterDelay
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9090478179936201682, guid: 80733cdbd959a074ebc12148ddcd59f6, type: 3}
       propertyPath: smartDash
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090478179936201682, guid: 80733cdbd959a074ebc12148ddcd59f6, type: 3}
+      propertyPath: afterDelay
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9090478179936201682, guid: 80733cdbd959a074ebc12148ddcd59f6, type: 3}
       propertyPath: isCooltime
@@ -169,6 +169,10 @@ PrefabInstance:
     - target: {fileID: 9090478179936201683, guid: 80733cdbd959a074ebc12148ddcd59f6, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090478179936201683, guid: 80733cdbd959a074ebc12148ddcd59f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9090478179936201711, guid: 80733cdbd959a074ebc12148ddcd59f6, type: 3}
       propertyPath: m_RootOrder
@@ -15197,7 +15201,7 @@ MonoBehaviour:
   spawnMain:
   - {fileID: 1516773536}
   unitManager: {fileID: 0}
-  amount: 0
+  amount: 1
   spawn_cooltime: 10
 --- !u!1 &1361707508
 GameObject:

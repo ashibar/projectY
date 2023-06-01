@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
@@ -61,4 +62,35 @@ public class Enemy : Unit
     {
 
     }
+
+    [SerializeField] private bool isCooltime;
+    [SerializeField] private bool isInterrupted;
+    [SerializeField] private float damage = 10f;
+    [SerializeField] private float cooltime = 3f;
+    protected void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            MeleeDamange(collision);
+    }
+    private async void MeleeDamange(Collision2D collision)
+    {
+        Debug.Log("");
+        if (!isCooltime)
+        {
+            isCooltime = true;
+            await MeleeDamage_Task(collision, cooltime);
+            isCooltime = false;
+        }
+    }
+    private async Task MeleeDamage_Task(Collision2D collision, float duration)
+    {
+        float end = Time.time + duration;
+        collision.gameObject.GetComponent<Unit>().stat.Hp_current -= damage;
+        while (Time.time < end)
+        {
+            if (isInterrupted)
+                await Task.FromResult(0);
+            await Task.Yield();
+        }
+    } 
 }
