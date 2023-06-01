@@ -17,6 +17,7 @@ public class Boss_base_Ai : Action_AI
     [SerializeField] private float dashDuration = 0.3f;
     [SerializeField] private float afterDelay = 1.5f;
     [SerializeField] private float dashCooltime = 5f;
+    [SerializeField] private bool smartDash;
 
     protected override void Awake()
     {
@@ -71,8 +72,8 @@ public class Boss_base_Ai : Action_AI
     private async Task WaitBeforeCast(float duration)
     {
         float end = Time.time + duration;
-        Vector2 dir = target.position - rigid.position;
-        dash_vec = dir.normalized;
+        if (!smartDash)
+            dash_vec = (target.position - rigid.position).normalized;
         anim.SetTrigger("isBeforeDelay");
         while (Time.time < end)
         {
@@ -83,6 +84,8 @@ public class Boss_base_Ai : Action_AI
             // ¼± µ¿ÀÛ
             await Task.Yield();
         }
+        if (smartDash)
+            dash_vec = (target.position - rigid.position).normalized;
     }
     private async Task DashCast(float duration)
     {
