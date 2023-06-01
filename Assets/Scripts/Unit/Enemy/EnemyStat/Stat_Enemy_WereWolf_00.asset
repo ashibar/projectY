@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   name_unit: WereWolf
   hp: 100
-  speed: 12
+  speed: 6
   hp_regen: 0
   armor: 0
   damage: 0
