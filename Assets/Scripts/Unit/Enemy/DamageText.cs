@@ -14,7 +14,7 @@ public class DamageText : MonoBehaviour
 
     TextMeshPro text;
     Color alpha;
-    public int damage;
+    public float damage;
     
     // Start is called before the first frame update
     void Start()
