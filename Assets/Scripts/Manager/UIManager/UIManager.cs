@@ -57,13 +57,18 @@ public class UIManager : MonoBehaviour
     private void EventListener()
     {
         bool isError = false;
+        EventMessage temp = new EventMessage();
+        if (messageBuffer.Count <= 0)
+            return;
+
         foreach (EventMessage m in messageBuffer)
         {
             switch (m.ActionSTR)
             {
                 case "Fade Out":
                     screenFade.SetScreenFade(false);
-                    break;
+                    messageBuffer.Remove(m);
+                    return;
                 case "Fade In":
                     screenFade.SetScreenFade(true);
                     break;
@@ -72,17 +77,18 @@ public class UIManager : MonoBehaviour
                     break;
             }
 
-            if (!isError)
-            {
-                messageBuffer.Remove(m);
-            }
+            
         }
 
+        if (!isError)
+        {
+            messageBuffer.Remove(temp);
+        }
     }
     Player player = null;
     private void gameoverListener()
     {
-        player = Player.instance;
+        player = Player.Instance;
         if (player.stat.Hp_current <= 0)
         {
             gameover.gameObject.SetActive(true);

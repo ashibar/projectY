@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 9090478179936201682}
   - component: {fileID: 9090478179936201710}
   - component: {fileID: 3290076427616049289}
+  - component: {fileID: 1827238772}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -179,6 +180,10 @@ MonoBehaviour:
   pos_toShoot: {x: 0, y: 0}
   spawner_pointer: {fileID: 0}
   action_ai: {fileID: 0}
+  isCooltime: 0
+  isInterrupted: 0
+  damage: 10
+  cooltime: 3
 --- !u!114 &9090478179936201682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,11 +200,12 @@ MonoBehaviour:
   target: {fileID: 0}
   anim: {fileID: 0}
   ATK_Range: 10
-  beforeDelay: 1
-  dashSpeed: 25
-  dashDuration: 0.5
-  afterDelay: 1.5
-  dashCooltime: 5
+  beforeDelay: 0.5
+  dashSpeed: 70
+  dashDuration: 0.25
+  afterDelay: 0.7
+  dashCooltime: 4
+  smartDash: 1
   isCooltime: 0
   isCasting: 0
   isInterrupted: 0
@@ -224,7 +230,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &3290076427616049289
 Animator:
   serializedVersion: 4
@@ -245,6 +251,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1827238772
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090478179936201683}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06348197, y: -0.11638387}
+  m_Size: {x: 0.70385456, y: 1.1376489}
+  m_Direction: 0
 --- !u!1001 &9090478180726983553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +276,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1234606670270080760, guid: 7decfde54ec02964a903fb47a40c82dc, type: 3}
       propertyPath: dash_speed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234606670270080760, guid: 7decfde54ec02964a903fb47a40c82dc, type: 3}
+      propertyPath: dash_duration
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3181744477199058931, guid: 7decfde54ec02964a903fb47a40c82dc, type: 3}

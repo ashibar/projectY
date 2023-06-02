@@ -7,7 +7,7 @@ public class Gameover : MonoBehaviour
     Player player = null;
     void Start()
     {
-        player = Player.instance;
+        player = Player.Instance;
     }
 
     // Update is called once per frame

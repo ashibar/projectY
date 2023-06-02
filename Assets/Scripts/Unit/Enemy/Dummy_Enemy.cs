@@ -16,6 +16,6 @@ public class Dummy_Enemy : Enemy
     protected override void Update()
     {
         base.Update();
-        movement.MoveToPosition_transform(Player.instance.transform.position, stat.Speed);
+        movement.MoveToPosition_transform(Player.Instance.transform.position, stat.Speed);
     }
 }

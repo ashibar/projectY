@@ -28,8 +28,8 @@ public class Condition_ClassDrawer : PropertyDrawer
             case ConditionSort.MoveToPos:
                 EditorGUI.PropertyField(fieldRect, property.FindPropertyRelative("targetPos"));
                 break;
-            case ConditionSort.String:
-                EditorGUI.PropertyField(fieldRect, property.FindPropertyRelative("targetString"));
+            case ConditionSort.MoveToArea:
+                EditorGUI.PropertyField(fieldRect, property.FindPropertyRelative("targetAreaID"));
                 break;
             case ConditionSort.targetNum:
                 EditorGUI.PropertyField(fieldRect, property.FindPropertyRelative("targetNum"));

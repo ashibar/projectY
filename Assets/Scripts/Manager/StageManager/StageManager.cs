@@ -26,9 +26,14 @@ public class StageManager : MonoBehaviour
             return instance; // 안비어있네? 그냥 그대로 가져와
         }
     }
-    
+
+        [SerializeField] private ConditionChecker conditionChecker;
+    [SerializeField] private EventTimer eventTimer;
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
+
+    public ConditionChecker ConditionChecker { get => conditionChecker; set => conditionChecker = value; }
+    public EventTimer EventTimer { get => eventTimer; set => eventTimer = value; }
 
     public List<EventMessage> messageBuffer = new List<EventMessage>();
 
@@ -40,12 +45,15 @@ public class StageManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        conditionChecker = GetComponentInChildren<ConditionChecker>();
+        eventTimer = GetComponentInChildren<EventTimer>();
+        Time.timeScale = 1.0f;
         SetStageInfo(stageInfo_so); // 나중에 로딩할때 대체
     }
 
     private void Update()
     {
-        Async_Function();
+        //Async_Function();
     }
 
     // 로딩 시 StageManager에 스테이지 정보를 넣기 위한 함수
@@ -53,6 +61,7 @@ public class StageManager : MonoBehaviour
     {
         stageInfo_so = _stageInfo_so;
         stageInfo = new StageInfo(_stageInfo_so);
+        conditionChecker.Events.AddRange(stageInfo.EventList);
     }
 
     // 다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수
@@ -91,71 +100,49 @@ public class StageManager : MonoBehaviour
     }
 
     // 스테이지 정보의 이벤트 순회 함수
-    [SerializeField] private bool isCooltime;
-    [SerializeField] private int eventIndex = 0;
-    [SerializeField] private int interruptedIndex = -1;
-    private async void Async_Function()
-    {
-        // 무결성
-        if (stageInfo == null)
-            return;
+    //[SerializeField] private bool isCooltime;
+    //[SerializeField] private int eventIndex = 0;
+    //[SerializeField] private int interruptedIndex = -1;
+    //private async void Async_Function()
+    //{
+    //    // 무결성
+    //    if (stageInfo == null)
+    //        return;
 
-        // 업데이트
-        if (!isCooltime && eventIndex < stageInfo.event_seq.Count)
-        {
-            isCooltime = true;
-            interruptedIndex = await Task_Function();
-            isCooltime = false;
-        }
+    //    // 업데이트
+    //    if (!isCooltime && eventIndex < stageInfo.EventList.Count)
+    //    {
+    //        isCooltime = true;
+    //        interruptedIndex = await Task_Function();
+    //        isCooltime = false;
+    //    }
 
-        if (interruptedIndex != -1)
-            Debug.Log("interruptedIndex = " + interruptedIndex.ToString());
-    }
-    // 이벤트의 메시지 입력 함수
-    private async Task<int> Task_Function()
-    {
-        float end = Time.time + stageInfo.event_seq[eventIndex].DurationToStart;
+    //    if (interruptedIndex != -1)
+    //        Debug.Log("interruptedIndex = " + interruptedIndex.ToString());
+    //}
+    //// 이벤트의 메시지 입력 함수
+    //private async Task<int> Task_Function()
+    //{
+    //    float end = Time.time + stageInfo.EventList[eventIndex].DurationToStart;
 
-        while (Time.time < end)
-        {
-            if (stageInfo.event_seq[eventIndex].Isinterrupted)
-                await Task.FromResult(0);
-            await Task.Yield();
-        }
+    //    while (Time.time < end)
+    //    {
+    //        if (stageInfo.EventList[eventIndex].Isinterrupted)
+    //            await Task.FromResult(0);
+    //        await Task.Yield();
+    //    }
 
-        messageBuffer.Add(stageInfo.event_seq[eventIndex].Message);
-        eventIndex++;
+    //    messageBuffer.Add(stageInfo.EventList[eventIndex].Message);
+    //    eventIndex++;
 
-        return -1;
-    }
-    // 조건 검사
-    [SerializeField] public List<string> conditionTriggers = new List<string>();
-    private void ConditionCheck()
-    {
-        for (int i = 0; i < stageInfo.event_req.Count; i++)
-        {
-            foreach (string t in conditionTriggers)
-            {
-                if (stageInfo.event_req[i].Condition.CheckCondition(t))
-                {
-                    conditionTriggers.Remove(t);
-                    messageBuffer.Add(stageInfo.event_req[i].Message);
-                    stageInfo.event_req.RemoveAt(i);
-                    return;
-                }
-            }
-            if (stageInfo.event_req[i].Condition.CheckCondition(""))
-            {
-
-            }
-        }
-    }
-    // 파괴시 모든 이벤트 중단
-    private void OnDestroy()
-    {
-        foreach (EventInfo e in stageInfo.event_seq)
-        {
-            e.Isinterrupted = true;
-        }
-    }
+    //    return -1;
+    //}
+    //// 파괴시 모든 이벤트 중단
+    //private void OnDestroy()
+    //{
+    //    foreach (EventInfo e in stageInfo.EventList)
+    //    {
+    //        e.Isinterrupted = true;
+    //    }
+    //}
 }

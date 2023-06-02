@@ -69,7 +69,8 @@ public class SpawnManager : MonoBehaviour
         EventReciever();
         if (!iscoroutineRunning)
         {
-            StartCoroutine(mobspawn());
+            if (spawner.Count > 0)
+                StartCoroutine(mobspawn());
         }
     }
 
@@ -83,6 +84,11 @@ public class SpawnManager : MonoBehaviour
 
     private void EventListener()
     {
+        bool isError = false;
+        EventMessage temp = new EventMessage();
+        if (messageBuffer.Count <= 0)
+            return;
+
         foreach (EventMessage m in messageBuffer)
         {
             switch (m.ActionSTR)
@@ -91,18 +97,25 @@ public class SpawnManager : MonoBehaviour
                     // 0번행동;
                     if (!iscoroutineRunning)
                     {
-                        StartCoroutine(mobspawn());
+                        if (spawner.Count > 0)
+                            StartCoroutine(mobspawn());
                     }
                     break;
                 case "InActive Spawner":
                     // 1번행동;
                     Bossspawn();
                     break;
+                default:
+                    isError = true;
+                    break;
 
             }
         }
 
-
+        if (!isError)
+        {
+            messageBuffer.Remove(temp);
+        }
     }
 
     private void TestSpawn()
