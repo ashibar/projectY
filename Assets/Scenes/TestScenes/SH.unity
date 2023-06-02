@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 82254145}
   - component: {fileID: 82254147}
   - component: {fileID: 82254146}
+  - component: {fileID: 82254148}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -378,7 +379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100/100
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea87deb6f7b381447be9714aecdf645c, type: 2}
   m_sharedMaterial: {fileID: -7419604948549011477, guid: ea87deb6f7b381447be9714aecdf645c, type: 2}
@@ -455,6 +456,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82254144}
   m_CullTransparentMesh: 1
+--- !u!114 &82254148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82254144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53347101294973541bb50fa4c3b571ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100219230
 GameObject:
   m_ObjectHideFlags: 0
@@ -42327,6 +42340,7 @@ MonoBehaviour:
   dashDuration: 0.3
   afterDelay: 1.5
   dashCooltime: 5
+  smartDash: 0
   isCooltime: 0
   isCasting: 0
   isInterrupted: 0
@@ -43081,6 +43095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1887287359}
   - component: {fileID: 1887287360}
+  - component: {fileID: 1887287361}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -43151,7 +43166,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 116185747}
   m_HandleRect: {fileID: 0}
@@ -43163,6 +43178,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1887287361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887287358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4284affdc1affac47af951d46a3284c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHp: 100
+  CurHp: 100
 --- !u!1 &1925696600
 GameObject:
   m_ObjectHideFlags: 0
