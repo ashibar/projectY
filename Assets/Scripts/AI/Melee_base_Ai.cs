@@ -12,7 +12,7 @@ public class Melee_base_Ai : Action_AI
     SpriteRenderer spriter;
     protected override void Awake()
     {
-        GameObject player = Player.instance.gameObject;
+        GameObject player = Player.Instance.gameObject;
         target =player.GetComponent<Rigidbody2D>();
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();

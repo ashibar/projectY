@@ -1,0 +1,6 @@
+﻿StageName,TestStage_02,,,,,,,,,,,
+id,sort,isLoop,duration,moduleID,actionSTR,targetSTR,targetNum,condSort,trigger,pos,string,num
+1,0,0,0,1,aaa,zzz,10,0,0,,,
+2,0,0,0,1,bbb,yyy,20,0,0,,,
+3,0,0,4,1,ccc,xxx,30,0,0,,,
+4,0,0,5,1,ddd,www,40,0,0,,,

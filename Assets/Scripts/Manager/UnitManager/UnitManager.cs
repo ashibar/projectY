@@ -1,15 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> clones = new List<GameObject>();
-    private Unit unit;
-    public List<GameObject> Clones { get => clones;}
-    private static UnitManager instance;
-
-    
+    private static UnitManager instance;    
     public static UnitManager Instance
     {
         get
@@ -30,11 +26,22 @@ public class UnitManager : MonoBehaviour
             return instance;
         }
     }
+
+    [SerializeField] private PlayerAnimationController playerAnimationController;
+    [SerializeField] private List<GameObject> clones = new List<GameObject>();
+    private Unit unit;
+    public List<GameObject> Clones { get => clones; }
+
+    private void Awake()
+    {
+        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+    }
+
     private void Start()
     {
         if (unit == null)
         {
-            unit = Player.instance;
+            unit = Player.Instance;
         }
         clones.Add(unit.gameObject);
     }
@@ -71,7 +78,7 @@ public class UnitManager : MonoBehaviour
 
     private void EventReciever()
     {
-        int error = StageManager.Instance.SearchMassage(5, messageBuffer);
+        int error = StageManager.Instance.SearchMassage(3, messageBuffer);
         
         if (error == -1)
             return;
@@ -80,26 +87,59 @@ public class UnitManager : MonoBehaviour
     private void EventListener()
     {
         bool isError = false;
+        EventMessage temp = new EventMessage();
+
+        if (messageBuffer.Count == 0)
+            return;
+        else
+            Debug.Log(messageBuffer.Count);
+
         foreach (EventMessage m in messageBuffer)
         {
+            temp = m;
             switch (m.ActionSTR)
             {
-                case "Fade Out":
-                    
-                    break;
-                case "Fade In":
-                    
-                    break;
+                case "Player Move":
+                    unit.GetComponentInChildren<UnitForceMove>().SetForceMove(unit, m.TargetPOS, m.TargetNUM);
+                    unit.GetComponentInChildren<UnitForceMove>().IsForceMove = true;
+                    messageBuffer.Remove(m);
+                    return;
+                case "Player Stop":
+                    unit.GetComponentInChildren<UnitForceMove>().IsForceMove = false;
+                    messageBuffer.Remove(m);
+                    return;
+                case "Player Animation":
+                    playerAnimationController.SetAnimation(m.TargetSTR);
+                    messageBuffer.Remove(m);
+                    return;
                 default:
                     isError = true;
                     break;
             }
-
-            if (!isError)
-            {
-                messageBuffer.Remove(m);
-            }
         }
 
+        if (!isError)
+        {
+            messageBuffer.Remove(temp);
+        }
+    }
+
+    private void UnitForceMove(Unit _unit, Vector2 targetPos, float speed, EventMessage m)
+    {
+        Vector2 pos = _unit.transform.position;
+        Vector2 dir = (targetPos - pos).normalized;
+
+        float distanceToTarget = (targetPos - pos).magnitude;
+
+        // 등속 이동
+        if (distanceToTarget > 0f)
+        {
+            if (speed == 0)
+                _unit.transform.position = Vector2.MoveTowards(pos, targetPos, _unit.stat.Speed * Time.deltaTime);
+            else
+                _unit.transform.position = Vector2.MoveTowards(pos, targetPos, speed * Time.deltaTime);
+        }
+        //else
+            //messageBuffer.Remove(m);
     }
 }

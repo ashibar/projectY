@@ -13,7 +13,28 @@ using UnityEngine;
 
 public class Player : Unit
 {
-    public static Player instance;
+    private static Player instance;
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null) // instance가 비어있다
+            {
+                var obj = FindObjectOfType<Player>();
+                if (obj != null)
+                {
+                    instance = obj;                                             // 전체 찾아봤는데? 있네? 그걸 넣자
+                }
+                else
+                {
+                    var newObj = new GameObject().AddComponent<Player>(); // 전체 찾아봤는데? 없네? 새로만들자
+                    instance = newObj;
+                }
+            }
+            return instance; // 안비어있네? 그냥 그대로 가져와
+        }
+    }
+
     // stat은 상위 클래스인 Unit으로 올렸습니다.
 
     public MovementManager movementManger;
@@ -26,7 +47,12 @@ public class Player : Unit
     protected override void Awake()
     {
         base.Awake();
-        instance = GetComponent<Player>();
+        var objs = FindObjectsOfType<Player>();
+        if (objs.Length != 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
         movementManger = GetComponentInChildren<MovementManager>();
         playerMovement = GetComponentInChildren<PlayerMovement>();
         magicManager = GetComponentInChildren<MagicManager>();

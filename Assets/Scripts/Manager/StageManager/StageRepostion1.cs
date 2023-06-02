@@ -9,7 +9,7 @@ public class StageRepostion1 : MonoBehaviour
         if (!collision.CompareTag("Area"))
             return;
 
-        Vector3 playerPos = Player.instance.transform.position;
+        Vector3 playerPos = Player.Instance.transform.position;
         Vector3 myPos = transform.position;
 
         switch (transform.tag)
