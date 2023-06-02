@@ -108,6 +108,11 @@ public class UnitManager : MonoBehaviour
                     unit.GetComponentInChildren<UnitForceMove>().IsForceMove = false;
                     messageBuffer.Remove(m);
                     return;
+                case "Player Move Input":
+                    unit.GetComponent<Player>().playerMovement.IsMove = string.Equals(m.TargetSTR, "true");
+                    Debug.Log(string.Equals(m.TargetSTR, "true"));
+                    messageBuffer.Remove(m);
+                    return;
                 case "Player Animation":
                     playerAnimationController.SetAnimation(m.TargetSTR);
                     messageBuffer.Remove(m);

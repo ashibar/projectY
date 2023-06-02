@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
+    [SerializeField] private float speed = 3f;
     private Slider hpbar;
     public float MaxHp;
     public float CurHp;
@@ -25,7 +26,7 @@ public class PlayerHp : MonoBehaviour
 
     public void PlayerHpUpdate()
     {
-        hpbar.value = Mathf.Lerp(hpbar.value,(float) CurHp / (float)MaxHp, Time.deltaTime);
+        hpbar.value = Mathf.Lerp(hpbar.value,(float) Player.Instance.stat.Hp_current/ (float)Player.Instance.stat.Hp, speed * Time.deltaTime);
     }
 
 }

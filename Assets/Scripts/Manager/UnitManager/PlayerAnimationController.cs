@@ -19,15 +19,19 @@ public class PlayerAnimationController : MonoBehaviour
                 animator.SetTrigger("isMove");
                 break;
             case "Walk":
-                Debug.Log("Walk");
                 animator.SetTrigger("isWalk");
                 break;
             case "Run":
                 animator.SetTrigger("isRun");
                 break;
             case "Idle":
-                Debug.Log("Idle");
                 animator.SetTrigger("isIdle");
+                break;
+            case "None":
+                animator.SetTrigger("isNone");
+                break;
+            case "Gaze":
+                animator.SetTrigger("isGaze");
                 break;
         }
     }

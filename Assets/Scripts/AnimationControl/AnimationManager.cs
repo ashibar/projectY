@@ -25,9 +25,10 @@ public class AnimationManager : MonoBehaviour
         // case 안에 있는 string 값을 입력하시면 Trigger가 실행됩니다.
         switch (action)
         {
-            case "attack": animator.SetTrigger("isAttack"); break;
-            case "move": animator.SetTrigger("isMove"); break;
-            case "stop": animator.SetTrigger("isAttack"); break;
+            case "Attack": animator.SetTrigger("isAttack"); break;
+            case "Move": animator.SetTrigger("isWalk"); break;
+            case "None": animator.SetTrigger("isNone"); break;
+            
         }
     }
 }

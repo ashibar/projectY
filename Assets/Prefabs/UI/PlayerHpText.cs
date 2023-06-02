@@ -8,12 +8,10 @@ public class PlayerHpText : MonoBehaviour
     private string MaxHpText;
     private string CurHpText;
     private TextMeshProUGUI textMeshPro;
-    private PlayerHp playerHp;
 
      void Awake()
     {
         textMeshPro = GetComponent<TextMeshProUGUI>();
-        playerHp = GetComponentInParent<PlayerHp>();
 
     }
 
@@ -29,8 +27,11 @@ public class PlayerHpText : MonoBehaviour
 
     public void UpdateHpText()
     {
-        MaxHpText = playerHp.MaxHp.ToString();
-        CurHpText = playerHp.CurHp.ToString();
+        MaxHpText = Player.Instance.stat.Hp.ToString();
+        if (Player.Instance.stat.Hp_current >= 0)
+            CurHpText = Player.Instance.stat.Hp_current.ToString();
+        else
+            CurHpText = "0";
 
         textMeshPro.text = CurHpText + "/" + MaxHpText;
     }

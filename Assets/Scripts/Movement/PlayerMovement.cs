@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Player player;
     private MovementManager movementmanager;
     private Rigidbody2D rb;
-    private bool isMove = true;
+    [SerializeField] private bool isMove = true;
 
     public bool IsMove { get=>isMove; set => isMove = value; }
     public float moveSpeed = 10;
@@ -33,10 +33,11 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Game Over");
            }
         
-        Vector2 dir = ControlByKeyboard();
-        MoveAnimation(CheckMove(dir));
+        Vector2 dir = ControlByKeyboard();        
         if(IsMove)
         {
+            MoveAnimation(CheckMove(dir));
+            Flip(dir);
             player.dir_toMove = dir;
             Movement(dir);
         }
@@ -51,19 +52,33 @@ public class PlayerMovement : MonoBehaviour
     private void MoveAnimation(bool isMove)
     {
         if (isMove) player.animationManager.AnimationControl("Move");
-        else player.animationManager.AnimationControl("Stop");
+        else player.animationManager.AnimationControl("None");
+    }
+
+    private void Flip(Vector2 dir)
+    {
+        if (dir.x > 0)
+        {
+            player.transform.localScale = new Vector3(1, player.transform.localScale.y, player.transform.localScale.z);
+        }
+        if (dir.x < 0)
+        {
+            player.transform.localScale = new Vector3(-1, player.transform.localScale.y, player.transform.localScale.z);
+        }
     }
 
     private Vector2 ControlByKeyboard()
     {
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
+        
 
         return new Vector2(inputX, inputY).normalized;
     }
 
     private void Movement(Vector2 dir)
     {
+        
         player.transform.Translate(dir * Time.deltaTime * player.stat_processed.Speed);
     }
 }

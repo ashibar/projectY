@@ -46,7 +46,7 @@ public class EventTimer : MonoBehaviour
                 await Task.FromResult(0);
             await Task.Yield();
         }
-        Debug.Log(eventIndex + ", " + events[eventIndex].DurationToStart);
+        Debug.Log(eventIndex + ", " + events[eventIndex].Id + ", " + events[eventIndex].DurationToStart);
         StageManager.Instance.messageBuffer.Add(events[eventIndex].Message);
         eventIndex++;
 

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073f8a55cc5d0104abf4647814df3605, type: 3}
+  m_Name: Event_tuto_07
+  m_EditorClassIdentifier: 
+  id: 7
+  sort: 0
+  condition:
+    sort: 0
+    targetPos: {x: 0, y: 0}
+    targetAreaID: 0
+    targetFlag: 
+    targetNum: 0
+  isLoop: 0
+  durationToStart: 2
+  message:
+    moduleID: 5
+    actionSTR: Center Indicator
+    targetSTR: true
+    targetNUM: 0
+    targetPOS: {x: 0, y: 0}

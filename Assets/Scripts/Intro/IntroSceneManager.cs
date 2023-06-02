@@ -20,7 +20,7 @@ public class IntroSceneManager : MonoBehaviour
     private IEnumerator LoadProgress()
     {
         yield return new WaitForSeconds(1);
-        LoadingSceneController.LoadScene("BattleScene");
+        LoadingSceneController.LoadScene("TutorialScene");
     }
 
     private void Something()

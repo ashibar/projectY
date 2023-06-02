@@ -27,7 +27,7 @@ public class StageManager : MonoBehaviour
         }
     }
 
-        [SerializeField] private ConditionChecker conditionChecker;
+    [SerializeField] private ConditionChecker conditionChecker;
     [SerializeField] private EventTimer eventTimer;
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
@@ -47,6 +47,7 @@ public class StageManager : MonoBehaviour
         }
         conditionChecker = GetComponentInChildren<ConditionChecker>();
         eventTimer = GetComponentInChildren<EventTimer>();
+        messageBuffer.Clear();
         Time.timeScale = 1.0f;
         SetStageInfo(stageInfo_so); // 나중에 로딩할때 대체
     }

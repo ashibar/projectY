@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private ScreenFade screenFade;
     [SerializeField] private Gameover gameover;
+    [SerializeField] private Indicator indicator_keyboard;
+    [SerializeField] private Indicator indicator_centerImage;
 
     private void Awake()
     {
@@ -71,7 +73,16 @@ public class UIManager : MonoBehaviour
                     return;
                 case "Fade In":
                     screenFade.SetScreenFade(true);
-                    break;
+                    messageBuffer.Remove(m);
+                    return;
+                case "KeyBoard Indicator":
+                    indicator_keyboard.SetAnim("Out");
+                    messageBuffer.Remove(m);
+                    return;
+                case "Center Indicator":
+                    indicator_centerImage.gameObject.SetActive(string.Equals(m.TargetSTR, "true"));
+                    messageBuffer.Remove(m);
+                    return;
                 default:
                     isError = true;
                     break;
