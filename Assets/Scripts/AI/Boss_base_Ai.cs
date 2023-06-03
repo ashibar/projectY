@@ -18,6 +18,7 @@ public class Boss_base_Ai : Action_AI
     [SerializeField] private float afterDelay = 1.5f;
     [SerializeField] private float dashCooltime = 5f;
     [SerializeField] private bool smartDash;
+    [SerializeField] private AfterImage afterImage;
 
     protected override void Awake()
     {
@@ -26,7 +27,7 @@ public class Boss_base_Ai : Action_AI
         target = player.GetComponent<Rigidbody2D>();
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
-
+        afterImage = GetComponent<AfterImage>();
     }
     public override void ai_process()
     {
@@ -96,7 +97,8 @@ public class Boss_base_Ai : Action_AI
             {
                 await Task.FromResult(0);
             }
-            
+            afterImage.SetImage(gameObject);
+            afterImage.IsActive = true;
             transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + dash_vec, dashSpeed * Time.deltaTime);
 
             await Task.Yield();
@@ -106,6 +108,7 @@ public class Boss_base_Ai : Action_AI
     {
         float end = Time.time + duration;
         anim.SetTrigger("isSlash");
+        afterImage.IsActive = false;
         while (Time.time < end)
         {
             if (isInterrupted)

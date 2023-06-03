@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -26,16 +27,21 @@ public class StageManager : MonoBehaviour
             return instance; // 안비어있네? 그냥 그대로 가져와
         }
     }
-
+    // 하위 모듈
     [SerializeField] private ConditionChecker conditionChecker;
     [SerializeField] private EventTimer eventTimer;
+    [SerializeField] private StageEndCheck stageEndCheck;
+    // 스테이지 정보
+    [SerializeField] private StageInfoContainer_so stageInfoContainer_so;
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
 
     public ConditionChecker ConditionChecker { get => conditionChecker; set => conditionChecker = value; }
     public EventTimer EventTimer { get => eventTimer; set => eventTimer = value; }
+    public StageEndCheck StageEndCheck { get => stageEndCheck; set => stageEndCheck = value; }
 
     public List<EventMessage> messageBuffer = new List<EventMessage>();
+
 
     private void Awake()
     {
@@ -47,13 +53,32 @@ public class StageManager : MonoBehaviour
         }
         conditionChecker = GetComponentInChildren<ConditionChecker>();
         eventTimer = GetComponentInChildren<EventTimer>();
+        stageEndCheck = GetComponentInChildren<StageEndCheck>();
         messageBuffer.Clear();
         Time.timeScale = 1.0f;
-        SetStageInfo(stageInfo_so); // 나중에 로딩할때 대체
+        
+        SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]); // 나중에 로딩할때 대체
+    }
+
+    private void Start()
+    {
+        foreach (GameObject g in stageInfo.spawners)
+        {
+            Instantiate(g, SpawnManager.Instance.spawner_holder);
+        }
+        SpawnManager.Instance.SetSpawner();
+        if (UIManager.Instance.TopIndicator)
+        {
+            UIManager.Instance.TopIndicator.Sort = stageInfo.StageSort;
+            UIManager.Instance.TopIndicator.SetActive(); 
+        }
+        SetTargetUnit();
     }
 
     private void Update()
     {
+        if (UIManager.Instance.ResultWindow)
+            TestStageClear();
         //Async_Function();
     }
 
@@ -100,6 +125,36 @@ public class StageManager : MonoBehaviour
             return -1;
     }
 
+    private void TestStageClear()
+    {
+        float cur = UnitManager.Instance.TargetDestroyed;
+        float max = UnitManager.Instance.MaxDestroyed;
+        if (cur >= max)
+        {
+            Time.timeScale = 0f;
+            UIManager.Instance.ResultWindow.gameObject.SetActive(true);
+        }
+    }
+
+    public void GoNextStage()
+    {
+        stageInfoContainer_so.CurID += 1;
+        int next = stageInfoContainer_so.CurID;
+        LoadingSceneController.LoadScene("BattleScene", stageInfoContainer_so.CurID);
+    }
+
+    public void SetTargetUnit()
+    {
+        if (UnitManager.Instance.Clones.Count <= 1)
+            return;
+
+        if (stageInfo.StageSort == StageSort.targetHp)
+        {
+            if (UnitManager.Instance.Clones.Count <= 1)
+                return;
+            UnitManager.Instance.TargetUnit = UnitManager.Instance.Clones[1].GetComponent<Unit>();
+        }
+    }
     // 스테이지 정보의 이벤트 순회 함수
     //[SerializeField] private bool isCooltime;
     //[SerializeField] private int eventIndex = 0;

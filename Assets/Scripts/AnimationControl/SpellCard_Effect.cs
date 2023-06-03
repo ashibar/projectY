@@ -14,7 +14,7 @@ public class SpellCard_Effect : MonoBehaviour
 
     private void Awake()
     {
-        SparklingEffect();
+        //SparklingEffect();
     }
 
     private void SparklingEffect()
@@ -26,11 +26,11 @@ public class SpellCard_Effect : MonoBehaviour
 
     private async void FadeOut(float duration)
     {
-        float end = Time.time + duration;
+        float end = Time.fixedTime + duration;
         float minus = (1 / duration) / (1 / Time.deltaTime);
 
 
-        while (Time.time < end)
+        while (Time.fixedTime < end)
         {
             if (isInterrupted)
                 await Task.FromResult(0);

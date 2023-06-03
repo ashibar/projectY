@@ -29,8 +29,14 @@ public class UnitManager : MonoBehaviour
 
     [SerializeField] private PlayerAnimationController playerAnimationController;
     [SerializeField] private List<GameObject> clones = new List<GameObject>();
+    [SerializeField] private Unit targetUnit;
+    [SerializeField] private int targetDestroyed;
+    [SerializeField] private int maxDestroyed;
     private Unit unit;
     public List<GameObject> Clones { get => clones; }
+    public Unit TargetUnit { get => targetUnit; set => targetUnit = value; }
+    public int TargetDestroyed { get => targetDestroyed; set => targetDestroyed = value; }
+    public int MaxDestroyed { get => maxDestroyed; set => maxDestroyed = value; }
 
     private void Awake()
     {
@@ -62,6 +68,7 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
+            targetDestroyed += 1;
             clones.RemoveAt(id);
         }
     }

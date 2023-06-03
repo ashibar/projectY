@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee40162851d1e5c48b47ec81f8a8c08c, type: 3}
   m_Name: StageInfo_Tutorial
   m_EditorClassIdentifier: 
+  stageName: StageInfo_Tutorial
+  rewards: []
+  stageSort: 0
   eventList_so:
   - {fileID: 11400000, guid: cde30bde82ce13142ade6f6dea937232, type: 2}
   - {fileID: 11400000, guid: c2e4168caf948be4e8f1abda7382124c, type: 2}
@@ -25,3 +28,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b2d014883774504483ce4a9d37e758f, type: 2}
   - {fileID: 11400000, guid: 0b6f9c268acd18b4dbdb514f9af131a0, type: 2}
   - {fileID: 11400000, guid: 82de2da348bf209449e2f3e16adb8db0, type: 2}
+  - {fileID: 11400000, guid: 648ee9ebc0362e04db30e4b628d41603, type: 2}
+  spawners: []

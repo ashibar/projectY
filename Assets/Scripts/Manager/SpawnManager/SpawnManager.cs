@@ -35,6 +35,11 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    public List<Spawner> Spawner { get => spawner; set => spawner = value; }
+
+    public Transform spawner_holder;
+    public Transform spawnMain_holder;
+
     [SerializeField]
     private List<Spawner> spawner = new List<Spawner>();
 
@@ -43,10 +48,6 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     private bool verbose = false;
-    [SerializeField]
-    private bool iscoroutineRunning = false;
-
-    [SerializeField] private float radius = 25;
     private void Awake()
     {
         var objs = FindObjectsOfType<SpawnManager>();
@@ -60,6 +61,11 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    public void SetSpawner()
+    {
         spawner.AddRange(GetComponentsInChildren<Spawner>());
     }
 
@@ -67,11 +73,12 @@ public class SpawnManager : MonoBehaviour
     {
         TestSpawn();
         EventReciever();
-        if (!iscoroutineRunning)
-        {
-            if (spawner.Count > 0)
-                StartCoroutine(mobspawn());
-        }
+        EventListener();
+        //if (!iscoroutineRunning)
+        //{
+        //    if (spawner.Count > 0)
+        //        StartCoroutine(mobspawn());
+        //}
     }
 
     private List<EventMessage> messageBuffer = new List<EventMessage>();
@@ -89,26 +96,31 @@ public class SpawnManager : MonoBehaviour
         if (messageBuffer.Count <= 0)
             return;
 
+        if (spawner.Count <= 0)
+            return;
+
         foreach (EventMessage m in messageBuffer)
         {
             switch (m.ActionSTR)
             {
-                case "Active Spawner":
-                    // 0번행동;
-                    if (!iscoroutineRunning)
-                    {
-                        if (spawner.Count > 0)
-                            StartCoroutine(mobspawn());
-                    }
-                    break;
-                case "InActive Spawner":
-                    // 1번행동;
-                    Bossspawn();
-                    break;
-                default:
-                    isError = true;
-                    break;
-
+                case "Force Spawn": // TargetNum에 스포너 번호를 받음
+                    spawner[(int)m.TargetNUM].SpawnForce();
+                    messageBuffer.Remove(m);
+                    return;
+                case "SetActive Spawner": // TargetNum에 스포너 번호를 받으며, TargetSTR에 true/false로 활성/비활성 설정
+                    spawner[(int)m.TargetNUM].SetActive(string.Equals(m.TargetSTR, "true"));
+                    messageBuffer.Remove(m);
+                    return;
+                case "InActive All":
+                    foreach (Spawner s in spawner)
+                        s.SetActive(false);
+                    messageBuffer.Remove(m);
+                    return;
+                case "Boss Spawn":
+                    spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(0, 6.5f));
+                    StageManager.Instance.SetTargetUnit();
+                    messageBuffer.Remove(m);
+                    return;
             }
         }
 
@@ -138,25 +150,25 @@ public class SpawnManager : MonoBehaviour
     /*
      Radius를 변수로 뺌
      **/
-    IEnumerator mobspawn()
-    {
-        iscoroutineRunning = true;
-        for (int i = 0; i < spawner[0].amount; i++)
-        {
-            //
-            spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(radius));
+    //IEnumerator mobspawn()
+    //{
+    //    iscoroutineRunning = true;
+    //    for (int i = 0; i < spawner[0].amount; i++)
+    //    {
+    //        //
+    //        spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(radius));
  
-        }
+    //    }
 
-        yield return new WaitForSeconds(spawner[0].spawn_cooltime); //나중에다른  종료조건을 while 문으로 받아 체크해서 종료 킬카운트나 시간?
-        iscoroutineRunning = false;
-    }
-    private void Bossspawn()
-    {
-        if (verbose) 
-        {
-            spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(0, 10));
-            //캐릭터정면 상단에 보스 소환
-        }
-    }
+    //    yield return new WaitForSeconds(spawner[0].spawn_cooltime); //나중에다른  종료조건을 while 문으로 받아 체크해서 종료 킬카운트나 시간?
+    //    iscoroutineRunning = false;
+    //}
+    //private void Bossspawn()
+    //{
+    //    if (verbose) 
+    //    {
+    //        spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(0, 10));
+    //        //캐릭터정면 상단에 보스 소환
+    //    }
+    //}
 }

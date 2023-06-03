@@ -4783,6 +4783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditionChecker: {fileID: 0}
   eventTimer: {fileID: 0}
+  stageEndCheck: {fileID: 0}
+  stageInfoContainer_so: {fileID: 11400000, guid: 8f4e7c3c035e1644c97cb7d7bd553088, type: 2}
   stageInfo_so: {fileID: 11400000, guid: e2a45e9df2f89844d85ce57cb32d4bc6, type: 2}
   messageBuffer: []
 --- !u!1 &740025529
@@ -5066,6 +5068,8 @@ MonoBehaviour:
   gameover: {fileID: 0}
   indicator_keyboard: {fileID: 89932104}
   indicator_centerImage: {fileID: 896322452}
+  resultWindow: {fileID: 0}
+  topIndicator: {fileID: 0}
   messageBuffer: []
 --- !u!114 &753966793
 MonoBehaviour:
@@ -6566,6 +6570,9 @@ MonoBehaviour:
   playerAnimationController: {fileID: 0}
   clones:
   - {fileID: 0}
+  targetUnit: {fileID: 0}
+  targetDestroyed: 0
+  maxDestroyed: 0
   messageBuffer: []
 --- !u!1 &1033977836
 GameObject:
@@ -7115,11 +7122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b5aa69d55436c4f8c7242a87b82411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner_holder: {fileID: 0}
+  spawnMain_holder: {fileID: 0}
   spawner: []
   range_test: 10
   verbose: 0
-  iscoroutineRunning: 0
-  radius: 25
 --- !u!1 &1158266863
 GameObject:
   m_ObjectHideFlags: 0

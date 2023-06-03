@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsMove { get=>isMove; set => isMove = value; }
     public float moveSpeed = 10;
-    private bool isbool = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -37,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         if(IsMove)
         {
             MoveAnimation(CheckMove(dir));
-            Flip(dir);
+            //Flip(dir);
             player.dir_toMove = dir;
             Movement(dir);
         }

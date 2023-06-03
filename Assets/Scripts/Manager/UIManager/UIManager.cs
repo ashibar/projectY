@@ -26,10 +26,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
     [SerializeField] private ScreenFade screenFade;
     [SerializeField] private Gameover gameover;
     [SerializeField] private Indicator indicator_keyboard;
     [SerializeField] private Indicator indicator_centerImage;
+    [SerializeField] private ResultWindow resultWindow;
+    [SerializeField] private TopIndicator topIndicator;
+
+    public ResultWindow ResultWindow { get => resultWindow; set => resultWindow = value; }
+    public TopIndicator TopIndicator { get => topIndicator; set => topIndicator = value; }
 
     private void Awake()
     {
@@ -81,6 +87,10 @@ public class UIManager : MonoBehaviour
                     return;
                 case "Center Indicator":
                     indicator_centerImage.gameObject.SetActive(string.Equals(m.TargetSTR, "true"));
+                    messageBuffer.Remove(m);
+                    return;
+                case "Force Load":
+                    LoadingSceneController.LoadScene("BattleScene", 1);
                     messageBuffer.Remove(m);
                     return;
                 default:

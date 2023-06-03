@@ -48,10 +48,14 @@ public class LoadingSceneController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI load_progress_text;
     [SerializeField] private Slider load_progress_slider;
     private static string scene_name_to_load;
+    private static int stage_no_to_load;
+    [SerializeField] private StageInfoContainer_so stageInfoContainer;
 
-    public static void LoadScene(string scene_name)
+    public static void LoadScene(string scene_name, int stage_no = 0)
     {
         scene_name_to_load = scene_name;
+        stage_no_to_load = stage_no;
+        Debug.Log(scene_name + ", " + stage_no);
         SceneManager.LoadScene("LoadingScene");
     }
 
@@ -59,6 +63,8 @@ public class LoadingSceneController : MonoBehaviour
     {
         AsyncOperation op = SceneManager.LoadSceneAsync(scene_name_to_load);
         op.allowSceneActivation = false;
+
+        stageInfoContainer.CurID = stage_no_to_load;
 
         float timer = 0f;
         while (!op.isDone)

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9200093905238565558}
   - component: {fileID: 1234606670270080760}
+  - component: {fileID: 1017488096028214948}
   m_Layer: 0
   m_Name: Parts_Dash
   m_TagString: Untagged
@@ -62,6 +63,23 @@ MonoBehaviour:
   isInterrupted: 0
   dash_speed: 0.04
   dash_duration: 0.1
+  afterImage: {fileID: 0}
+--- !u!114 &1017488096028214948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986787447863138210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80490ca3abad9e8409f9c62247817ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {fileID: 0}
+  husk: {fileID: 2007057984668490016, guid: f76a3bf6c2482fb4f954f3f50cfa70c2, type: 3}
+  duration: 0.02
+  isActive: 0
 --- !u!1 &3181744477199058931
 GameObject:
   m_ObjectHideFlags: 0

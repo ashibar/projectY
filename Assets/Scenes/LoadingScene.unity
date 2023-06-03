@@ -1033,3 +1033,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   load_progress_text: {fileID: 971416380}
   load_progress_slider: {fileID: 1702636567}
+  stageInfoContainer: {fileID: 11400000, guid: 8f4e7c3c035e1644c97cb7d7bd553088, type: 2}

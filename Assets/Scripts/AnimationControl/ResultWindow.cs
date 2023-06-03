@@ -12,4 +12,9 @@ public class ResultWindow : MonoBehaviour
     {
         spell_card_images[num].sprite = sprite;
     }
+
+    public void NextStage()
+    {
+        StageManager.Instance.GoNextStage();
+    }
 }

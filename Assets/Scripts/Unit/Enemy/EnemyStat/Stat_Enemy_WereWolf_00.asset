@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca25cf42d11a7f04c93233ca19fedf30, type: 3}
   m_Name: Stat_Enemy_WereWolf_00
   m_EditorClassIdentifier: 
-  id: 1
+  id: 3
   name_unit: WereWolf
   hp: 1500
   speed: 1.2

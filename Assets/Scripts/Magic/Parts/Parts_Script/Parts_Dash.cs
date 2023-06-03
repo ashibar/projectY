@@ -8,6 +8,14 @@ public class Parts_Dash : Parts_OnUpdate
     [SerializeField] private float dash_speed;
     [SerializeField] private float dash_duration;
 
+    [SerializeField] private AfterImage afterImage;
+
+    protected override void Start()
+    {
+        base.Start();
+        afterImage = GetComponent<AfterImage>();        
+    }
+
     protected async override Task Update_Function(Applier_parameter para, float duration)
     {
         float end = Time.time + para.Stat.Spell_CoolTime;
@@ -16,6 +24,8 @@ public class Parts_Dash : Parts_OnUpdate
             // 매 프레임마다 실행될 것
             if (isInterrupted)
                 await Task.FromResult(false);
+            afterImage.SetImage(para.Owner.gameObject);
+            afterImage.IsActive = true;
             para.Owner.transform.position = Vector2.MoveTowards(para.Owner.transform.position, (Vector2)para.Owner.transform.position + para.Dir_toMove, dash_speed);
 
             await Task.Yield();
@@ -25,7 +35,8 @@ public class Parts_Dash : Parts_OnUpdate
             // 매 프레임마다 실행될 것
             if (isInterrupted)
                 await Task.FromResult(false);
-            
+            afterImage.IsActive = false;
+
             await Task.Yield();
         }
         // duration 후에 실행될 것
