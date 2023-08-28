@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IEventListener
 {
     private static UIManager instance;
     public static UIManager Instance
@@ -45,13 +45,69 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }
+        SubscribeEvent();
+    }    
 
     private void Update()
     {
         EventReciever();
         EventListener();
         gameoverListener();
+    }
+
+    public void SubscribeEvent()
+    {
+        EventManager.Instance.AddListener(EventCode.FadeIn, this);
+        EventManager.Instance.AddListener(EventCode.FadeOut, this);
+        EventManager.Instance.AddListener(EventCode.KeyBoardIndicator, this);
+        EventManager.Instance.AddListener(EventCode.SetCenterIndicator, this);
+        EventManager.Instance.AddListener(EventCode.ForceLoad, this);
+    }
+
+    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        switch (event_type)
+        {
+            case EventCode.FadeOut:
+                FadeOut(para); break;
+            case EventCode.FadeIn:
+                FadeIn(para); break;
+            case EventCode.KeyBoardIndicator:
+                KeyBoardIndicator(para); break;
+            case EventCode.SetCenterIndicator:
+                SetCenterIndicator(para); break;
+            case EventCode.ForceLoad:
+                ForceLoad(para); break;
+            default:
+                break;
+        }
+    }
+
+    private void FadeOut(ExtraParams para)
+    {
+        screenFade.SetScreenFade(false);
+    }
+
+    private void FadeIn(ExtraParams para)
+    {
+        screenFade.SetScreenFade(true);
+    }
+
+    private void KeyBoardIndicator(ExtraParams para)
+    {
+        indicator_keyboard.SetAnim("Out");
+    }
+
+    private void SetCenterIndicator(ExtraParams para)
+    {
+        indicator_centerImage.gameObject.SetActive(para.Boolvalue);
+    }
+
+    private void ForceLoad(ExtraParams para)
+    {
+        LoadingSceneController.LoadScene("BattleScene", 1);
     }
 
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
@@ -116,4 +172,6 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
+    
 }

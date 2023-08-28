@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PrefabSet", menuName = "Scriptable Object/PrefabSet", order = int.MaxValue)]
 public class PrefabSet_so : ScriptableObject
 {
-    [SerializeField] public List<GameObject> SpellPrefab = new List<GameObject>();
+    [SerializeField] public List<GameObject> prefabs = new List<GameObject>();
 }

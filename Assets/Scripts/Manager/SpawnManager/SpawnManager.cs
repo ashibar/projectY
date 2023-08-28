@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 /// <summary>
-/// 스크립트 이름 : SpawnManager
-/// 담당자 : 이용욱
-/// 요약 : 스포너 관리 스크립트
-/// 비고 : verbose 체크후 p를 눌러 테스트용 오브젝트 생성
-/// 업데이트 내역 :
-///     - (23.03.25) : 스크립트 생성
+/// <para/><b>■■ SpawnManager ■■</b>
+/// <para/>담당자 : 이용욱
+/// <para/>요약 : 스포너 관리 스크립트
+/// <para/>비고 : verbose 체크후 p를 눌러 테스트용 오브젝트 생성
+/// <para/>업데이트 내역 :
+/// <para/> - (23.03.25) : 스크립트 생성
 /// </summary>
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour, IEventListener
 {
     private static SpawnManager instance;
     public static SpawnManager Instance
@@ -56,17 +57,12 @@ public class SpawnManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+        SubscribeEvent();
     }
 
     private void Start()
     {
         
-    }
-
-    public void SetSpawner()
-    {
-        spawner.AddRange(GetComponentsInChildren<Spawner>());
     }
 
     private void Update()
@@ -79,6 +75,136 @@ public class SpawnManager : MonoBehaviour
         //    if (spawner.Count > 0)
         //        StartCoroutine(mobspawn());
         //}
+    }
+
+    /// <summary>
+    /// <para><b>이벤트 구독 함수.</b></para>
+    /// </summary>
+    public void SubscribeEvent()
+    {
+        EventManager.Instance.AddListener(EventCode.ForceSpawn, this);
+        EventManager.Instance.AddListener(EventCode.SetActiveSpawner, this);
+        EventManager.Instance.AddListener(EventCode.InActiveAll, this);
+        EventManager.Instance.AddListener(EventCode.BossSpawn, this);
+        EventManager.Instance.AddListener(EventCode.SpawnEnemyAtVectorByID, this);
+        EventManager.Instance.AddListener(EventCode.SpawnEnemyAtVectorListByID, this);
+        EventManager.Instance.AddListener(EventCode.SpawnEnemyAtVectorByName, this);
+    }
+
+    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    {
+        switch (event_type)
+        {
+            case EventCode.ForceSpawn: // TargetNum에 스포너 번호를 받음
+                ForceSpawn(param); break;
+            case EventCode.SetActiveSpawner: // TargetNum에 스포너 번호를 받으며, TargetSTR에 true/false로 활성/비활성 설정
+                SetActiveSpawner(param); break;
+            case EventCode.InActiveAll:
+                InActiveAll(param); break;
+            case EventCode.BossSpawn:
+                BossSpawn(param); break;
+            case EventCode.SpawnEnemyAtVectorByID:
+                SpawnAtVectorID(param); break;
+            case EventCode.SpawnEnemyAtVectorListByID:
+                SpawnAtVectorListID(param); break;
+            case EventCode.SpawnEnemyAtVectorByName:
+                SpawnAtVectorName(param); break;
+        }
+    }
+
+    private void ForceSpawn(params object[] param)
+    {
+        int id = (int)param[0];
+        spawner[id].SpawnForce();
+    }
+
+    private void SetActiveSpawner(params object[] param)
+    {
+        int id = (int)param[0];
+        bool value = (bool)param[1];
+        spawner[id].SetActive(value);
+    }
+
+    private void InActiveAll(params object[] param)
+    {
+        foreach (Spawner s in spawner)
+            s.SetActive(false);
+    }
+
+    private void BossSpawn(params object[] param)
+    {
+        spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(0, 6.5f));
+        StageManager.Instance.SetTargetUnit();
+    }
+
+    [SerializeField] private PrefabSet_so enemyList;
+    private void SpawnAtVectorID(params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+        
+        int id = para.Id;
+        Vector2 pos = para.VecList[0];
+        
+        GameObject clone = Instantiate(enemyList.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
+        clone.name = UnitManager.Instance.Clones.Count.ToString();
+
+        UnitManager.Instance.Clones.Add(clone);
+    }
+
+    private void SpawnAtVectorListID(params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        int id = para.Id;
+        List<Vector2> posList = para.VecList;
+
+        foreach (Vector2 pos in posList)
+        {
+            GameObject clone = Instantiate(enemyList.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
+            clone.name = UnitManager.Instance.Clones.Count.ToString();
+            UnitManager.Instance.Clones.Add(clone);
+        }
+    }
+
+    private void SpawnAtVectorName(params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        int id = para.Id;
+        string name = para.Name;
+        Vector2 pos = para.VecList[0];
+
+        for (int i = 0; i < enemyList.prefabs.Count; i++)
+            if (string.Equals(enemyList.prefabs[i].name, name))
+            {
+                id = i;
+                break;
+            }
+        
+        GameObject clone = Instantiate(enemyList.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
+        clone.name = UnitManager.Instance.Clones.Count.ToString();
+
+        UnitManager.Instance.Clones.Add(clone);
+    }
+
+    private void TestSpawn()
+    {
+        if (verbose)
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+                spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(Random.Range(-5, 5), Random.Range(-5, 5)));
+            if (Input.GetKeyDown(KeyCode.O))
+                spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(4, 0));
+            if (Input.GetKeyDown(KeyCode.I))
+                spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].spawntestpoint());
+            if (Input.GetKeyDown(KeyCode.U))
+                spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(range_test));
+        }
+    }
+
+    public void SetSpawner()
+    {
+        spawner.AddRange(GetComponentsInChildren<Spawner>());
     }
 
     private List<EventMessage> messageBuffer = new List<EventMessage>();
@@ -130,26 +256,10 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void TestSpawn()
-    {
-        if (verbose)
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-                spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(Random.Range(-5, 5), Random.Range(-5, 5)));
-            if (Input.GetKeyDown(KeyCode.O))
-                spawner[0].Spawn_Enemy_AtPosition(0, new Vector2(4, 0));
-            if (Input.GetKeyDown(KeyCode.I))
-                spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].spawntestpoint());
-            if (Input.GetKeyDown(KeyCode.U))
-                spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(range_test));
-        }
-
-        
-
-    }
+    
     /*
-     Radius를 변수로 뺌
-     **/
+Radius를 변수로 뺌
+**/
     //IEnumerator mobspawn()
     //{
     //    iscoroutineRunning = true;
@@ -157,7 +267,7 @@ public class SpawnManager : MonoBehaviour
     //    {
     //        //
     //        spawner[0].Spawn_Enemy_AtPosition(0, spawner[0].spawnMain[0].SpawnRangePoint(radius));
- 
+
     //    }
 
     //    yield return new WaitForSeconds(spawner[0].spawn_cooltime); //나중에다른  종료조건을 while 문으로 받아 체크해서 종료 킬카운트나 시간?

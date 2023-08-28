@@ -16240,6 +16240,7 @@ MonoBehaviour:
   isCooltime: 0
   eventIndex: 0
   interruptedIndex: -1
+  para: []
 --- !u!1 &1053634913
 GameObject:
   m_ObjectHideFlags: 0
@@ -17391,6 +17392,7 @@ Transform:
   - {fileID: 1361707509}
   - {fileID: 981134002}
   - {fileID: 2133975338}
+  - {fileID: 2095301371}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17726,9 +17728,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769d20377e6ca064295b54f56a1d4500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  events: []
-  flags: []
+  para: []
   areas: []
+  para_trigger: []
+  para_area: []
 --- !u!1 &1677395526
 GameObject:
   m_ObjectHideFlags: 0
@@ -23563,6 +23566,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075352797}
   m_CullTransparentMesh: 1
+--- !u!1 &2095301370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095301371}
+  - component: {fileID: 2095301372}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095301371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095301370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1531333006}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2095301372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095301370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc273073549abc4a983523b78a6ee63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2133975337
 GameObject:
   m_ObjectHideFlags: 0
@@ -23614,3 +23661,4 @@ MonoBehaviour:
   spawner: []
   range_test: 10
   verbose: 0
+  enemyList: {fileID: 0}

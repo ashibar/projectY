@@ -1,0 +1,4 @@
+index,name,log,l_port_id,r_port_id,namebox,boxcolor,bc_pre
+0,가,테스트에용,1,0,TRUE,,Orange
+1,나,엔터키도<br>테스트해봐용,4,0,TRUE,,Orange
+2,다,박스 색깔도 바꿔봤어용,9,0,TRUE,,Red

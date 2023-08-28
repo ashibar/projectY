@@ -12,6 +12,6 @@ public class Parts_SetShape_Sole : Parts_SetPrefabShape
     protected override void ShapeSetter(Applier_parameter para)
     {
         base.ShapeSetter(para);
-        spellGenerater.SetSpell(prefabSet.SpellPrefab[0]);
+        spellGenerater.SetSpell(prefabSet.prefabs[0]);
     }
 }

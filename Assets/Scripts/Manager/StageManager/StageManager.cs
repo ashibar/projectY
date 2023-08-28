@@ -1,8 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+/// <summary>
+/// <para/><b>■■ StageManager ■■</b>
+/// <para/>담당자 : 이용욱
+/// <para/>요약 : 스테이지 데이터 및 하위모듈 관리
+/// <para/>비고 : 
+/// <para/>업데이트 내역 : 
+/// <para/> - (23.08.22) : 요약문 생성
+/// <para/>
+/// </summary>
 
 public class StageManager : MonoBehaviour
 {
@@ -42,7 +53,6 @@ public class StageManager : MonoBehaviour
 
     public List<EventMessage> messageBuffer = new List<EventMessage>();
 
-
     private void Awake()
     {
         var objs = FindObjectsOfType<StageManager>();
@@ -58,6 +68,7 @@ public class StageManager : MonoBehaviour
         Time.timeScale = 1.0f;
         
         SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]); // 나중에 로딩할때 대체
+        //SetStageInfo_(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
     }
 
     private void Start()
@@ -82,23 +93,64 @@ public class StageManager : MonoBehaviour
         //Async_Function();
     }
 
-    // 로딩 시 StageManager에 스테이지 정보를 넣기 위한 함수
+    /// <summary>
+    /// <para/> <b>로딩 시 StageManager에 스테이지 정보를 넣기 위한 함수</b>
+    /// </summary>
+    /// <param name="_stageInfo_so">스테이지 데이터 so파일</param>
     public void SetStageInfo(StageInfo_so _stageInfo_so)
     {
         stageInfo_so = _stageInfo_so;
         stageInfo = new StageInfo(_stageInfo_so);
-        conditionChecker.Events.AddRange(stageInfo.EventList);
+
+        //SetTestPara();
+        conditionChecker.SetPara(stageInfo.Para);
     }
 
-    // 다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수
-    /*
-     * Module List
-     *      1.
-     *      2. SpawnManager
-     *      3. UnitManager
-     *      4. AnimationManager
-     *      5. UIManager
-     */
+    /// <summary>
+    /// 임시 파라미터 설정 함수
+    /// 후에 로딩 담당 컴포넌트가 대체함
+    /// </summary>
+    private void SetTestPara()
+    {
+        stageInfo.Para.Clear();
+
+        Condition condition1 = new Condition();
+        condition1.Sort = ConditionSort.Time;
+        condition1.TargetNum = 1;
+
+        List<Vector2> vecList = new List<Vector2>() {
+            new Vector2( 5f,  5f),
+            new Vector2( 5f, -5f),
+            new Vector2(-5f,  5f),
+            new Vector2(-5f, -5f)
+        };
+
+        ExtraParams p1 = new ExtraParams();
+        p1.Id = 0;
+        p1.VecList.Add(new Vector2(3f, 3f));
+
+        ExtraParams p2 = new ExtraParams();
+        p2.Id = 0;
+        p2.VecList.AddRange(vecList);
+
+        stageInfo.Para.Add(new EventParams(0, EventCode.a, condition1));
+        stageInfo.Para.Add(new EventParams(1, EventCode.SpawnEnemyAtVectorByID, condition1, p1));
+        stageInfo.Para.Add(new EventParams(2, EventCode.SpawnEnemyAtVectorListByID, condition1, p2));
+    }
+
+    /// <summary>
+    /// <b>다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수</b><br/>
+    /// <br/>
+    /// - Module List -<br/>
+    /// 1.<br/>
+    /// 2. SpawnManager<br/>
+    /// 3. UnitManager<br/>
+    /// 4. AnimationManager<br/>
+    /// 5. UIManager<br/>
+    /// </summary>
+    /// <param name="moduleID"></param>
+    /// <param name="buffer"></param>
+    /// <returns></returns>
     public int SearchMassage(int moduleID, List<EventMessage> buffer)
     {
         if (messageBuffer.Count == 0)
@@ -125,6 +177,10 @@ public class StageManager : MonoBehaviour
             return -1;
     }
 
+    /// <summary>
+    /// 테스트용 결과창 윈도우 출력 함수 <br/>
+    /// 후에 대체 예정
+    /// </summary>
     private void TestStageClear()
     {
         float cur = UnitManager.Instance.TargetDestroyed;
@@ -136,6 +192,10 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 결과창 윈도우에서 참조할 다음 스테이지 이동 함수 <br/>
+    /// 후에 대체 예정
+    /// </summary>
     public void GoNextStage()
     {
         stageInfoContainer_so.CurID += 1;
@@ -143,6 +203,10 @@ public class StageManager : MonoBehaviour
         LoadingSceneController.LoadScene("BattleScene", stageInfoContainer_so.CurID);
     }
 
+    /// <summary>
+    /// 상단 체력바 표시를 위한 주요 적 설정 <br/>
+    /// 후에 대체 및 이동 예정
+    /// </summary>
     public void SetTargetUnit()
     {
         if (UnitManager.Instance.Clones.Count <= 1)
@@ -155,6 +219,13 @@ public class StageManager : MonoBehaviour
             UnitManager.Instance.TargetUnit = UnitManager.Instance.Clones[1].GetComponent<Unit>();
         }
     }
+
+    
+
+    
+
+    // 더미 코드
+
     // 스테이지 정보의 이벤트 순회 함수
     //[SerializeField] private bool isCooltime;
     //[SerializeField] private int eventIndex = 0;
@@ -200,5 +271,13 @@ public class StageManager : MonoBehaviour
     //    {
     //        e.Isinterrupted = true;
     //    }
+    //}
+
+    // 이전 초기화 함수
+    //public void SetStageInfo(StageInfo_so _stageInfo_so)
+    //{
+    //    stageInfo_so = _stageInfo_so;
+    //    stageInfo = new StageInfo(_stageInfo_so);
+    //    conditionChecker.Events.AddRange(stageInfo.EventList);
     //}
 }

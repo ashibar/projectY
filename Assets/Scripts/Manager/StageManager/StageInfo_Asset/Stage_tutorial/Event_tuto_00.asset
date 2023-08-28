@@ -16,10 +16,13 @@ MonoBehaviour:
   sort: 0
   condition:
     sort: 0
+    targetTag: 
     targetPos: {x: 0, y: 0}
     targetAreaID: 0
     targetFlag: 
+    flagValue: 0
     targetNum: 0
+    isSatisfied: 0
   isLoop: 0
   durationToStart: 0
   message:

@@ -12,6 +12,6 @@ class Parts_SetShape_AOE : Parts_SetPrefabShape
     protected override void ShapeSetter(Applier_parameter para)
     {
         base.ShapeSetter(para);
-        spellGenerater.SetSpell(prefabSet.SpellPrefab[2]);
+        spellGenerater.SetSpell(prefabSet.prefabs[2]);
     }
 }

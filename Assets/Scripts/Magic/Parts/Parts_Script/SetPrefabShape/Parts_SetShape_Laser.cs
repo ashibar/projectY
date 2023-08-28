@@ -12,6 +12,6 @@ public class Parts_SetShape_Laser : Parts_SetPrefabShape
     protected override void ShapeSetter(Applier_parameter para)
     {
         base.ShapeSetter(para);
-        spellGenerater.SetSpell(prefabSet.SpellPrefab[3]);
+        spellGenerater.SetSpell(prefabSet.prefabs[3]);
     }
 }

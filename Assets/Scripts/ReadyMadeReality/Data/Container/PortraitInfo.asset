@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e472818ef7461e43b34bdce09324f69, type: 3}
+  m_Name: PortraitInfo
+  m_EditorClassIdentifier: 
+  portraitList:
+  - {fileID: 21300000, guid: 603aed9b943a4e942ad1e5cb9b90be9d, type: 3}
+  - {fileID: 21300000, guid: d089f1c9bb2cc4b408e652fd08938d09, type: 3}
+  - {fileID: 21300000, guid: af0e3210a74033341895cd4c06e8e078, type: 3}
+  - {fileID: 21300000, guid: b4884f6482da84b48b40314a50e6330b, type: 3}
+  - {fileID: 21300000, guid: 3d94c8f12710fba4e8a5c5e515654ca0, type: 3}
+  - {fileID: 21300000, guid: 30b135a948e18964fb9bcf35d71e1937, type: 3}
+  - {fileID: 21300000, guid: 3be84c1942de6624b93d96d26e80f0a6, type: 3}
+  - {fileID: 21300000, guid: 33d533e9fda2a284f96f9c29b5cb2439, type: 3}
+  - {fileID: 21300000, guid: b6b02e413cf48db4ebd3ba29d8d63a64, type: 3}
+  - {fileID: 21300000, guid: 58c0a9a71b35cfb40bb64ccb8b4d02aa, type: 3}
+  - {fileID: 21300000, guid: a813ce1ab4fc1ac48bfec33ee4914dd0, type: 3}
+  - {fileID: 21300000, guid: c8f7ec98d014e2f49a6247570899bd49, type: 3}

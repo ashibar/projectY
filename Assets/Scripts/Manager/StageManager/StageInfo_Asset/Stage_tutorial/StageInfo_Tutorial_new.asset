@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee40162851d1e5c48b47ec81f8a8c08c, type: 3}
+  m_Name: StageInfo_Tutorial_new
+  m_EditorClassIdentifier: 
+  stageName: StageInfo_Tutorial_new
+  rewards: []
+  stageSort: 0
+  para:
+  - no: 0
+    eventcode: 16
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+  - no: 1
+    eventcode: 13
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+  - no: 2
+    eventcode: 11
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 0
+  - no: 3
+    eventcode: 14
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+  - no: 4
+    eventcode: 12
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 3.5
+      isSatisfied: 0
+  - no: 5
+    eventcode: 14
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+  - no: 11
+    eventcode: 14
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 0
+  - no: 6
+    eventcode: 14
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2.5
+      isSatisfied: 0
+  - no: 7
+    eventcode: 18
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 0
+  - no: 8
+    eventcode: 18
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 0
+  - no: 9
+    eventcode: 17
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 0
+  - no: 9
+    eventcode: 13
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+  - no: 10
+    eventcode: 19
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+  eventList_so: []
+  spawners: []

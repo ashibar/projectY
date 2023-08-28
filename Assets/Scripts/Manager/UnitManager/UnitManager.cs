@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitManager : MonoBehaviour
+public class UnitManager : MonoBehaviour, IEventListener
 {
     private static UnitManager instance;    
     public static UnitManager Instance
@@ -32,7 +32,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private Unit targetUnit;
     [SerializeField] private int targetDestroyed;
     [SerializeField] private int maxDestroyed;
-    private Unit unit;
+    private Unit player;
     public List<GameObject> Clones { get => clones; }
     public Unit TargetUnit { get => targetUnit; set => targetUnit = value; }
     public int TargetDestroyed { get => targetDestroyed; set => targetDestroyed = value; }
@@ -45,16 +45,80 @@ public class UnitManager : MonoBehaviour
 
     private void Start()
     {
-        if (unit == null)
+        if (player == null)
         {
-            unit = Player.Instance;
+            player = Player.Instance;
         }
-        clones.Add(unit.gameObject);
+        clones.Add(player.gameObject);
+        SubscribeEvent();
     }
     private void Update()
     {
         EventReciever();
         EventListener();
+    }
+
+    public void SubscribeEvent()
+    {
+        EventManager.Instance.AddListener(EventCode.UnitForceMove, this);
+        EventManager.Instance.AddListener(EventCode.UnitForceStop, this);
+        EventManager.Instance.AddListener(EventCode.PlayerMoveInput, this);
+        EventManager.Instance.AddListener(EventCode.PlayerAnimation, this);
+    }
+
+    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    {
+        ExtraParams par = (ExtraParams)param[0];
+        
+        switch (event_type)
+        {
+            case EventCode.UnitForceMove:
+                UnitForceMove(par); break;
+            case EventCode.UnitForceStop:
+                UnitForceStop(par); break;
+            case EventCode.PlayerMoveInput:
+                PlayerMoveInput(par); break;
+            case EventCode.PlayerAnimation:
+                PlayerAnimation(par); break;
+            default:
+                break;
+        }
+    }
+
+    private void UnitForceMove(ExtraParams par)
+    {
+        switch (par.Name)
+        {
+            case "Player":
+                player.GetComponentInChildren<UnitForceMove>().SetForceMove(par.VecList[0], par.Floatvalue);
+                break;
+            default:
+                break;
+        }        
+        //player.GetComponentInChildren<UnitForceMove>().IsForceMove = true;
+    }
+
+    private void UnitForceStop(ExtraParams par)
+    {
+        switch (par.Name)
+        {
+            case "Player":
+                player.GetComponentInChildren<UnitForceMove>().ForceStop();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void PlayerMoveInput(ExtraParams par)
+    {
+        player.GetComponent<Player>().playerMovement.IsMove = par.Boolvalue;
+        //Debug.Log(string.Equals(m.TargetSTR, "true"));
+    }
+
+    private void PlayerAnimation(ExtraParams par)
+    {
+        playerAnimationController.SetAnimation(par.Name);
     }
 
     public virtual void Delete_FromCloneList(GameObject clone)
@@ -107,16 +171,16 @@ public class UnitManager : MonoBehaviour
             switch (m.ActionSTR)
             {
                 case "Player Move":
-                    unit.GetComponentInChildren<UnitForceMove>().SetForceMove(unit, m.TargetPOS, m.TargetNUM);
-                    unit.GetComponentInChildren<UnitForceMove>().IsForceMove = true;
+                    player.GetComponentInChildren<UnitForceMove>().SetForceMove(m.TargetPOS, m.TargetNUM);
+                    player.GetComponentInChildren<UnitForceMove>().IsForceMove = true;
                     messageBuffer.Remove(m);
                     return;
                 case "Player Stop":
-                    unit.GetComponentInChildren<UnitForceMove>().IsForceMove = false;
+                    player.GetComponentInChildren<UnitForceMove>().IsForceMove = false;
                     messageBuffer.Remove(m);
                     return;
                 case "Player Move Input":
-                    unit.GetComponent<Player>().playerMovement.IsMove = string.Equals(m.TargetSTR, "true");
+                    player.GetComponent<Player>().playerMovement.IsMove = string.Equals(m.TargetSTR, "true");
                     Debug.Log(string.Equals(m.TargetSTR, "true"));
                     messageBuffer.Remove(m);
                     return;
@@ -154,4 +218,5 @@ public class UnitManager : MonoBehaviour
         //else
             //messageBuffer.Remove(m);
     }
+
 }

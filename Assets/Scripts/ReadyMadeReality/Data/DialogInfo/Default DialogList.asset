@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49dacf86a98d8e4a9448c1c595bdc2e, type: 3}
+  m_Name: Default DialogList
+  m_EditorClassIdentifier: 
+  dialogList:
+  - left_portrait_id: 1
+    right_portrait_id: 0
+    text_name: "\uC5B4\uB4DC\uBBFC"
+    text_value: "\uC774\uAC83\uC740 \uCCAB\uBC88\uC9F8 \uBB38\uC7A5\uC774\uC57C!"
+  - left_portrait_id: 0
+    right_portrait_id: 1
+    text_name: "\uC774\uC2A4\uD130"
+    text_value: "\uC774\uAC83\uC740 \uB450\uBC88\uC9F8 \uBB38\uC7A5."
+  - left_portrait_id: 1
+    right_portrait_id: 0
+    text_name: "\uC5B4\uB4DC\uBBFC"
+    text_value: "\uC774\uAC83\uC740 \uC138\uBC88\uC9F8 \uBB38\uC7A5."
+  - left_portrait_id: 0
+    right_portrait_id: 1
+    text_name: "\uC774\uC2A4\uD130"
+    text_value: "\uC774\uAC83\uC740 \uB124\uB0B4\uBC88\uBC88\uC9F8\uC9F8 \uBB38\uC7A5."
+  - left_portrait_id: 1
+    right_portrait_id: 0
+    text_name: "\uC624\uC789"
+    text_value: "\uC774\uAC83\uC740 \uCD94\uAC00\uB41C \uB2E4\uC12F\uBC88\uC9F8 \uBB38\uC7A5\uC774\uC57C!"
+  - left_portrait_id: 3
+    right_portrait_id: 0
+    text_name: "\uC655\u314B\uAD73\u314B"
+    text_value: "\uC774\uAC8C \uB9C8\uC9C0\uB9C9 \uBB38\uC7A5\uC774\uC600\uC5B4?"
+  portraitList: {fileID: 11400000, guid: 966a5d91c1e615c44a5e34f12088496e, type: 2}
