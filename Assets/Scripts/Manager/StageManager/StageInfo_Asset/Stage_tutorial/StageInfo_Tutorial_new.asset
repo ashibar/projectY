@@ -69,7 +69,7 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 3.5
+      targetNum: 2.5
       isSatisfied: 0
   - no: 5
     eventcode: 14
@@ -116,7 +116,7 @@ MonoBehaviour:
       targetNum: 2
       isSatisfied: 0
   - no: 8
-    eventcode: 18
+    eventcode: 17
     condition:
       sort: 1
       targetTag: 
