@@ -15,6 +15,7 @@ public class Condition
     [SerializeField] private bool flagValue;
     [SerializeField] private float targetNum;
     [SerializeField] private bool isSatisfied;
+    [SerializeField] private bool isContinued;
 
     public ConditionSort Sort { get => sort; set => sort = value; }
     public Type Target { get => target; set => target = value; }
@@ -25,6 +26,7 @@ public class Condition
     public bool FlagValue { get => flagValue; set => flagValue = value; }
     public float TargetNum { get => targetNum; set => targetNum = value; }
     public bool IsSatisfied { get => isSatisfied; set => isSatisfied = value; }
+    public bool IsContinued { get => isContinued; set => isContinued = value; }
 }
 
 public enum ConditionSort

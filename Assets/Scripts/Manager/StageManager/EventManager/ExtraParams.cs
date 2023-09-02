@@ -5,13 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class ExtraParams
 {
-    private int id;
-    private string name;
-    private int intvalue;
-    private float floatvalue;
-    private List<Vector2> vecList = new List<Vector2>();
-    private string name2;
-    private bool boolvalue;
+    [SerializeField] private int id;
+    [SerializeField] private string name;
+    [SerializeField] private int intvalue;
+    [SerializeField] private float floatvalue;
+    [SerializeField] private List<Vector2> vecList = new List<Vector2>();
+    [SerializeField] private string name2;
+    [SerializeField] private bool boolvalue;
+    [SerializeField] private EventPhase_so nextPhase;
 
     public int Id { get => id; set => id = value; }
     public string Name { get => name; set => name = value; }
@@ -20,6 +21,7 @@ public class ExtraParams
     public List<Vector2> VecList { get => vecList; set => vecList = value; }
     public string Name2 { get => name2; set => name2 = value; }
     public bool Boolvalue { get => boolvalue; set => boolvalue = value; }
+    public EventPhase_so NextPhase { get => nextPhase; set => nextPhase = value; }
 
     public ExtraParams()
     {
@@ -30,9 +32,10 @@ public class ExtraParams
         this.vecList= new List<Vector2>();
         this.name = "";
         this.boolvalue = false;
+        this.nextPhase = null;
     }
 
-    public ExtraParams(int id, string name, int intvalue, float floatvalue, List<Vector2> vecList, string name2, bool boolvalue)
+    public ExtraParams(int id, string name, int intvalue, float floatvalue, List<Vector2> vecList, string name2, bool boolvalue, EventPhase_so nextPhase)
     {
         this.id = id;
         this.name = name;
@@ -41,5 +44,6 @@ public class ExtraParams
         this.vecList = vecList;
         this.name2 = name2;
         this.boolvalue = boolvalue;
+        this.nextPhase = nextPhase;
     }
 }

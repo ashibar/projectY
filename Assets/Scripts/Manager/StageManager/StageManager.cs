@@ -15,7 +15,7 @@ using UnityEngine.SceneManagement;
 /// <para/>
 /// </summary>
 
-public class StageManager : MonoBehaviour
+public class StageManager : MonoBehaviour, IEventListener
 {
     private static StageManager instance; // private instance
     public static StageManager Instance
@@ -66,7 +66,8 @@ public class StageManager : MonoBehaviour
         stageEndCheck = GetComponentInChildren<StageEndCheck>();
         messageBuffer.Clear();
         Time.timeScale = 1.0f;
-        
+
+        SubscribeEvent();
         SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]); // 나중에 로딩할때 대체
         //SetStageInfo_(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
     }
@@ -93,6 +94,27 @@ public class StageManager : MonoBehaviour
         //Async_Function();
     }
 
+    public void SubscribeEvent()
+    {
+        EventManager.Instance.AddListener(EventCode.GotoNextPhase, this);
+    }
+
+    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    {
+
+        switch (event_type)
+        {
+            case EventCode.GotoNextPhase:
+                GotoNextPhase((ExtraParams)param[0]); break;
+        }
+    }
+
+    private void GotoNextPhase(ExtraParams par)
+    {
+        Debug.Log(par.NextPhase);
+        eventTimer.AddPhase(par.NextPhase);
+    }
+
     /// <summary>
     /// <para/> <b>로딩 시 StageManager에 스테이지 정보를 넣기 위한 함수</b>
     /// </summary>
@@ -103,7 +125,8 @@ public class StageManager : MonoBehaviour
         stageInfo = new StageInfo(_stageInfo_so);
 
         //SetTestPara();
-        conditionChecker.SetPara(stageInfo.Para);
+        eventTimer.AddPhase(stageInfo.Phases[0]);
+        //conditionChecker.SetPara(stageInfo.Para);
     }
 
     /// <summary>
@@ -222,7 +245,9 @@ public class StageManager : MonoBehaviour
 
     
 
-    
+
+
+
 
     // 더미 코드
 

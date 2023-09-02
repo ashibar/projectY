@@ -13,7 +13,7 @@ using UnityEngine;
 /// <para/>
 /// </summary>
 
-public class ConditionChecker : MonoBehaviour
+public class ConditionChecker : MonoBehaviour, IEventListener
 {
     [SerializeField] private List<EventParams> para = new List<EventParams>();
     [SerializeField] private List<ConditionArea> areas;
@@ -24,12 +24,35 @@ public class ConditionChecker : MonoBehaviour
     private void Awake()
     {
         areas.AddRange(GetComponentsInChildren<ConditionArea>());
+        SubscribeEvent();
     }
 
     private void Update()
     {
-        ConditionCheck();
         //ConditionCheck();
+        //ConditionCheck();
+
+    }
+
+    public void SubscribeEvent()
+    {
+        EventManager.Instance.AddListener(EventCode.UnitArrived, this);
+    }
+
+    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    {
+        
+        
+        switch (event_type)
+        {
+            case EventCode.UnitArrived:
+                UnitArrived(param); break;
+        }
+    }
+
+    private void UnitArrived(params object[] param)
+    {
+        
     }
 
     /// <summary>
@@ -39,32 +62,33 @@ public class ConditionChecker : MonoBehaviour
     /// Trigger : 플래그에 만족시 타이머 모듈에 전송<br/>
     /// MoveToArea : 조건영역에 특정 유닛이 이동 시 타이머 모듈에 전송<br/>
     /// </summary>
-    private void ConditionCheck()
-    {
-        para.Reverse();
-        for (int i = para.Count - 1; i >= 0; i--)
-        {
-            EventParams e = para[i];
-            switch (para[i].condition.Sort)
-            {
-                case ConditionSort.None:
-                    StageManager.Instance.EventTimer.AddPara(e);
-                    para.Remove(e);
-                    break;
-                case ConditionSort.Time:
-                    StageManager.Instance.EventTimer.AddPara(e);
-                    para.Remove(e);
-                    break;
-                case ConditionSort.Trigger:
-                    para_trigger.Add(e);
-                    para.Remove(e);
-                    break;
-                case ConditionSort.MoveToArea:
-                    para_area.Add(e);
-                    para.Remove(e);
-                    break;
-            }
-        }
+    //private void ConditionCheck()
+    //{
+    //    para.Reverse();
+    //    for (int i = para.Count - 1; i >= 0; i--)
+    //    {
+    //        EventParams e = para[i];
+    //        switch (para[i].condition.Sort)
+    //        {
+    //            case ConditionSort.None:
+    //                StageManager.Instance.EventTimer.AddPara(e);
+    //                para.Remove(e);
+    //                break;
+    //            case ConditionSort.Time:
+    //                StageManager.Instance.EventTimer.AddPara(e);
+    //                para.Remove(e);
+    //                break;
+    //            case ConditionSort.Trigger:
+    //                para_trigger.Add(e);
+    //                para.Remove(e);
+    //                break;
+    //            case ConditionSort.MoveToArea:
+    //                EventManager.Instance.PostNotification(EventCode.RegisterPosSearch, this, new Condition(), para[i]);
+    //                //para_area.Add(e);
+    //                para.Remove(e);
+    //                break;
+    //        }
+    //    }
 
         //foreach (EventParams e in para)
         //{
@@ -80,7 +104,7 @@ public class ConditionChecker : MonoBehaviour
         //            break;
         //    }
         //}
-    }
+    //}
 
     public void SetPara(List<EventParams> para)
     {

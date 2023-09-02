@@ -6569,11 +6569,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimationController: {fileID: 0}
-  clones:
-  - {fileID: 0}
+  clones: []
   targetUnit: {fileID: 0}
   targetDestroyed: 0
   maxDestroyed: 0
+  events: []
   messageBuffer: []
 --- !u!1 &1033977836
 GameObject:
@@ -7029,10 +7029,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: []
+  phase: []
+  eventParam_pos: []
+  unitManager: {fileID: 0}
   isCooltime: 0
   eventIndex: 0
   interruptedIndex: -1
-  para: []
+  isInterrupted: 0
 --- !u!1 &1145827344
 GameObject:
   m_ObjectHideFlags: 0

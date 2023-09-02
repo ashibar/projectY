@@ -1,15 +1,12 @@
-using Codice.Client.BaseCommands.BranchExplorer;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class EventParam_Window : EditorWindow
 {
-    [SerializeField] private StageInfo_so stageInfo;
-    [SerializeField] private List<EventParams> events;
+    [SerializeField] private EventPhase_so phaseInfo;
 
     [SerializeField] private int index;
 
@@ -78,47 +75,52 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Label("StageInfo Asset", new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Bold });
         GUILayout.FlexibleSpace();
-        stageInfo = (StageInfo_so)EditorGUILayout.ObjectField(stageInfo, typeof(object), true);
+        phaseInfo = (EventPhase_so)EditorGUILayout.ObjectField(phaseInfo, typeof(object), true);
         GUILayout.EndHorizontal();
-             
 
         
-        
-        if (stageInfo != null)
+        if (phaseInfo != null)
         {
+            if (phaseInfo.Events.Count <= 0)
+                phaseInfo.Events.Add(new EventParams(0));            
+            
             GUILayout.BeginHorizontal();
             // ÀÎµ¦½º
             GUILayout.FlexibleSpace();
-            index = EditorGUILayout.IntField("Event Index", Mathf.Clamp(index, 0, stageInfo.Para.Count - 1), indexFieldStyle, indexFieldOption);
+            index = EditorGUILayout.IntField("Event Index", Mathf.Clamp(index, 0, phaseInfo.Events.Count - 1), indexFieldStyle, indexFieldOption);
             if (GUILayout.Button("<", buttonOption))
             {
+                GUI.FocusControl(null);
                 index = index > 0 ? index - 1 : index;
             }
             if (GUILayout.Button(">", buttonOption))
             {
-                index = index < stageInfo.Para.Count - 1 ? index + 1 : index;
+                GUI.FocusControl(null);
+                index = index < phaseInfo.Events.Count - 1 ? index + 1 : index;
             }
             EditorGUILayout.LabelField("Max", smallFieldOption);
             EditorGUI.BeginDisabledGroup(true);
-            EditorGUILayout.IntField(stageInfo.Para.Count, indexFieldStyle, smallFieldOption);
+            EditorGUILayout.IntField(phaseInfo.Events.Count, indexFieldStyle, smallFieldOption);
             EditorGUI.EndDisabledGroup();
             if (GUILayout.Button("+", buttonOption))
             {
-                if (index == stageInfo.Para.Count - 1)
-                    stageInfo.Para.Add(new EventParams(stageInfo.Para.Count - 1));
-                else if (stageInfo.Para.Count - 1 > 0)
-                    stageInfo.Para.Insert(index, new EventParams(stageInfo.Para.Count - 1));
+                GUI.FocusControl(null);
+                if (index == phaseInfo.Events.Count - 1)
+                    phaseInfo.Events.Add(new EventParams(phaseInfo.Events.Count - 1));
+                else if (phaseInfo.Events.Count - 1 > 0)
+                    phaseInfo.Events.Insert(index + 1, new EventParams(phaseInfo.Events.Count - 1));
                 else
-                    stageInfo.Para.Add(new EventParams(0));
+                    phaseInfo.Events.Add(new EventParams(0));
             }
             if (GUILayout.Button("-", buttonOption))
             {
-                if (stageInfo.Para.Count > 0)
+                GUI.FocusControl(null);
+                if (phaseInfo.Events.Count > 0)
                 {
-                    stageInfo.Para.RemoveAt(index);
-                    index = index >= stageInfo.Para.Count ? stageInfo.Para.Count - 1 : index;
-                    for (int i = 0; i < stageInfo.Para.Count; i++)
-                        stageInfo.Para[i].no = i;
+                    phaseInfo.Events.RemoveAt(index);
+                    index = index >= phaseInfo.Events.Count ? phaseInfo.Events.Count - 1 : index;
+                    for (int i = 0; i < phaseInfo.Events.Count; i++)
+                        phaseInfo.Events[i].no = i;
                 }
                 else
                     Debug.Log("Already Empty");
@@ -128,7 +130,7 @@ public class EventParam_Window : EditorWindow
             // Eventcode
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            stageInfo.Para[index].eventcode = (EventCode)EditorGUILayout.EnumPopup("Event Code", stageInfo.Para[index].eventcode, enumFieldOption);
+            phaseInfo.Events[index].eventcode = (EventCode)EditorGUILayout.EnumPopup("Event Code", phaseInfo.Events[index].eventcode, enumFieldOption);
             GUILayout.EndHorizontal();
 
             // Condition
@@ -139,15 +141,21 @@ public class EventParam_Window : EditorWindow
                         
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            stageInfo.Para[index].condition.Sort = (ConditionSort)EditorGUILayout.EnumPopup("Condtition Sort", stageInfo.Para[index].condition.Sort, enumFieldOption);
+            phaseInfo.Events[index].condition.Sort = (ConditionSort)EditorGUILayout.EnumPopup("Condtition Sort", phaseInfo.Events[index].condition.Sort, enumFieldOption);
             GUILayout.EndHorizontal();
 
-            switch (stageInfo.Para[index].condition.Sort)
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            phaseInfo.Events[index].condition.IsSatisfied = EditorGUILayout.Toggle("isSatisfied", phaseInfo.Events[index].condition.IsSatisfied, innerFieldOption);
+            GUILayout.EndHorizontal();
+
+            switch (phaseInfo.Events[index].condition.Sort)
             {
                 case ConditionSort.None:
                     break;
                 case ConditionSort.Time:
                     Con_Num(innerFieldOption);
+                    Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.Trigger:
                     Con_Flag(innerFieldOption);
@@ -171,13 +179,14 @@ public class EventParam_Window : EditorWindow
             GUILayout.Label("Event Params", labelFieldOption);
             GUILayout.EndHorizontal();
 
-            if (stageInfo.Para[index].extraParams != null)
+            if (phaseInfo.Events[index].extraParams != null)
             {
                 Par_No(innerFieldOption);
                 Par_Name(innerFieldOption);
                 Par_Int(innerFieldOption);
                 Par_Float(innerFieldOption);
                 Par_Bool(innerFieldOption);
+                Par_Phase(innerFieldOption);
                 Par_VecList(innerFieldOption, innerVectorOption); 
             }
 
@@ -185,7 +194,8 @@ public class EventParam_Window : EditorWindow
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("Save", GUILayout.Width(120), GUILayout.Height(30)))
             {
-                EditorUtility.SetDirty(stageInfo);
+                GUI.FocusControl(null);
+                EditorUtility.SetDirty(phaseInfo);
             }
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
@@ -200,34 +210,41 @@ public class EventParam_Window : EditorWindow
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].condition.TargetNum = EditorGUILayout.FloatField("Target Num", stageInfo.Para[index].condition.TargetNum, options);
+        phaseInfo.Events[index].condition.TargetNum = EditorGUILayout.FloatField("Target Num", phaseInfo.Events[index].condition.TargetNum, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Con_Tinue(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].condition.IsContinued = EditorGUILayout.Toggle("isContinued", phaseInfo.Events[index].condition.IsContinued, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Flag(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].condition.TargetFlag = EditorGUILayout.TextField("Target Flag", stageInfo.Para[index].condition.TargetFlag, options);
+        phaseInfo.Events[index].condition.TargetFlag = EditorGUILayout.TextField("Target Flag", phaseInfo.Events[index].condition.TargetFlag, options);
         GUILayout.EndHorizontal();
     }
     private void Con_FlagValue(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].condition.FlagValue = EditorGUILayout.Toggle("Flag Value", stageInfo.Para[index].condition.FlagValue, options);
+        phaseInfo.Events[index].condition.FlagValue = EditorGUILayout.Toggle("Flag Value", phaseInfo.Events[index].condition.FlagValue, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Tag(GUILayoutOption[] options) {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].condition.TargetTag = EditorGUILayout.TextField("Target Tag", stageInfo.Para[index].condition.TargetTag, options);
+        phaseInfo.Events[index].condition.TargetTag = EditorGUILayout.TextField("Target Tag", phaseInfo.Events[index].condition.TargetTag, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Pos(GUILayoutOption[] options) {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         EditorGUIUtility.wideMode = true;
-        stageInfo.Para[index].condition.TargetPos = EditorGUILayout.Vector2Field("Target Position", stageInfo.Para[index].condition.TargetPos, options);
+        phaseInfo.Events[index].condition.TargetPos = EditorGUILayout.Vector2Field("Target Position", phaseInfo.Events[index].condition.TargetPos, options);
         GUILayout.EndHorizontal();
     }
 
@@ -235,35 +252,42 @@ public class EventParam_Window : EditorWindow
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].extraParams.Id = EditorGUILayout.IntField("Id", stageInfo.Para[index].extraParams.Id, options);
+        phaseInfo.Events[index].extraParams.Id = EditorGUILayout.IntField("Id", phaseInfo.Events[index].extraParams.Id, options);
         GUILayout.EndHorizontal();
     }
     private void Par_Name(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].extraParams.Name = EditorGUILayout.TextField("Name", stageInfo.Para[index].extraParams.Name, options);
+        phaseInfo.Events[index].extraParams.Name = EditorGUILayout.TextField("Name", phaseInfo.Events[index].extraParams.Name, options);
         GUILayout.EndHorizontal();
     }
     private void Par_Int(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].extraParams.Intvalue = EditorGUILayout.IntField("Int Value", stageInfo.Para[index].extraParams.Intvalue, options);
+        phaseInfo.Events[index].extraParams.Intvalue = EditorGUILayout.IntField("Int Value", phaseInfo.Events[index].extraParams.Intvalue, options);
         GUILayout.EndHorizontal();
     }
     private void Par_Float(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].extraParams.Floatvalue = EditorGUILayout.FloatField("Float Value", stageInfo.Para[index].extraParams.Floatvalue, options);
+        phaseInfo.Events[index].extraParams.Floatvalue = EditorGUILayout.FloatField("Float Value", phaseInfo.Events[index].extraParams.Floatvalue, options);
         GUILayout.EndHorizontal();
     }
     private void Par_Bool(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        stageInfo.Para[index].extraParams.Boolvalue = EditorGUILayout.Toggle("Bool Value", stageInfo.Para[index].extraParams.Boolvalue, options);
+        phaseInfo.Events[index].extraParams.Boolvalue = EditorGUILayout.Toggle("Bool Value", phaseInfo.Events[index].extraParams.Boolvalue, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_Phase(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.NextPhase = (EventPhase_so)EditorGUILayout.ObjectField("Next Phase" ,phaseInfo.Events[index].extraParams.NextPhase, typeof(object), true, options);
         GUILayout.EndHorizontal();
     }
     private void Par_VecList(GUILayoutOption[] options, GUILayoutOption[] options_inner)
@@ -271,14 +295,14 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
 
-        int past = stageInfo.Para[index].extraParams.VecList.Count;
+        int past = phaseInfo.Events[index].extraParams.VecList.Count;
         int len = EditorGUILayout.IntField("Vector List", Mathf.Clamp(past, 0, 10), options);
         if (len != past)
         {
-            stageInfo.Para[index].extraParams.VecList.Clear();
+            phaseInfo.Events[index].extraParams.VecList.Clear();
             for (int i = 0; i < len; i++)
             {
-                stageInfo.Para[index].extraParams.VecList.Add(new Vector2());
+                phaseInfo.Events[index].extraParams.VecList.Add(new Vector2());
             }
         }
         GUILayout.EndHorizontal();
@@ -295,7 +319,7 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         EditorGUIUtility.wideMode = true;
-        stageInfo.Para[index].extraParams.VecList[no] = EditorGUILayout.Vector2Field(string.Format("vec {0}", no), stageInfo.Para[index].extraParams.VecList[no], options);
+        phaseInfo.Events[index].extraParams.VecList[no] = EditorGUILayout.Vector2Field(string.Format("vec {0}", no), phaseInfo.Events[index].extraParams.VecList[no], options);
         GUILayout.EndHorizontal();
     }
 }

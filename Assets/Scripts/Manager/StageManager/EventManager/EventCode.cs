@@ -8,7 +8,7 @@ public enum EventCode
     a,
     b,
     c,
-    d,
+    GotoNextPhase,
 
     // SpawnManager
 
@@ -26,6 +26,7 @@ public enum EventCode
     UnitForceStop,
     PlayerMoveInput,
     PlayerAnimation,
+    RegisterPosSearch,
 
     // UIManager
 
@@ -34,6 +35,10 @@ public enum EventCode
     KeyBoardIndicator,
     SetCenterIndicator,
     ForceLoad,
+
+    // ConditionChecker
+    
+    UnitArrived,
 
     // Default
 

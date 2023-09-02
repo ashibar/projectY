@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour, IEventListener
 
     private void ForceLoad(ExtraParams para)
     {
-        LoadingSceneController.LoadScene("BattleScene", 1);
+        LoadingSceneController.LoadScene(para.Name);
     }
 
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();

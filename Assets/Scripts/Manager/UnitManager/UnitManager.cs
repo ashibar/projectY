@@ -32,6 +32,7 @@ public class UnitManager : MonoBehaviour, IEventListener
     [SerializeField] private Unit targetUnit;
     [SerializeField] private int targetDestroyed;
     [SerializeField] private int maxDestroyed;
+    [SerializeField] private List<EventParams> events = new List<EventParams>();
     private Unit player;
     public List<GameObject> Clones { get => clones; }
     public Unit TargetUnit { get => targetUnit; set => targetUnit = value; }
@@ -64,22 +65,25 @@ public class UnitManager : MonoBehaviour, IEventListener
         EventManager.Instance.AddListener(EventCode.UnitForceStop, this);
         EventManager.Instance.AddListener(EventCode.PlayerMoveInput, this);
         EventManager.Instance.AddListener(EventCode.PlayerAnimation, this);
+        EventManager.Instance.AddListener(EventCode.RegisterPosSearch, this);
     }
 
     public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
     {
-        ExtraParams par = (ExtraParams)param[0];
-        
+        //ExtraParams par = (ExtraParams)param[0];
+        //Debug.Log(string.Format("{0}, {1}", event_type, par.VecList[0]));
         switch (event_type)
         {
             case EventCode.UnitForceMove:
-                UnitForceMove(par); break;
+                UnitForceMove((ExtraParams)param[0]); break;
             case EventCode.UnitForceStop:
-                UnitForceStop(par); break;
+                UnitForceStop((ExtraParams)param[0]); break;
             case EventCode.PlayerMoveInput:
-                PlayerMoveInput(par); break;
+                PlayerMoveInput((ExtraParams)param[0]); break;
             case EventCode.PlayerAnimation:
-                PlayerAnimation(par); break;
+                PlayerAnimation((ExtraParams)param[0]); break;
+            case EventCode.RegisterPosSearch:
+                RegisterPosSearch((EventParams)param[0]); break;
             default:
                 break;
         }
@@ -90,6 +94,7 @@ public class UnitManager : MonoBehaviour, IEventListener
         switch (par.Name)
         {
             case "Player":
+                Debug.Log(string.Format("{0}, {1}", par.VecList[0], par.Floatvalue) );
                 player.GetComponentInChildren<UnitForceMove>().SetForceMove(par.VecList[0], par.Floatvalue);
                 break;
             default:
@@ -119,6 +124,19 @@ public class UnitManager : MonoBehaviour, IEventListener
     private void PlayerAnimation(ExtraParams par)
     {
         playerAnimationController.SetAnimation(par.Name);
+    }
+
+    private void RegisterPosSearch(EventParams par)
+    {
+
+    }
+
+    private void CheckUnitPosition()
+    {
+        for (int i = events.Count - 1; i >= 0; i--)
+        {
+            //for ()
+        }
     }
 
     public virtual void Delete_FromCloneList(GameObject clone)

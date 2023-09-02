@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(EventParams))]
+//[CustomPropertyDrawer(typeof(EventParams))]
 public class EventParam_ClassDrawer : PropertyDrawer
 {
     

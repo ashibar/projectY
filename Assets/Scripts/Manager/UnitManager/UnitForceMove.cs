@@ -76,7 +76,7 @@ public class UnitForceMove : MonoBehaviour
             pos = tr.position;
             dir = (_targetPos - pos).normalized;
             distanceToTarget = (_targetPos - pos).magnitude;
-            Debug.Log(string.Format("{0}, {1}, {2}, {3}", pos, _targetPos, dir, distanceToTarget));
+            //Debug.Log(string.Format("{0}, {1}, {2}, {3}", pos, _targetPos, dir, distanceToTarget));
             if (speed == 0)
                 unit.transform.position = Vector2.MoveTowards(pos, pos + dir, unit.stat.Speed * Time.deltaTime);
             else
