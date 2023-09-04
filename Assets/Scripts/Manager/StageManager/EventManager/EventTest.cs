@@ -15,6 +15,12 @@ public class EventTest : MonoBehaviour, IEventListener
         
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.A))
+            EventManager.Instance.PostNotification(EventCode.a, this, new Condition());
+    }
+
     public void SubscribeEvent()
     {
         EventManager.Instance.AddListener(EventCode.a, this);
