@@ -42,7 +42,7 @@ public class EventManager : MonoBehaviour
     // 구독자 리스트
     //      Key : EventCode로 이벤트를 식별하는 코드. EventCode 문서 참조 link:...\EventCode.cs
     //      Value : 구독자들이 상속할 인터페이스. 여기선 구독자 컴포넌트를 의미 link:...\IEventListener.cs
-    private Dictionary<EventCode, List<IEventListener>> listeners = new Dictionary<EventCode, List<IEventListener>>();
+    private Dictionary<string, List<IEventListener>> listeners = new Dictionary<string, List<IEventListener>>();
 
     // 스크립트 초기화 시 매소드
     // 한개의 오브젝트만 존재하도록 하는 싱글톤 패턴
@@ -83,9 +83,9 @@ public class EventManager : MonoBehaviour
     /// </summary>
     private void RefreshListeners()
     {
-        Dictionary<EventCode, List<IEventListener>> tmpListeners = new Dictionary<EventCode, List<IEventListener>>();
+        Dictionary<string, List<IEventListener>> tmpListeners = new Dictionary<string, List<IEventListener>>();
 
-        foreach (KeyValuePair<EventCode, List<IEventListener>> item in listeners)
+        foreach (KeyValuePair<string, List<IEventListener>> item in listeners)
         {
             for (int i = item.Value.Count - 1; i >= 0; i--)
             {
@@ -109,7 +109,7 @@ public class EventManager : MonoBehaviour
     /// </summary>
     /// <param name="event_type">구독할 이벤트 enum값</param>
     /// <param name="listener">구독하는 Component. 기본적으로 this를 사용하는 것을 권장함.</param>
-    public void AddListener(EventCode event_type, IEventListener listener)
+    public void AddListener(string event_type, IEventListener listener)
     {
         List<IEventListener> listenList = null;
 
@@ -132,7 +132,7 @@ public class EventManager : MonoBehaviour
     /// <param name="sender">송신자 Component. 기본적으로 this를 사용하는 것을 권장함.</param>
     /// <param name="condition">이벤트가 활성화 될 조건을 위한 클래스. ConditionChecker 스크립트 참조.</param>
     /// <param name="param">그 외에 전달할 요소. condition뒤로 오는 모든 변수들을 총칭함</param>
-    public void PostNotification(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void PostNotification(string event_type, Component sender, Condition condition, params object[] param)
     {
         List<IEventListener> listenList = null;
 
@@ -146,7 +146,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void RemoveEvent(EventCode event_type)
+    public void RemoveEvent(string event_type)
     {
         listeners.Remove(event_type);
     }

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IEventListener
 {
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param);
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param);
     public void SubscribeEvent();
 }

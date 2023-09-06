@@ -39,6 +39,15 @@ public class UnitManager : MonoBehaviour, IEventListener
     public int TargetDestroyed { get => targetDestroyed; set => targetDestroyed = value; }
     public int MaxDestroyed { get => maxDestroyed; set => maxDestroyed = value; }
 
+    public static List<string> event_code = new List<string>
+    {
+        "Unit Force Move",
+        "Unit Force Stop",
+        "Player Move Input",
+        "Player Animation",
+        "Register Pos Search"
+    };
+
     private void Awake()
     {
         playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
@@ -61,28 +70,25 @@ public class UnitManager : MonoBehaviour, IEventListener
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.UnitForceMove, this);
-        EventManager.Instance.AddListener(EventCode.UnitForceStop, this);
-        EventManager.Instance.AddListener(EventCode.PlayerMoveInput, this);
-        EventManager.Instance.AddListener(EventCode.PlayerAnimation, this);
-        EventManager.Instance.AddListener(EventCode.RegisterPosSearch, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
         //ExtraParams par = (ExtraParams)param[0];
         //Debug.Log(string.Format("{0}, {1}", event_type, par.VecList[0]));
         switch (event_type)
         {
-            case EventCode.UnitForceMove:
+            case "Unit Force Move":
                 UnitForceMove((ExtraParams)param[0]); break;
-            case EventCode.UnitForceStop:
+            case "Unit Force Stop":
                 UnitForceStop((ExtraParams)param[0]); break;
-            case EventCode.PlayerMoveInput:
+            case "Player Move Input":
                 PlayerMoveInput((ExtraParams)param[0]); break;
-            case EventCode.PlayerAnimation:
+            case "Player Animation":
                 PlayerAnimation((ExtraParams)param[0]); break;
-            case EventCode.RegisterPosSearch:
+            case "Register Pos Search":
                 RegisterPosSearch((EventParams)param[0]); break;
             default:
                 break;
