@@ -40,8 +40,13 @@ public enum EventCode
     
     UnitArrived,
 
+    // RMR
+
+    RMR_SetDialog,
+
     // Default
 
     None
+
 
 }

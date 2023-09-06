@@ -6,29 +6,7 @@ namespace ReadyMadeReality
 {
     public class DialogArea : MonoBehaviour
     {
-        private static DialogArea instance;
-        public static DialogArea Instance
-        {
-            get
-            {
-                if (instance == null) // instance가 비어있다
-                {
-                    var obj = FindObjectOfType<DialogArea>(true);
-                    if (obj != null)
-                    {
-                        instance = obj;                                             // 전체 찾아봤는데? 있네? 그걸 넣자
-                        Debug.Log("a");
-                    }
-                    else
-                    {
-                        var newObj = new GameObject().AddComponent<DialogArea>(); // 전체 찾아봤는데? 없네? 새로만들자
-                        instance = newObj;
-                        Debug.Log("b");
-                    }
-                }
-                return instance; // 안비어있네? 그냥 그대로 가져와
-            }
-        }
+        
 
         private DialogBox dialogBox;
         private PortraitBox_Left portraitBox_left;
@@ -40,12 +18,7 @@ namespace ReadyMadeReality
 
         private void Awake()
         {
-            var objs = FindObjectsOfType<DialogArea>(true);
-            if (objs.Length != 1)
-            {
-                Destroy(gameObject);
-                return;
-            }
+            
             dialogBox = GetComponentInChildren<DialogBox>(true);
             portraitBox_left = GetComponentInChildren<PortraitBox_Left>();
             portraitBox_right = GetComponentInChildren<PortraitBox_Right>();
@@ -68,7 +41,7 @@ namespace ReadyMadeReality
 
         public void SetActive(bool value)
         {
-            instance.gameObject.SetActive(value);
+            gameObject.SetActive(value);
             dialogBox.SetActive(value);
         }
 

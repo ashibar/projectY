@@ -37,6 +37,15 @@ public class UIManager : MonoBehaviour, IEventListener
     public ResultWindow ResultWindow { get => resultWindow; set => resultWindow = value; }
     public TopIndicator TopIndicator { get => topIndicator; set => topIndicator = value; }
 
+    public static List<string> event_code = new List<string>
+    {
+        "Fade In",
+        "Fade Out",
+        "Key Board Indicator",
+        "Set Center Indicator",
+        "Force Load"
+    };
+
     private void Awake()
     {
         var objs = FindObjectsOfType<UIManager>();
@@ -57,28 +66,25 @@ public class UIManager : MonoBehaviour, IEventListener
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.FadeIn, this);
-        EventManager.Instance.AddListener(EventCode.FadeOut, this);
-        EventManager.Instance.AddListener(EventCode.KeyBoardIndicator, this);
-        EventManager.Instance.AddListener(EventCode.SetCenterIndicator, this);
-        EventManager.Instance.AddListener(EventCode.ForceLoad, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
         ExtraParams para = (ExtraParams)param[0];
 
         switch (event_type)
         {
-            case EventCode.FadeOut:
+            case "Fade Out":
                 FadeOut(para); break;
-            case EventCode.FadeIn:
+            case "Fade In":
                 FadeIn(para); break;
-            case EventCode.KeyBoardIndicator:
+            case "Key Board Indicator":
                 KeyBoardIndicator(para); break;
-            case EventCode.SetCenterIndicator:
+            case "Set Center Indicator":
                 SetCenterIndicator(para); break;
-            case EventCode.ForceLoad:
+            case "Force Load":
                 ForceLoad(para); break;
             default:
                 break;

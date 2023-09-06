@@ -1,3 +1,4 @@
+using ReadyMadeReality;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class ExtraParams
     [SerializeField] private string name2;
     [SerializeField] private bool boolvalue;
     [SerializeField] private EventPhase_so nextPhase;
+    [SerializeField] private DialogInfo_so dialog_so;
 
     public int Id { get => id; set => id = value; }
     public string Name { get => name; set => name = value; }
@@ -22,6 +24,7 @@ public class ExtraParams
     public string Name2 { get => name2; set => name2 = value; }
     public bool Boolvalue { get => boolvalue; set => boolvalue = value; }
     public EventPhase_so NextPhase { get => nextPhase; set => nextPhase = value; }
+    public DialogInfo_so Dialog_so { get => dialog_so; set => dialog_so = value; }
 
     public ExtraParams()
     {
@@ -33,9 +36,10 @@ public class ExtraParams
         this.name = "";
         this.boolvalue = false;
         this.nextPhase = null;
+        this.dialog_so = null;
     }
 
-    public ExtraParams(int id, string name, int intvalue, float floatvalue, List<Vector2> vecList, string name2, bool boolvalue, EventPhase_so nextPhase)
+    public ExtraParams(int id, string name, int intvalue, float floatvalue, List<Vector2> vecList, string name2, bool boolvalue, EventPhase_so nextPhase, DialogInfo_so dialog_so)
     {
         this.id = id;
         this.name = name;
@@ -45,5 +49,6 @@ public class ExtraParams
         this.name2 = name2;
         this.boolvalue = boolvalue;
         this.nextPhase = nextPhase;
+        this.dialog_so = dialog_so;
     }
 }

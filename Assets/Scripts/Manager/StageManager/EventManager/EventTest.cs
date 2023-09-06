@@ -17,32 +17,35 @@ public class EventTest : MonoBehaviour, IEventListener
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.A))
-            EventManager.Instance.PostNotification(EventCode.a, this, new Condition());
+        //if (Input.GetKey(KeyCode.A))
+        //    EventManager.Instance.PostNotification(EventCode.a, this, new Condition());
+        //else if (Input.GetKey(KeyCode.B))
+        //    EventManager.Instance.PostNotification(EventCode.b, this, new Condition());
+        //else if (Input.GetKey(KeyCode.C))
+        //    EventManager.Instance.PostNotification(EventCode.c, this, new Condition());
     }
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.a, this);
-        EventManager.Instance.AddListener(EventCode.b, this);
-        EventManager.Instance.AddListener(EventCode.c, this);
+        //EventManager.Instance.AddListener(EventCode.a, this);
+        //EventManager.Instance.AddListener(EventCode.b, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
         string s = string.Empty;
 
-        switch (event_type)
-        {
-            case EventCode.a:
-                s = "a"; break;
-            case EventCode.b:
-                s = "b"; break;
-            case EventCode.c:
-                s = "c"; break;
-        }
+        //switch (event_type)
+        //{
+        //    case EventCode.a:
+        //        s = "a"; break;
+        //    case EventCode.b:
+        //        s = "b"; break;
+        //    case EventCode.c:
+        //        s = "c"; break;
+        //}
 
-        Debug.Log(s);
+        //Debug.Log(s);
     }
 
     

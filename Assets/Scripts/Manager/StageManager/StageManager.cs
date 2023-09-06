@@ -53,6 +53,11 @@ public class StageManager : MonoBehaviour, IEventListener
 
     public List<EventMessage> messageBuffer = new List<EventMessage>();
 
+    public static List<string> event_code = new List<string>
+    {
+        "Goto Next Phase",
+    };
+
     private void Awake()
     {
         var objs = FindObjectsOfType<StageManager>();
@@ -96,15 +101,16 @@ public class StageManager : MonoBehaviour, IEventListener
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.GotoNextPhase, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
 
         switch (event_type)
         {
-            case EventCode.GotoNextPhase:
+            case "Goto Next Phase":
                 GotoNextPhase((ExtraParams)param[0]); break;
         }
     }
@@ -156,9 +162,8 @@ public class StageManager : MonoBehaviour, IEventListener
         p2.Id = 0;
         p2.VecList.AddRange(vecList);
 
-        stageInfo.Para.Add(new EventParams(0, EventCode.a, condition1));
-        stageInfo.Para.Add(new EventParams(1, EventCode.SpawnEnemyAtVectorByID, condition1, p1));
-        stageInfo.Para.Add(new EventParams(2, EventCode.SpawnEnemyAtVectorListByID, condition1, p2));
+        stageInfo.Para.Add(new EventParams(1, "Spawn Enemy At Vector By ID", condition1, p1));
+        stageInfo.Para.Add(new EventParams(2, "Spawn Enemy At Vector List By ID", condition1, p2));
     }
 
     /// <summary>
