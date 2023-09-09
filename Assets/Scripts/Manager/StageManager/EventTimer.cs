@@ -29,7 +29,7 @@ public class EventTimer : MonoBehaviour
 
     [SerializeField] private bool isCooltime;
     [SerializeField] private int eventIndex = 0;
-    [SerializeField] private int interruptedIndex = -1;
+    //[SerializeField] private int interruptedIndex = -1;
     [SerializeField] private bool isInterrupted;
 
     private List<CancellationTokenSource> cts = new List<CancellationTokenSource>();
@@ -126,30 +126,50 @@ public class EventTimer : MonoBehaviour
             }
 
             accumulated = 0;
-            foreach (EventParams p in para)
-            {                
-                // 위치
-                if (p.condition.Sort == ConditionSort.MoveToPos)
+            for (int i = 0; i < para.Count; i++)
+            {
+                EventParams p = para[i];
+                // 이전 이벤트가 만족시만 실행되는 이벤트
+                if (p.condition.IsContinued)
                 {
-                    p.condition.IsSatisfied = CheckPosition(p);
+                    // 이전 이벤트 만족 여부 검사
+                    if (i > 0 && !para[i - 1].condition.IsSatisfied)
+                        continue;
+
+                    // 누적 시간
+                    if (p.condition.Sort == ConditionSort.Time)
+                    {
+                        accumulated += p.condition.TargetNum;
+                        if (p.condition.IsSatisfied) continue;
+                        if (Time.time - start >= accumulated)
+                            p.condition.IsSatisfied = PostNotification(p);
+                    }
+                    // 위치
+                    else if (p.condition.Sort == ConditionSort.MoveToPos)
+                    {
+                        bool value = CheckPosition(p);
+                        p.condition.IsSatisfied = value;
+                        if (value)
+                            start = Time.time;
+                    }
                 }
-                // 누적 시간
-                else if (p.condition.IsContinued)
-                {
-                    accumulated += p.condition.TargetNum;
-                    if (p.condition.IsSatisfied) continue;
-                    if (Time.time - start >= accumulated)
-                        p.condition.IsSatisfied = PostNotification(p);
-                }
-                // 절대 시간
+                // 다른 이벤트와 독립적으로 작동하는 이벤트
                 else
                 {
-                    if (p.condition.IsSatisfied) continue;
-                    if (Time.time - start >= p.condition.TargetNum)
-                        p.condition.IsSatisfied = PostNotification(p);
+                    // 절대 시간
+                    if (p.condition.Sort == ConditionSort.Time)
+                    {
+                        if (p.condition.IsSatisfied) continue;
+                        if (Time.time - start >= p.condition.TargetNum)
+                            p.condition.IsSatisfied = PostNotification(p);
+                    }
+                    else if (p.condition.Sort == ConditionSort.MoveToPos)
+                    {
+                        p.condition.IsSatisfied = CheckPosition(p);
+                    }
                 }
-                
             }
+
             
             await Task.Yield();
             
@@ -178,7 +198,7 @@ public class EventTimer : MonoBehaviour
         {
             if (go == null) continue;
             if (!string.Equals(p.condition.TargetTag, go.tag)) continue;
-            if (Vector2.Distance(go.transform.position, p.condition.TargetPos) < 0.1f)
+            if (IsInsideRectangle(p.condition.TargetPos, p.condition.TargetRange, go.transform))
             {
                 num++;
             }
@@ -197,6 +217,38 @@ public class EventTimer : MonoBehaviour
             return false;
     }
 
+    // 매개변수로 받아온 transformn이 직사각형 안에 있는지 여부를 확인
+    private bool IsInsideRectangle(Vector2 pos, Vector2 size, Transform objectTransform)
+    {
+        if (pos == null)
+        {
+            Debug.Log("pos is null");
+            return false;
+        }
+        if (size == null)
+        {
+            Debug.Log("range is null");
+            return false;
+        }
+        size = Vector2.Distance(size, Vector2.zero) <= 0 ? new Vector2(0.1f, 0.1f) : size;
+        
+        float leftBoundary = pos.x - (size.x / 2);
+        float rightBoundary = pos.x + (size.x / 2);
+        float bottomBoundary = pos.y - (size.y / 2);
+        float topBoundary = pos.y + (size.y / 2);
+
+        Vector3 objectPosition = objectTransform.position;
+
+        if (objectPosition.x >= leftBoundary && objectPosition.x <= rightBoundary &&
+            objectPosition.y >= bottomBoundary && objectPosition.y <= topBoundary)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     // 파괴시 모든 이벤트 중단
     private void OnDestroy()

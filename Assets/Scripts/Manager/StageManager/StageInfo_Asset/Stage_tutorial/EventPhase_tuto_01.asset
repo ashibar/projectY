@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - no: 0
-    eventcode: 12
+    eventindex: 3
+    eventcode: Unit Force Stop
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -34,12 +36,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 1
-    eventcode: 14
+    eventindex: 3
+    eventcode: Player Animation
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -55,12 +61,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-  - no: 0
-    eventcode: 14
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 2
+    eventindex: 3
+    eventcode: Player Animation
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -76,16 +86,20 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-  - no: 2
-    eventcode: 14
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 3
+    eventindex: 3
+    eventcode: Player Animation
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 2
+      targetNum: 2.5
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -97,16 +111,45 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-  - no: 3
-    eventcode: 19
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 4
+    eventindex: 6
+    eventcode: Play Sound
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0.5
+      targetNum: 1
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0.5
+      vecList: []
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 8300000, guid: d25b24d85b149b04c98c2a21c26a6e04, type: 3}
+  - no: 5
+    eventindex: 4
+    eventcode: Set Center Indicator
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -118,12 +161,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
-  - no: 4
-    eventcode: 19
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 6
+    eventindex: 4
+    eventcode: Set Center Indicator
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -139,16 +186,20 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-  - no: 5
-    eventcode: 18
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 7
+    eventindex: 4
+    eventcode: Key Board Indicator
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0.5
+      targetNum: 1.5
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -160,12 +211,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
-  - no: 6
-    eventcode: 13
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 8
+    eventindex: 3
+    eventcode: Player Move Input
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -181,12 +236,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
-  - no: 7
-    eventcode: 18
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 9
+    eventindex: 4
+    eventcode: Key Board Indicator
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -202,24 +261,5 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-  - no: 8
-    eventcode: 3
-    condition:
-      sort: 3
-      targetTag: Player
-      targetPos: {x: 20, y: 0}
-      targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 1
-      isSatisfied: 1
-      isContinued: 0
-    extraParams:
-      id: 0
-      name: 
-      intvalue: 0
-      floatvalue: 0
-      vecList: []
-      name2: 
-      boolvalue: 0
-      nextPhase: {fileID: 11400000, guid: 7bc44bf027f5989438561384b219ddf5, type: 2}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}

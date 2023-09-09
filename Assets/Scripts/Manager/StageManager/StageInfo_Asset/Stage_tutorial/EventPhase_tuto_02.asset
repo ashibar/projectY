@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - no: 0
-    eventcode: 20
+    eventindex: 4
+    eventcode: Force Load
     condition:
       sort: 1
       targetTag: 
@@ -34,3 +35,4 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}

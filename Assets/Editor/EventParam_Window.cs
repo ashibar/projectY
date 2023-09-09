@@ -17,11 +17,12 @@ public class EventParam_Window : EditorWindow
         "Unit Manager",
         "UI Manager",
         "RMR",
+        "Sound Manager"
     };
     [SerializeField] int sortIndex = 0;
     [SerializeField] int listIndex = 0;
     [SerializeField] string sortStr;
-    [SerializeField] private string selectedStr = "";
+    //[SerializeField] private string selectedStr = "";
 
     [MenuItem("Utilities/Event Maker")]
     private static void Init()
@@ -33,7 +34,7 @@ public class EventParam_Window : EditorWindow
     private void OnEnable()
     {
         minSize = new Vector2(500, 500); // 최소 크기 설정
-        maxSize = new Vector2(500, 800); // 최대 크기 설정
+        maxSize = new Vector2(500, 1000); // 최대 크기 설정
     }
 
     private void OnGUI()
@@ -177,11 +178,14 @@ public class EventParam_Window : EditorWindow
                 case ConditionSort.Trigger:
                     Con_Flag(innerFieldOption);
                     Con_FlagValue(innerFieldOption);
+                    Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.MoveToPos:
                     Con_Tag(innerFieldOption);
                     Con_Pos(innerFieldOption);
+                    Con_Range(innerFieldOption);
                     Con_Num(innerFieldOption);
+                    Con_Tinue(innerFieldOption);
                     break;
                 default:
                     break;
@@ -200,11 +204,13 @@ public class EventParam_Window : EditorWindow
             {
                 Par_No(innerFieldOption);
                 Par_Name(innerFieldOption);
+                Par_Name2(innerFieldOption);
                 Par_Int(innerFieldOption);
                 Par_Float(innerFieldOption);
                 Par_Bool(innerFieldOption);
                 Par_Phase(innerFieldOption);
                 Par_Dialog(innerFieldOption);
+                Par_Audio(innerFieldOption);
                 Par_VecList(innerFieldOption, innerVectorOption); 
             }
 
@@ -246,6 +252,8 @@ public class EventParam_Window : EditorWindow
                 RenderList(4, UIManager.event_code, options); break;
             case "RMR":
                 RenderList(5, ReadyMadeReality.RMR.event_code, options); break;
+            case "Sound Manager":
+                RenderList(6, SoundManager.event_code, options); break;
             default:
                 RenderList(0, new List<string> { "None" }, options); break;
         }
@@ -309,7 +317,14 @@ public class EventParam_Window : EditorWindow
         phaseInfo.Events[index].condition.TargetPos = EditorGUILayout.Vector2Field("Target Position", phaseInfo.Events[index].condition.TargetPos, options);
         GUILayout.EndHorizontal();
     }
-
+    private void Con_Range(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUIUtility.wideMode = true;
+        phaseInfo.Events[index].condition.TargetRange = EditorGUILayout.Vector2Field("Detect Range", phaseInfo.Events[index].condition.TargetRange, options);
+        GUILayout.EndHorizontal();
+    }
     private void Par_No(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
@@ -322,6 +337,13 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         phaseInfo.Events[index].extraParams.Name = EditorGUILayout.TextField("Name", phaseInfo.Events[index].extraParams.Name, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_Name2(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.Name2 = EditorGUILayout.TextField("Name2", phaseInfo.Events[index].extraParams.Name2, options);
         GUILayout.EndHorizontal();
     }
     private void Par_Int(GUILayoutOption[] options)
@@ -357,6 +379,13 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         phaseInfo.Events[index].extraParams.Dialog_so = (DialogInfo_so)EditorGUILayout.ObjectField("Dialog so", phaseInfo.Events[index].extraParams.Dialog_so, typeof(object), true, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_Audio(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.Audioclip = (AudioClip)EditorGUILayout.ObjectField("Audio Clip", phaseInfo.Events[index].extraParams.Audioclip, typeof(object), true, options);
         GUILayout.EndHorizontal();
     }
     private void Par_VecList(GUILayoutOption[] options, GUILayoutOption[] options_inner)

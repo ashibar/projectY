@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour, IEventListener
     [SerializeField] private Indicator indicator_centerImage;
     [SerializeField] private ResultWindow resultWindow;
     [SerializeField] private TopIndicator topIndicator;
+    [SerializeField] private TutorialLogo tutorialLogo;
 
     public ResultWindow ResultWindow { get => resultWindow; set => resultWindow = value; }
     public TopIndicator TopIndicator { get => topIndicator; set => topIndicator = value; }
@@ -43,7 +44,8 @@ public class UIManager : MonoBehaviour, IEventListener
         "Fade Out",
         "Key Board Indicator",
         "Set Center Indicator",
-        "Force Load"
+        "Force Load",
+        "Logo Appears",
     };
 
     private void Awake()
@@ -86,6 +88,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 SetCenterIndicator(para); break;
             case "Force Load":
                 ForceLoad(para); break;
+            case "Logo Appears":
+                LogoAppears(para); break;
             default:
                 break;
         }
@@ -114,6 +118,11 @@ public class UIManager : MonoBehaviour, IEventListener
     private void ForceLoad(ExtraParams para)
     {
         LoadingSceneController.LoadScene(para.Name);
+    }
+
+    private void LogoAppears(ExtraParams para)
+    {
+        tutorialLogo.SetAnim("isAppear");
     }
 
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
