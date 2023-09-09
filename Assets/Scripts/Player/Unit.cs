@@ -34,7 +34,8 @@ public class Unit : MonoBehaviour
 
     protected virtual void Awake()
     {
-        stat = new Stat(stat_so);
+        if (stat_so != null)
+            stat = new Stat(stat_so);
     }
 
     protected virtual void Start()

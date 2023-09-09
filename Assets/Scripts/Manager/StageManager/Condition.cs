@@ -10,6 +10,7 @@ public class Condition
     [SerializeField] private Type target;
     [SerializeField] private string targetTag;
     [SerializeField] private Vector2 targetPos;
+    [SerializeField] private Vector2 targetRange;
     [SerializeField] private int targetAreaID;
     [SerializeField] private string targetFlag;
     [SerializeField] private bool flagValue;
@@ -21,6 +22,7 @@ public class Condition
     public Type Target { get => target; set => target = value; }
     public string TargetTag { get => targetTag; set => targetTag = value; }
     public Vector2 TargetPos { get => targetPos; set => targetPos = value; }
+    public Vector2 TargetRange { get => targetRange; set => targetRange = value; }
     public int TargetAreaID { get => targetAreaID; set => targetAreaID = value; }
     public string TargetFlag { get => targetFlag; set => targetFlag = value; }
     public bool FlagValue { get => flagValue; set => flagValue = value; }

@@ -71,7 +71,7 @@ public class UnitForceMove : MonoBehaviour
 
         float end = Time.time + timeOut;
 
-        while (!isInterrupted && distanceToTarget > 0.01f && Time.time < timeOut)
+        while (!isInterrupted && distanceToTarget > 0.05f && Time.time < end)
         {
             pos = tr.position;
             dir = (_targetPos - pos).normalized;

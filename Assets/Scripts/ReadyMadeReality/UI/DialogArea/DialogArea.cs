@@ -12,7 +12,7 @@ namespace ReadyMadeReality
         private PortraitBox_Left portraitBox_left;
         private PortraitBox_Right portraitBox_right;
 
-        [SerializeField] private bool isActive = false;
+        //[SerializeField] private bool isActive = false;
         [SerializeField] private DialogInfo_so dialog_so;
         [SerializeField] private int cnt = 0;
 

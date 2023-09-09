@@ -131,7 +131,8 @@ public class StageManager : MonoBehaviour, IEventListener
         stageInfo = new StageInfo(_stageInfo_so);
 
         //SetTestPara();
-        eventTimer.AddPhase(stageInfo.Phases[0]);
+        foreach(EventPhase_so phase in stageInfo.Phases)
+            eventTimer.AddPhase(phase);
         //conditionChecker.SetPara(stageInfo.Para);
     }
 

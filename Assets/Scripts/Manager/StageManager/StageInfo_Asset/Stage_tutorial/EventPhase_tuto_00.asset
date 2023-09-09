@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - no: 0
-    eventcode: 17
+    eventindex: 4
+    eventcode: Fade In
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -34,12 +36,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 0
-    eventcode: 11
+    eventindex: 3
+    eventcode: Unit Force Move
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -56,33 +62,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-  - no: 1
-    eventcode: 14
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 5
+    eventindex: 3
+    eventcode: Player Combat
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
-      targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 0
-      isSatisfied: 1
-      isContinued: 1
-    extraParams:
-      id: 0
-      name: Walk
-      intvalue: 0
-      floatvalue: 0
-      vecList: []
-      name2: 
-      boolvalue: 0
-      nextPhase: {fileID: 0}
-  - no: 2
-    eventcode: 13
-    condition:
-      sort: 1
-      targetTag: 
-      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -98,18 +87,97 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 4
+    eventindex: 6
+    eventcode: Play Sound
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: BGM1
+      intvalue: 0
+      floatvalue: 0.3
+      vecList: []
+      name2: 
+      boolvalue: 1
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 8300000, guid: 29b5778eccd682d42ba344adf368f62f, type: 3}
+  - no: 1
+    eventindex: 3
+    eventcode: Player Animation
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: Walk
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 2
+    eventindex: 3
+    eventcode: Player Move Input
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 3
-    eventcode: 3
+    eventindex: 1
+    eventcode: Goto Next Phase
     condition:
       sort: 3
       targetTag: Player
       targetPos: {x: 1, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
       targetNum: 1
-      isSatisfied: 0
-      isContinued: 0
+      isSatisfied: 1
+      isContinued: 1
     extraParams:
       id: 0
       name: 0
@@ -119,3 +187,5 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 11400000, guid: 11cf6bd9222ef974284d5f3336282ffb, type: 2}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}

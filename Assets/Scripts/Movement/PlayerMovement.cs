@@ -8,8 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private MovementManager movementmanager;
     private Rigidbody2D rb;
     [SerializeField] private bool isMove = true;
+    [SerializeField] private bool isCombat = true;
 
     public bool IsMove { get=>isMove; set => isMove = value; }
+    public bool IsCombat { get => isCombat; set => isCombat = value; }
+
     public float moveSpeed = 10;
     // Start is called before the first frame update
     private void Awake()
@@ -36,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
         if(IsMove)
         {
             MoveAnimation(CheckMove(dir));
-            //Flip(dir);
+            if (!isCombat)
+                Flip(dir);
             player.dir_toMove = dir;
             Movement(dir);
         }
@@ -50,7 +54,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveAnimation(bool isMove)
     {
-        if (isMove) player.animationManager.AnimationControl("Move");
+        if (isMove)
+        {
+            if (IsCombat)
+                player.animationManager.AnimationControl("Move");
+            else
+                player.animationManager.AnimationControl("Walk");
+        }
         else player.animationManager.AnimationControl("None");
     }
 
@@ -70,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
-        
+               
 
         return new Vector2(inputX, inputY).normalized;
     }

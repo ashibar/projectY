@@ -15,6 +15,7 @@ public class ExtraParams
     [SerializeField] private bool boolvalue;
     [SerializeField] private EventPhase_so nextPhase;
     [SerializeField] private DialogInfo_so dialog_so;
+    [SerializeField] private AudioClip audioclip;
 
     public int Id { get => id; set => id = value; }
     public string Name { get => name; set => name = value; }
@@ -25,6 +26,7 @@ public class ExtraParams
     public bool Boolvalue { get => boolvalue; set => boolvalue = value; }
     public EventPhase_so NextPhase { get => nextPhase; set => nextPhase = value; }
     public DialogInfo_so Dialog_so { get => dialog_so; set => dialog_so = value; }
+    public AudioClip Audioclip { get => audioclip; set => audioclip = value; }
 
     public ExtraParams()
     {
@@ -37,9 +39,10 @@ public class ExtraParams
         this.boolvalue = false;
         this.nextPhase = null;
         this.dialog_so = null;
+        this.audioclip = null;
     }
 
-    public ExtraParams(int id, string name, int intvalue, float floatvalue, List<Vector2> vecList, string name2, bool boolvalue, EventPhase_so nextPhase, DialogInfo_so dialog_so)
+    public ExtraParams(int id, string name, int intvalue, float floatvalue, List<Vector2> vecList, string name2, bool boolvalue, EventPhase_so nextPhase, DialogInfo_so dialog_so, AudioClip audioclip)
     {
         this.id = id;
         this.name = name;
@@ -50,5 +53,6 @@ public class ExtraParams
         this.boolvalue = boolvalue;
         this.nextPhase = nextPhase;
         this.dialog_so = dialog_so;
+        this.audioclip = audioclip;
     }
 }

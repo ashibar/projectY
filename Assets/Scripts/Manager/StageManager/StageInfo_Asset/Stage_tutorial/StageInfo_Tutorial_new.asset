@@ -16,14 +16,19 @@ MonoBehaviour:
   rewards: []
   stageSort: 0
   phases:
-  - {fileID: 11400000, guid: ed1ff6d4fc76ab749a583fb1f073b76e, type: 2}
+  - {fileID: 11400000, guid: 396748fdabcd27047a5897f8903ae77a, type: 2}
+  - {fileID: 11400000, guid: 2339df56a097cc14e9730488d48b4dce, type: 2}
+  - {fileID: 11400000, guid: d976bf92500222f45bb6bdd4bc893aa2, type: 2}
+  - {fileID: 11400000, guid: 775369745c34ebf4a886c3bec9b1cd97, type: 2}
   para:
   - no: 0
+    eventindex: 0
     eventcode: 17
     condition:
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -39,12 +44,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 1
+    eventindex: 0
     eventcode: 13
     condition:
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -60,12 +69,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 2
+    eventindex: 0
     eventcode: 11
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -82,12 +95,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 3
+    eventindex: 0
     eventcode: 14
     condition:
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -103,12 +120,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 4
+    eventindex: 0
     eventcode: 12
     condition:
       sort: 3
       targetTag: Player
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -124,12 +145,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 5
+    eventindex: 0
     eventcode: 14
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -145,12 +170,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 6
+    eventindex: 0
     eventcode: 14
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -166,12 +195,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 7
+    eventindex: 0
     eventcode: 14
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -187,12 +220,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 8
+    eventindex: 0
     eventcode: 19
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -208,12 +245,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 9
+    eventindex: 0
     eventcode: 19
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -229,12 +270,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 10
+    eventindex: 0
     eventcode: 18
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -250,12 +295,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 11
+    eventindex: 0
     eventcode: 13
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -271,12 +320,16 @@ MonoBehaviour:
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 12
+    eventindex: 0
     eventcode: 18
     condition:
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
@@ -292,5 +345,7 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   eventList_so: []
   spawners: []
