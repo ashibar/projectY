@@ -79,15 +79,15 @@ public class StageManager : MonoBehaviour, IEventListener
 
     private void Start()
     {
-        foreach (GameObject g in stageInfo.spawners)
-        {
-            Instantiate(g, SpawnManager.Instance.spawner_holder);
-        }
-        SpawnManager.Instance.SetSpawner();
+        //foreach (GameObject g in stageInfo.spawners)
+        //{
+        //    Instantiate(g, SpawnManager.Instance.spawner_holder);
+        //}
+        //SpawnManager.Instance.SetSpawner();
         if (UIManager.Instance.TopIndicator)
         {
             UIManager.Instance.TopIndicator.Sort = stageInfo.StageSort;
-            UIManager.Instance.TopIndicator.SetActive(); 
+            UIManager.Instance.TopIndicator.SetActive();
         }
         SetTargetUnit();
     }
@@ -140,32 +140,32 @@ public class StageManager : MonoBehaviour, IEventListener
     /// 임시 파라미터 설정 함수
     /// 후에 로딩 담당 컴포넌트가 대체함
     /// </summary>
-    private void SetTestPara()
-    {
-        stageInfo.Para.Clear();
+    //private void SetTestPara()
+    //{
+    //    stageInfo.Para.Clear();
 
-        Condition condition1 = new Condition();
-        condition1.Sort = ConditionSort.Time;
-        condition1.TargetNum = 1;
+    //    Condition condition1 = new Condition();
+    //    condition1.Sort = ConditionSort.Time;
+    //    condition1.TargetNum = 1;
 
-        List<Vector2> vecList = new List<Vector2>() {
-            new Vector2( 5f,  5f),
-            new Vector2( 5f, -5f),
-            new Vector2(-5f,  5f),
-            new Vector2(-5f, -5f)
-        };
+    //    List<Vector2> vecList = new List<Vector2>() {
+    //        new Vector2( 5f,  5f),
+    //        new Vector2( 5f, -5f),
+    //        new Vector2(-5f,  5f),
+    //        new Vector2(-5f, -5f)
+    //    };
 
-        ExtraParams p1 = new ExtraParams();
-        p1.Id = 0;
-        p1.VecList.Add(new Vector2(3f, 3f));
+    //    ExtraParams p1 = new ExtraParams();
+    //    p1.Id = 0;
+    //    p1.VecList.Add(new Vector2(3f, 3f));
 
-        ExtraParams p2 = new ExtraParams();
-        p2.Id = 0;
-        p2.VecList.AddRange(vecList);
+    //    ExtraParams p2 = new ExtraParams();
+    //    p2.Id = 0;
+    //    p2.VecList.AddRange(vecList);
 
-        stageInfo.Para.Add(new EventParams(1, "Spawn Enemy At Vector By ID", condition1, p1));
-        stageInfo.Para.Add(new EventParams(2, "Spawn Enemy At Vector List By ID", condition1, p2));
-    }
+    //    stageInfo.Para.Add(new EventParams(1, "Spawn Enemy At Vector By ID", condition1, p1));
+    //    stageInfo.Para.Add(new EventParams(2, "Spawn Enemy At Vector List By ID", condition1, p2));
+    //}
 
     /// <summary>
     /// <b>다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수</b><br/>

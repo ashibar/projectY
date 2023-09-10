@@ -63,6 +63,7 @@ namespace ReadyMadeReality
             if (so.DialogList != null)
             {
                 // 대화 로그 인덱스
+                if (so.DialogList.Count <= 0) so.DialogList = new List<DialogInfo>();
                 GUILayout.BeginHorizontal();
                 index = EditorGUILayout.IntField("Dialog Index", Mathf.Clamp(index, 0, so.DialogList.Count - 1), indexFieldStyle, indexFieldOption);
                 if (GUILayout.Button("<", buttonOption))

@@ -7304,6 +7304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReadyMadeReality
       objectReference: {fileID: 0}
+    - target: {fileID: 7617927615550413213, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
+      propertyPath: portraitInfo_so
+      value: 
+      objectReference: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
     - target: {fileID: 7617927615611803370, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7336,10 +7340,18 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -7419604948549011477, guid: ea87deb6f7b381447be9714aecdf645c, type: 2}
+    - target: {fileID: 7617927616681405680, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
+      propertyPath: portraitInfo_so
+      value: 
+      objectReference: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
     - target: {fileID: 7617927616704480979, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7617927616704480981, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
+      propertyPath: dialog_so
+      value: 
+      objectReference: {fileID: 11400000, guid: 63ef89bc6f2dd4c43a769382381f2dfc, type: 2}
     - target: {fileID: 7617927617374073683, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -7348,6 +7360,18 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -7419604948549011477, guid: ea87deb6f7b381447be9714aecdf645c, type: 2}
+    - target: {fileID: 7617927617441442551, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617927617441442551, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a0fd90820482c454998620dab8a49299, type: 3}
+    - target: {fileID: 7617927617441442551, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
 --- !u!1 &854324713
