@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9d792f9ea156647a34e21602caa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogArea: {fileID: 0}
 --- !u!1 &7617927615550413211
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7affda999c331264ab0061fc7da9d1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portraitInfo_so: {fileID: 11400000, guid: 966a5d91c1e615c44a5e34f12088496e, type: 2}
+  portraitInfo_so: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
 --- !u!1 &7617927615611803370
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41573e1b658ce7448c1cb029d911189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portraitInfo_so: {fileID: 11400000, guid: 966a5d91c1e615c44a5e34f12088496e, type: 2}
+  portraitInfo_so: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
 --- !u!1 &7617927616704480979
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778a810d4850ff94090bb5c9d92f252c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
   dialog_so: {fileID: 0}
   cnt: 0
 --- !u!114 &7617927616704480982
@@ -1128,8 +1128,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 013a3904d076e944dbe4183bf88b8996, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: a0fd90820482c454998620dab8a49299, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 5
 --- !u!114 &7617927617441442441
 MonoBehaviour:
   m_ObjectHideFlags: 0

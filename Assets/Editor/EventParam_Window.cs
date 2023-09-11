@@ -17,7 +17,8 @@ public class EventParam_Window : EditorWindow
         "Unit Manager",
         "UI Manager",
         "RMR",
-        "Sound Manager"
+        "Sound Manager",
+        "Test",
     };
     [SerializeField] int sortIndex = 0;
     [SerializeField] int listIndex = 0;
@@ -254,6 +255,8 @@ public class EventParam_Window : EditorWindow
                 RenderList(5, ReadyMadeReality.RMR.event_code, options); break;
             case "Sound Manager":
                 RenderList(6, SoundManager.event_code, options); break;
+            case "Test":
+                RenderList(7, Listener_template.event_code, options); break;
             default:
                 RenderList(0, new List<string> { "None" }, options); break;
         }

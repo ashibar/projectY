@@ -50,7 +50,7 @@ public class StageInfo_CtS : CSV_to_SO
             events.Add(event_instance);
         }
 
-        stage_instance.eventList_so.AddRange(events);
+        //stage_instance.eventList_so.AddRange(events);
     }
 
     protected override List<int> DuplicationInspection(string[] allLines)
