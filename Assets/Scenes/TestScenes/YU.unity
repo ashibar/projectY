@@ -1214,7 +1214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3644107191559950147, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7617927615550413213, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
       propertyPath: portraitInfo_so
@@ -1469,6 +1469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa38e4a633eb7240950b48a72806846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  count: 0
 --- !u!114 &1451745264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa38e4a633eb7240950b48a72806846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  count: 0
 --- !u!114 &1451783891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,6 +2022,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d226bad0fb3674fb77128bee019513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggers:
+  - triggerName: 
+    triggerValue: 0
 --- !u!4 &1784055618
 Transform:
   m_ObjectHideFlags: 0
@@ -2153,6 +2158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa38e4a633eb7240950b48a72806846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  count: 0
 --- !u!114 &1918431459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2200,7 +2206,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1918431458}
         m_TargetAssemblyTypeName: Sender_template, Assembly-CSharp
         m_MethodName: Event_C_Sender
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
