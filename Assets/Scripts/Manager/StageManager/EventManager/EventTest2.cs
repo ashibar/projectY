@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EventTest2 : MonoBehaviour, IEventListener
 {
-    
-
+    public List<StringNTrigger> triggers = new List<StringNTrigger>();
+    //public StringNTrigger trigger = new StringNTrigger();
     // Start is called before the first frame update
     void Start()
     {

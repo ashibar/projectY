@@ -16,7 +16,7 @@ public class Condition
     [SerializeField] private bool flagValue;
     [SerializeField] private float targetNum;
     [SerializeField] private bool isSatisfied;
-    [SerializeField] private bool isContinued;
+    [SerializeField] private bool isContinued = true;
 
     public ConditionSort Sort { get => sort; set => sort = value; }
     public Type Target { get => target; set => target = value; }
@@ -37,6 +37,5 @@ public enum ConditionSort
     Time,
     Trigger,
     MoveToPos,
-    MoveToArea,
-    targetDestroy
+    Number,
 }

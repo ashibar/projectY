@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Sender_template : MonoBehaviour
 {
+    [SerializeField] private float count = 0;
+    
     public void Event_A_Sender(int value)
     {
         ExtraParams para = new ExtraParams();
@@ -18,10 +20,12 @@ public class Sender_template : MonoBehaviour
         EventManager.Instance.PostNotification("Event B", this, null, para);
     }
 
-    public void Event_C_Sender(bool value)
+    public void Event_C_Sender()
     {
         ExtraParams para = new ExtraParams();
-        para.Boolvalue = value;
-        EventManager.Instance.PostNotification("Event C", this, null, para);
+        count += 1;
+        para.Name = "TestN";
+        para.Floatvalue = count;
+        EventManager.Instance.PostNotification("Set Number", this, null, para);
     }
 }

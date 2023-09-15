@@ -16,4 +16,4 @@ MonoBehaviour:
   rewards: []
   stageSort: 0
   phases:
-  - {fileID: 11400000, guid: e08f994f6cb7f804fab006f22525e96a, type: 2}
+  - {fileID: 11400000, guid: ed1ff6d4fc76ab749a583fb1f073b76e, type: 2}

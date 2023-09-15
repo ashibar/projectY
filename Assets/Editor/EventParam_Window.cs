@@ -19,6 +19,7 @@ public class EventParam_Window : EditorWindow
         "RMR",
         "Sound Manager",
         "Test",
+        "Event Timer",
     };
     [SerializeField] int sortIndex = 0;
     [SerializeField] int listIndex = 0;
@@ -171,6 +172,7 @@ public class EventParam_Window : EditorWindow
             switch (phaseInfo.Events[index].condition.Sort)
             {
                 case ConditionSort.None:
+                    Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.Time:
                     Con_Num(innerFieldOption);
@@ -185,6 +187,12 @@ public class EventParam_Window : EditorWindow
                     Con_Tag(innerFieldOption);
                     Con_Pos(innerFieldOption);
                     Con_Range(innerFieldOption);
+                    Con_Num(innerFieldOption);
+                    Con_Tinue(innerFieldOption);
+                    break;
+                case ConditionSort.Number:
+                    Con_Flag(innerFieldOption);
+                    Con_UpOrDown(innerFieldOption);
                     Con_Num(innerFieldOption);
                     Con_Tinue(innerFieldOption);
                     break;
@@ -257,6 +265,8 @@ public class EventParam_Window : EditorWindow
                 RenderList(6, SoundManager.event_code, options); break;
             case "Test":
                 RenderList(7, Listener_template.event_code, options); break;
+            case "Event Timer":
+                RenderList(8, EventTimer.event_code, options); break;
             default:
                 RenderList(0, new List<string> { "None" }, options); break;
         }
@@ -305,6 +315,13 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         phaseInfo.Events[index].condition.FlagValue = EditorGUILayout.Toggle("Flag Value", phaseInfo.Events[index].condition.FlagValue, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Con_UpOrDown(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].condition.FlagValue = EditorGUILayout.Toggle("More than", phaseInfo.Events[index].condition.FlagValue, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Tag(GUILayoutOption[] options) {
@@ -369,7 +386,7 @@ public class EventParam_Window : EditorWindow
         GUILayout.FlexibleSpace();
         phaseInfo.Events[index].extraParams.Boolvalue = EditorGUILayout.Toggle("Bool Value", phaseInfo.Events[index].extraParams.Boolvalue, options);
         GUILayout.EndHorizontal();
-    }
+    }    
     private void Par_Phase(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();

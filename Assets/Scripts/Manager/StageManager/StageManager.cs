@@ -72,8 +72,7 @@ public class StageManager : MonoBehaviour, IEventListener
         messageBuffer.Clear();
         Time.timeScale = 1.0f;
 
-        SubscribeEvent();
-        SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]); // 나중에 로딩할때 대체
+        SubscribeEvent(); // 나중에 로딩할때 대체
         //SetStageInfo_(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
     }
 
@@ -84,6 +83,8 @@ public class StageManager : MonoBehaviour, IEventListener
         //    Instantiate(g, SpawnManager.Instance.spawner_holder);
         //}
         //SpawnManager.Instance.SetSpawner();
+
+        SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
         if (UIManager.Instance.TopIndicator)
         {
             UIManager.Instance.TopIndicator.Sort = stageInfo.StageSort;
