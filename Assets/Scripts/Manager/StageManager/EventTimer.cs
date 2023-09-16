@@ -34,6 +34,7 @@ public class EventTimer : MonoBehaviour, IEventListener
         "Add New Number",
         "Remove Number",
         "Set Number",
+        "Set Trigger",
     };
 
     private void Awake()
@@ -70,6 +71,8 @@ public class EventTimer : MonoBehaviour, IEventListener
                 RemoveNumber(para); break;
             case "Set Number":
                 SetNumber(para); break;
+            case "Set Trigger":
+                SetTrigger(para); break;
         }
     }
 
@@ -117,6 +120,19 @@ public class EventTimer : MonoBehaviour, IEventListener
             if (string.Equals(number[i].numberName, para.Name))
             {
                 number[i].numberValue = para.Floatvalue;
+                return;
+            }
+        }
+    }
+
+    private void SetTrigger(ExtraParams para)
+    {
+        Debug.Log(string.Format("{0}, {1}", para.Name, para.Boolvalue));
+        for (int i = trigger.Count - 1; i >= 0; i--)
+        {
+            if (string.Equals(trigger[i].triggerName, para.Name))
+            {
+                trigger[i].triggerValue = para.Boolvalue;
                 return;
             }
         }

@@ -20,6 +20,7 @@ public class EventParam_Window : EditorWindow
         "Sound Manager",
         "Test",
         "Event Timer",
+        "Camera Manager",
     };
     [SerializeField] int sortIndex = 0;
     [SerializeField] int listIndex = 0;
@@ -267,6 +268,8 @@ public class EventParam_Window : EditorWindow
                 RenderList(7, Listener_template.event_code, options); break;
             case "Event Timer":
                 RenderList(8, EventTimer.event_code, options); break;
+            case "Camera Manager":
+                RenderList(9, CameraManager.event_code, options); break;
             default:
                 RenderList(0, new List<string> { "None" }, options); break;
         }

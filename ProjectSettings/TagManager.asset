@@ -11,6 +11,7 @@ TagManager:
   - Area
   - Projectile
   - Bat
+  - Explorer
   layers:
   - Default
   - TransparentFX

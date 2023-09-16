@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour, IEventListener
     [SerializeField] private ScreenFade screenFade;
     [SerializeField] private Gameover gameover;
     [SerializeField] private Indicator indicator_keyboard;
+    [SerializeField] private Indicator indicator_mouse;
     [SerializeField] private Indicator indicator_centerImage;
     [SerializeField] private ResultWindow resultWindow;
     [SerializeField] private TopIndicator topIndicator;
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Set Center Indicator",
         "Force Load",
         "Logo Appears",
+        "Set Mouse Indicator",
     };
 
     private void Awake()
@@ -90,6 +92,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 ForceLoad(para); break;
             case "Logo Appears":
                 LogoAppears(para); break;
+            case "Set Mouse Indicator":
+                SetMouseIndicator(para); break;
             default:
                 break;
         }
@@ -123,6 +127,11 @@ public class UIManager : MonoBehaviour, IEventListener
     private void LogoAppears(ExtraParams para)
     {
         tutorialLogo.SetAnim("isAppear");
+    }
+
+    private void SetMouseIndicator(ExtraParams para)
+    {
+        indicator_mouse.SetAnim("Out");
     }
 
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
