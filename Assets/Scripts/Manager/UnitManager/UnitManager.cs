@@ -52,6 +52,7 @@ public class UnitManager : MonoBehaviour, IEventListener
         "Set Unit Animation Bool",
         "Set Unit Animation Trigger",
         "FlipX Unit",
+        "Unit Set Position",
     };
 
     private void Awake()
@@ -112,6 +113,8 @@ public class UnitManager : MonoBehaviour, IEventListener
                 SetUnitAnimationTrigger((ExtraParams)param[0]); break;
             case "FlipX Unit":
                 FlipXUnit((ExtraParams)param[0]); break;
+            case "Unit Set Position":
+                UnitSetPostion((ExtraParams)param[0]); break;
             default:
                 break;
         }
@@ -196,6 +199,17 @@ public class UnitManager : MonoBehaviour, IEventListener
             {
                 Vector3 scale = c.transform.localScale;
                 c.transform.localScale = new Vector3(-scale.x, scale.y);
+            }
+        }
+    }
+
+    private void UnitSetPostion(ExtraParams par)
+    {
+        foreach (GameObject c in clones)
+        {
+            if (string.Equals(c.tag, par.Name))
+            {
+                c.transform.position = par.VecList[0];
             }
         }
     }

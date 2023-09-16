@@ -114,6 +114,32 @@ MonoBehaviour:
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
   - no: 4
+    eventindex: 9
+    eventcode: Zoom At Vector
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 1
+      floatvalue: 2
+      vecList:
+      - {x: 33, y: 2.5}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 5
     eventindex: 6
     eventcode: Play Sound
     condition:
@@ -138,7 +164,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: b4ec287aa22490e488d81d6662a93b12, type: 3}
-  - no: 5
+  - no: 6
     eventindex: 3
     eventcode: Set Unit Animation Trigger
     condition:
@@ -163,7 +189,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 6
+  - no: 7
     eventindex: 3
     eventcode: FlipX Unit
     condition:
@@ -188,7 +214,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 7
+  - no: 8
     eventindex: 6
     eventcode: Play Sound
     condition:
@@ -213,7 +239,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: b4ec287aa22490e488d81d6662a93b12, type: 3}
-  - no: 8
+  - no: 9
     eventindex: 3
     eventcode: Set Unit Animation Trigger
     condition:
@@ -238,7 +264,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 9
+  - no: 10
     eventindex: 3
     eventcode: Unit Force Move
     condition:
@@ -264,7 +290,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 10
+  - no: 11
     eventindex: 3
     eventcode: Unit Force Move
     condition:
@@ -290,9 +316,35 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 11
+  - no: 12
+    eventindex: 9
+    eventcode: Camera Move At Vector
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 6
+      vecList:
+      - {x: 38, y: 0}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 13
     eventindex: 4
-    eventcode: Fade Out
+    eventcode: Set Mouse Indicator
     condition:
       sort: 1
       targetTag: 
@@ -301,12 +353,63 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 3
+      targetNum: 1
       isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
       name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      name2: 
+      boolvalue: 1
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 14
+    eventindex: 3
+    eventcode: Unit Force Move
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: Bat
+      intvalue: 0
+      floatvalue: 1
+      vecList:
+      - {x: 40, y: 0}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 17
+    eventindex: 8
+    eventcode: Add New Trigger
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: isClicked
       intvalue: 0
       floatvalue: 0
       vecList: []
@@ -315,9 +418,9 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 12
-    eventindex: 4
-    eventcode: Logo Appears
+  - no: 15
+    eventindex: 9
+    eventcode: Camera Distortion
     condition:
       sort: 1
       targetTag: 
@@ -326,7 +429,7 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 2.5
+      targetNum: 0
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -336,7 +439,58 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       name2: 
+      boolvalue: 1
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 16
+    eventindex: 9
+    eventcode: Camera Move At Vector
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0.3
+      vecList:
+      - {x: 40, y: 0}
+      name2: 
       boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 17
+    eventindex: 8
+    eventcode: Set Trigger
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 5
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: isClicked
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      name2: 
+      boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
