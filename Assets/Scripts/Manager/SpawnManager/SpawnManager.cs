@@ -184,7 +184,7 @@ public class SpawnManager : MonoBehaviour, IEventListener
 
         foreach (Vector2 pos in posList)
         {
-            GameObject clone = Instantiate(para.MobLists[id], pos, Quaternion.identity, Holder.enemy_holder);
+            GameObject clone = Instantiate(para.MobLists.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
             clone.name = UnitManager.Instance.Clones.Count.ToString();
             UnitManager.Instance.Clones.Add(clone);
         }

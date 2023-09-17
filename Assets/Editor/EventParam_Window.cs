@@ -95,12 +95,12 @@ public class EventParam_Window : EditorWindow
         phaseInfo = (EventPhase_so)EditorGUILayout.ObjectField(phaseInfo, typeof(object), true);
         GUILayout.EndHorizontal();
 
-        
+
         if (phaseInfo != null)
         {
             if (phaseInfo.Events.Count <= 0)
                 phaseInfo.Events.Add(new EventParams(0));
-                        
+
             GUILayout.BeginHorizontal();
             // ÀÎµ¦½º
             GUILayout.FlexibleSpace();
@@ -158,8 +158,8 @@ public class EventParam_Window : EditorWindow
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUILayout.Label("Condtions", labelFieldOption);
-            GUILayout.EndHorizontal();            
-                        
+            GUILayout.EndHorizontal();
+
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             phaseInfo.Events[index].condition.Sort = (ConditionSort)EditorGUILayout.EnumPopup("Condtition Sort", phaseInfo.Events[index].condition.Sort, enumFieldOption);
@@ -221,7 +221,8 @@ public class EventParam_Window : EditorWindow
                 Par_Phase(innerFieldOption);
                 Par_Dialog(innerFieldOption);
                 Par_Audio(innerFieldOption);
-                Par_VecList(innerFieldOption, innerVectorOption); 
+                Par_MobList(innerFieldOption);
+                Par_VecList(innerFieldOption, innerVectorOption);
             }
 
             GUILayout.BeginHorizontal();
@@ -389,12 +390,12 @@ public class EventParam_Window : EditorWindow
         GUILayout.FlexibleSpace();
         phaseInfo.Events[index].extraParams.Boolvalue = EditorGUILayout.Toggle("Bool Value", phaseInfo.Events[index].extraParams.Boolvalue, options);
         GUILayout.EndHorizontal();
-    }    
+    }
     private void Par_Phase(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].extraParams.NextPhase = (EventPhase_so)EditorGUILayout.ObjectField("Next Phase" ,phaseInfo.Events[index].extraParams.NextPhase, typeof(object), true, options);
+        phaseInfo.Events[index].extraParams.NextPhase = (EventPhase_so)EditorGUILayout.ObjectField("Next Phase", phaseInfo.Events[index].extraParams.NextPhase, typeof(object), true, options);
         GUILayout.EndHorizontal();
     }
     private void Par_Dialog(GUILayoutOption[] options)
@@ -433,7 +434,7 @@ public class EventParam_Window : EditorWindow
                 Par_VecElement(i, options_inner);
         }
 
-        
+
     }
     private void Par_VecElement(int no, GUILayoutOption[] options)
     {
@@ -443,4 +444,12 @@ public class EventParam_Window : EditorWindow
         phaseInfo.Events[index].extraParams.VecList[no] = EditorGUILayout.Vector2Field(string.Format("vec {0}", no), phaseInfo.Events[index].extraParams.VecList[no], options);
         GUILayout.EndHorizontal();
     }
+    private void Par_MobList(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.MobLists = (PrefabSet_so)EditorGUILayout.ObjectField("Mob List", phaseInfo.Events[index].extraParams.MobLists, typeof(object), true, options);
+        GUILayout.EndHorizontal();
+    }
+
 }
