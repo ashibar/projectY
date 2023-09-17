@@ -183,9 +183,9 @@ MonoBehaviour:
       id: 0
       name: Explorer
       intvalue: 0
-      floatvalue: 3
+      floatvalue: 7
       vecList:
-      - {x: 62, y: 0}
+      - {x: 60, y: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
