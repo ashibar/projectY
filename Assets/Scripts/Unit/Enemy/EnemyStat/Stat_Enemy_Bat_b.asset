@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   name_unit: Bat_b
-  hp: 15
+  hp: 30
   speed: 5
   hp_regen: 0
   armor: 0
-  damage: 2
+  damage: 4
   speed_projectile: 0
   duration_projectile: 0
   range_projectile: 0
