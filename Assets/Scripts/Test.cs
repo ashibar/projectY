@@ -28,5 +28,6 @@ public class Test : MonoBehaviour
     public void SetDebugText(string value)
     {
         text.text = value;
+        Debug.Log("abc");
     }
 }
