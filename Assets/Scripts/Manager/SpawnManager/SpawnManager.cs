@@ -57,7 +57,8 @@ public class SpawnManager : MonoBehaviour, IEventListener
         "Boss Spawn",
         "Spawn Enemy At Vector By ID",
         "Spawn Enemy At Vector List By ID",
-        "Spawn Enemy At Vector By Name"
+        "Spawn EnemyList At Vector List By ID",
+        "Spawn Enemy At Vector By Name",
     };
 
     private void Awake()
@@ -113,6 +114,8 @@ public class SpawnManager : MonoBehaviour, IEventListener
                 SpawnAtVectorID(param); break;
             case "Spawn Enemy At Vector List By ID":
                 SpawnAtVectorListID(param); break;
+            case "Spawn EnemyList At Vector List By ID":
+                SpawnAtVectorListIDLists(param); break;
             case "Spawn Enemy At Vector By Name":
                 SpawnAtVectorName(param); break;
         }
@@ -167,6 +170,21 @@ public class SpawnManager : MonoBehaviour, IEventListener
         foreach (Vector2 pos in posList)
         {
             GameObject clone = Instantiate(enemyList.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
+            clone.name = UnitManager.Instance.Clones.Count.ToString();
+            UnitManager.Instance.Clones.Add(clone);
+        }
+    }
+
+    private void SpawnAtVectorListIDLists(params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        int id = para.Id;
+        List<Vector2> posList = para.VecList;
+
+        foreach (Vector2 pos in posList)
+        {
+            GameObject clone = Instantiate(para.MobLists[id], pos, Quaternion.identity, Holder.enemy_holder);
             clone.name = UnitManager.Instance.Clones.Count.ToString();
             UnitManager.Instance.Clones.Add(clone);
         }
