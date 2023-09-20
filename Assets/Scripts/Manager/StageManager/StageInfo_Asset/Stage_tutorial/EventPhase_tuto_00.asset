@@ -24,7 +24,7 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
+      targetNum: 0.1
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -33,6 +33,7 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -59,6 +60,7 @@ MonoBehaviour:
       floatvalue: 2
       vecList:
       - {x: 1, y: 0}
+      mobLists: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -84,6 +86,7 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -109,6 +112,7 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0.3
       vecList: []
+      mobLists: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
@@ -134,6 +138,7 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -159,6 +164,7 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -184,6 +190,7 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 11400000, guid: 11cf6bd9222ef974284d5f3336282ffb, type: 2}

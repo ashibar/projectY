@@ -45,7 +45,7 @@ public class EventTimer : MonoBehaviour, IEventListener
     private void Start()
     {
         unitManager = UnitManager.Instance;
-        Debug.Log("?");
+        //Debug.Log("?");
         //CTS(0);
     }
 
