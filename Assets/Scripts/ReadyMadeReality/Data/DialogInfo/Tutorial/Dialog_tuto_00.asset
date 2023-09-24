@@ -34,8 +34,8 @@ MonoBehaviour:
     enableNameBox: 1
   - left_portrait_id: 1
     right_portrait_id: 3
-    text_name: "\uCCB4\uB8E8"
-    text_value: "\uB0B4 \uC774\uB984\uC740 <b>\uCCB4\uB8E8</b>.@\n\uB178\uB9E8\uC232
+    text_name: "\uBBFC\uD2B8"
+    text_value: "\uB0B4 \uC774\uB984\uC740 <b>\uBBFC\uD2B8</b>.@\n\uB178\uB9E8\uC232
       \uBAA8\uD5D8\uAC00 \uCEA0\uD504 \uC77C\uC6D0 \uC911\uC5D0 \uD558\uB098\uC57C."
     nameColor:
       serializedVersion: 2
@@ -44,7 +44,7 @@ MonoBehaviour:
     enableNameBox: 1
   - left_portrait_id: 1
     right_portrait_id: 3
-    text_name: "\uCCB4\uB8E8"
+    text_name: "\uBBFC\uD2B8"
     text_value: "\uD55C\uCC3D \uC232\uC744 \uD0D0\uD5D8\uD558\uACE0 \uC788\uB294
       \uC640\uC911\uC5D0 \uBE44\uBA85\uC18C\uB9AC\uAC00 \uB4E4\uB9AC\uB354\uB77C\uACE0.@\n\uADF8\uB798\uC11C
       \uBB34\uC2A8\uC77C\uC778\uAC00 \uC2F6\uC5B4\uC11C \uC774\uCABD\uC73C\uB85C
@@ -57,7 +57,7 @@ MonoBehaviour:
     enableNameBox: 1
   - left_portrait_id: 1
     right_portrait_id: 3
-    text_name: "\uCCB4\uB8E8"
+    text_name: "\uBBFC\uD2B8"
     text_value: "\uB09C \uAE5C\uC9DD \uB180\uB77C\uC11C \uC5BC\uB978  \uADF8\uCABD\uC73C\uB85C
       \uB2EC\uB824\uAC14\uC9C0.@\n\uBC15\uC950\uB294 \uC774\uBBF8 \uB108\uC758 \uCF54\uC55E\uAE4C\uC9C0
       \uB36E\uCCD0\uC624\uACE0 \uC788\uC5C8\uAE30\uB294 \uD588\uC9C0\uB9CC \uB9D0\uC57C."
@@ -68,11 +68,11 @@ MonoBehaviour:
     enableNameBox: 1
   - left_portrait_id: 1
     right_portrait_id: 3
-    text_name: "\uCCB4\uB8E8"
-    text_value: "\uADF8\uB54C \uAC11\uC790\uAE30!@ \uB124 \uC190\uC5D0\uC11C \uAC80\uC740
-      \uBB54\uAC00\uAC00 \uD409! \uD558\uACE0\n\uBB54\uAC00 \uBFDC\uC5B4\uC838 \uB098\uC624\uB354\uB2C8!@\n\uADF8\uB300\uB85C
-      \uC800 \uAC70\uB300\uD55C \uBC15\uC950\uB97C \uD55C\uBC88\uC5D0 \uC9D1\uC5B4
-      \uC0BC\uCF1C\uBC84\uB9AC\uB354\uB77C\uACE0?"
+    text_name: "\uBBFC\uD2B8"
+    text_value: "\uADFC\uB370 \uAC11\uC790\uAE30!@ \uB124 \uC190\uC5D0\uC11C \uAC80\uC740
+      \uBB54\uAC00\uAC00 \uD409! \uD558\uACE0\n\uBB54\uAC00 \uBFDC\uC5B4\uC838 \uB098\uC624\uB354\uB77C\uACE0!@\n\uADF8\uB7EC\uACE0\uB294
+      \uADF8\uB300\uB85C \uC800 \uAC70\uB300\uD55C \uBC15\uC950\uB97C \uD55C\uBC88\uC5D0
+      \uC9D1\uC5B4 \uC0BC\uCF1C\uBC84\uB9AC\uB354\uB2C8\uAE4C?"
     nameColor:
       serializedVersion: 2
       rgba: 4278190335
@@ -80,7 +80,7 @@ MonoBehaviour:
     enableNameBox: 1
   - left_portrait_id: 1
     right_portrait_id: 3
-    text_name: "\uCCB4\uB8E8"
+    text_name: "\uBBFC\uD2B8"
     text_value: "\uADF8 \uC774\uD6C4\uB85C\uB294 \uBB50... @ \uC9C0\uAE08 \uBCF4\uACE0
       \uC788\uB294 \uADF8 \uBAA8\uC2B5\uC774\uC9C0."
     nameColor:
@@ -90,7 +90,7 @@ MonoBehaviour:
     enableNameBox: 1
   - left_portrait_id: 1
     right_portrait_id: 3
-    text_name: "\uCCB4\uB8E8"
+    text_name: "\uBBFC\uD2B8"
     text_value: "\uC7A0\uAE50\uC7A0\uAE50 \uC624\uD574\uD558\uC9C0\uB9D0\uACE0 \uB4E4\uC5B4\uBD10!"
     nameColor:
       serializedVersion: 2
