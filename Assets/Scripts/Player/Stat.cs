@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 /// <summary>
@@ -63,6 +64,24 @@ public class Stat
         this.amount = stat.Amount;
 
         this.hp_current = stat.Hp;
+    }
+
+    public static Stat operator +(Stat stat1, Stat stat2)
+    {
+        stat1.Hp += stat2.Hp;
+        stat1.speed += stat2.Speed;
+        stat1.Hp_regen += stat2.Hp_regen;
+        stat1.Armor += stat2.Armor;
+        stat1.Damage += stat2.Damage;
+        stat1.Speed_projectile += stat2.Speed_projectile;
+        stat1.Duration_projectile += stat2.Duration_projectile;
+        stat1.Range_projectile += stat2.Range_projectile;
+        stat1.Cooldown += stat2.Cooldown;
+        stat1.Amount += stat2.Amount;
+
+        stat1.Hp_current += stat2.Hp_current;
+
+        return new Stat(stat1);
     }
 
     public float Hp { get => hp; set => hp = value; }
