@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell_Part : Spell
+public class StatChange_Part : Spell_Part
 {
     
 }

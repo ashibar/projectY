@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AimPoint : MonoBehaviour
 {
-    private Player player;
-    private bool isActiveMove = true;
+    [SerializeField] private Player player;
+    [SerializeField] private bool isActiveMove = true;
     public bool IsActiveMove { get => isActiveMove; set => isActiveMove=value; }
     // Start is called before the first frame update
     private void Awake()
