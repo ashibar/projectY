@@ -33,12 +33,11 @@ public class BatStone_Core : Spell_Core
             Destroy(projectile);
     }
 
-    public override void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat_Spell stat, Vector2 _dir_toShoot)
+    public override void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat_Spell stat, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
     {
-        //ป๙วร
         if (cts_t.IsCancellationRequested) return;
-        //Debug.Log("shooting function");
         Vector3 pos = projectile.transform.position;
         projectile.transform.position = Vector3.MoveTowards(pos, pos + (Vector3)_dir_toShoot, stat.Spell_Speed * Time.deltaTime);
+        projectile.GetComponent<SpriteRenderer>().sprite = anim_module.GetSprite();
     }
 }
