@@ -10,11 +10,15 @@ public class SpellManager : MonoBehaviour
     [SerializeField] private List<Spell_Passive> passives = new List<Spell_Passive>();
     [SerializeField] string target;
 
+    [SerializeField] public Transform passiveholder;
+
     private void Awake()
     {
         cores.AddRange(GetComponentsInChildren<Spell_Core>());
         parts.AddRange(GetComponentsInChildren<Spell_Part>());
         passives.AddRange(GetComponentsInChildren<Spell_Passive>());
+
+        passiveholder = transform.Find("Passives");
     }
 
     private void Start()
@@ -30,7 +34,7 @@ public class SpellManager : MonoBehaviour
     {
         foreach (Spell_Core core in cores)
         {
-            core.SetVector(owner.dir_toMove, owner.dir_toShoot, owner.pos_toShoot);
+            core.SetVector(target, owner.dir_toMove, owner.dir_toShoot, owner.pos_toShoot);
             core.SetStat(Stat_Process());
         }
     }
@@ -39,7 +43,8 @@ public class SpellManager : MonoBehaviour
     {
         Stat stat_processed = new Stat(owner.stat);
         foreach (Spell_Passive p in passives)
-            stat_processed += p.additional_stat;
+            if (p.additional_stat != null)
+                stat_processed += p.additional_stat;
 
         return stat_processed;
     }
