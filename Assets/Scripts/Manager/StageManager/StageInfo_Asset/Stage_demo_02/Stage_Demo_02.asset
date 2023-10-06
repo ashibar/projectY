@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageName: Stage_Demo_02
   rewards: []
-  stageSort: 2
-  eventList_so:
-  - {fileID: 11400000, guid: 14dce9f30dfa0404b8ff098307e20cf7, type: 2}
-  - {fileID: 11400000, guid: beccc61a41f24c24ab74ef878092cb55, type: 2}
-  spawners:
-  - {fileID: 6779653628060644938, guid: 48d418aa510f5434ca217cfc8179608b, type: 3}
-  - {fileID: 6779653628060644938, guid: e382b03f1e282a14ca9692e27141903d, type: 3}
+  stageSort: 0
+  phases:
+  - {fileID: 11400000, guid: d2d56fc8e66ba864f92a113525b66911, type: 2}

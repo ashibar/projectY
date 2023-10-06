@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Dialog_tuto_00
   m_EditorClassIdentifier: 
   dialogList:
-  - left_portrait_id: 1
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 0
     text_name: 
     text_value: ...!
@@ -22,7 +23,10 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 1
+    select_list: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 3
     text_name: ???
     text_value: "\uC7A0\uAE50\uB9CC, \uC7A0\uAE50\uB9CC, \uC9C4\uC815\uD574\uBD10.@\n\uB09C
@@ -32,7 +36,10 @@ MonoBehaviour:
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 2
+    select_list: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
     text_value: "\uB0B4 \uC774\uB984\uC740 <b>\uBBFC\uD2B8</b>.@\n\uB178\uB9E8\uC232
@@ -42,7 +49,10 @@ MonoBehaviour:
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 2
+    select_list: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
     text_value: "\uD55C\uCC3D \uC232\uC744 \uD0D0\uD5D8\uD558\uACE0 \uC788\uB294
@@ -55,7 +65,10 @@ MonoBehaviour:
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 2
+    select_list: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
     text_value: "\uB09C \uAE5C\uC9DD \uB180\uB77C\uC11C \uC5BC\uB978  \uADF8\uCABD\uC73C\uB85C
@@ -66,7 +79,10 @@ MonoBehaviour:
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 2
+    select_list: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
     text_value: "\uADFC\uB370 \uAC11\uC790\uAE30!@ \uB124 \uC190\uC5D0\uC11C \uAC80\uC740
@@ -78,7 +94,10 @@ MonoBehaviour:
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 2
+    select_list: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
     text_value: "\uADF8 \uC774\uD6C4\uB85C\uB294 \uBB50... @ \uC9C0\uAE08 \uBCF4\uACE0
@@ -88,7 +107,10 @@ MonoBehaviour:
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 2
+    select_list: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
     text_value: "\uC7A0\uAE50\uC7A0\uAE50 \uC624\uD574\uD558\uC9C0\uB9D0\uACE0 \uB4E4\uC5B4\uBD10!"
@@ -97,4 +119,6 @@ MonoBehaviour:
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
+    nameBoxPos: 2
+    select_list: []
   portraitList: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
