@@ -95,8 +95,8 @@ public class StageManager : MonoBehaviour, IEventListener
 
     private void Update()
     {
-        if (UIManager.Instance.ResultWindow)
-            TestStageClear();
+        //if (UIManager.Instance.ResultWindow)
+        //    TestStageClear();
         //Async_Function();
     }
 

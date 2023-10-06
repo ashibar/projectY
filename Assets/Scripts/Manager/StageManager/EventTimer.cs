@@ -79,7 +79,18 @@ public class EventTimer : MonoBehaviour, IEventListener
     private void AddNewTrigger(ExtraParams para)
     {
         Debug.Log(string.Format("{0}, {1}", para.Name, para.Boolvalue));
-        trigger.Add(new StringNTrigger(para.Name, para.Boolvalue));
+        if (!TriggerExists(para.Name))
+            trigger.Add(new StringNTrigger(para.Name, para.Boolvalue));
+        else
+            SetTrigger(para);
+    }
+
+    private bool TriggerExists(string name)
+    {
+        foreach (StringNTrigger t in trigger)
+            if (string.Equals(t.triggerName, name))
+                return true;
+        return false;
     }
 
     private void RemoveTrigger(ExtraParams para)
@@ -208,7 +219,7 @@ public class EventTimer : MonoBehaviour, IEventListener
             await Task.Yield();
         }
 
-
+        Debug.Log("?");
         List<EventParams> para = phase[no].Events;
 
         float start = Time.time;
@@ -236,7 +247,7 @@ public class EventTimer : MonoBehaviour, IEventListener
                     // 누적 시간
                     if (p.condition.Sort == ConditionSort.Time)
                     {
-                        //Debug.Log(string.Format("{0}, {1}, {2}", Time.time, start, accumulated));
+                        //Debug.Log(string.Format("{0}, {1}, {2}, {3}", Time.time, start, accumulated, p.condition.TargetNum));
                         accumulated += p.condition.TargetNum;
                         if (p.condition.IsSatisfied) continue;
                         if (Time.time - start >= accumulated)

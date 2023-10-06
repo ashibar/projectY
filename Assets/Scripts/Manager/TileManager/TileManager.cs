@@ -4,20 +4,46 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> base_tile = new List<GameObject>();
-    [SerializeField] private List<GameObject> noise_tile = new List<GameObject>();
-    [SerializeField] private Vector2 size = new Vector2(2, 2);
-    [SerializeField] private float noise = 0.5f;
+    [SerializeField] private TileGenerater tileGenerater;
+    [SerializeField] private TilePositionSetter tilePositionSetter;
+    [SerializeField] public List<GameObject> tile_group = new List<GameObject>();
 
-    [SerializeField] private Transform holder;
+    [SerializeField] private float distance = 5f;
+    [SerializeField] public bool isActive = false;
 
     private void Awake()
     {
-        holder = transform;
+        tileGenerater = GetComponentInChildren<TileGenerater>();
+        tilePositionSetter = GetComponentInChildren<TilePositionSetter>();
+
+        tileGenerater.tileManager = this;
+        tilePositionSetter.tileManager = this;
     }
 
-    private void SetTile()
+    private void Start()
     {
+        if (isActive)
+        {
+            for (int i = -1; i <= 1; i++)
+                for (int j = -1; j <= 1; j++)
+                    tileGenerater.SetTile(Camera.main.transform.position + new Vector3(i, j) * distance, new Vector2(distance, distance)); 
+        }
+    }
 
+    private void Update()
+    {
+        if (isActive)
+        {
+            distance = Camera.main.orthographicSize * 4f;
+            tilePositionSetter.distance = distance;
+
+            List<Vector2> tilePos = new List<Vector2>(tilePositionSetter.SetTilePosition());
+            if (tilePos.Count > 0)
+                foreach (Vector2 pos in tilePos)
+                    tileGenerater.SetTile(pos, new Vector2(distance, distance));
+
+            if (Input.GetKeyDown(KeyCode.G))
+                tileGenerater.SetTile(); 
+        }
     }
 }
