@@ -26,12 +26,12 @@ public class Spell_Element : Spell
 
     }
 
-    public virtual void TriggerEnterEndFunction(Collider2D collision, GameObject projectile)
+    public virtual void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
     {
         
     }
 
-    public virtual void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat_Spell stat, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
+    public virtual void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
     {
         
     }

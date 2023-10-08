@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class CardAnimationControl : AsyncFunction_template
 {
-    [SerializeField] List<Animator> animators = new List<Animator>();
+    [SerializeField] List<SpellCard> spell_card = new List<SpellCard>();
 
     private void Awake()
     {
-        animators.AddRange(GetComponentsInChildren<Animator>(true));
+        spell_card.AddRange(GetComponentsInChildren<SpellCard>(true));
     }
 
     public async Task AppearAnimation(CancellationToken cts)
@@ -18,10 +18,9 @@ public class CardAnimationControl : AsyncFunction_template
         if (cts.IsCancellationRequested)
             return;
 
-        foreach (Animator anim in animators)
+        foreach (SpellCard card in spell_card)
         {
-            anim.gameObject.SetActive(true);
-            anim.SetTrigger("isAppears");
+            card.AppearSpell();
             await Wait(cts, 0.5f);
         }
         await Task.Yield();

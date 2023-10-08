@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 /// <summary>
 /// <para/><b>бсбс SpawnManager бсбс</b>
@@ -59,6 +61,7 @@ public class SpawnManager : MonoBehaviour, IEventListener
         "Spawn Enemy At Vector List By ID",
         "Spawn EnemyList At Vector List By ID",
         "Spawn Enemy At Vector By Name",
+        "Spawn By Spawn Info",
     };
 
     private void Awake()
@@ -118,6 +121,8 @@ public class SpawnManager : MonoBehaviour, IEventListener
                 SpawnAtVectorListIDLists(param); break;
             case "Spawn Enemy At Vector By Name":
                 SpawnAtVectorName(param); break;
+            case "Spawn By Spawn Info":
+                SpawnBySpawnInfo(param); break;
         }
     }
 
@@ -185,6 +190,46 @@ public class SpawnManager : MonoBehaviour, IEventListener
         foreach (Vector2 pos in posList)
         {
             GameObject clone = Instantiate(para.MobLists.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
+            clone.name = UnitManager.Instance.Clones.Count.ToString();
+            UnitManager.Instance.Clones.Add(clone);
+        }
+    }
+
+    private void SpawnBySpawnInfo(params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        List<SpawnInfo> spawnInfo = para.SpawnInfo.spawnInfo;
+        
+        foreach (SpawnInfo si in spawnInfo)
+        {
+            switch (si.spawn_sort)
+            {
+                case "Point": Spawn_Point(si); break;
+                case "Border": Spawn_Border(si); break;
+                case "List": Spawn_List(si); break;
+                default: break;
+            }
+        }
+    }
+
+    private void Spawn_Point(SpawnInfo si)
+    {
+        GameObject clone = Instantiate(si.unit_prefab, si.point, Quaternion.identity, Holder.enemy_holder);
+        clone.name = UnitManager.Instance.Clones.Count.ToString();
+        UnitManager.Instance.Clones.Add(clone);
+    }
+
+    private void Spawn_Border(SpawnInfo si)
+    {
+        
+    }
+
+    private void Spawn_List(SpawnInfo si)
+    {
+        foreach (Vector2 pos in si.position)
+        {
+            GameObject clone = Instantiate(si.unit_prefab, pos, Quaternion.identity, Holder.enemy_holder);
             clone.name = UnitManager.Instance.Clones.Count.ToString();
             UnitManager.Instance.Clones.Add(clone);
         }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2756803374244402653}
   - component: {fileID: 2756803374244402651}
   - component: {fileID: 2756803374244402650}
+  - component: {fileID: 935251699958857197}
   m_Layer: 5
   m_Name: SpellCard (0)
   m_TagString: Untagged
@@ -98,6 +99,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756803374244402649}
   m_CullTransparentMesh: 1
+--- !u!114 &935251699958857197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756803374244402649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0c3f28777346145abc406f0e9b8029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  spell_image: {fileID: 0}
+  spell_shadow: {fileID: 0}
+  spell: {fileID: 0}
 --- !u!1 &2756803374349963060
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2baba31fa9e70458e290bf2de73034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animators: []
+  spell_card: []
 --- !u!1 &2756803374400816995
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +481,7 @@ GameObject:
   - component: {fileID: 2756803374596020774}
   - component: {fileID: 2756803374596020775}
   - component: {fileID: 2756803374596020772}
+  - component: {fileID: 7586861562827573492}
   m_Layer: 5
   m_Name: SpellCard (1)
   m_TagString: Untagged
@@ -550,6 +568,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756803374596020770}
   m_CullTransparentMesh: 1
+--- !u!114 &7586861562827573492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756803374596020770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0c3f28777346145abc406f0e9b8029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  spell_image: {fileID: 0}
+  spell_shadow: {fileID: 0}
+  spell: {fileID: 0}
 --- !u!1 &2756803374740570676
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +748,7 @@ GameObject:
   - component: {fileID: 2756803374887071320}
   - component: {fileID: 2756803374887071321}
   - component: {fileID: 2756803374887071302}
+  - component: {fileID: 4435931971327984170}
   m_Layer: 5
   m_Name: SpellCard (2)
   m_TagString: Untagged
@@ -800,6 +835,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756803374887071300}
   m_CullTransparentMesh: 1
+--- !u!114 &4435931971327984170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756803374887071300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0c3f28777346145abc406f0e9b8029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  spell_image: {fileID: 0}
+  spell_shadow: {fileID: 0}
+  spell: {fileID: 0}
 --- !u!1 &2756803375280733435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,6 +1099,7 @@ GameObject:
   - component: {fileID: 2756803375929210813}
   - component: {fileID: 2756803375929210810}
   - component: {fileID: 2756803375929210811}
+  - component: {fileID: 4938700032295364511}
   m_Layer: 5
   m_Name: SpellCard (3)
   m_TagString: Untagged
@@ -1134,3 +1186,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756803375929210809}
   m_CullTransparentMesh: 1
+--- !u!114 &4938700032295364511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756803375929210809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0c3f28777346145abc406f0e9b8029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  spell_image: {fileID: 0}
+  spell_shadow: {fileID: 0}
+  spell: {fileID: 0}
