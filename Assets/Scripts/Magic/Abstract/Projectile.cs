@@ -20,8 +20,8 @@ public class Projectile : Spell
     [SerializeField] protected Spell_Element main_element;
 
     public delegate void TriggerEnterTickFunction(Collider2D collision, GameObject projectile);
-    public delegate void TriggerEnterEndFunction(Collider2D collision, GameObject projectile);
-    public delegate void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat_Spell stat, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module);
+    public delegate void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell);
+    public delegate void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module);
     public delegate void DestroyFunction(GameObject projectile);
     [SerializeField] public TriggerEnterTickFunction triggerEnterTickFunction;
     [SerializeField] public TriggerEnterEndFunction triggetEnterEndFunction;
@@ -63,8 +63,8 @@ public class Projectile : Spell
             triggerEnterTickFunction(collision, gameObject);
             await Task.Yield();
         }
-        Debug.Log("trigger enters");
-        triggetEnterEndFunction(collision, gameObject);
+        //Debug.Log("trigger enters");
+        triggetEnterEndFunction(collision, gameObject, stat_processed, stat_spell);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class Projectile : Spell
         while (Time.time < end && !cts_t.IsCancellationRequested)
         {
             //Debug.Log(string.Format("isShooting, {0}, {1}, {2}", dir_toShoot, Time.time, end));
-            shootingFunction(cts_t, gameObject, stat_spell, dir_toShoot, main_element.AnimationModule);
+            shootingFunction(cts_t, gameObject, stat_processed, stat_spell, dir_toShoot, main_element.AnimationModule);
             await Task.Yield();
         }
 

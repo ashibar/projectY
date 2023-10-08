@@ -222,6 +222,7 @@ public class EventParam_Window : EditorWindow
                 Par_Dialog(innerFieldOption);
                 Par_Audio(innerFieldOption);
                 Par_MobList(innerFieldOption);
+                Par_SpawnInfo(innerFieldOption);
                 Par_VecList(innerFieldOption, innerVectorOption);
             }
 
@@ -451,5 +452,11 @@ public class EventParam_Window : EditorWindow
         phaseInfo.Events[index].extraParams.MobLists = (PrefabSet_so)EditorGUILayout.ObjectField("Mob List", phaseInfo.Events[index].extraParams.MobLists, typeof(object), true, options);
         GUILayout.EndHorizontal();
     }
-
+    private void Par_SpawnInfo(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.SpawnInfo = (SpawnInfoContainer)EditorGUILayout.ObjectField("Spawn Info", phaseInfo.Events[index].extraParams.SpawnInfo, typeof(object), true, options);
+        GUILayout.EndHorizontal();
+    }
 }

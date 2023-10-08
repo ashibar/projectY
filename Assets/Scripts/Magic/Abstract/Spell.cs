@@ -10,6 +10,8 @@ public class Spell : MonoBehaviour
     [SerializeField] protected Unit owner;
     [SerializeField] protected string target;
 
+    [SerializeField] public string parent_code;
+
     public virtual void Awake()
     {
         if (stat_spell_so != null)
@@ -30,5 +32,10 @@ public class Spell : MonoBehaviour
     {
         this.owner = owner;
         this.target = target;
+    }
+
+    public string GetCode()
+    {
+        return stat_spell_so.Spell_Code;
     }
 }

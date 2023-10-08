@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class Spell_Core : Spell
 {
+    [SerializeField] protected KeyCode triggerKey = KeyCode.Mouse0;
+    [SerializeField] public bool trigger;
+
     [SerializeField] protected Stat stat_processed;
     [SerializeField] protected Stat stat_part_applied;
 
@@ -18,18 +22,20 @@ public class Spell_Core : Spell
 
     [SerializeField] protected List<GameObject> projectile_origin;
     [SerializeField] protected Element_ManagementModule element_management;
+    [SerializeField] protected DamageTextRenderModule damageTextRenderModule;
 
-    private CancellationTokenSource cts;
-    [SerializeField] private bool isCooltime;
+    protected CancellationTokenSource cts;
+    [SerializeField] protected bool isCooltime;
 
     public override void Awake()
     {
         base.Awake();
         cts = new CancellationTokenSource();
         element_management = GetComponentInChildren<Element_ManagementModule>();
+        damageTextRenderModule = GetComponentInChildren<DamageTextRenderModule>();
         RegisterAllFromChildren();
         Stat_Process();
-        element_management.Init();
+        if (element_management != null) element_management.Init();
     }
 
     protected override void Update()
@@ -39,14 +45,15 @@ public class Spell_Core : Spell
     }
 
     // Spell_Core [고정] 내부 함수
-        
+
     /// <summary>
     /// 쿨타임 마다 공격 주기 함수를 실행하는 함수
     /// </summary>
-    protected async void InstantiateDelayFunction()
+    protected virtual async void InstantiateDelayFunction()
     {
-        if (!isCooltime)
+        if (!isCooltime && (Input.GetKey(triggerKey) || trigger))
         {
+            trigger = false;
             isCooltime = true;
             await InstantiateDelayFunction_routine();
             isCooltime = false;
@@ -179,13 +186,13 @@ public class Spell_Core : Spell
 
     }
 
-    public virtual void TriggerEnterEndFunction(Collider2D collision, GameObject projectile)
+    public virtual void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
     {
         //if (collision.tag == "Enemy")
         //    Destroy(projectile);
     }
 
-    public virtual void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat_Spell stat, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
+    public virtual void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
     {
         ////샘플
         //if (cts_t.IsCancellationRequested) return;
@@ -208,6 +215,7 @@ public class Spell_Core : Spell
     public void SetStat(Stat stat)
     {
         stat_processed = stat;
+        Stat_Process();
     }
 
     /// <summary>

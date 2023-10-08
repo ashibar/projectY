@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour, IEventListener
     {
         EventReciever();
         EventListener();
-        gameoverListener();
+        //gameoverListener();
     }
 
     public void SubscribeEvent()
@@ -125,7 +125,7 @@ public class UIManager : MonoBehaviour, IEventListener
 
     private void ForceLoad(ExtraParams para)
     {
-        LoadingSceneController.LoadScene(para.Name);
+        LoadingSceneController.LoadScene(para.Name, para.Intvalue);
     }
 
     private void LogoAppears(ExtraParams para)

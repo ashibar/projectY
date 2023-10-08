@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1b041fb22692048a33d18988211952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat_spell_so: {fileID: 0}
+  stat_spell_so: {fileID: 11400000, guid: 3db7ca0df0b58f94c8a7619a398f0b1e, type: 2}
   stat_spell:
     spell_Name: 
     spell_DMG: 0
