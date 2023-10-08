@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Force Load",
         "Logo Appears",
         "Set Mouse Indicator",
+        "Active Result Window",
     };
 
     private void Awake()
@@ -58,6 +59,7 @@ public class UIManager : MonoBehaviour, IEventListener
             Destroy(gameObject);
             return;
         }
+        resultWindow = GetComponentInChildren<ResultWindow>(true);
         SubscribeEvent();
     }    
 
@@ -65,7 +67,7 @@ public class UIManager : MonoBehaviour, IEventListener
     {
         EventReciever();
         EventListener();
-        gameoverListener();
+        //gameoverListener();
     }
 
     public void SubscribeEvent()
@@ -94,6 +96,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 LogoAppears(para); break;
             case "Set Mouse Indicator":
                 SetMouseIndicator(para); break;
+            case "Active Result Window":
+                ActiveResultWindow(para); break;
             default:
                 break;
         }
@@ -121,7 +125,7 @@ public class UIManager : MonoBehaviour, IEventListener
 
     private void ForceLoad(ExtraParams para)
     {
-        LoadingSceneController.LoadScene(para.Name);
+        LoadingSceneController.LoadScene(para.Name, para.Intvalue);
     }
 
     private void LogoAppears(ExtraParams para)
@@ -132,6 +136,15 @@ public class UIManager : MonoBehaviour, IEventListener
     private void SetMouseIndicator(ExtraParams para)
     {
         indicator_mouse.SetAnim("Out");
+    }
+
+    private void ActiveResultWindow(ExtraParams para)
+    {
+        if (resultWindow == null)
+            return;
+
+        resultWindow.gameObject.SetActive(true);
+        resultWindow.Active();
     }
 
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();

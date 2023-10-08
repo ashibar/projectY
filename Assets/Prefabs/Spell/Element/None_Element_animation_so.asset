@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54d6f669bef5224e926fd560d7b97fe, type: 3}
+  m_Name: None_Element_animation_so
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 3e53028346cf03f40a6f823f111f7858, type: 3}
+  - {fileID: 21300000, guid: fa42a7755412f53439f694d443d64cb3, type: 3}
+  - {fileID: 21300000, guid: 687db775a7b5ede438c6b5f43fa4d1cc, type: 3}
+  - {fileID: 21300000, guid: 83204486f671d0347b15a4b12e6fdeca, type: 3}
+  - {fileID: 21300000, guid: 8803508f1cee6024ca5c75453955c6c1, type: 3}
+  fixedMS: 1000
+  speed: 1.5

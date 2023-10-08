@@ -6,8 +6,6 @@ namespace ReadyMadeReality
 {
     public class DialogArea : MonoBehaviour
     {
-        
-
         private DialogBox dialogBox;
         private PortraitBox_Left portraitBox_left;
         private PortraitBox_Right portraitBox_right;
@@ -18,7 +16,6 @@ namespace ReadyMadeReality
 
         private void Awake()
         {
-            
             dialogBox = GetComponentInChildren<DialogBox>(true);
             portraitBox_left = GetComponentInChildren<PortraitBox_Left>();
             portraitBox_right = GetComponentInChildren<PortraitBox_Right>();
@@ -58,9 +55,9 @@ namespace ReadyMadeReality
         public void SyncCount(int value)
         {
             cnt = value;
-            portraitBox_left.SetSprite(dialog_so.DialogList, cnt);
-            portraitBox_right.SetSprite(dialog_so.DialogList, cnt);
-            dialogBox.nameBox.SetName(dialog_so.DialogList, cnt);
+            portraitBox_left.SetSprite(dialog_so, cnt);
+            portraitBox_right.SetSprite(dialog_so, cnt);
+            dialogBox.nameBox.SetName(dialog_so, cnt);
         }
     }
 

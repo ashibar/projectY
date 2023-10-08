@@ -46,6 +46,9 @@ public class StageManager : MonoBehaviour, IEventListener
     [SerializeField] private StageInfoContainer_so stageInfoContainer_so;
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
+    // 플레이어 정보
+    [SerializeField] private PlayerInfoContainer playerInfoContainer_so;
+    [SerializeField] private SpellPrefabContainer SpellPrefabContainer_so;
 
     public ConditionChecker ConditionChecker { get => conditionChecker; set => conditionChecker = value; }
     public EventTimer EventTimer { get => eventTimer; set => eventTimer = value; }
@@ -56,6 +59,7 @@ public class StageManager : MonoBehaviour, IEventListener
     public static List<string> event_code = new List<string>
     {
         "Goto Next Phase",
+        "Force Load",
     };
 
     private void Awake()
@@ -91,12 +95,13 @@ public class StageManager : MonoBehaviour, IEventListener
             UIManager.Instance.TopIndicator.SetActive();
         }
         SetTargetUnit();
+        //LoadPlayerSpell();
     }
 
     private void Update()
     {
-        if (UIManager.Instance.ResultWindow)
-            TestStageClear();
+        //if (UIManager.Instance.ResultWindow)
+        //    TestStageClear();
         //Async_Function();
     }
 
@@ -113,6 +118,8 @@ public class StageManager : MonoBehaviour, IEventListener
         {
             case "Goto Next Phase":
                 GotoNextPhase((ExtraParams)param[0]); break;
+            case "Force Load":
+                ForceLoad((ExtraParams)param[0]); break;
         }
     }
 
@@ -120,6 +127,11 @@ public class StageManager : MonoBehaviour, IEventListener
     {
         Debug.Log(par.NextPhase);
         eventTimer.AddPhase(par.NextPhase);
+    }
+
+    private void ForceLoad(ExtraParams para)
+    {
+        LoadingSceneController.LoadScene(para.Name, para.Intvalue);
     }
 
     /// <summary>
@@ -135,6 +147,22 @@ public class StageManager : MonoBehaviour, IEventListener
         foreach(EventPhase_so phase in stageInfo.Phases)
             eventTimer.AddPhase(phase);
         //conditionChecker.SetPara(stageInfo.Para);
+    }
+
+    /// <summary>
+    /// <para/> <b>로딩 시 플레이어의 스펠을 불러옴</b>
+    /// </summary>
+    private void LoadPlayerSpell()
+    {
+        List<string> codes = playerInfoContainer_so.Spell_code;
+        List<GameObject> prefabList = new List<GameObject>();
+        foreach (string code in codes)
+        {
+            GameObject spell_prefab = SpellPrefabContainer_so.Search(code);
+            prefabList.Add(spell_prefab);
+        }
+        Player.Instance.spellManager.SetSpell(prefabList);
+        Player.Instance.spellManager.gameObject.SetActive(true);
     }
 
     /// <summary>
