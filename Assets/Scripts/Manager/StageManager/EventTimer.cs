@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 /// <summary>
@@ -13,32 +12,141 @@ using UnityEngine;
 /// <para/>비고 : 
 /// <para/>업데이트 내역 : 
 /// <para/> - (23.08.22) : 요약문 생성
-/// <para/>
+/// <para/> - (23.09.02) : Time단일 조건 시 작동 가능
+/// <para/> - (23.09.15) : Move To Pos 조건, Time조건 병행 시 문제되는 버그 수정
+/// <para/> - (23.09.15) : Trigger, Number 조건 추가
 /// </summary>
 
-public class EventTimer : MonoBehaviour
+public class EventTimer : MonoBehaviour, IEventListener
 {
-    [SerializeField] private List<EventInfo> events = new List<EventInfo>();
-    public List<EventInfo> Events { get => events; set => events = value; }
-
-    [SerializeField] private List<EventPhase_so> phase = new List<EventPhase_so>();
-    //[SerializeField] private List<EventParams> para = new List<EventParams>();
-    [SerializeField] private List<EventParams> eventParam_pos = new List<EventParams>();
-
     [SerializeField] private UnitManager unitManager;
-
-    [SerializeField] private bool isCooltime;
+    [SerializeField] private List<EventPhase_so> phase = new List<EventPhase_so>();
+    [SerializeField] private List<StringNTrigger> trigger = new List<StringNTrigger>();
+    [SerializeField] private List<StringNNumber> number = new List<StringNNumber>();
     [SerializeField] private int eventIndex = 0;
-    [SerializeField] private int interruptedIndex = -1;
-    [SerializeField] private bool isInterrupted;
 
     private List<CancellationTokenSource> cts = new List<CancellationTokenSource>();
+
+    public static List<string> event_code = new List<string>
+    {
+        "Add New Trigger",
+        "Remove Trigger",
+        "Add New Number",
+        "Remove Number",
+        "Set Number",
+        "Set Trigger",
+    };
+
+    private void Awake()
+    {
+        SubscribeEvent();
+    }
 
     private void Start()
     {
         unitManager = UnitManager.Instance;
-        Debug.Log("?");
+        //Debug.Log("?");
         //CTS(0);
+    }
+
+    public void SubscribeEvent()
+    {
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
+    }
+
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        switch (event_type)
+        {
+            case "Add New Trigger":
+                AddNewTrigger(para); break;
+            case "Remove Trigger":
+                RemoveTrigger(para); break;
+            case "Add New Number":
+                AddNewNumber(para); break;
+            case "Remove Number":
+                RemoveNumber(para); break;
+            case "Set Number":
+                SetNumber(para); break;
+            case "Set Trigger":
+                SetTrigger(para); break;
+        }
+    }
+
+    private void AddNewTrigger(ExtraParams para)
+    {
+        Debug.Log(string.Format("{0}, {1}", para.Name, para.Boolvalue));
+        if (!TriggerExists(para.Name))
+            trigger.Add(new StringNTrigger(para.Name, para.Boolvalue));
+        else
+            SetTrigger(para);
+    }
+
+    private bool TriggerExists(string name)
+    {
+        foreach (StringNTrigger t in trigger)
+            if (string.Equals(t.triggerName, name))
+                return true;
+        return false;
+    }
+
+    private void RemoveTrigger(ExtraParams para)
+    {
+        for (int i = trigger.Count - 1; i >= 0; i--)
+        {
+            if (string.Equals(trigger[i].triggerName, para.Name))
+            {
+                trigger.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
+    private void AddNewNumber(ExtraParams para)
+    {
+        Debug.Log(string.Format("{0}, {1}", para.Name, para.Floatvalue));
+        number.Add(new StringNNumber(para.Name, para.Floatvalue));
+    }
+
+    private void RemoveNumber(ExtraParams para)
+    {
+        for (int i = number.Count - 1; i >= 0; i--)
+        {
+            if (string.Equals(number[i].numberName, para.Name))
+            {
+                number.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
+    private void SetNumber(ExtraParams para)
+    {
+        Debug.Log(string.Format("{0}, {1}", para.Name, para.Floatvalue));
+        for (int i = number.Count - 1; i >= 0; i--)
+        {
+            if (string.Equals(number[i].numberName, para.Name))
+            {
+                number[i].numberValue = para.Floatvalue;
+                return;
+            }
+        }
+    }
+
+    private void SetTrigger(ExtraParams para)
+    {
+        Debug.Log(string.Format("{0}, {1}", para.Name, para.Boolvalue));
+        for (int i = trigger.Count - 1; i >= 0; i--)
+        {
+            if (string.Equals(trigger[i].triggerName, para.Name))
+            {
+                trigger[i].triggerValue = para.Boolvalue;
+                return;
+            }
+        }
     }
 
     // async 함수 탈출 토큰 설정
@@ -111,7 +219,7 @@ public class EventTimer : MonoBehaviour
             await Task.Yield();
         }
 
-
+        Debug.Log("?");
         List<EventParams> para = phase[no].Events;
 
         float start = Time.time;
@@ -126,30 +234,87 @@ public class EventTimer : MonoBehaviour
             }
 
             accumulated = 0;
-            foreach (EventParams p in para)
-            {                
-                // 위치
-                if (p.condition.Sort == ConditionSort.MoveToPos)
+            for (int i = 0; i < para.Count; i++)
+            {
+                EventParams p = para[i];
+                // 이전 이벤트가 만족시만 실행되는 이벤트
+                if (p.condition.IsContinued)
                 {
-                    p.condition.IsSatisfied = CheckPosition(p);
+                    // 이전 이벤트 만족 여부 검사
+                    if (i > 0 && !para[i - 1].condition.IsSatisfied)
+                        continue;
+
+                    // 누적 시간
+                    if (p.condition.Sort == ConditionSort.Time)
+                    {
+                        //Debug.Log(string.Format("{0}, {1}, {2}, {3}", Time.time, start, accumulated, p.condition.TargetNum));
+                        accumulated += p.condition.TargetNum;
+                        if (p.condition.IsSatisfied) continue;
+                        if (Time.time - start >= accumulated)
+                            p.condition.IsSatisfied = PostNotification(p);
+                    }
+                    else if (p.condition.Sort == ConditionSort.None)
+                    {
+                        accumulated += 0;
+                        if (p.condition.IsSatisfied) continue;
+                        if (Time.time - start >= accumulated)
+                            p.condition.IsSatisfied = PostNotification(p);
+                    }
+                    // 위치
+                    else if (p.condition.Sort == ConditionSort.MoveToPos)
+                    {
+                        if (p.condition.IsSatisfied) continue;
+                        bool value = CheckPosition(p);
+                        p.condition.IsSatisfied = value;
+                        if (value)
+                            start = Time.time;
+                    }
+                    else if (p.condition.Sort == ConditionSort.Trigger)
+                    {
+                        if (p.condition.IsSatisfied) continue;
+                        bool value = CheckTrigger(p);
+                        p.condition.IsSatisfied = value;
+                        if (value)
+                            start = Time.time;
+                    }
+                    else if (p.condition.Sort == ConditionSort.Number)
+                    {
+                        if (p.condition.IsSatisfied) continue;
+                        bool value = CheckNumber(p);
+                        p.condition.IsSatisfied = value;
+                        if (value)
+                            start = Time.time;
+                    }
                 }
-                // 누적 시간
-                else if (p.condition.IsContinued)
-                {
-                    accumulated += p.condition.TargetNum;
-                    if (p.condition.IsSatisfied) continue;
-                    if (Time.time - start >= accumulated)
-                        p.condition.IsSatisfied = PostNotification(p);
-                }
-                // 절대 시간
+                // 다른 이벤트와 독립적으로 작동하는 이벤트
                 else
                 {
-                    if (p.condition.IsSatisfied) continue;
-                    if (Time.time - start >= p.condition.TargetNum)
+                    // 절대 시간
+                    if (p.condition.Sort == ConditionSort.Time)
+                    {
+                        if (p.condition.IsSatisfied) continue;
+                        if (Time.time - start >= p.condition.TargetNum)
+                            p.condition.IsSatisfied = PostNotification(p);
+                    }
+                    else if (p.condition.Sort == ConditionSort.None)
+                    {
                         p.condition.IsSatisfied = PostNotification(p);
+                    }
+                    else if (p.condition.Sort == ConditionSort.MoveToPos)
+                    {
+                        p.condition.IsSatisfied = CheckPosition(p);
+                    }
+                    else if (p.condition.Sort == ConditionSort.Trigger)
+                    {
+                        p.condition.IsSatisfied = CheckTrigger(p);
+                    }
+                    else if (p.condition.Sort == ConditionSort.Number)
+                    {
+                        p.condition.IsSatisfied = CheckNumber(p);
+                    }
                 }
-                
             }
+
             
             await Task.Yield();
             
@@ -178,7 +343,7 @@ public class EventTimer : MonoBehaviour
         {
             if (go == null) continue;
             if (!string.Equals(p.condition.TargetTag, go.tag)) continue;
-            if (Vector2.Distance(go.transform.position, p.condition.TargetPos) < 0.1f)
+            if (IsInsideRectangle(p.condition.TargetPos, p.condition.TargetRange, go.transform))
             {
                 num++;
             }
@@ -197,6 +362,84 @@ public class EventTimer : MonoBehaviour
             return false;
     }
 
+    // 매개변수로 받아온 transformn이 직사각형 안에 있는지 여부를 확인
+    private bool IsInsideRectangle(Vector2 pos, Vector2 size, Transform objectTransform)
+    {
+        if (pos == null)
+        {
+            Debug.Log("pos is null");
+            return false;
+        }
+        if (size == null)
+        {
+            Debug.Log("range is null");
+            return false;
+        }
+        size = Vector2.Distance(size, Vector2.zero) <= 0 ? new Vector2(0.1f, 0.1f) : size;
+        
+        float leftBoundary = pos.x - (size.x / 2);
+        float rightBoundary = pos.x + (size.x / 2);
+        float bottomBoundary = pos.y - (size.y / 2);
+        float topBoundary = pos.y + (size.y / 2);
+
+        Vector3 objectPosition = objectTransform.position;
+
+        if (objectPosition.x >= leftBoundary && objectPosition.x <= rightBoundary &&
+            objectPosition.y >= bottomBoundary && objectPosition.y <= topBoundary)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool CheckTrigger(EventParams p)
+    {
+        foreach (StringNTrigger t in trigger)
+        {
+            if (string.Equals(t.triggerName, p.condition.TargetFlag))
+            {
+                if (t.triggerValue == p.condition.FlagValue)
+                {
+                    Debug.Log(string.Format("{0} : {1}, {2}, {3}, {4}", eventIndex, p.eventcode, p.condition.Sort, p.condition.TargetFlag, p.condition.FlagValue));
+                    EventManager.Instance.PostNotification(p.eventcode, this, p.condition, p.extraParams);
+                    return true;
+                }
+            }                
+        }
+        return false;
+    }
+
+    private bool CheckNumber(EventParams p)
+    {
+        foreach (StringNNumber n in number)
+        {
+            if (string.Equals(n.numberName, p.condition.TargetFlag))
+            {
+                if (p.condition.FlagValue)
+                {
+                    if (n.numberValue >= p.condition.TargetNum)
+                    {
+                        Debug.Log(string.Format("{0} : {1}, {2}, {3}, {4}", eventIndex, p.eventcode, p.condition.Sort, p.condition.TargetFlag, p.condition.TargetNum));
+                        EventManager.Instance.PostNotification(p.eventcode, this, p.condition, p.extraParams);
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (n.numberValue <= p.condition.TargetNum)
+                    {
+                        Debug.Log(string.Format("{0} : {1}, {2}, {3}, {4}", eventIndex, p.eventcode, p.condition.Sort, p.condition.TargetFlag, p.condition.TargetNum));
+                        EventManager.Instance.PostNotification(p.eventcode, this, p.condition, p.extraParams);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     // 파괴시 모든 이벤트 중단
     private void OnDestroy()
@@ -224,7 +467,9 @@ public class EventTimer : MonoBehaviour
             p.condition.IsSatisfied = false;
         this.phase.Add(phase);
         CTS(this.phase.Count - 1);
-    }    
+    }
+
+    
 
 
     // 더미 코드

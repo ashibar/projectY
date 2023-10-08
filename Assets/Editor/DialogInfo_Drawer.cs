@@ -63,6 +63,7 @@ namespace ReadyMadeReality
             if (so.DialogList != null)
             {
                 // 대화 로그 인덱스
+                if (so.DialogList.Count <= 0) so.DialogList.Add(new DialogInfo());
                 GUILayout.BeginHorizontal();
                 index = EditorGUILayout.IntField("Dialog Index", Mathf.Clamp(index, 0, so.DialogList.Count - 1), indexFieldStyle, indexFieldOption);
                 if (GUILayout.Button("<", buttonOption))
@@ -110,6 +111,8 @@ namespace ReadyMadeReality
                     so.DialogList[index].NameColor = EditorGUILayout.ColorField("NameBox Color", so.DialogList[index].NameColor);
                     so.DialogList[index].ColorPreset = (NameColorPreset)EditorGUILayout.EnumPopup(so.DialogList[index].ColorPreset);
                     so.DialogList[index].NameColor = SetColor(so.DialogList[index].ColorPreset, so.DialogList[index].NameColor);
+                    so.DialogList[index].NameBoxPos = (NameBoxPosPreset)EditorGUILayout.EnumPopup(so.DialogList[index].NameBoxPos);
+                    //so.DialogList[index].NameBoxPos = EditorGUILayout.Popup(so.DialogList[index].NameBoxPos,
                     GUILayout.EndHorizontal();
 
                     // 대화 로그 텍스트

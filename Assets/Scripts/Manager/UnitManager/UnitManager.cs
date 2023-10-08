@@ -28,6 +28,7 @@ public class UnitManager : MonoBehaviour, IEventListener
     }
 
     [SerializeField] private PlayerAnimationController playerAnimationController;
+    [SerializeField] private EmotionEffect emotionEffect;
     [SerializeField] private List<GameObject> clones = new List<GameObject>();
     [SerializeField] private Unit targetUnit;
     [SerializeField] private int targetDestroyed;
@@ -39,9 +40,25 @@ public class UnitManager : MonoBehaviour, IEventListener
     public int TargetDestroyed { get => targetDestroyed; set => targetDestroyed = value; }
     public int MaxDestroyed { get => maxDestroyed; set => maxDestroyed = value; }
 
+    public static List<string> event_code = new List<string>
+    {
+        "Unit Force Move",
+        "Unit Force Stop",
+        "Player Move Input",
+        "Player Animation",
+        "Register Pos Search",
+        "Emotion Effect",
+        "Player Combat",
+        "Set Unit Animation Bool",
+        "Set Unit Animation Trigger",
+        "FlipX Unit",
+        "Unit Set Position",
+    };
+
     private void Awake()
     {
         playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+        emotionEffect= GetComponentInChildren<EmotionEffect>();
     }
 
     private void Start()
@@ -50,7 +67,12 @@ public class UnitManager : MonoBehaviour, IEventListener
         {
             player = Player.Instance;
         }
-        clones.Add(player.gameObject);
+        //clones.Add(player.gameObject);
+        Unit[] preset = FindObjectsOfType<Unit>();
+        foreach (Unit u in preset)
+        {
+            clones.Add(u.gameObject);
+        }
         SubscribeEvent();
     }
     private void Update()
@@ -61,29 +83,38 @@ public class UnitManager : MonoBehaviour, IEventListener
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.UnitForceMove, this);
-        EventManager.Instance.AddListener(EventCode.UnitForceStop, this);
-        EventManager.Instance.AddListener(EventCode.PlayerMoveInput, this);
-        EventManager.Instance.AddListener(EventCode.PlayerAnimation, this);
-        EventManager.Instance.AddListener(EventCode.RegisterPosSearch, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
         //ExtraParams par = (ExtraParams)param[0];
         //Debug.Log(string.Format("{0}, {1}", event_type, par.VecList[0]));
         switch (event_type)
         {
-            case EventCode.UnitForceMove:
+            case "Unit Force Move":
                 UnitForceMove((ExtraParams)param[0]); break;
-            case EventCode.UnitForceStop:
+            case "Unit Force Stop":
                 UnitForceStop((ExtraParams)param[0]); break;
-            case EventCode.PlayerMoveInput:
+            case "Player Move Input":
                 PlayerMoveInput((ExtraParams)param[0]); break;
-            case EventCode.PlayerAnimation:
+            case "Player Animation":
                 PlayerAnimation((ExtraParams)param[0]); break;
-            case EventCode.RegisterPosSearch:
+            case "Register Pos Search":
                 RegisterPosSearch((EventParams)param[0]); break;
+            case "Emotion Effect":
+                EmotionEffect((ExtraParams)param[0]); break;
+            case "Player Combat":
+                PlayerCombat((ExtraParams)param[0]); break;
+            case "Set Unit Animation Bool":
+                SetUnitAnimationBool((ExtraParams)param[0]); break;
+            case "Set Unit Animation Trigger":
+                SetUnitAnimationTrigger((ExtraParams)param[0]); break;
+            case "FlipX Unit":
+                FlipXUnit((ExtraParams)param[0]); break;
+            case "Unit Set Position":
+                UnitSetPostion((ExtraParams)param[0]); break;
             default:
                 break;
         }
@@ -98,6 +129,9 @@ public class UnitManager : MonoBehaviour, IEventListener
                 player.GetComponentInChildren<UnitForceMove>().SetForceMove(par.VecList[0], par.Floatvalue);
                 break;
             default:
+                foreach (GameObject go in clones)
+                    if (string.Equals(go.tag, par.Name))
+                        go.GetComponentInChildren<UnitForceMove>().SetForceMove(par.VecList[0], par.Floatvalue);
                 break;
         }        
         //player.GetComponentInChildren<UnitForceMove>().IsForceMove = true;
@@ -123,7 +157,7 @@ public class UnitManager : MonoBehaviour, IEventListener
 
     private void PlayerAnimation(ExtraParams par)
     {
-        playerAnimationController.SetAnimation(par.Name);
+        player.GetComponent<Player>().animationManager.AnimationControl(par.Name);
     }
 
     private void RegisterPosSearch(EventParams par)
@@ -131,11 +165,52 @@ public class UnitManager : MonoBehaviour, IEventListener
 
     }
 
-    private void CheckUnitPosition()
+    private void EmotionEffect(ExtraParams par)
     {
-        for (int i = events.Count - 1; i >= 0; i--)
+        foreach (GameObject c in clones)
         {
-            //for ()
+            if (string.Equals(c.tag, par.Name))
+            {
+                emotionEffect.MakeEffect(c.transform, par.Intvalue, par.Boolvalue);
+            }
+        }
+    }
+
+    private void PlayerCombat(ExtraParams par)
+    {
+        player.GetComponent<Player>().playerMovement.IsCombat = par.Boolvalue;
+    }
+
+    private void SetUnitAnimationBool(ExtraParams par)
+    {
+        EventManager.Instance.PostNotification("Set Module Animator Bool", this, null, par);
+    }
+
+    private void SetUnitAnimationTrigger(ExtraParams par)
+    {
+        EventManager.Instance.PostNotification("Set Module Animator trigger", this, null, par);
+    }
+
+    private void FlipXUnit(ExtraParams par)
+    {
+        foreach (GameObject c in clones)
+        {
+            if (string.Equals(c.tag, par.Name))
+            {
+                Vector3 scale = c.transform.localScale;
+                c.transform.localScale = new Vector3(-scale.x, scale.y);
+            }
+        }
+    }
+
+    private void UnitSetPostion(ExtraParams par)
+    {
+        foreach (GameObject c in clones)
+        {
+            if (string.Equals(c.tag, par.Name))
+            {
+                c.transform.position = par.VecList[0];
+            }
         }
     }
 

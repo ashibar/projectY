@@ -30,12 +30,26 @@ public class UIManager : MonoBehaviour, IEventListener
     [SerializeField] private ScreenFade screenFade;
     [SerializeField] private Gameover gameover;
     [SerializeField] private Indicator indicator_keyboard;
+    [SerializeField] private Indicator indicator_mouse;
     [SerializeField] private Indicator indicator_centerImage;
     [SerializeField] private ResultWindow resultWindow;
     [SerializeField] private TopIndicator topIndicator;
+    [SerializeField] private TutorialLogo tutorialLogo;
 
     public ResultWindow ResultWindow { get => resultWindow; set => resultWindow = value; }
     public TopIndicator TopIndicator { get => topIndicator; set => topIndicator = value; }
+
+    public static List<string> event_code = new List<string>
+    {
+        "Fade In",
+        "Fade Out",
+        "Key Board Indicator",
+        "Set Center Indicator",
+        "Force Load",
+        "Logo Appears",
+        "Set Mouse Indicator",
+        "Active Result Window",
+    };
 
     private void Awake()
     {
@@ -45,6 +59,7 @@ public class UIManager : MonoBehaviour, IEventListener
             Destroy(gameObject);
             return;
         }
+        resultWindow = GetComponentInChildren<ResultWindow>(true);
         SubscribeEvent();
     }    
 
@@ -52,34 +67,37 @@ public class UIManager : MonoBehaviour, IEventListener
     {
         EventReciever();
         EventListener();
-        gameoverListener();
+        //gameoverListener();
     }
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.FadeIn, this);
-        EventManager.Instance.AddListener(EventCode.FadeOut, this);
-        EventManager.Instance.AddListener(EventCode.KeyBoardIndicator, this);
-        EventManager.Instance.AddListener(EventCode.SetCenterIndicator, this);
-        EventManager.Instance.AddListener(EventCode.ForceLoad, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
         ExtraParams para = (ExtraParams)param[0];
 
         switch (event_type)
         {
-            case EventCode.FadeOut:
+            case "Fade Out":
                 FadeOut(para); break;
-            case EventCode.FadeIn:
+            case "Fade In":
                 FadeIn(para); break;
-            case EventCode.KeyBoardIndicator:
+            case "Key Board Indicator":
                 KeyBoardIndicator(para); break;
-            case EventCode.SetCenterIndicator:
+            case "Set Center Indicator":
                 SetCenterIndicator(para); break;
-            case EventCode.ForceLoad:
+            case "Force Load":
                 ForceLoad(para); break;
+            case "Logo Appears":
+                LogoAppears(para); break;
+            case "Set Mouse Indicator":
+                SetMouseIndicator(para); break;
+            case "Active Result Window":
+                ActiveResultWindow(para); break;
             default:
                 break;
         }
@@ -107,7 +125,26 @@ public class UIManager : MonoBehaviour, IEventListener
 
     private void ForceLoad(ExtraParams para)
     {
-        LoadingSceneController.LoadScene(para.Name);
+        LoadingSceneController.LoadScene(para.Name, para.Intvalue);
+    }
+
+    private void LogoAppears(ExtraParams para)
+    {
+        tutorialLogo.SetAnim("isAppear");
+    }
+
+    private void SetMouseIndicator(ExtraParams para)
+    {
+        indicator_mouse.SetAnim("Out");
+    }
+
+    private void ActiveResultWindow(ExtraParams para)
+    {
+        if (resultWindow == null)
+            return;
+
+        resultWindow.gameObject.SetActive(true);
+        resultWindow.Active();
     }
 
     [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();

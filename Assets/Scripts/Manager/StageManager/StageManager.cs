@@ -46,12 +46,21 @@ public class StageManager : MonoBehaviour, IEventListener
     [SerializeField] private StageInfoContainer_so stageInfoContainer_so;
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
+    // 플레이어 정보
+    [SerializeField] private PlayerInfoContainer playerInfoContainer_so;
+    [SerializeField] private SpellPrefabContainer SpellPrefabContainer_so;
 
     public ConditionChecker ConditionChecker { get => conditionChecker; set => conditionChecker = value; }
     public EventTimer EventTimer { get => eventTimer; set => eventTimer = value; }
     public StageEndCheck StageEndCheck { get => stageEndCheck; set => stageEndCheck = value; }
 
     public List<EventMessage> messageBuffer = new List<EventMessage>();
+
+    public static List<string> event_code = new List<string>
+    {
+        "Goto Next Phase",
+        "Force Load",
+    };
 
     private void Awake()
     {
@@ -67,45 +76,50 @@ public class StageManager : MonoBehaviour, IEventListener
         messageBuffer.Clear();
         Time.timeScale = 1.0f;
 
-        SubscribeEvent();
-        SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]); // 나중에 로딩할때 대체
+        SubscribeEvent(); // 나중에 로딩할때 대체
         //SetStageInfo_(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
     }
 
     private void Start()
     {
-        foreach (GameObject g in stageInfo.spawners)
-        {
-            Instantiate(g, SpawnManager.Instance.spawner_holder);
-        }
-        SpawnManager.Instance.SetSpawner();
+        //foreach (GameObject g in stageInfo.spawners)
+        //{
+        //    Instantiate(g, SpawnManager.Instance.spawner_holder);
+        //}
+        //SpawnManager.Instance.SetSpawner();
+
+        SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
         if (UIManager.Instance.TopIndicator)
         {
             UIManager.Instance.TopIndicator.Sort = stageInfo.StageSort;
-            UIManager.Instance.TopIndicator.SetActive(); 
+            UIManager.Instance.TopIndicator.SetActive();
         }
         SetTargetUnit();
+        //LoadPlayerSpell();
     }
 
     private void Update()
     {
-        if (UIManager.Instance.ResultWindow)
-            TestStageClear();
+        //if (UIManager.Instance.ResultWindow)
+        //    TestStageClear();
         //Async_Function();
     }
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.GotoNextPhase, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
 
         switch (event_type)
         {
-            case EventCode.GotoNextPhase:
+            case "Goto Next Phase":
                 GotoNextPhase((ExtraParams)param[0]); break;
+            case "Force Load":
+                ForceLoad((ExtraParams)param[0]); break;
         }
     }
 
@@ -113,6 +127,11 @@ public class StageManager : MonoBehaviour, IEventListener
     {
         Debug.Log(par.NextPhase);
         eventTimer.AddPhase(par.NextPhase);
+    }
+
+    private void ForceLoad(ExtraParams para)
+    {
+        LoadingSceneController.LoadScene(para.Name, para.Intvalue);
     }
 
     /// <summary>
@@ -125,41 +144,57 @@ public class StageManager : MonoBehaviour, IEventListener
         stageInfo = new StageInfo(_stageInfo_so);
 
         //SetTestPara();
-        eventTimer.AddPhase(stageInfo.Phases[0]);
+        foreach(EventPhase_so phase in stageInfo.Phases)
+            eventTimer.AddPhase(phase);
         //conditionChecker.SetPara(stageInfo.Para);
+    }
+
+    /// <summary>
+    /// <para/> <b>로딩 시 플레이어의 스펠을 불러옴</b>
+    /// </summary>
+    private void LoadPlayerSpell()
+    {
+        List<string> codes = playerInfoContainer_so.Spell_code;
+        List<GameObject> prefabList = new List<GameObject>();
+        foreach (string code in codes)
+        {
+            GameObject spell_prefab = SpellPrefabContainer_so.Search(code);
+            prefabList.Add(spell_prefab);
+        }
+        Player.Instance.spellManager.SetSpell(prefabList);
+        Player.Instance.spellManager.gameObject.SetActive(true);
     }
 
     /// <summary>
     /// 임시 파라미터 설정 함수
     /// 후에 로딩 담당 컴포넌트가 대체함
     /// </summary>
-    private void SetTestPara()
-    {
-        stageInfo.Para.Clear();
+    //private void SetTestPara()
+    //{
+    //    stageInfo.Para.Clear();
 
-        Condition condition1 = new Condition();
-        condition1.Sort = ConditionSort.Time;
-        condition1.TargetNum = 1;
+    //    Condition condition1 = new Condition();
+    //    condition1.Sort = ConditionSort.Time;
+    //    condition1.TargetNum = 1;
 
-        List<Vector2> vecList = new List<Vector2>() {
-            new Vector2( 5f,  5f),
-            new Vector2( 5f, -5f),
-            new Vector2(-5f,  5f),
-            new Vector2(-5f, -5f)
-        };
+    //    List<Vector2> vecList = new List<Vector2>() {
+    //        new Vector2( 5f,  5f),
+    //        new Vector2( 5f, -5f),
+    //        new Vector2(-5f,  5f),
+    //        new Vector2(-5f, -5f)
+    //    };
 
-        ExtraParams p1 = new ExtraParams();
-        p1.Id = 0;
-        p1.VecList.Add(new Vector2(3f, 3f));
+    //    ExtraParams p1 = new ExtraParams();
+    //    p1.Id = 0;
+    //    p1.VecList.Add(new Vector2(3f, 3f));
 
-        ExtraParams p2 = new ExtraParams();
-        p2.Id = 0;
-        p2.VecList.AddRange(vecList);
+    //    ExtraParams p2 = new ExtraParams();
+    //    p2.Id = 0;
+    //    p2.VecList.AddRange(vecList);
 
-        stageInfo.Para.Add(new EventParams(0, EventCode.a, condition1));
-        stageInfo.Para.Add(new EventParams(1, EventCode.SpawnEnemyAtVectorByID, condition1, p1));
-        stageInfo.Para.Add(new EventParams(2, EventCode.SpawnEnemyAtVectorListByID, condition1, p2));
-    }
+    //    stageInfo.Para.Add(new EventParams(1, "Spawn Enemy At Vector By ID", condition1, p1));
+    //    stageInfo.Para.Add(new EventParams(2, "Spawn Enemy At Vector List By ID", condition1, p2));
+    //}
 
     /// <summary>
     /// <b>다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수</b><br/>

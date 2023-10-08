@@ -1,3 +1,4 @@
+using ReadyMadeReality;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,8 +8,24 @@ using UnityEngine;
 public class EventParam_Window : EditorWindow
 {
     [SerializeField] private EventPhase_so phaseInfo;
-
     [SerializeField] private int index;
+
+    [SerializeField] private List<string> sort = new List<string> {
+        "None",
+        "Stage Manager",
+        "Spawn Manager",
+        "Unit Manager",
+        "UI Manager",
+        "RMR",
+        "Sound Manager",
+        "Test",
+        "Event Timer",
+        "Camera Manager",
+    };
+    [SerializeField] int sortIndex = 0;
+    [SerializeField] int listIndex = 0;
+    [SerializeField] string sortStr;
+    //[SerializeField] private string selectedStr = "";
 
     [MenuItem("Utilities/Event Maker")]
     private static void Init()
@@ -20,7 +37,7 @@ public class EventParam_Window : EditorWindow
     private void OnEnable()
     {
         minSize = new Vector2(500, 500); // 최소 크기 설정
-        maxSize = new Vector2(500, 800); // 최대 크기 설정
+        maxSize = new Vector2(500, 1000); // 최대 크기 설정
     }
 
     private void OnGUI()
@@ -78,12 +95,12 @@ public class EventParam_Window : EditorWindow
         phaseInfo = (EventPhase_so)EditorGUILayout.ObjectField(phaseInfo, typeof(object), true);
         GUILayout.EndHorizontal();
 
-        
+
         if (phaseInfo != null)
         {
             if (phaseInfo.Events.Count <= 0)
-                phaseInfo.Events.Add(new EventParams(0));            
-            
+                phaseInfo.Events.Add(new EventParams(0));
+
             GUILayout.BeginHorizontal();
             // 인덱스
             GUILayout.FlexibleSpace();
@@ -127,18 +144,22 @@ public class EventParam_Window : EditorWindow
             }
             GUILayout.EndHorizontal();
 
-            // Eventcode
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            phaseInfo.Events[index].eventcode = (EventCode)EditorGUILayout.EnumPopup("Event Code", phaseInfo.Events[index].eventcode, enumFieldOption);
-            GUILayout.EndHorizontal();
+            PopUpCode(enumFieldOption);
+
+            // Eventcode
+            //GUILayout.BeginHorizontal();
+            //GUILayout.FlexibleSpace();
+            //phaseInfo.Events[index].eventcode = (EventCode)EditorGUILayout.EnumPopup("Event Code", phaseInfo.Events[index].eventcode, enumFieldOption);
+            //GUILayout.EndHorizontal();
 
             // Condition
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUILayout.Label("Condtions", labelFieldOption);
-            GUILayout.EndHorizontal();            
-                        
+            GUILayout.EndHorizontal();
+
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             phaseInfo.Events[index].condition.Sort = (ConditionSort)EditorGUILayout.EnumPopup("Condtition Sort", phaseInfo.Events[index].condition.Sort, enumFieldOption);
@@ -152,6 +173,7 @@ public class EventParam_Window : EditorWindow
             switch (phaseInfo.Events[index].condition.Sort)
             {
                 case ConditionSort.None:
+                    Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.Time:
                     Con_Num(innerFieldOption);
@@ -160,11 +182,20 @@ public class EventParam_Window : EditorWindow
                 case ConditionSort.Trigger:
                     Con_Flag(innerFieldOption);
                     Con_FlagValue(innerFieldOption);
+                    Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.MoveToPos:
                     Con_Tag(innerFieldOption);
                     Con_Pos(innerFieldOption);
+                    Con_Range(innerFieldOption);
                     Con_Num(innerFieldOption);
+                    Con_Tinue(innerFieldOption);
+                    break;
+                case ConditionSort.Number:
+                    Con_Flag(innerFieldOption);
+                    Con_UpOrDown(innerFieldOption);
+                    Con_Num(innerFieldOption);
+                    Con_Tinue(innerFieldOption);
                     break;
                 default:
                     break;
@@ -183,11 +214,16 @@ public class EventParam_Window : EditorWindow
             {
                 Par_No(innerFieldOption);
                 Par_Name(innerFieldOption);
+                Par_Name2(innerFieldOption);
                 Par_Int(innerFieldOption);
                 Par_Float(innerFieldOption);
                 Par_Bool(innerFieldOption);
                 Par_Phase(innerFieldOption);
-                Par_VecList(innerFieldOption, innerVectorOption); 
+                Par_Dialog(innerFieldOption);
+                Par_Audio(innerFieldOption);
+                Par_MobList(innerFieldOption);
+                Par_SpawnInfo(innerFieldOption);
+                Par_VecList(innerFieldOption, innerVectorOption);
             }
 
             GUILayout.BeginHorizontal();
@@ -204,6 +240,58 @@ public class EventParam_Window : EditorWindow
 
 
 
+    }
+
+    private void PopUpCode(GUILayoutOption[] options)
+    {
+        sortIndex = EditorGUILayout.Popup("Sort", phaseInfo.Events[index].eventindex, sort.ToArray(), options);
+        GUILayout.EndHorizontal();
+        sortStr = sort[sortIndex];
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        switch (sortStr)
+        {
+            case "None":
+                RenderList(0, new List<string> { "None" }, options); break;
+            case "Stage Manager":
+                RenderList(1, StageManager.event_code, options); break;
+            case "Spawn Manager":
+                RenderList(2, SpawnManager.event_code, options); break;
+            case "Unit Manager":
+                RenderList(3, UnitManager.event_code, options); break;
+            case "UI Manager":
+                RenderList(4, UIManager.event_code, options); break;
+            case "RMR":
+                RenderList(5, ReadyMadeReality.RMR.event_code, options); break;
+            case "Sound Manager":
+                RenderList(6, SoundManager.event_code, options); break;
+            case "Test":
+                RenderList(7, Listener_template.event_code, options); break;
+            case "Event Timer":
+                RenderList(8, EventTimer.event_code, options); break;
+            case "Camera Manager":
+                RenderList(9, CameraManager.event_code, options); break;
+            default:
+                RenderList(0, new List<string> { "None" }, options); break;
+        }
+        GUILayout.EndHorizontal();
+    }
+
+    private void RenderList(int no, List<string> list, GUILayoutOption[] options)
+    {
+        phaseInfo.Events[index].eventindex = no;
+        if (listIndex >= list.Count) listIndex = 0;
+        listIndex = EditorGUILayout.Popup("List", SearchIndex(phaseInfo.Events[index].eventcode, list), list.ToArray(), options);
+        phaseInfo.Events[index].eventcode = list[listIndex];
+    }
+
+    private int SearchIndex(string str, List<string> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+            if (string.Equals(str, list[i]))
+                return i;
+        return 0;
     }
 
     private void Con_Num(GUILayoutOption[] options)
@@ -234,6 +322,13 @@ public class EventParam_Window : EditorWindow
         phaseInfo.Events[index].condition.FlagValue = EditorGUILayout.Toggle("Flag Value", phaseInfo.Events[index].condition.FlagValue, options);
         GUILayout.EndHorizontal();
     }
+    private void Con_UpOrDown(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].condition.FlagValue = EditorGUILayout.Toggle("More than", phaseInfo.Events[index].condition.FlagValue, options);
+        GUILayout.EndHorizontal();
+    }
     private void Con_Tag(GUILayoutOption[] options) {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
@@ -247,7 +342,14 @@ public class EventParam_Window : EditorWindow
         phaseInfo.Events[index].condition.TargetPos = EditorGUILayout.Vector2Field("Target Position", phaseInfo.Events[index].condition.TargetPos, options);
         GUILayout.EndHorizontal();
     }
-
+    private void Con_Range(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUIUtility.wideMode = true;
+        phaseInfo.Events[index].condition.TargetRange = EditorGUILayout.Vector2Field("Detect Range", phaseInfo.Events[index].condition.TargetRange, options);
+        GUILayout.EndHorizontal();
+    }
     private void Par_No(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
@@ -260,6 +362,13 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         phaseInfo.Events[index].extraParams.Name = EditorGUILayout.TextField("Name", phaseInfo.Events[index].extraParams.Name, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_Name2(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.Name2 = EditorGUILayout.TextField("Name2", phaseInfo.Events[index].extraParams.Name2, options);
         GUILayout.EndHorizontal();
     }
     private void Par_Int(GUILayoutOption[] options)
@@ -287,7 +396,21 @@ public class EventParam_Window : EditorWindow
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].extraParams.NextPhase = (EventPhase_so)EditorGUILayout.ObjectField("Next Phase" ,phaseInfo.Events[index].extraParams.NextPhase, typeof(object), true, options);
+        phaseInfo.Events[index].extraParams.NextPhase = (EventPhase_so)EditorGUILayout.ObjectField("Next Phase", phaseInfo.Events[index].extraParams.NextPhase, typeof(object), true, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_Dialog(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.Dialog_so = (DialogInfo_so)EditorGUILayout.ObjectField("Dialog so", phaseInfo.Events[index].extraParams.Dialog_so, typeof(object), true, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_Audio(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.Audioclip = (AudioClip)EditorGUILayout.ObjectField("Audio Clip", phaseInfo.Events[index].extraParams.Audioclip, typeof(object), true, options);
         GUILayout.EndHorizontal();
     }
     private void Par_VecList(GUILayoutOption[] options, GUILayoutOption[] options_inner)
@@ -312,7 +435,7 @@ public class EventParam_Window : EditorWindow
                 Par_VecElement(i, options_inner);
         }
 
-        
+
     }
     private void Par_VecElement(int no, GUILayoutOption[] options)
     {
@@ -320,6 +443,20 @@ public class EventParam_Window : EditorWindow
         GUILayout.FlexibleSpace();
         EditorGUIUtility.wideMode = true;
         phaseInfo.Events[index].extraParams.VecList[no] = EditorGUILayout.Vector2Field(string.Format("vec {0}", no), phaseInfo.Events[index].extraParams.VecList[no], options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_MobList(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.MobLists = (PrefabSet_so)EditorGUILayout.ObjectField("Mob List", phaseInfo.Events[index].extraParams.MobLists, typeof(object), true, options);
+        GUILayout.EndHorizontal();
+    }
+    private void Par_SpawnInfo(GUILayoutOption[] options)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        phaseInfo.Events[index].extraParams.SpawnInfo = (SpawnInfoContainer)EditorGUILayout.ObjectField("Spawn Info", phaseInfo.Events[index].extraParams.SpawnInfo, typeof(object), true, options);
         GUILayout.EndHorizontal();
     }
 }

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49dacf86a98d8e4a9448c1c595bdc2e, type: 3}
+  m_Name: TestDialog
+  m_EditorClassIdentifier: 
+  dialogList:
+  - left_portrait_id: 1
+    right_portrait_id: 2
+    text_name: "\uC8FC\uC778\uACF5"
+    text_value: "\uBC15\uC950\uB2E4!"
+    nameColor:
+      serializedVersion: 2
+      rgba: 4278223103
+    colorPreset: 2
+    enableNameBox: 1
+  - left_portrait_id: 1
+    right_portrait_id: 2
+    text_name: "\uBC15\uC950"
+    text_value: "\uC0AC\uB78C\uC774\uB2E4!"
+    nameColor:
+      serializedVersion: 2
+      rgba: 4278190335
+    colorPreset: 1
+    enableNameBox: 1
+  portraitList: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}

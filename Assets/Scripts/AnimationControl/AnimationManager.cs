@@ -7,6 +7,16 @@ public class AnimationManager : MonoBehaviour
     private Player player;
     private Animator animator;
 
+    private List<string> states = new List<string>()
+    {
+        "isIdle",
+        "isNone",
+        "isWalk",
+        "isMove",
+        "isHit",
+        "isGaze",
+    };
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,10 +35,24 @@ public class AnimationManager : MonoBehaviour
         // case 안에 있는 string 값을 입력하시면 Trigger가 실행됩니다.
         switch (action)
         {
-            case "Attack": animator.SetTrigger("isAttack"); break;
-            case "Move": animator.SetTrigger("isWalk"); break;
-            case "None": animator.SetTrigger("isNone"); break;
-            
+            case "Attack": SetState("isAttack"); break;
+            case "Idle": SetState("isIdle"); break;
+            case "None": SetState("isNone"); break;
+            case "Walk": SetState("isWalk"); break;
+            case "Move": SetState("isMove"); break;
+            case "Gaze": SetState("isGaze"); break;
+            case "Hit": SetState("isHit"); break;
+        }
+    }
+
+    private void SetState(string state)
+    {
+        foreach (string s in states)
+        {
+            if (string.Equals(state, s))
+                animator.SetBool(s, true);
+            else
+                animator.SetBool(s, false);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Reflection;
 using UnityEngine;
 
@@ -21,6 +22,11 @@ public class ConditionChecker : MonoBehaviour, IEventListener
     [SerializeField] private List<EventParams> para_area = new List<EventParams>();
     [SerializeField] private Dictionary<string, bool> flag = new Dictionary<string, bool>();
 
+    public static List<string> event_code = new List<string>
+    {
+        "Unit Arrived",
+    };
+
     private void Awake()
     {
         areas.AddRange(GetComponentsInChildren<ConditionArea>());
@@ -36,16 +42,15 @@ public class ConditionChecker : MonoBehaviour, IEventListener
 
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.UnitArrived, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
-        
-        
         switch (event_type)
         {
-            case EventCode.UnitArrived:
+            case "Unit Arrived":
                 UnitArrived(param); break;
         }
     }

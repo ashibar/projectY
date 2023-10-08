@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
@@ -49,6 +50,20 @@ public class SpawnManager : MonoBehaviour, IEventListener
 
     [SerializeField]
     private bool verbose = false;
+
+    public static List<string> event_code = new List<string>
+    {
+        "Force Spawn",
+        "Set Active Spawner",
+        "InActive All",
+        "Boss Spawn",
+        "Spawn Enemy At Vector By ID",
+        "Spawn Enemy At Vector List By ID",
+        "Spawn EnemyList At Vector List By ID",
+        "Spawn Enemy At Vector By Name",
+        "Spawn By Spawn Info",
+    };
+
     private void Awake()
     {
         var objs = FindObjectsOfType<SpawnManager>();
@@ -82,33 +97,32 @@ public class SpawnManager : MonoBehaviour, IEventListener
     /// </summary>
     public void SubscribeEvent()
     {
-        EventManager.Instance.AddListener(EventCode.ForceSpawn, this);
-        EventManager.Instance.AddListener(EventCode.SetActiveSpawner, this);
-        EventManager.Instance.AddListener(EventCode.InActiveAll, this);
-        EventManager.Instance.AddListener(EventCode.BossSpawn, this);
-        EventManager.Instance.AddListener(EventCode.SpawnEnemyAtVectorByID, this);
-        EventManager.Instance.AddListener(EventCode.SpawnEnemyAtVectorListByID, this);
-        EventManager.Instance.AddListener(EventCode.SpawnEnemyAtVectorByName, this);
+        foreach (string code in event_code)
+            EventManager.Instance.AddListener(code, this);
     }
 
-    public void OnEvent(EventCode event_type, Component sender, Condition condition, params object[] param)
+    public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
         switch (event_type)
         {
-            case EventCode.ForceSpawn: // TargetNum에 스포너 번호를 받음
+            case "Force Spawn": // TargetNum에 스포너 번호를 받음
                 ForceSpawn(param); break;
-            case EventCode.SetActiveSpawner: // TargetNum에 스포너 번호를 받으며, TargetSTR에 true/false로 활성/비활성 설정
+            case "Set Active Spawner": // TargetNum에 스포너 번호를 받으며, TargetSTR에 true/false로 활성/비활성 설정
                 SetActiveSpawner(param); break;
-            case EventCode.InActiveAll:
+            case "InActive All":
                 InActiveAll(param); break;
-            case EventCode.BossSpawn:
+            case "Boss Spawn":
                 BossSpawn(param); break;
-            case EventCode.SpawnEnemyAtVectorByID:
+            case "Spawn Enemy At Vector By ID":
                 SpawnAtVectorID(param); break;
-            case EventCode.SpawnEnemyAtVectorListByID:
+            case "Spawn Enemy At Vector List By ID":
                 SpawnAtVectorListID(param); break;
-            case EventCode.SpawnEnemyAtVectorByName:
+            case "Spawn EnemyList At Vector List By ID":
+                SpawnAtVectorListIDLists(param); break;
+            case "Spawn Enemy At Vector By Name":
                 SpawnAtVectorName(param); break;
+            case "Spawn By Spawn Info":
+                SpawnBySpawnInfo(param); break;
         }
     }
 
@@ -161,6 +175,61 @@ public class SpawnManager : MonoBehaviour, IEventListener
         foreach (Vector2 pos in posList)
         {
             GameObject clone = Instantiate(enemyList.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
+            clone.name = UnitManager.Instance.Clones.Count.ToString();
+            UnitManager.Instance.Clones.Add(clone);
+        }
+    }
+
+    private void SpawnAtVectorListIDLists(params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        int id = para.Id;
+        List<Vector2> posList = para.VecList;
+
+        foreach (Vector2 pos in posList)
+        {
+            GameObject clone = Instantiate(para.MobLists.prefabs[id], pos, Quaternion.identity, Holder.enemy_holder);
+            clone.name = UnitManager.Instance.Clones.Count.ToString();
+            UnitManager.Instance.Clones.Add(clone);
+        }
+    }
+
+    private void SpawnBySpawnInfo(params object[] param)
+    {
+        ExtraParams para = (ExtraParams)param[0];
+
+        List<SpawnInfo> spawnInfo = para.SpawnInfo.spawnInfo;
+        
+        foreach (SpawnInfo si in spawnInfo)
+        {
+            switch (si.spawn_sort)
+            {
+                case "Point": Spawn_Point(si); break;
+                case "Border": Spawn_Border(si); break;
+                case "List": Spawn_List(si); break;
+                default: break;
+            }
+        }
+    }
+
+    private void Spawn_Point(SpawnInfo si)
+    {
+        GameObject clone = Instantiate(si.unit_prefab, si.point, Quaternion.identity, Holder.enemy_holder);
+        clone.name = UnitManager.Instance.Clones.Count.ToString();
+        UnitManager.Instance.Clones.Add(clone);
+    }
+
+    private void Spawn_Border(SpawnInfo si)
+    {
+        
+    }
+
+    private void Spawn_List(SpawnInfo si)
+    {
+        foreach (Vector2 pos in si.position)
+        {
+            GameObject clone = Instantiate(si.unit_prefab, pos, Quaternion.identity, Holder.enemy_holder);
             clone.name = UnitManager.Instance.Clones.Count.ToString();
             UnitManager.Instance.Clones.Add(clone);
         }

@@ -10,6 +10,8 @@ TagManager:
   - Ground
   - Area
   - Projectile
+  - Bat
+  - Explorer
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Maptile
     uniqueID: 586189997
+    locked: 0
+  - name: NPC
+    uniqueID: 3802911891
     locked: 0
   - name: Player
     uniqueID: 4010453101

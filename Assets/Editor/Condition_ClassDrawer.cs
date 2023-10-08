@@ -56,8 +56,8 @@ public class Condition_ClassDrawer : PropertyDrawer
                 EditorGUI.PropertyField(FieldRect(position, 2), property.FindPropertyRelative("targetPos"));
                 EditorGUI.PropertyField(FieldRect(position, 3), property.FindPropertyRelative("targetNum"));
                 break;
-            case ConditionSort.MoveToArea:
-                itemNum = 1;
+            case ConditionSort.Number:
+                itemNum = 4;
                 EditorGUI.PropertyField(FieldRect(position, 1), property.FindPropertyRelative("targetAreaID"));
                 break;
             
