@@ -183,7 +183,15 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6154825715935669467, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
+      propertyPath: distance
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154825715935669467, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
       propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154825715935669467, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
+      propertyPath: distanceByCamera
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

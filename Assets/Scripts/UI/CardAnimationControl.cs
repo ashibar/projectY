@@ -20,7 +20,8 @@ public class CardAnimationControl : AsyncFunction_template
 
         foreach (SpellCard card in spell_card)
         {
-            card.AppearSpell();
+            if (card != null)
+                card.AppearSpell();
             await Wait(cts, 0.5f);
         }
         await Task.Yield();
