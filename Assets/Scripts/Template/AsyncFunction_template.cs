@@ -9,10 +9,9 @@ public class AsyncFunction_template : MonoBehaviour
     public async Task Wait(CancellationToken cts, float second)
     {
         float end = Time.time + second;
-        while (Time.time < end)
+        while (Time.time < end && !cts.IsCancellationRequested)
         {
-            if (cts.IsCancellationRequested) await Task.FromResult(-1);
-            else await Task.Yield();
+            await Task.Yield();
         }
     }
 }

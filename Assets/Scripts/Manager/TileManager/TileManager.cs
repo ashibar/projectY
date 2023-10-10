@@ -9,6 +9,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] public List<GameObject> tile_group = new List<GameObject>();
 
     [SerializeField] private float distance = 5f;
+    [SerializeField] private bool distanceByCamera = false;
     [SerializeField] public bool isActive = false;
 
     private void Awake()
@@ -24,6 +25,8 @@ public class TileManager : MonoBehaviour
     {
         if (isActive)
         {
+            if (distanceByCamera)
+                distance = Camera.main.orthographicSize * 4f;
             for (int i = -1; i <= 1; i++)
                 for (int j = -1; j <= 1; j++)
                     tileGenerater.SetTile(Camera.main.transform.position + new Vector3(i, j) * distance, new Vector2(distance, distance)); 
@@ -34,7 +37,8 @@ public class TileManager : MonoBehaviour
     {
         if (isActive)
         {
-            distance = Camera.main.orthographicSize * 4f;
+            if (distanceByCamera)
+                distance = Camera.main.orthographicSize * 4f;
             tilePositionSetter.distance = distance;
 
             List<Vector2> tilePos = new List<Vector2>(tilePositionSetter.SetTilePosition());
