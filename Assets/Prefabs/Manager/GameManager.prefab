@@ -50,6 +50,7 @@ MonoBehaviour:
   tilePositionSetter: {fileID: 0}
   tile_group: []
   distance: 40
+  distanceByCamera: 0
   isActive: 0
 --- !u!1 &2065779705270117683
 GameObject:
@@ -544,6 +545,8 @@ MonoBehaviour:
   stageEndCheck: {fileID: 0}
   stageInfoContainer_so: {fileID: 11400000, guid: 8f4e7c3c035e1644c97cb7d7bd553088, type: 2}
   stageInfo_so: {fileID: 11400000, guid: ae319b141ebc41249bb85d6755cd5ef6, type: 2}
+  playerInfoContainer_so: {fileID: 11400000, guid: c3aa6ff3dba4af34f8a308db82f50fc7, type: 2}
+  SpellPrefabContainer_so: {fileID: 11400000, guid: 6811ef9c2e70be94781501107caaf696, type: 2}
   messageBuffer: []
 --- !u!1 &2531535864798150312
 GameObject:

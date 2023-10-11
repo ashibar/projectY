@@ -276,6 +276,13 @@ public class Spell_Core : Spell
         this.pos_toShoot = pos_toShoot;
     }
 
+    public void InitElement()
+    {
+        RegisterAllFromChildren();
+        Stat_Process();
+        if (element_management != null) element_management.Init();
+    }
+
     private void OnDestroy()
     {
         cts?.Cancel();

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Stage_Demo_02
   m_EditorClassIdentifier: 
   stageName: Stage_Demo_02
-  rewards: []
+  stageSprite: {fileID: 21300000, guid: 635ced3622381424f860889587a883a4, type: 3}
+  reward: {fileID: 11400000, guid: 487804694e6cbf44eb8fc577b1cd50ec, type: 2}
   stageSort: 0
   phases:
   - {fileID: 11400000, guid: d2d56fc8e66ba864f92a113525b66911, type: 2}

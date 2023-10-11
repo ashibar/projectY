@@ -95,7 +95,7 @@ public class StageManager : MonoBehaviour, IEventListener
             UIManager.Instance.TopIndicator.SetActive();
         }
         SetTargetUnit();
-        //LoadPlayerSpell();
+        LoadPlayerSpell();
     }
 
     private void Update()
@@ -154,14 +154,21 @@ public class StageManager : MonoBehaviour, IEventListener
     /// </summary>
     private void LoadPlayerSpell()
     {
-        List<string> codes = playerInfoContainer_so.Spell_code;
-        List<GameObject> prefabList = new List<GameObject>();
-        foreach (string code in codes)
+        Player.Instance.spellManager.ClearSpell();
+        List<StringNString> codes = playerInfoContainer_so.Spell_code;
+        List<GameObject> cloneList = new List<GameObject>();
+        GameObject holder_obj = new GameObject();
+        foreach (StringNString code in codes)
         {
-            GameObject spell_prefab = SpellPrefabContainer_so.Search(code);
-            prefabList.Add(spell_prefab);
+            GameObject spell_prefab = SpellPrefabContainer_so.Search(code.string1);
+            GameObject spell_clone = Instantiate(spell_prefab, holder_obj.transform);
+            if (!string.Equals(code.string2, ""))
+                foreach (GameObject clone in cloneList)
+                    if (string.Equals(clone.GetComponent<Spell>().GetCode(), code.string2))
+                        spell_clone.transform.parent = clone.transform;
+            cloneList.Add(spell_clone);
         }
-        Player.Instance.spellManager.SetSpell(prefabList);
+        Player.Instance.spellManager.SetSpell(holder_obj);
         Player.Instance.spellManager.gameObject.SetActive(true);
     }
 
