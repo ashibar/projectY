@@ -31,7 +31,7 @@ public class PlayerStatusWindow : MonoBehaviour
             player_name_text.text = string.Format("Name : {0}", playerInfoContainer.Player_name);
             player_money_text.text = string.Format("Money : {0}", playerInfoContainer.Money);
             player_spell_text.text = "Spell List\n";
-            foreach (StringNString code in playerInfoContainer.Spell_code)
+            foreach (StringNString code in playerInfoContainer.Spell_activated)
             {
                 GameObject prefab = spellPrefabContainer.Search(code.string1);
                 if (code.string2 != "")

@@ -47,8 +47,8 @@ public class StageManager : MonoBehaviour, IEventListener
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
     // 플레이어 정보
-    [SerializeField] private PlayerInfoContainer playerInfoContainer_so;
-    [SerializeField] private SpellPrefabContainer SpellPrefabContainer_so;
+    [SerializeField] public PlayerInfoContainer playerInfoContainer_so;
+    [SerializeField] public SpellPrefabContainer SpellPrefabContainer_so;
 
     public ConditionChecker ConditionChecker { get => conditionChecker; set => conditionChecker = value; }
     public EventTimer EventTimer { get => eventTimer; set => eventTimer = value; }
@@ -155,7 +155,7 @@ public class StageManager : MonoBehaviour, IEventListener
     private void LoadPlayerSpell()
     {
         Player.Instance.spellManager.ClearSpell();
-        List<StringNString> codes = playerInfoContainer_so.Spell_code;
+        List<StringNString> codes = playerInfoContainer_so.Spell_activated;
         List<GameObject> cloneList = new List<GameObject>();
         GameObject holder_obj = new GameObject();
         foreach (StringNString code in codes)
@@ -284,12 +284,6 @@ public class StageManager : MonoBehaviour, IEventListener
             UnitManager.Instance.TargetUnit = UnitManager.Instance.Clones[1].GetComponent<Unit>();
         }
     }
-
-    
-
-
-
-
 
     // 더미 코드
 

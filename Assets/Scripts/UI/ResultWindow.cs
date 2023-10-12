@@ -30,6 +30,8 @@ public class ResultWindow : AsyncFunction_template
     private void Start()
     {
         //Active();
+        foreach (SpellCard card in card_animation_control.spell_card)
+            card.resultWindow = this;
     }
 
     public async void Active()
@@ -39,12 +41,7 @@ public class ResultWindow : AsyncFunction_template
         await Wait(cts.Token, 3f);
         await result_animation_control.Active(cts.Token);
         await card_animation_control.AppearAnimation(cts.Token);
-        map_button.gameObject.SetActive(true);
-    }
-
-    public void Press_ToTheMap()
-    {
-        LoadingSceneController.LoadScene("MapScene", 1);
+        card_animation_control.SetInteratable(true);
     }
 
     private void PickSpell()
@@ -75,6 +72,18 @@ public class ResultWindow : AsyncFunction_template
         }
 
         card_animation_control.SetSpell(spells);
+    }
+
+    public void Press_ToTheMap()
+    {
+        LoadingSceneController.LoadScene("MapScene", 1);
+    }
+
+    public async void SpellSelected(int id)
+    {
+        card_animation_control.SetInteratable(false);
+        await card_animation_control.SpellSelected(cts.Token, id);
+        map_button.gameObject.SetActive(true);
     }
 
     private void OnDestroy()

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: PlayerInfoContainer
   m_EditorClassIdentifier: 
   player_name: 
-  spell_code:
+  money: 0
+  spell_activated:
   - string1: a1
     string2: 
   - string1: c0
     string2: a1
   - string1: a2
     string2: 
-  money: 0
+  spell_inventory: []
