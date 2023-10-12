@@ -19,6 +19,10 @@ public class SpellCard : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Sprite sprite_front_default;
     [SerializeField] private Sprite sprite_spell_default;
 
+    public ResultWindow resultWindow;
+    public int index;
+    public bool isInteractable;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -29,7 +33,11 @@ public class SpellCard : MonoBehaviour, IPointerClickHandler
     // 클릭시 반응
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        if (isInteractable)
+        {
+            StageManager.Instance.playerInfoContainer_so.AddSpellToPlayerInfo(new StringNString(spell.GetCode()));
+            resultWindow.SpellSelected(index); 
+        }
     }
 
     public void SetSpell(Spell spell)
@@ -53,5 +61,15 @@ public class SpellCard : MonoBehaviour, IPointerClickHandler
     public void RevealSpell()
     {
         animator.SetTrigger("isReveals");
+    }
+
+    public void SelectSpellAnimation()
+    {
+        animator.SetTrigger("isSelected");
+    }
+
+    public void DeleteSpellAnimation()
+    {
+        animator.SetTrigger("isDeleted");
     }
 }
