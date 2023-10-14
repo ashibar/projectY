@@ -59,6 +59,10 @@ MonoBehaviour:
     spell_Range_Area: 0
   owner: {fileID: 0}
   target: 
+  parent_code: 
+  sprite_back: {fileID: 21300000, guid: 33eaa6ec70f5e2b42be1362aa0769f32, type: 3}
+  sprite_front: {fileID: 21300000, guid: 33eaa6ec70f5e2b42be1362aa0769f32, type: 3}
+  sprite_spell: {fileID: 21300000, guid: 936dca50e0533074ebb2cd6633af1588, type: 3}
   additional_stat_so: {fileID: 11400000, guid: f4eef77a01c554047a38128bc4485e1e, type: 2}
   additional_stat:
     hp: 0

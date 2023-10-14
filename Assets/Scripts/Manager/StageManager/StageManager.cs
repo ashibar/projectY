@@ -47,8 +47,8 @@ public class StageManager : MonoBehaviour, IEventListener
     [SerializeField] private StageInfo_so stageInfo_so;
     [SerializeField] private StageInfo stageInfo;
     // 플레이어 정보
-    [SerializeField] private PlayerInfoContainer playerInfoContainer_so;
-    [SerializeField] private SpellPrefabContainer SpellPrefabContainer_so;
+    [SerializeField] public PlayerInfoContainer playerInfoContainer_so;
+    [SerializeField] public SpellPrefabContainer SpellPrefabContainer_so;
 
     public ConditionChecker ConditionChecker { get => conditionChecker; set => conditionChecker = value; }
     public EventTimer EventTimer { get => eventTimer; set => eventTimer = value; }
@@ -95,7 +95,7 @@ public class StageManager : MonoBehaviour, IEventListener
             UIManager.Instance.TopIndicator.SetActive();
         }
         SetTargetUnit();
-        //LoadPlayerSpell();
+        LoadPlayerSpell();
     }
 
     private void Update()
@@ -154,14 +154,21 @@ public class StageManager : MonoBehaviour, IEventListener
     /// </summary>
     private void LoadPlayerSpell()
     {
-        List<string> codes = playerInfoContainer_so.Spell_code;
-        List<GameObject> prefabList = new List<GameObject>();
-        foreach (string code in codes)
+        Player.Instance.spellManager.ClearSpell();
+        List<StringNString> codes = playerInfoContainer_so.Spell_activated;
+        List<GameObject> cloneList = new List<GameObject>();
+        GameObject holder_obj = new GameObject();
+        foreach (StringNString code in codes)
         {
-            GameObject spell_prefab = SpellPrefabContainer_so.Search(code);
-            prefabList.Add(spell_prefab);
+            GameObject spell_prefab = SpellPrefabContainer_so.Search(code.string1);
+            GameObject spell_clone = Instantiate(spell_prefab, holder_obj.transform);
+            if (!string.Equals(code.string2, ""))
+                foreach (GameObject clone in cloneList)
+                    if (string.Equals(clone.GetComponent<Spell>().GetCode(), code.string2))
+                        spell_clone.transform.parent = clone.transform;
+            cloneList.Add(spell_clone);
         }
-        Player.Instance.spellManager.SetSpell(prefabList);
+        Player.Instance.spellManager.SetSpell(holder_obj);
         Player.Instance.spellManager.gameObject.SetActive(true);
     }
 
@@ -277,12 +284,6 @@ public class StageManager : MonoBehaviour, IEventListener
             UnitManager.Instance.TargetUnit = UnitManager.Instance.Clones[1].GetComponent<Unit>();
         }
     }
-
-    
-
-
-
-
 
     // 더미 코드
 

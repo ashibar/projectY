@@ -13,6 +13,7 @@ public class MapSelectWindow_temp : MonoBehaviour
     [SerializeField] private Image stage_image;
     [SerializeField] private Button stage_image_button;
     [SerializeField] private TextMeshProUGUI stage_name;
+    [SerializeField] private MapStatusWindow mapStatusWindow;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class MapSelectWindow_temp : MonoBehaviour
         stage_image = GameObject.Find("CenterImage").GetComponent<Image>();
         stage_image_button = GameObject.Find("CenterImage").GetComponent<Button>();
         stage_name = GameObject.Find("StageName").GetComponent<TextMeshProUGUI>();
+        mapStatusWindow = GetComponentInChildren<MapStatusWindow>();
     }
 
     private void Start()
@@ -62,6 +64,7 @@ public class MapSelectWindow_temp : MonoBehaviour
         {
             stage_container.CurID -= 1;
             Update_StageInfo();
+            mapStatusWindow.Press_Update_Button();
         }
     }
 
@@ -73,6 +76,7 @@ public class MapSelectWindow_temp : MonoBehaviour
         {
             stage_container.CurID += 1;
             Update_StageInfo();
+            mapStatusWindow.Press_Update_Button();
         }
     }
 

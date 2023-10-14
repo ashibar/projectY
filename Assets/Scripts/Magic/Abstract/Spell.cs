@@ -12,6 +12,10 @@ public class Spell : MonoBehaviour
 
     [SerializeField] public string parent_code;
 
+    [SerializeField] public Sprite sprite_back;
+    [SerializeField] public Sprite sprite_front;
+    [SerializeField] public Sprite sprite_spell;
+
     public virtual void Awake()
     {
         if (stat_spell_so != null)
@@ -37,5 +41,10 @@ public class Spell : MonoBehaviour
     public string GetCode()
     {
         return stat_spell_so.Spell_Code;
+    }
+
+    public string GetName()
+    {
+        return stat_spell_so.Spell_Name;
     }
 }

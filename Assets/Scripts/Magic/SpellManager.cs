@@ -55,44 +55,28 @@ public class SpellManager : MonoBehaviour
         return stat_processed;
     }
 
-    public void SetSpell(List<GameObject> prefabs)
+    public void ClearSpell()
     {
-        foreach (GameObject prefab in prefabs) SetCoreNPassive(prefab);
-        cores.AddRange(GetComponentsInChildren<Spell_Core>());
-        passives.AddRange(GetComponentsInChildren<Spell_Passive>());
-        foreach (GameObject prefab in prefabs) SetPartNElement(prefab);
-        parts.AddRange(GetComponentsInChildren<Spell_Part>());
+        Spell[] spells = GetComponentsInChildren<Spell>();
+        foreach (Spell s in spells)
+            if (s != null)
+                Destroy(s.gameObject);
     }
 
-    public void SetCoreNPassive(GameObject prefab)
+    public void SetSpell(GameObject temp)
     {
-        passiveholder = transform.Find("Passives");
-
-        char sort = prefab.GetComponent<Spell>().GetCode()[0];
-        switch (sort)
-        {
-            case 'a': Instantiate(prefab, transform); break;
-            case 'd': Instantiate(prefab, passiveholder); break;
-            default: break;
-        }
+        MoveChildrenToTarget(temp.transform, gameObject.transform);
+        GetSpellCompoenents();
+        foreach (Spell_Core core in cores)
+            core.InitElement();
     }
 
-    public void SetPartNElement(GameObject prefab)
+     private void MoveChildrenToTarget(Transform source, Transform target)
     {
-        char sort = prefab.GetComponent<Spell>().GetCode()[0];
-        switch (sort)
+        foreach (Transform child in source)
         {
-            case 'b':
-                foreach (Spell_Core core in cores)
-                    if (string.Equals(core.GetCode(), prefab.GetComponent<Spell>().parent_code))
-                        Instantiate(prefab, core.transform);
-                break;
-            case 'c':
-                foreach (Spell_Core core in cores)
-                    if (string.Equals(core.GetCode(), prefab.GetComponent<Spell>().parent_code))
-                        Instantiate(prefab, core.transform);
-                break;
-            default: break;
+            // 자식 GameObject의 부모를 대상 GameObject로 설정
+            child.SetParent(target);
         }
     }
 }
