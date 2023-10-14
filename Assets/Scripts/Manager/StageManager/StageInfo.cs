@@ -5,19 +5,25 @@ using UnityEngine;
 public class StageInfo
 {
     [SerializeField] private string stageName;
-    [SerializeField] private List<GameObject> rewards = new List<GameObject>();
+    [SerializeField] private Sprite stageSprite;
+    [SerializeField] private Reward_so reward;
     [SerializeField] private StageSort stageSort;
     [SerializeField] private List<EventPhase_so> phases = new List<EventPhase_so>();
 
     private List<EventInfo> eventList = new List<EventInfo>();
     public List<EventInfo> EventList { get => eventList; set => eventList = value; }
+
+    public string StageName { get => stageName; set => stageName = value; }
+    public Sprite StageSprite { get => stageSprite; set => stageSprite = value; }
+    public Reward_so Reward { get => reward; set => reward = value; }
     public StageSort StageSort { get => stageSort; set => stageSort = value; }
     public List<EventPhase_so> Phases { get => phases; set => phases = value; }
 
     public StageInfo(StageInfo_so stageinfo_so)
     {
         this.stageName = stageinfo_so.StageName;
-        this.rewards = stageinfo_so.Rewards;
+        this.stageSprite = stageinfo_so.StageSprite;
+        this.reward = stageinfo_so.Reward;
         this.stageSort = stageinfo_so.StageSort;        
         this.phases= stageinfo_so.Phases;
     }
