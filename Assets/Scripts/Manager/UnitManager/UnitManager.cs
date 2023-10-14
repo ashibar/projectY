@@ -53,6 +53,8 @@ public class UnitManager : MonoBehaviour, IEventListener
         "Set Unit Animation Trigger",
         "FlipX Unit",
         "Unit Set Position",
+        "Delete All Enemy",
+        "Set Active Spell Manager",
     };
 
     private void Awake()
@@ -115,6 +117,10 @@ public class UnitManager : MonoBehaviour, IEventListener
                 FlipXUnit((ExtraParams)param[0]); break;
             case "Unit Set Position":
                 UnitSetPostion((ExtraParams)param[0]); break;
+            case "Delete All Enemy":
+                DeleteAllEnemy((ExtraParams)param[0]); break;
+            case "Set Active Spell Manager":
+                SetActiveSpellManager((ExtraParams)param[0]); break;
             default:
                 break;
         }
@@ -211,6 +217,28 @@ public class UnitManager : MonoBehaviour, IEventListener
             {
                 c.transform.position = par.VecList[0];
             }
+        }
+    }
+
+    private void DeleteAllEnemy(ExtraParams par)
+    {
+        for (int i = clones.Count-1; i >= 0; i--)
+        {
+            GameObject c = clones[i];
+            if (!string.Equals(c.tag, "Player"))
+            {
+                clones.RemoveAt(i);
+                Destroy(c);
+            }
+        }
+    }
+
+    private void SetActiveSpellManager(ExtraParams par)
+    {
+        foreach (GameObject c in clones)
+        {
+            if (string.Equals(c.tag, par.Name))
+                c.GetComponentInChildren<SpellManager>().SetActiveAll(par.Boolvalue);
         }
     }
 

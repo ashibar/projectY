@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage_Demo_02_Reward
   m_EditorClassIdentifier: 
   rewardList:
-  - obj: {fileID: 7171416607448482314, guid: 197fc3658fa760b42818da744576975c, type: 3}
+  - obj: {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
     value: 0.25
   - obj: {fileID: 6743049818794002840, guid: 7ade8f6db17bb734884aa43f0b4bf20f, type: 3}
     value: 0.75

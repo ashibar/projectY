@@ -40,4 +40,24 @@ public class PlayerInfoContainer : ScriptableObject
         Spell_inventory.Add(spell_code);
     }
 
+    public void AddSpellToPlayerInfo_detailed(StringNString spell_code)
+    {
+        char sort = spell_code.string1[0];
+        if (sort == 'b' || sort == 'c')
+        {
+            
+            for (int i = 0; i < spell_activated.Count; i++)
+                if (spell_activated[i].string1[0] == 'a')
+                {
+                    Debug.Log(string.Format("{0}, {1}", spell_code.string1, spell_activated[i].string1[0]));
+                    if (string.Equals(spell_code.string2, spell_activated[i].string1))
+                        spell_activated.Insert(i + 1, spell_code);
+                }
+                    
+        }
+        else
+        {
+            spell_activated.Add(new StringNString(spell_code.string1, ""));
+        }
+    }
 }
