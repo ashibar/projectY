@@ -13,23 +13,33 @@ MonoBehaviour:
   m_Name: Forest_02
   m_EditorClassIdentifier: 
   spawnInfo:
-  - unit_prefab: {fileID: 0}
+  - unit_prefab: {fileID: 7531231395964145883, guid: 0849a49e06061414ba40532d67848986, type: 3}
     spawn_sort: List
     max: 0
     point: {x: 0, y: 0}
-    position: []
+    position:
+    - {x: 0, y: 10}
+    - {x: 0, y: 2}
+    - {x: 0, y: -2}
+    - {x: 0, y: -10}
+    - {x: 2, y: 9}
+    - {x: 2, y: -1}
+    - {x: 4, y: 8}
+    - {x: 4, y: -2}
+    - {x: 6, y: 7}
+    - {x: 6, y: -3}
+    - {x: 8, y: 6}
+    - {x: 8, y: -4}
+    - {x: -2, y: 3}
+    - {x: -2, y: -9}
+    - {x: -4, y: 4}
+    - {x: -4, y: -8}
+    - {x: -6, y: 5}
+    - {x: -6, y: -7}
+    - {x: -8, y: 6}
+    - {x: -8, y: -6}
     radius: 0
     angle1: 0
     angle2: 0
     noise: 0
-    recty: 6
-  - unit_prefab: {fileID: 0}
-    spawn_sort: List
-    max: 0
-    point: {x: 0, y: 0}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    recty: 6
+    recty: 26
