@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
 
 public class SpellManager : MonoBehaviour
@@ -69,6 +68,12 @@ public class SpellManager : MonoBehaviour
         GetSpellCompoenents();
         foreach (Spell_Core core in cores)
             core.InitElement();
+    }
+
+    public void SetActiveAll(bool value)
+    {
+        foreach (Spell_Core core in cores)
+            core.SetActive(value);
     }
 
      private void MoveChildrenToTarget(Transform source, Transform target)

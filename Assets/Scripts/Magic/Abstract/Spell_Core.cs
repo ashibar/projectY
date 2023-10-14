@@ -26,6 +26,7 @@ public class Spell_Core : Spell
 
     protected CancellationTokenSource cts;
     [SerializeField] protected bool isCooltime;
+    [SerializeField] protected bool isActive = true;
 
     public override void Awake()
     {
@@ -41,6 +42,7 @@ public class Spell_Core : Spell
     protected override void Update()
     {
         base.Update();
+        if (!isActive) return;
         InstantiateDelayFunction();
     }
 
@@ -207,6 +209,15 @@ public class Spell_Core : Spell
     }
 
     // 외부 접근 함수
+
+    /// <summary>
+    /// 서브루틴 활성화 여부
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetActive(bool value)
+    {
+        isActive = value;
+    }
 
     /// <summary>
     /// 패시브 수치가 적용된 유닛의 스텟 설정

@@ -19,6 +19,8 @@ MonoBehaviour:
     string2: 
   - string1: c0
     string2: a1
+  - string1: b0
+    string2: a1
   - string1: a2
     string2: 
   spell_inventory: []
