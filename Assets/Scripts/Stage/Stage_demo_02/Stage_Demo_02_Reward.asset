@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardList:
   - obj: {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
-    value: 0.25
+    value: 0.1
+  - obj: {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
+    value: 0.8
   - obj: {fileID: 6743049818794002840, guid: 7ade8f6db17bb734884aa43f0b4bf20f, type: 3}
-    value: 0.75
+    value: 0.1
