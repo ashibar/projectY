@@ -15,7 +15,8 @@ MonoBehaviour:
   core:
   - {fileID: 7171416607448482314, guid: 197fc3658fa760b42818da744576975c, type: 3}
   - {fileID: 7426787029293250270, guid: 0d7875570356e734db76d17daab34cb4, type: 3}
-  part: []
+  part:
+  - {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
   element:
   - {fileID: 5515772338080239978, guid: 6c5923887f54aa144a6a2fc2f3f52414, type: 3}
   passive:

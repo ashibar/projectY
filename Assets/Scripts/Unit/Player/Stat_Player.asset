@@ -23,4 +23,4 @@ MonoBehaviour:
   duration_projectile: 1
   range_projectile: 0
   cooldown: 0
-  amount: 1
+  amount: 0

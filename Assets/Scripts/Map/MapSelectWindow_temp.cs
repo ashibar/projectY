@@ -15,6 +15,8 @@ public class MapSelectWindow_temp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI stage_name;
     [SerializeField] private MapStatusWindow mapStatusWindow;
 
+    [SerializeField] private Sprite stage_sprite_default;
+
     private void Awake()
     {
         left_button = GameObject.Find("LeftArrow").GetComponent<Button>();
@@ -87,6 +89,8 @@ public class MapSelectWindow_temp : MonoBehaviour
 
     private void Update_StageInfo()
     {
+        Sprite sprite = stage_container.StageInfoList[stage_container.CurID].StageSprite;
+        stage_image.sprite = sprite != null ? sprite : stage_sprite_default;
         stage_name.text = stage_container.StageInfoList[stage_container.CurID].name;
     }
 }
