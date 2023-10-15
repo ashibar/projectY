@@ -25,7 +25,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 2
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 4
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -68,8 +68,8 @@ MonoBehaviour:
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
   - no: 1
-    eventindex: 4
-    eventcode: Active Result Window
+    eventindex: 2
+    eventcode: Spawn By Spawn Info
     condition:
       sort: 1
       targetTag: 
@@ -79,6 +79,60 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 5
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 11400000, guid: ddb4284bdfadfb34e812cd2981da2b35, type: 2}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 4
+    eventindex: 2
+    eventcode: Spawn By Spawn Info
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 11400000, guid: d40018dcd7411aa4ebee72b0c3f7e53a, type: 2}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 3
+    eventindex: 2
+    eventcode: Spawn By Spawn Info
+    condition:
+      sort: 4
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 2
+      flagValue: 0
+      targetNum: 0
       isSatisfied: 0
       isContinued: 1
     extraParams:
@@ -88,7 +142,61 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
-      spawnInfo: {fileID: 0}
+      spawnInfo: {fileID: 11400000, guid: d37289ae55c85654eb56240754d037f5, type: 2}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 2
+    eventindex: 2
+    eventcode: Spawn By Spawn Info
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 8
+      isSatisfied: 0
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 11400000, guid: 82bed551060cbb843849a01c9e5e9831, type: 2}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 5
+    eventindex: 2
+    eventcode: Spawn By Spawn Info
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 5
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 11400000, guid: ed7f8cf41f4c8774786398af7a372f83, type: 2}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}

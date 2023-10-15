@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37b3404280fb0d4e9729a5e3c3c3e97, type: 3}
+  m_Name: 04
+  m_EditorClassIdentifier: 
+  spawnInfo:
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 8, y: 8}
+    position: []
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 7, y: 7}
+    position: []
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 6, y: 6}
+    position: []
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 5, y: 5}
+    position: []
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 4, y: 4}
+    position: []
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 3, y: 3}
+    position: []
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 2, y: 2}
+    position: []
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: List
+    max: 0
+    point: {x: 1, y: 1}
+    position:
+    - {x: -2, y: -2}
+    - {x: -3, y: -3}
+    - {x: -4, y: -4}
+    - {x: -5, y: -5}
+    - {x: -6, y: -6}
+    - {x: -7, y: -7}
+    - {x: -8, y: -8}
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    recty: 13
