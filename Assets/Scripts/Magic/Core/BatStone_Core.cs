@@ -29,10 +29,27 @@ public class BatStone_Core : Spell_Core
 
     public override void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
     {
-        float damage = stat_processed.Damage * stat_spell.Spell_DMG;
-        collision.GetComponent<Unit>().stat.Hp_current -= stat_processed.Damage * stat_spell.Spell_DMG;
-        damageTextRenderModule.Damagesend(projectile, (int)damage);
-        Destroy(projectile);
+        //float damage = stat_processed.Damage * stat_spell.Spell_DMG;
+        //collision.GetComponent<Unit>().stat.Hp_current -= stat_processed.Damage * stat_spell.Spell_DMG;
+        //damageTextRenderModule.Damagesend(projectile, (int)damage);
+        //Destroy(projectile);
+    }
+
+    public override bool TriggerEnterStackProcess(List<Collider2D> collider_stack, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
+    {
+        if (collider_stack.Count > 0)
+        {
+            for (int i = 0; i < Mathf.Min((int)(stat_spell.Spell_Amount_Tic), collider_stack.Count); i++)
+            {
+                float damage = stat_processed.Damage * stat_spell.Spell_DMG;
+                collider_stack[i].GetComponent<Unit>().stat.Hp_current -= stat_processed.Damage * stat_spell.Spell_DMG;
+                damageTextRenderModule.Damagesend(projectile, (int)damage);
+                Destroy(projectile);
+            }
+            collider_stack.Clear();
+            return true;
+        }
+        return false;
     }
 
     public override void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)

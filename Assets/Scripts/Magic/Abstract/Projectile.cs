@@ -21,10 +21,12 @@ public class Projectile : Spell
 
     public delegate void TriggerEnterTickFunction(Collider2D collision, GameObject projectile);
     public delegate void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell);
+    public delegate bool TriggerEnterStackProcess(List<Collider2D> collider_stack, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell);
     public delegate void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module);
     public delegate void DestroyFunction(GameObject projectile);
     [SerializeField] public TriggerEnterTickFunction triggerEnterTickFunction;
-    [SerializeField] public TriggerEnterEndFunction triggetEnterEndFunction;
+    [SerializeField] public TriggerEnterEndFunction triggerEnterEndFunction;
+    [SerializeField] public TriggerEnterStackProcess triggerEnterStackProcess;
     [SerializeField] public ShootingFunction shootingFunction;
     [SerializeField] public DestroyFunction destroyFunction;
     
@@ -40,10 +42,33 @@ public class Projectile : Spell
         
     }
 
+    private bool isStackProcessing = false;
+    private List<Collider2D> collider_stack = new List<Collider2D>();
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == target)
+        {
             TriggerEnterRoutine(cts.Token, collision);
+            collider_stack.Add(collision);
+            if (!isStackProcessing)
+            {
+                isStackProcessing = true;
+                StackProcess_routine(cts.Token, collision);
+            }            
+        }
+    }
+
+    private async void StackProcess_routine(CancellationToken cts_t, Collider2D collision)
+    {
+        bool isProcessEnd = false;
+
+        while (!cts_t.IsCancellationRequested && !isProcessEnd)
+        {
+            isProcessEnd = triggerEnterStackProcess(collider_stack, gameObject, stat_processed, stat_spell);
+            await Task.Yield();
+        }
+        Debug.Log("process End");
     }
 
     /// <summary>
@@ -64,7 +89,7 @@ public class Projectile : Spell
             await Task.Yield();
         }
         //Debug.Log("trigger enters");
-        triggetEnterEndFunction(collision, gameObject, stat_processed, stat_spell);
+        triggerEnterEndFunction(collision, gameObject, stat_processed, stat_spell);
     }
 
     /// <summary>

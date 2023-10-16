@@ -395,7 +395,7 @@ public class EventTimer : MonoBehaviour, IEventListener
         }
     }
 
-    private bool CheckTrigger(EventParams p)
+    public bool CheckTrigger(EventParams p)
     {
         foreach (StringNTrigger t in trigger)
         {
@@ -412,7 +412,7 @@ public class EventTimer : MonoBehaviour, IEventListener
         return false;
     }
 
-    private bool CheckNumber(EventParams p)
+    public bool CheckNumber(EventParams p)
     {
         foreach (StringNNumber n in number)
         {
