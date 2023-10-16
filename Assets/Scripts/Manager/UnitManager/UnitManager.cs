@@ -254,6 +254,10 @@ public class UnitManager : MonoBehaviour, IEventListener
         else
         {
             targetDestroyed += 1;
+            ExtraParams para = new ExtraParams();
+            para.Name = "AllUnit";
+            para.Floatvalue = targetDestroyed;
+            EventManager.Instance.PostNotification("Set Number", this, null, para);
             clones.RemoveAt(id);
         }
     }

@@ -20,7 +20,7 @@ public class Stat_Spell
     [SerializeField] private float spell_Multy_EA;           //투사체 개수(MULTY한정)
     [SerializeField] private float spell_Multy_Radius;       //투사체 퍼지는 범위 (MULTY한정)
     [SerializeField] private float spell_Range_Area;         //범위기 넓이
-
+    [SerializeField] private float spell_Amount_Tic = 1;     //틱당 상호작용하는 유닛의 개수
 
 
     public Stat_Spell(Stat_Spell_so spell)
@@ -38,6 +38,7 @@ public class Stat_Spell
         this.spell_Multy_EA = spell.Spell_Multy_EA;
         this.spell_Multy_Radius = spell.Spell_Multy_Radius;
         this.spell_Range_Area = spell.Spell_Range_Area;
+        this.spell_Amount_Tic = spell.Spell_Amount_Tic;
     }
 
 
@@ -56,6 +57,7 @@ public class Stat_Spell
         this.spell_Multy_EA = spell.spell_Multy_EA;
         this.spell_Multy_Radius = spell.spell_Multy_Radius;
         this.spell_Range_Area = spell.spell_Range_Area;
+        this.spell_Amount_Tic = spell.Spell_Amount_Tic;
     }
 
     public SpellType Spell_Type { get => spell_Type; set => spell_Type = value; }
@@ -71,4 +73,5 @@ public class Stat_Spell
     public float Spell_Multy_Radius { get => spell_Multy_Radius; set => spell_Multy_Radius = value; }
     public float Spell_Range_Area { get => spell_Range_Area; set => spell_Range_Area = value; }
     public float Spell_ProjectileDelay { get => spell_ProjectileDelay; set => spell_ProjectileDelay = value; }
+    public float Spell_Amount_Tic { get => spell_Amount_Tic; set => spell_Amount_Tic = value; }
 }

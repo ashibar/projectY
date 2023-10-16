@@ -75,5 +75,6 @@ public class PlayerStatusWindow : MonoBehaviour
         string code = applyNo_inputField.text;
         playerInfoContainer.AddSpellToPlayerInfo_detailed(new StringNString(playerInfoContainer.Spell_inventory[0].string1, code));
         playerInfoContainer.Spell_inventory.RemoveAt(0);
+        Update_Status();
     }
 }

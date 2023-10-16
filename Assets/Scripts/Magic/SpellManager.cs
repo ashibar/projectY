@@ -16,7 +16,7 @@ public class SpellManager : MonoBehaviour
     {
         passiveholder = transform.Find("Passives");
 
-        GetSpellCompoenents();
+        //GetSpellCompoenents();
     }
 
     private void GetSpellCompoenents()
@@ -29,16 +29,13 @@ public class SpellManager : MonoBehaviour
     private void Start()
     {
         owner = GetComponentInParent<Unit>();
-        foreach (Spell_Core core in cores)
-        {
-            core.SetUnits(owner, target);
-        }
     }
 
     private void Update()
     {
         foreach (Spell_Core core in cores)
         {
+            core.SetUnits(owner, target);
             core.SetVector(target, owner.dir_toMove, owner.dir_toShoot, owner.pos_toShoot);
             core.SetStat(Stat_Process());
         }
@@ -78,10 +75,16 @@ public class SpellManager : MonoBehaviour
 
      private void MoveChildrenToTarget(Transform source, Transform target)
     {
-        foreach (Transform child in source)
+        Transform[] children = source.GetComponentsInChildren<Transform>();
+        for (int i = 0; i < children.Length; i++)
         {
-            // 자식 GameObject의 부모를 대상 GameObject로 설정
-            child.SetParent(target);
+            Transform child = children[i];
+            if (i != 0)
+                if (child.parent == source)
+                {
+                    Debug.Log("child = " + child.name);
+                    child.SetParent(target);
+                }            
         }
     }
 }

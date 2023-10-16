@@ -41,6 +41,7 @@ public class ResultWindow : AsyncFunction_template
         await Wait(cts.Token, 3f);
         await result_animation_control.Active(cts.Token);
         await card_animation_control.AppearAnimation(cts.Token);
+        await Wait(cts.Token, 1f);
         card_animation_control.SetInteratable(true);
     }
 
