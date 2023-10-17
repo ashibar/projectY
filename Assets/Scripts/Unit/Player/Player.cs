@@ -67,15 +67,20 @@ public class Player : Unit
 
     protected override void Update()
     {
-        
+        PlayerDeathSender();
     }
 
-    [SerializeField]
-    private GameManager gameManager;
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    private bool isDead;
+    private void PlayerDeathSender()
     {
-        //gameManager.Action(collision.gameObject);
+        if (!isDead)
+            if (stat.Hp_current <= 0)
+            {
+                isDead = true;
+                ExtraParams para = new ExtraParams();
+                para.Name = "isFail";
+                para.Boolvalue = true;
+                EventManager.Instance.PostNotification("Add New Trigger", this, null, para);
+            }
     }
-
-    
 }

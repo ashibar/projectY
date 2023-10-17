@@ -16,7 +16,7 @@ MonoBehaviour:
   - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
     spawn_sort: Point
     max: 0
-    point: {x: 0, y: 5}
+    point: {x: 0, y: 10}
     position: []
     radius: 0
     angle1: 0
