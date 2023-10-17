@@ -102,6 +102,10 @@ public class SpawnManager : MonoBehaviour, IEventListener
 
     public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
+        bool isFail = StageManager.Instance.EventTimer.CheckTrigger("isFail", true);
+        if (isFail)
+            return;
+        
         switch (event_type)
         {
             case "Force Spawn": // TargetNum에 스포너 번호를 받음

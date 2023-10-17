@@ -137,7 +137,8 @@ public class Spell_Core : Spell
 
         // 투사체의 행동 결정
         clone.GetComponent<Projectile>().triggerEnterTickFunction += TriggerEnterTickFunction;
-        clone.GetComponent<Projectile>().triggetEnterEndFunction += TriggerEnterEndFunction;
+        clone.GetComponent<Projectile>().triggerEnterEndFunction += TriggerEnterEndFunction;
+        clone.GetComponent<Projectile>().triggerEnterStackProcess += TriggerEnterStackProcess;
         clone.GetComponent<Projectile>().shootingFunction += ShootingFunction;
         clone.GetComponent<Projectile>().destroyFunction += DestroyFunction;
 
@@ -192,6 +193,11 @@ public class Spell_Core : Spell
     {
         //if (collision.tag == "Enemy")
         //    Destroy(projectile);
+    }
+
+    public virtual bool TriggerEnterStackProcess(List<Collider2D> collider_stack, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
+    {
+        return true;
     }
 
     public virtual void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)

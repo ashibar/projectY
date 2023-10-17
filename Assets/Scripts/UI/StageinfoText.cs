@@ -9,8 +9,8 @@ public class StageinfoText : MonoBehaviour
     public TextMeshProUGUI textMeshPro;
     public float mapnumber;
     
-    [SerializeField]
-    private float alphaspeed;
+    //[SerializeField]
+    //private float alphaspeed;
     [SerializeField]
     private float textdestroytime;
     private Camera mainCamera;
@@ -31,7 +31,7 @@ public class StageinfoText : MonoBehaviour
         //이쪽에 넣으면되는?거아닌가
         //받아오는 함수? 네 아 정보는 첨에 받아와도
         //되는거아닌가요 확인 네
-        alphaspeed = 2.0f;
+        //alphaspeed = 2.0f;
         textdestroytime = 2.0f;
 
         

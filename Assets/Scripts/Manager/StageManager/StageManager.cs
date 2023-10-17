@@ -162,6 +162,7 @@ public class StageManager : MonoBehaviour, IEventListener
         {
             GameObject spell_prefab = SpellPrefabContainer_so.Search(code.string1);
             GameObject spell_clone = Instantiate(spell_prefab, holder_obj.transform);
+            Debug.Log(spell_prefab);
             if (!string.Equals(code.string2, ""))
                 foreach (GameObject clone in cloneList)
                     if (string.Equals(clone.GetComponent<Spell>().GetCode(), code.string2))
