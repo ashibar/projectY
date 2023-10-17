@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -42,8 +43,11 @@ public class UIManager : MonoBehaviour, IEventListener
     [SerializeField] private Indicator indicator_centerImage;
     [SerializeField] private ResultWindow resultWindow;
     [SerializeField] private GameoverWindow gameoverWindow;
+    [SerializeField] private StageinfoText stageinfoText;
     [SerializeField] private TopIndicator topIndicator;
     [SerializeField] private TutorialLogo tutorialLogo;
+
+    [SerializeField] private StageInfoContainer_so stageInfoContainer;
 
     public ResultWindow ResultWindow { get => resultWindow; set => resultWindow = value; }
     public TopIndicator TopIndicator { get => topIndicator; set => topIndicator = value; }
@@ -59,6 +63,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Set Mouse Indicator",
         "Active Result Window",
         "Active Gameover Window",
+        "Active StageInfo Window",
     };
 
     private void Awake()
@@ -110,6 +115,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 ActiveResultWindow(para); break;
             case "Active Gameover Window":
                 ActiveGameoverWindow(para); break;
+            case "Active StageInfo Window":
+                ActiveStageWindow(para); break;
             default:
                 break;
         }
@@ -168,6 +175,28 @@ public class UIManager : MonoBehaviour, IEventListener
         gameoverWindow.Active();
     }
 
+    private void ActiveStageWindow(ExtraParams para)
+    {
+        if (stageinfoText == null)
+            return;
+
+        int id = stageInfoContainer.CurID;
+        string stageName = stageInfoContainer.StageInfoList[id].StageName;
+        string stageCondition = stageInfoContainer.StageInfoList[id].StageSort.ToString();
+        switch (stageInfoContainer.StageInfoList[id].StageSort)
+        {
+            case StageSort.None:
+                stageCondition = ""; break;
+            case StageSort.Timer:
+                stageCondition = "제한시간까지 생존"; break;
+            case StageSort.targetDestroy:
+                stageCondition = "목표 제거"; break;
+        }
+
+        stageinfoText.gameObject.SetActive(true);
+        stageinfoText.Active(stageName, stageCondition);
+    }
+
     // Dummy Code
     //[SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
     //private void EventReciever()
@@ -213,7 +242,7 @@ public class UIManager : MonoBehaviour, IEventListener
     //                break;
     //        }
 
-            
+
     //    }
 
     //    if (!isError)

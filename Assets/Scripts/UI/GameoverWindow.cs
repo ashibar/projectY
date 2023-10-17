@@ -30,4 +30,9 @@ public class GameoverWindow : AsyncFunction_template
     {
         LoadingSceneController.LoadScene("MapScene", stageInfoContainer.CurID);
     }
+
+    private void OnDestroy()
+    {
+        cts?.Cancel();
+    }
 }

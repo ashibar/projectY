@@ -24,7 +24,7 @@ public class ResultWindow : AsyncFunction_template
         stage_clear_text_image = GetComponentInChildren<StageClearTextAnimation>();
         result_animation_control = GetComponentInChildren<ResultAnimationControl>();
         card_animation_control = GetComponentInChildren<CardAnimationControl>();
-        map_button = FindObjectOfType<Button>(true);
+        //map_button = FindObjectOfType<Button>(true);
     }
 
     private void Start()
@@ -84,6 +84,7 @@ public class ResultWindow : AsyncFunction_template
     {
         card_animation_control.SetInteratable(false);
         await card_animation_control.SpellSelected(cts.Token, id);
+        Debug.Log("?");
         map_button.gameObject.SetActive(true);
     }
 
