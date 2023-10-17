@@ -77,7 +77,7 @@ public class ResultWindow : AsyncFunction_template
 
     public void Press_ToTheMap()
     {
-        LoadingSceneController.LoadScene("MapScene", 1);
+        LoadingSceneController.LoadScene("MapScene", stageInfoContainer.CurID);
     }
 
     public async void SpellSelected(int id)

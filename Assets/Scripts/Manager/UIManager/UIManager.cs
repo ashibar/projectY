@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// <para/><b>■■ UnitManager ■■</b>
+/// <para/>담당자 : 이용욱
+/// <para/>요약 : 유저 인터페이스 관리
+/// <para/>비고 : 
+/// <para/>업데이트 내역 : 
+/// <para/> - (23.10.17) : 요약문 생성
+/// <para/>
+/// </summary>
+
 public class UIManager : MonoBehaviour, IEventListener
 {
     private static UIManager instance;
@@ -26,13 +36,12 @@ public class UIManager : MonoBehaviour, IEventListener
         }
     }
 
-
     [SerializeField] private ScreenFade screenFade;
-    [SerializeField] private Gameover gameover;
     [SerializeField] private Indicator indicator_keyboard;
     [SerializeField] private Indicator indicator_mouse;
     [SerializeField] private Indicator indicator_centerImage;
     [SerializeField] private ResultWindow resultWindow;
+    [SerializeField] private GameoverWindow gameoverWindow;
     [SerializeField] private TopIndicator topIndicator;
     [SerializeField] private TutorialLogo tutorialLogo;
 
@@ -49,6 +58,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Logo Appears",
         "Set Mouse Indicator",
         "Active Result Window",
+        "Active Gameover Window",
     };
 
     private void Awake()
@@ -65,8 +75,8 @@ public class UIManager : MonoBehaviour, IEventListener
 
     private void Update()
     {
-        EventReciever();
-        EventListener();
+        //EventReciever();
+        //EventListener();
         //gameoverListener();
     }
 
@@ -98,6 +108,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 SetMouseIndicator(para); break;
             case "Active Result Window":
                 ActiveResultWindow(para); break;
+            case "Active Gameover Window":
+                ActiveGameoverWindow(para); break;
             default:
                 break;
         }
@@ -147,68 +159,76 @@ public class UIManager : MonoBehaviour, IEventListener
         resultWindow.Active();
     }
 
-    [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
-    private void EventReciever()
+    private void ActiveGameoverWindow(ExtraParams para)
     {
-        int error = StageManager.Instance.SearchMassage(5, messageBuffer);
-        if (error == -1)
+        if (gameoverWindow == null)
             return;
+
+        gameoverWindow.gameObject.SetActive(true);
+        gameoverWindow.Active();
     }
 
-    private void EventListener()
-    {
-        bool isError = false;
-        EventMessage temp = new EventMessage();
-        if (messageBuffer.Count <= 0)
-            return;
+    // Dummy Code
+    //[SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
+    //private void EventReciever()
+    //{
+    //    int error = StageManager.Instance.SearchMassage(5, messageBuffer);
+    //    if (error == -1)
+    //        return;
+    //}
 
-        foreach (EventMessage m in messageBuffer)
-        {
-            switch (m.ActionSTR)
-            {
-                case "Fade Out":
-                    screenFade.SetScreenFade(false);
-                    messageBuffer.Remove(m);
-                    return;
-                case "Fade In":
-                    screenFade.SetScreenFade(true);
-                    messageBuffer.Remove(m);
-                    return;
-                case "KeyBoard Indicator":
-                    indicator_keyboard.SetAnim("Out");
-                    messageBuffer.Remove(m);
-                    return;
-                case "Center Indicator":
-                    indicator_centerImage.gameObject.SetActive(string.Equals(m.TargetSTR, "true"));
-                    messageBuffer.Remove(m);
-                    return;
-                case "Force Load":
-                    LoadingSceneController.LoadScene("BattleScene", 1);
-                    messageBuffer.Remove(m);
-                    return;
-                default:
-                    isError = true;
-                    break;
-            }
+    //private void EventListener()
+    //{
+    //    bool isError = false;
+    //    EventMessage temp = new EventMessage();
+    //    if (messageBuffer.Count <= 0)
+    //        return;
+
+    //    foreach (EventMessage m in messageBuffer)
+    //    {
+    //        switch (m.ActionSTR)
+    //        {
+    //            case "Fade Out":
+    //                screenFade.SetScreenFade(false);
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            case "Fade In":
+    //                screenFade.SetScreenFade(true);
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            case "KeyBoard Indicator":
+    //                indicator_keyboard.SetAnim("Out");
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            case "Center Indicator":
+    //                indicator_centerImage.gameObject.SetActive(string.Equals(m.TargetSTR, "true"));
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            case "Force Load":
+    //                LoadingSceneController.LoadScene("BattleScene", 1);
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            default:
+    //                isError = true;
+    //                break;
+    //        }
 
             
-        }
+    //    }
 
-        if (!isError)
-        {
-            messageBuffer.Remove(temp);
-        }
-    }
-    Player player = null;
-    private void gameoverListener()
-    {
-        player = Player.Instance;
-        if (player.stat.Hp_current <= 0)
-        {
-            gameover.gameObject.SetActive(true);
-            Time.timeScale = 0;
-        }
-    }
-
-    
+    //    if (!isError)
+    //    {
+    //        messageBuffer.Remove(temp);
+    //    }
+    //}
+    //Player player = null;
+    //private void gameoverListener()
+    //{
+    //    player = Player.Instance;
+    //    if (player.stat.Hp_current <= 0)
+    //    {
+    //        gameover.gameObject.SetActive(true);
+    //        Time.timeScale = 0;
+    //    }
+    //}    
 }

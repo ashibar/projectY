@@ -412,6 +412,22 @@ public class EventTimer : MonoBehaviour, IEventListener
         return false;
     }
 
+    public bool CheckTrigger(string triggerName, bool flagValue)
+    {
+        foreach (StringNTrigger t in trigger)
+        {
+            if (string.Equals(t.triggerName, triggerName))
+            {
+                if (t.triggerValue == flagValue)
+                {
+                    Debug.Log(string.Format("Custom CheckTrigger : {0}, {1}", triggerName, flagValue));
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public bool CheckNumber(EventParams p)
     {
         foreach (StringNNumber n in number)
