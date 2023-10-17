@@ -496,7 +496,7 @@ MonoBehaviour:
   result_animation_control: {fileID: 0}
   card_animation_control: {fileID: 0}
   spell_card_images: []
-  map_button: {fileID: 0}
+  map_button: {fileID: 3333291284173158019}
 --- !u!114 &2756803375416232371
 MonoBehaviour:
   m_ObjectHideFlags: 0
