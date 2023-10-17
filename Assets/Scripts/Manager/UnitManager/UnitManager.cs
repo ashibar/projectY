@@ -3,6 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// <para/><b>■■ UnitManager ■■</b>
+/// <para/>담당자 : 이용욱
+/// <para/>요약 : 유닛 리스트 및 행동 관리
+/// <para/>비고 : 
+/// <para/>업데이트 내역 : 
+/// <para/> - (23.10.17) : 요약문 생성
+/// <para/>
+/// </summary>
+
 public class UnitManager : MonoBehaviour, IEventListener
 {
     private static UnitManager instance;    
@@ -27,7 +37,6 @@ public class UnitManager : MonoBehaviour, IEventListener
         }
     }
 
-    [SerializeField] private PlayerAnimationController playerAnimationController;
     [SerializeField] private EmotionEffect emotionEffect;
     [SerializeField] private List<GameObject> clones = new List<GameObject>();
     [SerializeField] private Unit targetUnit;
@@ -59,8 +68,7 @@ public class UnitManager : MonoBehaviour, IEventListener
 
     private void Awake()
     {
-        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
-        emotionEffect= GetComponentInChildren<EmotionEffect>();
+        emotionEffect = GetComponentInChildren<EmotionEffect>();
     }
 
     private void Start()
@@ -77,10 +85,10 @@ public class UnitManager : MonoBehaviour, IEventListener
         }
         SubscribeEvent();
     }
+    
     private void Update()
     {
-        EventReciever();
-        EventListener();
+        
     }
 
     public void SubscribeEvent()
@@ -254,6 +262,10 @@ public class UnitManager : MonoBehaviour, IEventListener
         else
         {
             targetDestroyed += 1;
+            ExtraParams para = new ExtraParams();
+            para.Name = "AllUnit";
+            para.Floatvalue = targetDestroyed;
+            EventManager.Instance.PostNotification("Set Number", this, null, para);
             clones.RemoveAt(id);
         }
     }
@@ -266,78 +278,79 @@ public class UnitManager : MonoBehaviour, IEventListener
         }
         return -1;
     }
-    [SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
 
-    private void EventReciever()
-    {
-        int error = StageManager.Instance.SearchMassage(3, messageBuffer);
+    //Dummy Code
+    //[SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
+
+    //private void EventReciever()
+    //{
+    //    int error = StageManager.Instance.SearchMassage(3, messageBuffer);
         
-        if (error == -1)
-            return;
-    }
+    //    if (error == -1)
+    //        return;
+    //}
 
-    private void EventListener()
-    {
-        bool isError = false;
-        EventMessage temp = new EventMessage();
+    //private void EventListener()
+    //{
+    //    bool isError = false;
+    //    EventMessage temp = new EventMessage();
 
-        if (messageBuffer.Count == 0)
-            return;
-        else
-            Debug.Log(messageBuffer.Count);
+    //    if (messageBuffer.Count == 0)
+    //        return;
+    //    else
+    //        Debug.Log(messageBuffer.Count);
 
-        foreach (EventMessage m in messageBuffer)
-        {
-            temp = m;
-            switch (m.ActionSTR)
-            {
-                case "Player Move":
-                    player.GetComponentInChildren<UnitForceMove>().SetForceMove(m.TargetPOS, m.TargetNUM);
-                    player.GetComponentInChildren<UnitForceMove>().IsForceMove = true;
-                    messageBuffer.Remove(m);
-                    return;
-                case "Player Stop":
-                    player.GetComponentInChildren<UnitForceMove>().IsForceMove = false;
-                    messageBuffer.Remove(m);
-                    return;
-                case "Player Move Input":
-                    player.GetComponent<Player>().playerMovement.IsMove = string.Equals(m.TargetSTR, "true");
-                    Debug.Log(string.Equals(m.TargetSTR, "true"));
-                    messageBuffer.Remove(m);
-                    return;
-                case "Player Animation":
-                    playerAnimationController.SetAnimation(m.TargetSTR);
-                    messageBuffer.Remove(m);
-                    return;
-                default:
-                    isError = true;
-                    break;
-            }
-        }
+    //    foreach (EventMessage m in messageBuffer)
+    //    {
+    //        temp = m;
+    //        switch (m.ActionSTR)
+    //        {
+    //            case "Player Move":
+    //                player.GetComponentInChildren<UnitForceMove>().SetForceMove(m.TargetPOS, m.TargetNUM);
+    //                player.GetComponentInChildren<UnitForceMove>().IsForceMove = true;
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            case "Player Stop":
+    //                player.GetComponentInChildren<UnitForceMove>().IsForceMove = false;
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            case "Player Move Input":
+    //                player.GetComponent<Player>().playerMovement.IsMove = string.Equals(m.TargetSTR, "true");
+    //                Debug.Log(string.Equals(m.TargetSTR, "true"));
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            case "Player Animation":
+    //                playerAnimationController.SetAnimation(m.TargetSTR);
+    //                messageBuffer.Remove(m);
+    //                return;
+    //            default:
+    //                isError = true;
+    //                break;
+    //        }
+    //    }
 
-        if (!isError)
-        {
-            messageBuffer.Remove(temp);
-        }
-    }
+    //    if (!isError)
+    //    {
+    //        messageBuffer.Remove(temp);
+    //    }
+    //}
 
-    private void UnitForceMove(Unit _unit, Vector2 targetPos, float speed, EventMessage m)
-    {
-        Vector2 pos = _unit.transform.position;
-        Vector2 dir = (targetPos - pos).normalized;
+    //private void UnitForceMove(Unit _unit, Vector2 targetPos, float speed, EventMessage m)
+    //{
+    //    Vector2 pos = _unit.transform.position;
+    //    Vector2 dir = (targetPos - pos).normalized;
 
-        float distanceToTarget = (targetPos - pos).magnitude;
+    //    float distanceToTarget = (targetPos - pos).magnitude;
 
-        // 등속 이동
-        if (distanceToTarget > 0f)
-        {
-            if (speed == 0)
-                _unit.transform.position = Vector2.MoveTowards(pos, targetPos, _unit.stat.Speed * Time.deltaTime);
-            else
-                _unit.transform.position = Vector2.MoveTowards(pos, targetPos, speed * Time.deltaTime);
-        }
-        //else
-            //messageBuffer.Remove(m);
-    }
-
+    //    // 등속 이동
+    //    if (distanceToTarget > 0f)
+    //    {
+    //        if (speed == 0)
+    //            _unit.transform.position = Vector2.MoveTowards(pos, targetPos, _unit.stat.Speed * Time.deltaTime);
+    //        else
+    //            _unit.transform.position = Vector2.MoveTowards(pos, targetPos, speed * Time.deltaTime);
+    //    }
+    //    //else
+    //        //messageBuffer.Remove(m);
+    //}
 }

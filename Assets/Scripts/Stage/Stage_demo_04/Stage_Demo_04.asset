@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee40162851d1e5c48b47ec81f8a8c08c, type: 3}
+  m_Name: Stage_Demo_04
+  m_EditorClassIdentifier: 
+  stageName: Stage_04
+  stageSprite: {fileID: 0}
+  reward: {fileID: 11400000, guid: 10a7007317fcb8b48ae763e8c631c99c, type: 2}
+  stageSort: 0
+  phases:
+  - {fileID: 11400000, guid: 0edf986bca3af3d44822f63eff8cc2d6, type: 2}

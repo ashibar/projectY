@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - no: 0
-    eventindex: 6
-    eventcode: Play Sound
+    eventindex: 2
+    eventcode: Spawn EnemyList At Vector List By ID
     condition:
-      sort: 4
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -28,13 +28,14 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     extraParams:
-      id: 0
+      id: 2
       name: GameClear
       intvalue: 0
       floatvalue: 0
       vecList:
       - {x: 3, y: 0}
       - {x: -3, y: 0}
+      mobLists: {fileID: 11400000, guid: 687213098dec6634e932bcf28d26177b, type: 2}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
