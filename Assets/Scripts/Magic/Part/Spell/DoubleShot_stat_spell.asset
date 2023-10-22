@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ff13feab14f21e4db60227e94522123, type: 3}
-  m_Name: Attack_Up_Spell_Part
+  m_Name: DoubleShot_stat_spell
   m_EditorClassIdentifier: 
   spell_Type: 1
   spell_Name: "\uB354\uBE14 \uC0F7"
