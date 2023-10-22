@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ff13feab14f21e4db60227e94522123, type: 3}
-  m_Name: AttackUp_stat_spell
+  m_Name: DefUp_stat_spell
   m_EditorClassIdentifier: 
   spell_Type: 3
-  spell_Name: "\uACF5\uACA9\uB825 \uC99D\uAC00+"
-  spell_Code: s00
+  spell_Name: "\uBC29\uC5B4\uB825 \uC99D\uAC00+"
+  spell_Code: s02
   spell_DMG: 0
   spell_Speed: 0
   spell_CoolTime: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6743049818794002846}
   - component: {fileID: 6743049818794002841}
   m_Layer: 0
-  m_Name: HpUp_Passive
+  m_Name: DefUpM_Passive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca1c67a1844584418271afa1669dd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat_spell_so: {fileID: 11400000, guid: 7d6bb33326a3db04bbc059c6710b234e, type: 2}
+  stat_spell_so: {fileID: 11400000, guid: c61936a0eeecd0b45920454a5d3529c0, type: 2}
   stat_spell:
     spell_Type: 0
     spell_Name: 
@@ -66,7 +66,7 @@ MonoBehaviour:
   sprite_back: {fileID: 0}
   sprite_front: {fileID: 0}
   sprite_spell: {fileID: 21300000, guid: 936dca50e0533074ebb2cd6633af1588, type: 3}
-  additional_stat_so: {fileID: 11400000, guid: a07dd2a415464f94db86aec8f8ef1c30, type: 2}
+  additional_stat_so: {fileID: 11400000, guid: 121ba6cba71609a4eb7505b4a07e93bd, type: 2}
   additional_stat:
     hp: 0
     speed: 0
