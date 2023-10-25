@@ -16,9 +16,10 @@ MonoBehaviour:
   - {fileID: 7171416607448482314, guid: 197fc3658fa760b42818da744576975c, type: 3}
   - {fileID: 7426787029293250270, guid: 0d7875570356e734db76d17daab34cb4, type: 3}
   part:
+  - {fileID: 3687709568715783824, guid: d89f871cc019da54fb3da539305b0ec6, type: 3}
   - {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
   - {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
   element:
   - {fileID: 5515772338080239978, guid: 6c5923887f54aa144a6a2fc2f3f52414, type: 3}
   passive:
-  - {fileID: 6743049818794002840, guid: 7ade8f6db17bb734884aa43f0b4bf20f, type: 3}
+  - {fileID: 6743049818794002840, guid: ad7b378ecfa5c8d4d9cbce9779cf3134, type: 3}

@@ -43,7 +43,8 @@ public class SpellManager : MonoBehaviour
 
     private Stat Stat_Process()
     {
-        Stat stat_processed = new Stat(owner.stat);
+        if (owner.stat_processed == null) return owner.stat;
+        Stat stat_processed = new Stat(owner.stat_processed);
         foreach (Spell_Passive p in passives)
             if (p.additional_stat != null)
                 stat_processed += p.additional_stat;
@@ -64,7 +65,7 @@ public class SpellManager : MonoBehaviour
         MoveChildrenToTarget(temp.transform, gameObject.transform);
         GetSpellCompoenents();
         foreach (Spell_Core core in cores)
-            core.InitElement();
+            core.InitCore();
     }
 
     public void SetActiveAll(bool value)

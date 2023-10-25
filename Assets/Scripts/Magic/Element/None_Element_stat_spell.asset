@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff13feab14f21e4db60227e94522123, type: 3}
   m_Name: None_Element_stat_spell
   m_EditorClassIdentifier: 
+  spell_Type: 0
   spell_Name: "\uBB34 \uC18D\uC131"
   spell_Code: c0
   spell_DMG: 0
@@ -24,4 +25,4 @@ MonoBehaviour:
   spell_Multy_EA: 0
   spell_Multy_Radius: 0
   spell_Range_Area: 0
-  spell_Type: 0
+  spell_Amount_Tic: 1

@@ -49,6 +49,8 @@ public class UnitManager : MonoBehaviour, IEventListener
     public int TargetDestroyed { get => targetDestroyed; set => targetDestroyed = value; }
     public int MaxDestroyed { get => maxDestroyed; set => maxDestroyed = value; }
 
+    public DamageCalculation damageCalculation;
+
     public static List<string> event_code = new List<string>
     {
         "Unit Force Move",
@@ -69,6 +71,7 @@ public class UnitManager : MonoBehaviour, IEventListener
     private void Awake()
     {
         emotionEffect = GetComponentInChildren<EmotionEffect>();
+        damageCalculation = GetComponentInChildren<DamageCalculation>();
     }
 
     private void Start()

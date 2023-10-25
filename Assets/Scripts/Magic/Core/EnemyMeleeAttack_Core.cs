@@ -29,7 +29,9 @@ public class EnemyMeleeAttack_Core : Spell_Core
     private async Task MeleeDamage_Task(Collision2D collision, float duration)
     {
         float end = Time.time + duration;
-        collision.gameObject.GetComponent<Unit>().stat.Hp_current -= stat_spell.Spell_DMG * owner.stat.Damage;
+        DamageCalculation dc = UnitManager.Instance.damageCalculation;
+        collision.gameObject.GetComponent<Unit>().stat.Hp_current -= dc.Calculate(null, collision.gameObject.GetComponent<Unit>(), owner.stat, stat_spell, Color.red);
+        //stat_spell.Spell_DMG * owner.stat.Damage
         Debug.Log("damage");
         while (Time.time < end && !cts.Token.IsCancellationRequested)
         {

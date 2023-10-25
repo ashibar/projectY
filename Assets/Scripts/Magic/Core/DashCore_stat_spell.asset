@@ -25,3 +25,4 @@ MonoBehaviour:
   spell_Multy_EA: 1
   spell_Multy_Radius: 0
   spell_Range_Area: 0
+  spell_Amount_Tic: 1

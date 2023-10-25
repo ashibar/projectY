@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spell_Type: 1
   spell_Name: "\uC2A4\uD3A0 \uACF5\uACA9\uB825 \uC5C5"
-  spell_Code: s01
+  spell_Code: b01
   spell_DMG: 0
   spell_Speed: 0
   spell_CoolTime: 0

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class Spell_Core : Spell
 {
@@ -34,8 +33,8 @@ public class Spell_Core : Spell
         cts = new CancellationTokenSource();
         element_management = GetComponentInChildren<Element_ManagementModule>();
         damageTextRenderModule = GetComponentInChildren<DamageTextRenderModule>();
-        RegisterAllFromChildren();
-        Stat_Process();
+        //RegisterAllFromChildren();
+        //Stat_Process();
         if (element_management != null) element_management.Init();
     }
 
@@ -102,7 +101,8 @@ public class Spell_Core : Spell
             float end = Time.time + stat_spell.Spell_ProjectileDelay;
 
             // 투사체 한개 생성
-            InstantiateOneProjectileFunction();
+            instantiateOneProjectileFunction();
+            //InstantiateOneProjectileFunction();
 
             // 대기
             while (Time.time < end && !cts.Token.IsCancellationRequested)
@@ -112,6 +112,8 @@ public class Spell_Core : Spell
             }
         }
     }
+
+    // Spell_Core [상속] 내부 함수 (투사체 생성)
 
     /// <summary>
     /// <b>한개의 투사체를 생성하는 함수</b>
@@ -123,24 +125,26 @@ public class Spell_Core : Spell
     /// <b>6. 하위 스펠 파츠 복제</b>
     /// <b>7. 투사체 초기화 함수 실행</b>
     /// </summary>
-    private void InstantiateOneProjectileFunction()
+    protected override void InstantiateOneProjectileFunction()
     {
         // 발사 각도
         Quaternion rotation = SetAngle();
 
         // 투사체 생성
-        GameObject clone = InstantiateProjectile(rotation);
+        DelegateParameter para = new DelegateParameter()
+        {
+            projectile = projectile_origin[0],
+            rotation = rotation,
+        };
+        GameObject clone = InstantiateProjectile(para);
 
         // 투사체에 백터 정보, 타겟 태그 넣기
+        Debug.Log("dmg = " + stat_part_applied.Damage);
         clone.GetComponent<Projectile>().SetStat(stat_part_applied, stat_spell);
         clone.GetComponent<Projectile>().SetVector(target, dir_toMove, dir_toShoot, pos_toShoot);
 
         // 투사체의 행동 결정
-        clone.GetComponent<Projectile>().triggerEnterTickFunction += TriggerEnterTickFunction;
-        clone.GetComponent<Projectile>().triggerEnterEndFunction += TriggerEnterEndFunction;
-        clone.GetComponent<Projectile>().triggerEnterStackProcess += TriggerEnterStackProcess;
-        clone.GetComponent<Projectile>().shootingFunction += ShootingFunction;
-        clone.GetComponent<Projectile>().destroyFunction += DestroyFunction;
+        AddDelegate(clone.GetComponent<Projectile>());
 
         // 투사체에 하위 스펠 복제
         foreach (Spell_Part lower in spell_part)
@@ -160,47 +164,47 @@ public class Spell_Core : Spell
     // Spell_Core [상속] 내부 함수
     // 상속 시 오버라이딩 하여 고유 기능 개발
 
-    protected virtual void FunctionWhileCooltime()
+    protected override void FunctionWhileCooltime()
     {
 
     }
 
-    protected virtual void FunctionWhileProjectileDelay()
+    protected override void FunctionWhileProjectileDelay()
     {
 
     }
 
-    protected virtual Quaternion SetAngle()
+    protected override Quaternion SetAngle()
     {
         float angle = Mathf.Atan2(dir_toShoot.y, dir_toShoot.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
         return rotation;
     }
 
-    protected virtual GameObject InstantiateProjectile(Quaternion rotation)
+    protected override GameObject InstantiateProjectile(DelegateParameter para)
     {
-        return Instantiate(projectile_origin[0], pos_toShoot, rotation, Holder.projectile_holder);
+        return Instantiate(para.projectile, pos_toShoot, para.rotation, Holder.projectile_holder);
     }
 
     // 투사체에 전달할 대리자 함수
 
-    public virtual void TriggerEnterTickFunction(Collider2D collision, GameObject projectile)
+    public override void TriggerEnterTickFunction(DelegateParameter para)
     {
 
     }
 
-    public virtual void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
+    public override void TriggerEnterEndFunction(DelegateParameter para)
     {
         //if (collision.tag == "Enemy")
         //    Destroy(projectile);
     }
 
-    public virtual bool TriggerEnterStackProcess(List<Collider2D> collider_stack, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
+    public override bool TriggerEnterStackProcess(DelegateParameter para)
     {
         return true;
     }
 
-    public virtual void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
+    public override void ShootingFunction(DelegateParameter para)
     {
         ////샘플
         //if (cts_t.IsCancellationRequested) return;
@@ -209,7 +213,7 @@ public class Spell_Core : Spell
         //projectile.transform.position = Vector3.MoveTowards(pos, pos + (Vector3)_dir_toShoot, stat.Spell_Speed * 5f * Time.deltaTime);
     }
 
-    public virtual void DestroyFunction(GameObject projectile)
+    public override void DestroyFunction(DelegateParameter para)
     {
         
     }
@@ -268,6 +272,7 @@ public class Spell_Core : Spell
     public void RegisterSpellElement(Spell_Element spell) 
     {
         spell_element.Add(spell);
+        //spell.AddDelegate(this);
     }
 
     /// <summary>
@@ -277,6 +282,7 @@ public class Spell_Core : Spell
     public void RegisterSpellPart(Spell_Part spell)
     {
         spell_part.Add(spell);
+        spell.AddDelegate(this);
     }
 
     /// <summary>
@@ -293,8 +299,9 @@ public class Spell_Core : Spell
         this.pos_toShoot = pos_toShoot;
     }
 
-    public void InitElement()
+    public void InitCore()
     {
+        AddDelegate(this);
         RegisterAllFromChildren();
         Stat_Process();
         if (element_management != null) element_management.Init();

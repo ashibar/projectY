@@ -59,17 +59,17 @@ public class Dash_Core : Spell_Core
         }
     }
 
-    protected override GameObject InstantiateProjectile(Quaternion rotation)
+    protected override GameObject InstantiateProjectile(DelegateParameter para)
     {
         return null;
     }
 
-    public override void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
+    public override void TriggerEnterEndFunction(DelegateParameter para)
     {
         
     }
 
-    public override void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
+    public override void ShootingFunction(DelegateParameter para)
     {
         
     }
