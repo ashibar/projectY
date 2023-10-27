@@ -139,7 +139,7 @@ public class Spell_Core : Spell
         GameObject clone = InstantiateProjectile(para);
 
         // 투사체에 백터 정보, 타겟 태그 넣기
-        Debug.Log("dmg = " + stat_part_applied.Damage);
+        //Debug.Log("dmg = " + stat_part_applied.Damage);
         clone.GetComponent<Projectile>().SetStat(stat_part_applied, stat_spell);
         clone.GetComponent<Projectile>().SetVector(target, dir_toMove, dir_toShoot, pos_toShoot);
 

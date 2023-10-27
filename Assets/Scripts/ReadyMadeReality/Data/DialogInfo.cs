@@ -16,6 +16,7 @@ namespace ReadyMadeReality
         [SerializeField] private NameColorPreset colorPreset = NameColorPreset.Custom;
         [SerializeField] private bool enableNameBox = true;
         [SerializeField] private NameBoxPosPreset nameBoxPos = NameBoxPosPreset.Left;
+        [SerializeField] private List<EventPhase_so> phaseList = new List<EventPhase_so>();
         [SerializeField] private List<string> select_list = new List<string>();
         [SerializeField] private List<DialogInfo_so> select_dialog = new List<DialogInfo_so>();
 
@@ -43,6 +44,7 @@ namespace ReadyMadeReality
             this.colorPreset = info.ColorPreset;
             this.enableNameBox = info.EnableNameBox;
             this.nameBoxPos = info.NameBoxPos;
+            this.phaseList = info.phaseList;
             this.select_list.AddRange(info.select_list);
             this.select_dialog = info.Select_dialog;
         }
@@ -56,6 +58,7 @@ namespace ReadyMadeReality
         public NameColorPreset ColorPreset { get => colorPreset; set => colorPreset = value; }
         public bool EnableNameBox { get => enableNameBox; set => enableNameBox = value; }
         public NameBoxPosPreset NameBoxPos { get => nameBoxPos; set => nameBoxPos = value; }
+        public List<EventPhase_so> PhaseList { get => phaseList; set => phaseList = value; }
         public List<string> Select_list { get => select_list; set => select_list = value; }
         public List<DialogInfo_so> Select_dialog { get => select_dialog; set => select_dialog = value; }
     }

@@ -26,6 +26,7 @@ namespace ReadyMadeReality
             //dialogBox.Init_dialog(dialog_so.DialogList);
             //SyncCount(cnt);
             //RenderDialog();
+            //SetDialog(dialog_so);
         }
 
         public void SetDialog(DialogInfo_so _dialog_so)
