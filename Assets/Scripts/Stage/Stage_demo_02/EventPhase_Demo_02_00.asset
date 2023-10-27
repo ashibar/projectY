@@ -69,7 +69,7 @@ MonoBehaviour:
       audioclip: {fileID: 0}
   - no: 1
     eventindex: 8
-    eventcode: Add New Number
+    eventcode: Add New Trigger
     condition:
       sort: 0
       targetTag: 
@@ -83,7 +83,7 @@ MonoBehaviour:
       isContinued: 1
     extraParams:
       id: 0
-      name: AllUnit
+      name: isClear
       intvalue: 0
       floatvalue: 0
       vecList: []
@@ -93,6 +93,33 @@ MonoBehaviour:
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 5
+    eventindex: 5
+    eventcode: Set Dialog
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 11400000, guid: e297b0a6f3c5a96438a1898d6f8a4a29, type: 2}
       audioclip: {fileID: 0}
   - no: 2
     eventindex: 2
@@ -105,7 +132,7 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 2
+      targetNum: 3
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -132,7 +159,7 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 3
+      targetNum: 10
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -159,7 +186,7 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 3
+      targetNum: 10
       isSatisfied: 1
       isContinued: 1
     extraParams:
@@ -172,6 +199,33 @@ MonoBehaviour:
       spawnInfo: {fileID: 11400000, guid: c6136063fce9419449057b9b9c62704f, type: 2}
       name2: 
       boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 6
+    eventindex: 8
+    eventcode: Set Trigger
+    condition:
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 26
+      isSatisfied: 1
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: isClear
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
+      name2: 
+      boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}

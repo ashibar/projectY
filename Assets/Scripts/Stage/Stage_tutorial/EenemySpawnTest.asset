@@ -38,5 +38,5 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-      dialog_so: {fileID: 11400000, guid: 6c28e58232d214c43aca788852863e4c, type: 2}
+      dialog_so: {fileID: 11400000, guid: e297b0a6f3c5a96438a1898d6f8a4a29, type: 2}
       audioclip: {fileID: 0}

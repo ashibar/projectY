@@ -20,6 +20,11 @@ namespace ReadyMadeReality
             GUIStyle indexFieldStyle = new GUIStyle(EditorStyles.textField);
             indexFieldStyle.alignment = TextAnchor.MiddleRight;
 
+            GUILayoutOption[] normalOptions =
+            {
+                GUILayout.ExpandWidth(true),
+                GUILayout.Height(20),
+            };
             GUILayoutOption[] smallFieldOption =
             {
             GUILayout.Width(50),
@@ -58,9 +63,9 @@ namespace ReadyMadeReality
 
             EditorGUILayout.LabelField("Dialog Infomation", EditorStyles.boldLabel);
             so.PortraitList = (PortraitInfo_so)EditorGUILayout.ObjectField("Portrait List", so.PortraitList, typeof(PortraitInfo_so), true);
+            so.Mode = (DialogMode)EditorGUILayout.EnumPopup("Dialog Mode", so.Mode, normalOptions);
             so.IsAuto = EditorGUILayout.Toggle("Auto Mode", so.IsAuto);
-
-
+            //
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Dialog List", EditorStyles.boldLabel);

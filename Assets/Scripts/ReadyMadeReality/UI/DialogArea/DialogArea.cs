@@ -13,6 +13,7 @@ namespace ReadyMadeReality
         //[SerializeField] private bool isActive = false;
         [SerializeField] private DialogInfo_so dialog_so;
         [SerializeField] private int cnt = 0;
+        [SerializeField] private DialogMode mode;
 
         private void Awake()
         {
@@ -34,6 +35,11 @@ namespace ReadyMadeReality
             dialog_so = _dialog_so;
             cnt = 0;
             dialogBox.Init_dialog(dialog_so.DialogList);
+            dialogBox.FormByMode(_dialog_so.Mode);
+            portraitBox_left.FormByMode(dialog_so.Mode);
+            portraitBox_right.FormByMode(dialog_so.Mode);
+            SetMode(_dialog_so.Mode);
+            SetAuto(_dialog_so.IsAuto);
             SyncCount(cnt);
         }
 
@@ -60,6 +66,21 @@ namespace ReadyMadeReality
             portraitBox_right.SetSprite(dialog_so, cnt);
             dialogBox.nameBox.SetName(dialog_so, cnt);
         }
+
+        public void SetMode(DialogMode mode)
+        {
+            this.mode = mode;
+        }
+
+        public void SetAuto(bool isAuto)
+        {
+            dialogBox.SetAuto(isAuto);
+        }
     }
 
+    public enum DialogMode
+    {
+        Normal,
+        Battle,
+    }
 }

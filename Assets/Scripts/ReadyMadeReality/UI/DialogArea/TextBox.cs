@@ -262,8 +262,11 @@ namespace ReadyMadeReality
             if (isActive && phaseEndFlag && !stopFlag && !dialogEndFlag)
             {
                 dialog_cnt++;
-                dialogArea.SyncCount(dialog_cnt);
-                InitString();
+                if (dialog_cnt < dialog_list.Count)
+                {
+                    dialogArea.SyncCount(dialog_cnt);
+                    InitString(); 
+                }
                 phaseEndFlag = false;
             }
         }
@@ -314,7 +317,7 @@ namespace ReadyMadeReality
                 line_cnt++;
                 if (line_max > line_cnt)
                     dialogText.text += '\n';
-                if (dialog_cnt >= dialog_list.Count - 1)
+                if (dialog_cnt >= dialog_list.Count - 1 && split_cnt > split_max - 1)
                     dialogEndFlag = true;
                 //WordCheck();
                 return;
@@ -339,7 +342,8 @@ namespace ReadyMadeReality
             if (!stopFlag && !coolTimeFlag && !dialogEndFlag)
             {
                 coolTimeFlag = true;
-                await Base_routine(spd);
+                if (split_cnt < split_max)
+                    await Base_routine(spd);
                 coolTimeFlag = false;
 
             }
@@ -348,7 +352,7 @@ namespace ReadyMadeReality
         private async Task Base_routine(float duration)
         {
             float end = Time.time + duration;
-            Debug.Log(string.Format(string.Format("{0}/{1} : {2}/{3} : {4}/{5}", split_cnt, split_max, line_cnt, line_max, word_cnt, word_max)));
+            //Debug.Log(string.Format(string.Format("{0}/{1} : {2}/{3} : {4}/{5}", split_cnt, split_max, line_cnt, line_max, word_cnt, word_max)));
             //Debug.Log(stringList.Count);
             //countText.text = string.Format("{0}/{1} : {2}/{3} : {4}/{5}", split_cnt, split_max, line_cnt, line_max, word_cnt, word_max);
             dialogText.text += stringList[split_cnt][line_cnt][word_cnt];
@@ -379,7 +383,7 @@ namespace ReadyMadeReality
             split_cnt++;
             stopFlag = true;
 
-            if (dialog_cnt >= dialog_list.Count - 1)
+            if (dialog_cnt >= dialog_list.Count - 1 && split_cnt > split_max - 1)
                 dialogEndFlag = true;
         }
 

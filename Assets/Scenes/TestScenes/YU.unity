@@ -609,14 +609,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7617927616946321426, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
-      propertyPath: isAuto
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7617927616946321426, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
-      propertyPath: auto_delay
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7617927617408589654, guid: 0dd827e8c932bd545a850dbe3a9dd5ef, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
