@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1d1d13754d53b946811fffade457d7b, type: 3}
-  m_Name: Stage_Demo_04_Reward
+  m_Name: Stage_Demo_03_Reward
   m_EditorClassIdentifier: 
   rewardList:
-  - obj: {fileID: 7171416607448482314, guid: 197fc3658fa760b42818da744576975c, type: 3}
-    value: 0.25
+  - obj: {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
+    value: 0.2
   - obj: {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
-    value: 0.75
+    value: 0.4
+  - obj: {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
+    value: 0.4
