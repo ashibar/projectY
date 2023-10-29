@@ -18,18 +18,7 @@ public class Projectile : Spell
     [SerializeField] protected Sprite current_sprite;
 
     [SerializeField] protected Spell_Element main_element;
-
-    public delegate void TriggerEnterTickFunction(Collider2D collision, GameObject projectile);
-    public delegate void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell);
-    public delegate bool TriggerEnterStackProcess(List<Collider2D> collider_stack, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell);
-    public delegate void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module);
-    public delegate void DestroyFunction(GameObject projectile);
-    [SerializeField] public TriggerEnterTickFunction triggerEnterTickFunction;
-    [SerializeField] public TriggerEnterEndFunction triggerEnterEndFunction;
-    [SerializeField] public TriggerEnterStackProcess triggerEnterStackProcess;
-    [SerializeField] public ShootingFunction shootingFunction;
-    [SerializeField] public DestroyFunction destroyFunction;
-    
+        
     private CancellationTokenSource cts = new CancellationTokenSource();
 
     public override void Awake()
@@ -65,10 +54,32 @@ public class Projectile : Spell
 
         while (!cts_t.IsCancellationRequested && !isProcessEnd)
         {
-            isProcessEnd = triggerEnterStackProcess(collider_stack, gameObject, stat_processed, stat_spell);
+            DelegateParameter para = new DelegateParameter()
+            {
+                collider_stack = collider_stack,
+                projectile = gameObject,
+                stat_processed = stat_processed,
+                stat_spell = stat_spell,
+            };
+            isProcessEnd = StackProcess_Function(para);
             await Task.Yield();
         }
         Debug.Log("process End");
+    }
+
+    private bool StackProcess_Function(DelegateParameter para)
+    {
+        if (para.collider_stack.Count <= 0) return false;
+
+        for (int i = 0; i < Mathf.Min((int)(stat_spell.Spell_Amount_Tic), para.collider_stack.Count); i++)
+        {
+            para.collision = collider_stack[i];
+            triggerEnterStackProcess(para);
+            Destroy(para.projectile);
+        }
+        para.collider_stack.Clear();
+
+        return true;
     }
 
     /// <summary>
@@ -82,14 +93,26 @@ public class Projectile : Spell
     {
         float duration = 0;
         float end = Time.time + duration;
-
+        
         while (Time.time < end && !cts_t.IsCancellationRequested)
         {
-            triggerEnterTickFunction(collision, gameObject);
+            DelegateParameter para1 = new DelegateParameter()
+            {
+                collision = collision,
+                projectile = gameObject,
+            };
+            triggerEnterTickFunction(para1);
             await Task.Yield();
         }
         //Debug.Log("trigger enters");
-        triggerEnterEndFunction(collision, gameObject, stat_processed, stat_spell);
+        DelegateParameter para2 = new DelegateParameter()
+        {
+            collision = collision,
+            projectile = gameObject,
+            stat_processed = stat_processed,
+            stat_spell = stat_spell,
+        };
+        triggerEnterEndFunction(para2);
     }
 
     /// <summary>
@@ -105,7 +128,16 @@ public class Projectile : Spell
         while (Time.time < end && !cts_t.IsCancellationRequested)
         {
             //Debug.Log(string.Format("isShooting, {0}, {1}, {2}", dir_toShoot, Time.time, end));
-            shootingFunction(cts_t, gameObject, stat_processed, stat_spell, dir_toShoot, main_element.AnimationModule);
+            DelegateParameter para = new DelegateParameter()
+            {
+                cts_t = cts_t,
+                projectile = gameObject,
+                stat_processed = stat_processed,
+                stat_spell = stat_spell,
+                dir_toShoot = dir_toShoot,
+                anim_module = main_element.AnimationModule
+            };
+            shootingFunction(para);
             await Task.Yield();
         }
 
@@ -126,7 +158,8 @@ public class Projectile : Spell
         
         while (Time.time < end && !cts_t.IsCancellationRequested)
         {
-            destroyFunction(gameObject);
+            DelegateParameter para = new DelegateParameter() { projectile = gameObject };
+            destroyFunction(para);
             await Task.Yield();
         }
 
@@ -200,6 +233,7 @@ public class Projectile : Spell
     /// <param name="spell"></param>
     public void SetMainElement(Spell_Element spell)
     {
+        //Debug.Log(spell);
         main_element = spell;
         shootingFunction += spell.ShootingFunction;
     }

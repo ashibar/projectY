@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using System.Threading.Tasks;
 using System;
+using System.Threading;
 
 namespace ReadyMadeReality
 {
@@ -153,6 +154,12 @@ namespace ReadyMadeReality
         [SerializeField] private bool coolTimeFlag;
         [SerializeField] private bool isInterrupted;
 
+        [SerializeField] private bool isAuto;
+        [SerializeField] private bool isAutoRunning;
+        [SerializeField] private float auto_delay = 1f;
+
+        private CancellationTokenSource cts = new CancellationTokenSource();
+
         private void Awake()
         {
             dialogText = GetComponentInChildren<TextMeshProUGUI>();
@@ -172,11 +179,17 @@ namespace ReadyMadeReality
             SplitCheck();
             BaseFunction();
 
+            AutoRender_routine();
         }
 
         public void SetActive(bool value)
         {
             isActive = value;
+        }
+
+        public void SetAuto(bool value)
+        {
+            isAuto = value;
         }
 
         public void Init_Dialog(List<DialogInfo> list)
@@ -208,7 +221,7 @@ namespace ReadyMadeReality
             List<string> tempSplit = new List<string>();
             string[] seps = new string[] { "\\n", "\n", "<br>" };
             tempSplit.AddRange(value.Split('@'));
-            //foreach (string s in tempSplit) Debug.Log("s : " + s);
+            foreach (string s in tempSplit) Debug.Log("s : " + s);
             split_max = tempSplit.Count;
             foreach (string s in tempSplit)
             {
@@ -219,7 +232,7 @@ namespace ReadyMadeReality
 
         private void Input_Key()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !isAuto)
             {
                 InputFunction();
             }
@@ -227,7 +240,8 @@ namespace ReadyMadeReality
 
         public void Input_Outer()
         {
-            InputFunction();
+            if (!isAuto)
+                InputFunction();
         }
 
         private void InputFunction()
@@ -248,8 +262,11 @@ namespace ReadyMadeReality
             if (isActive && phaseEndFlag && !stopFlag && !dialogEndFlag)
             {
                 dialog_cnt++;
-                dialogArea.SyncCount(dialog_cnt);
-                InitString();
+                if (dialog_cnt < dialog_list.Count)
+                {
+                    dialogArea.SyncCount(dialog_cnt);
+                    InitString(); 
+                }
                 phaseEndFlag = false;
             }
         }
@@ -300,7 +317,7 @@ namespace ReadyMadeReality
                 line_cnt++;
                 if (line_max > line_cnt)
                     dialogText.text += '\n';
-                if (dialog_cnt >= dialog_list.Count - 1)
+                if (dialog_cnt >= dialog_list.Count - 1 && split_cnt > split_max - 1)
                     dialogEndFlag = true;
                 //WordCheck();
                 return;
@@ -325,7 +342,8 @@ namespace ReadyMadeReality
             if (!stopFlag && !coolTimeFlag && !dialogEndFlag)
             {
                 coolTimeFlag = true;
-                await Base_routine(spd);
+                if (split_cnt < split_max)
+                    await Base_routine(spd);
                 coolTimeFlag = false;
 
             }
@@ -334,7 +352,8 @@ namespace ReadyMadeReality
         private async Task Base_routine(float duration)
         {
             float end = Time.time + duration;
-
+            //Debug.Log(string.Format(string.Format("{0}/{1} : {2}/{3} : {4}/{5}", split_cnt, split_max, line_cnt, line_max, word_cnt, word_max)));
+            //Debug.Log(stringList.Count);
             //countText.text = string.Format("{0}/{1} : {2}/{3} : {4}/{5}", split_cnt, split_max, line_cnt, line_max, word_cnt, word_max);
             dialogText.text += stringList[split_cnt][line_cnt][word_cnt];
             word_cnt += 1;
@@ -364,8 +383,35 @@ namespace ReadyMadeReality
             split_cnt++;
             stopFlag = true;
 
-            if (dialog_cnt >= dialog_list.Count - 1)
+            if (dialog_cnt >= dialog_list.Count - 1 && split_cnt > split_max - 1)
                 dialogEndFlag = true;
+        }
+
+        private async void AutoRender_routine()
+        {
+            if (!isActive) return;
+            if (!isAuto) return;
+
+            if (stopFlag && !isAutoRunning)
+            {
+                isAutoRunning = true;
+
+                float end = Time.time + auto_delay;
+
+                while (Time.time < end && !cts.Token.IsCancellationRequested)
+                {
+
+                    await Task.Yield();
+                }
+                isAutoRunning = false;
+                InputFunction();
+            }
+            
+        }
+
+        private void OnDestroy()
+        {
+            cts?.Cancel();
         }
     }
 

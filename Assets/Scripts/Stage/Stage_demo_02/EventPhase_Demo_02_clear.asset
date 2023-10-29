@@ -17,14 +17,14 @@ MonoBehaviour:
     eventindex: 8
     eventcode: Add New Trigger
     condition:
-      sort: 4
+      sort: 2
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: AllUnit
+      targetFlag: isClear
       flagValue: 1
-      targetNum: 10
+      targetNum: 11
       isSatisfied: 1
       isContinued: 1
     extraParams:

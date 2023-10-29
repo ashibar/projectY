@@ -8,16 +8,23 @@ public class Element_ManagementModule : MonoBehaviour
 
     [SerializeField] private List<Spell_Element> spell_elements = new List<Spell_Element>();
     [SerializeField] private List<StringNNumber> element_level = new List<StringNNumber>();
-    [SerializeField] private Spell_Element main_element;  
+    [SerializeField] private Spell_Element main_element;
+
+    [SerializeField] private string high_priority;
 
     private void MixElement()
     {
         foreach (Spell_Element element in spell_elements)
         {
-            if (string.Equals(element.level.numberName, "None"))
+            if (string.Equals(element.level.numberName, "Fire"))
             {
                 main_element = element;
-                return;
+                high_priority = "Fire";
+            }
+            else if (!string.Equals(high_priority, "Fire") && string.Equals(element.level.numberName, "None"))
+            {
+                main_element = element;
+                high_priority = "None";
             }
         }
     }

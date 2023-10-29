@@ -13,7 +13,7 @@ public class MapSelectWindow_temp : MonoBehaviour
     [SerializeField] private Image stage_image;
     [SerializeField] private Button stage_image_button;
     [SerializeField] private TextMeshProUGUI stage_name;
-    [SerializeField] private MapStatusWindow mapStatusWindow;
+    [SerializeField] private MapStatusWindow_temp mapStatusWindow;
 
     [SerializeField] private Sprite stage_sprite_default;
 
@@ -24,7 +24,7 @@ public class MapSelectWindow_temp : MonoBehaviour
         stage_image = GameObject.Find("CenterImage").GetComponent<Image>();
         stage_image_button = GameObject.Find("CenterImage").GetComponent<Button>();
         stage_name = GameObject.Find("StageName").GetComponent<TextMeshProUGUI>();
-        mapStatusWindow = GetComponentInChildren<MapStatusWindow>();
+        mapStatusWindow = GetComponentInChildren<MapStatusWindow_temp>();
     }
 
     private void Start()

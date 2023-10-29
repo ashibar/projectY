@@ -22,12 +22,12 @@ public class BatStone_Core : Spell_Core
         return rotation;
     }
 
-    protected override GameObject InstantiateProjectile(Quaternion rotation)
+    protected override GameObject InstantiateProjectile(DelegateParameter para)
     {
-        return Instantiate(projectile_origin[0], transform.position, rotation, Holder.projectile_holder);
+        return Instantiate(para.projectile, transform.position, para.rotation, Holder.projectile_holder);
     }
 
-    public override void TriggerEnterEndFunction(Collider2D collision, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
+    public override void TriggerEnterEndFunction(DelegateParameter para)
     {
         //float damage = stat_processed.Damage * stat_spell.Spell_DMG;
         //collision.GetComponent<Unit>().stat.Hp_current -= stat_processed.Damage * stat_spell.Spell_DMG;
@@ -35,28 +35,20 @@ public class BatStone_Core : Spell_Core
         //Destroy(projectile);
     }
 
-    public override bool TriggerEnterStackProcess(List<Collider2D> collider_stack, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell)
+    public override bool TriggerEnterStackProcess(DelegateParameter para)
     {
-        if (collider_stack.Count > 0)
-        {
-            for (int i = 0; i < Mathf.Min((int)(stat_spell.Spell_Amount_Tic), collider_stack.Count); i++)
-            {
-                float damage = stat_processed.Damage * stat_spell.Spell_DMG;
-                collider_stack[i].GetComponent<Unit>().stat.Hp_current -= stat_processed.Damage * stat_spell.Spell_DMG;
-                damageTextRenderModule.Damagesend(projectile, (int)damage);
-                Destroy(projectile);
-            }
-            collider_stack.Clear();
-            return true;
-        }
-        return false;
+        float damage = para.stat_processed.Damage * para.stat_spell.Spell_DMG;
+        //Debug.Log(string.Format("{0}, {1}, {2}", stat_processed.Damage, stat_spell.Spell_DMG, damage));
+        DamageCalculation dc = UnitManager.Instance.damageCalculation;
+        para.collision.GetComponent<Unit>().stat.Hp_current -= dc.Calculate(owner, para.collision.GetComponent<Unit>(), para.stat_processed, para.stat_spell, Color.white);
+        return true;
     }
 
-    public override void ShootingFunction(CancellationToken cts_t, GameObject projectile, Stat stat_processed, Stat_Spell stat_spell, Vector2 _dir_toShoot, Projectile_AnimationModule anim_module)
+    public override void ShootingFunction(DelegateParameter para)
     {
-        if (cts_t.IsCancellationRequested) return;
-        Vector3 pos = projectile.transform.position;
-        projectile.transform.position = Vector3.MoveTowards(pos, pos + (Vector3)_dir_toShoot, stat_spell.Spell_Speed * Time.deltaTime);
-        projectile.GetComponent<SpriteRenderer>().sprite = anim_module.GetSprite();
+        if (para.cts_t.IsCancellationRequested) return;
+        Vector3 pos = para.projectile.transform.position;
+        para.projectile.transform.position = Vector3.MoveTowards(pos, pos + (Vector3)para.dir_toShoot, para.stat_spell.Spell_Speed * Time.deltaTime);
+        para.projectile.GetComponent<SpriteRenderer>().sprite = para.anim_module.GetSprite();
     }
 }

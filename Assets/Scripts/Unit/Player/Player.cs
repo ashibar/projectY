@@ -39,7 +39,6 @@ public class Player : Unit
 
     public MovementManager movementManger;
     public PlayerMovement playerMovement;
-    public SpellManager spellManager;
     public AnimationManager animationManager;
     public GameManager manger;
 
@@ -55,7 +54,6 @@ public class Player : Unit
         }
         movementManger = GetComponentInChildren<MovementManager>();
         playerMovement = GetComponentInChildren<PlayerMovement>();
-        spellManager = GetComponentInChildren<SpellManager>(true);
         animationManager = GetComponentInChildren<AnimationManager>();
         
     }

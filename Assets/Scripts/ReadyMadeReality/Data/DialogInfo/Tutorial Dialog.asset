@@ -13,16 +13,8 @@ MonoBehaviour:
   m_Name: Tutorial Dialog
   m_EditorClassIdentifier: 
   dialogList:
-  - left_portrait_id: 1
-    right_portrait_id: 0
-    text_name: "\uC774\uC2A4\uD130"
-    text_value: "\uC548\uB155! @\uBC18\uAC00\uC6CC!"
-    nameColor:
-      serializedVersion: 2
-      rgba: 4278223103
-    colorPreset: 2
-    enableNameBox: 1
-  - left_portrait_id: 11
+  - sort: 0
+    left_portrait_id: 11
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uB124\uAC00 \uC774\uBC88\uC5D0 \uC0C8\uB85C \uB4E4\uC5B4\uC628
@@ -32,7 +24,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 2
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 2
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uC751? \uCC98\uC74C \uB4E3\uB294\uB2E4\uACE0?@\n\uAD1C\uCC2E\uC544.
@@ -42,7 +39,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 4
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 4
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uC0AC\uC2E4...@\n\uC0DD\uAC01\uD574\uBCF4\uBA74 \uC5C4\uCCAD \uC911\uC694\uD558\uC9C0
@@ -52,7 +54,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 9
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 9
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uBB50 \uC5B4\uB54C,@ \uC9C0\uAE08 \uC640\uC11C\uB294 \uC911\uC694\uD55C\uAC8C
@@ -62,7 +69,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 11
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 11
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uADF8\uB7FC \uBCF8\uACA9\uC801\uC73C\uB85C \uB124\uAC00 \uD574\uC57C\uB420
@@ -72,7 +84,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 3
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 3
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uC5B4... \uADFC\uB370 \uBB58 \uC54C\uB824\uC918\uC57C \uD588\uC5C8\uC9C0?"
@@ -81,7 +98,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 5
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 5
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uC5E5? \uC774\uBBF8 \uB2E4 \uC54C\uACE0 \uC788\uB2E4\uACE0?"
@@ -90,7 +112,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 10
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 10
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "...\uADF8\uB7FC \uB098 \uAD1C\uD788 \uC628\uAC70\uC57C?"
@@ -99,7 +126,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 2
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 2
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uC544\uB2C8\uB77C\uACE0?"
@@ -108,7 +140,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 6
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 6
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uC9C0\uAE08 \uB098 \uB180\uB9AC\uB824\uACE0 \uC77C\uBD80\uB7EC
@@ -118,7 +155,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 8
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 8
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uD788\uD788 \uADF8\uB7F4\uC904 \uC54C\uC558\uB2E4\uB2C8\uAE4C."
@@ -127,7 +169,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 7
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 7
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uAD1C\uCC2E\uC544, \uC5B8\uC81C\uB4E0 \uB0B4 \uB3C4\uC6C0\uC774
@@ -137,7 +184,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 1
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 1
     right_portrait_id: 0
     text_name: "\uC774\uC2A4\uD130"
     text_value: "\uADF8\uB7FC \uC798 \uB458\uB7EC\uBCF4\uACE0 \uC788\uC5B4!"
@@ -146,7 +198,12 @@ MonoBehaviour:
       rgba: 4278223103
     colorPreset: 2
     enableNameBox: 1
-  - left_portrait_id: 0
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 0
     right_portrait_id: 0
     text_name: 
     text_value: "- \uD29C\uD1A0\uB9AC\uC5BC \uB05D -"
@@ -155,4 +212,23 @@ MonoBehaviour:
       rgba: 4294967295
     colorPreset: 0
     enableNameBox: 0
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 0
+    right_portrait_id: 0
+    text_name: 
+    text_value: "- \uD29C\uD1A0\uB9AC\uC5BC \uB05D -"
+    nameColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    colorPreset: 0
+    enableNameBox: 0
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
   portraitList: {fileID: 11400000, guid: 966a5d91c1e615c44a5e34f12088496e, type: 2}
+  isAuto: 0

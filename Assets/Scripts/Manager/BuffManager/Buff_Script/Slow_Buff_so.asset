@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf50d5f0a032264ea8bed1f00ec6973, type: 3}
+  m_Name: Slow_Buff_so
+  m_EditorClassIdentifier: 
+  buff_name: "\uB290\uB824\uC9D0"
+  buff_type: slow_debuff
+  buff_duration: 7
+  buff_tick: 0
+  buff_currenttime: 0
+  buff_value: 0.5

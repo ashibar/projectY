@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17d1706bd4c9c0c43ac5782a2206f5a6, type: 3}
-  m_Name: StageInfoContainer
+  m_Script: {fileID: 11500000, guid: abf50d5f0a032264ea8bed1f00ec6973, type: 3}
+  m_Name: AttackUp_Buff_so
   m_EditorClassIdentifier: 
-  curID: 0
-  stageInfoList:
-  - {fileID: 11400000, guid: b1a4620ca4a60f1488bfa36d20a62afc, type: 2}
+  buff_name: "\uACF5\uACA9\uB825 \uC99D\uAC00 \uBC84\uD504"
+  buff_type: damage_buff
+  buff_duration: 10
+  buff_tick: 0
+  buff_currenttime: 0
+  buff_value: 0.2

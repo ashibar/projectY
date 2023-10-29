@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
-using Unity.VisualScripting;
 
 namespace ReadyMadeReality
 {
@@ -21,6 +20,11 @@ namespace ReadyMadeReality
             GUIStyle indexFieldStyle = new GUIStyle(EditorStyles.textField);
             indexFieldStyle.alignment = TextAnchor.MiddleRight;
 
+            GUILayoutOption[] normalOptions =
+            {
+                GUILayout.ExpandWidth(true),
+                GUILayout.Height(20),
+            };
             GUILayoutOption[] smallFieldOption =
             {
             GUILayout.Width(50),
@@ -51,11 +55,17 @@ namespace ReadyMadeReality
             GUILayout.Width(200),
             GUILayout.Height(250)
         };
+            GUILayoutOption[] OnlyLabelOption =
+            {
+            GUILayout.Width(110),
+            GUILayout.Height(20)
+        };
 
             EditorGUILayout.LabelField("Dialog Infomation", EditorStyles.boldLabel);
             so.PortraitList = (PortraitInfo_so)EditorGUILayout.ObjectField("Portrait List", so.PortraitList, typeof(PortraitInfo_so), true);
-
-
+            so.Mode = (DialogMode)EditorGUILayout.EnumPopup("Dialog Mode", so.Mode, normalOptions);
+            so.IsAuto = EditorGUILayout.Toggle("Auto Mode", so.IsAuto);
+            //
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Dialog List", EditorStyles.boldLabel);
@@ -97,27 +107,51 @@ namespace ReadyMadeReality
                 }
                 GUILayout.EndHorizontal();
 
+                
+                
                 if (so.DialogList.Count > 0)
                 {
-                    // 대화자 텍스트
                     GUILayout.BeginHorizontal();
-                    so.DialogList[index].Text_name = EditorGUILayout.TextField("Name", so.DialogList[index].Text_name);
-                    so.DialogList[index].EnableNameBox = EditorGUILayout.Toggle(so.DialogList[index].EnableNameBox);
-
+                    so.DialogList[index].Sort = (DialogSort)EditorGUILayout.EnumPopup("Dialog Sort", so.DialogList[index].Sort);
                     GUILayout.EndHorizontal();
 
-                    // 대화자 이름 텍스트 박스
-                    GUILayout.BeginHorizontal();
-                    so.DialogList[index].NameColor = EditorGUILayout.ColorField("NameBox Color", so.DialogList[index].NameColor);
-                    so.DialogList[index].ColorPreset = (NameColorPreset)EditorGUILayout.EnumPopup(so.DialogList[index].ColorPreset);
-                    so.DialogList[index].NameColor = SetColor(so.DialogList[index].ColorPreset, so.DialogList[index].NameColor);
-                    so.DialogList[index].NameBoxPos = (NameBoxPosPreset)EditorGUILayout.EnumPopup(so.DialogList[index].NameBoxPos);
-                    //so.DialogList[index].NameBoxPos = EditorGUILayout.Popup(so.DialogList[index].NameBoxPos,
-                    GUILayout.EndHorizontal();
-
-                    // 대화 로그 텍스트
-                    EditorGUILayout.PrefixLabel("Log", EditorStyles.boldLabel);
-                    so.DialogList[index].Text_value = EditorGUILayout.TextArea(so.DialogList[index].Text_value, textFieldOptions);
+                    if (so.DialogList[index].Sort == DialogSort.Dialog)
+                    {
+                        DialogArea(so.DialogList[index], textFieldOptions);
+                    }
+                    if (so.DialogList[index].Sort == DialogSort.SelectWindow)
+                    {
+                        DialogArea(so.DialogList[index], textFieldOptions);
+                        GUILayout.BeginHorizontal();
+                        EditorGUILayout.LabelField("Event Phase List", OnlyLabelOption);
+                        EditorGUILayout.LabelField("Max", smallFieldOption);
+                        EditorGUI.BeginDisabledGroup(true);
+                        EditorGUILayout.IntField(so.DialogList[index].PhaseList.Count, indexFieldStyle, smallFieldOption);
+                        EditorGUI.EndDisabledGroup();
+                        if (GUILayout.Button("+", buttonOption))
+                        {
+                            if (so.DialogList[index].PhaseList.Count > 0)
+                                so.DialogList[index].PhaseList.Add(null);
+                            else
+                                so.DialogList[index].PhaseList.Add(null);
+                        }
+                        if (GUILayout.Button("-", buttonOption))
+                        {
+                            if (so.DialogList[index].PhaseList.Count > 0)
+                            {
+                                so.DialogList[index].PhaseList.RemoveAt(so.DialogList[index].PhaseList.Count - 1);
+                            }
+                            else
+                                Debug.Log("Already Empty");
+                        }
+                        GUILayout.EndHorizontal();
+                        for (int i = 0; i < so.DialogList[index].PhaseList.Count; i++)
+                        {
+                            GUILayout.BeginHorizontal();
+                            so.DialogList[index].PhaseList[i] = (EventPhase_so)EditorGUILayout.ObjectField(string.Format("      Phase {0}", i), so.DialogList[index].PhaseList[i], typeof(EventPhase_so), true);
+                            GUILayout.EndHorizontal();
+                        }
+                    }
                 }
             }
             // 왼쪽 초상화
@@ -131,6 +165,7 @@ namespace ReadyMadeReality
             GUILayout.BeginHorizontal();
             so.DialogList[index].Right_portrait_id = EditorGUILayout.IntField("Right Portrait id", so.DialogList[index].Right_portrait_id, indexFieldStyle, indexFieldOption);
             GUILayout.EndHorizontal();
+
 
             if (GUILayout.Button("Save", saveButtonOptions))
             {
@@ -176,6 +211,28 @@ namespace ReadyMadeReality
             }
 
             return nameColor;
+        }
+
+        private void DialogArea(DialogInfo info, GUILayoutOption[] options)
+        {
+            GUILayout.BeginHorizontal();
+            info.Text_name = EditorGUILayout.TextField("Name", info.Text_name);
+            info.EnableNameBox = EditorGUILayout.Toggle(info.EnableNameBox);
+
+            GUILayout.EndHorizontal();
+
+            // 대화자 이름 텍스트 박스
+            GUILayout.BeginHorizontal();
+            info.NameColor = EditorGUILayout.ColorField("NameBox Color", info.NameColor);
+            info.ColorPreset = (NameColorPreset)EditorGUILayout.EnumPopup(info.ColorPreset);
+            info.NameColor = SetColor(info.ColorPreset, info.NameColor);
+            info.NameBoxPos = (NameBoxPosPreset)EditorGUILayout.EnumPopup(info.NameBoxPos);
+            //so.DialogList[index].NameBoxPos = EditorGUILayout.Popup(so.DialogList[index].NameBoxPos,
+            GUILayout.EndHorizontal();
+
+            // 대화 로그 텍스트
+            EditorGUILayout.PrefixLabel("Log", EditorStyles.boldLabel);
+            info.Text_value = EditorGUILayout.TextArea(info.Text_value, options);
         }
     } 
 }

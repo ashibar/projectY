@@ -2,43 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapStatusWindow : MonoBehaviour
 {
-    [SerializeField] private StageInfoContainer_so stageInfo_so;
+    [SerializeField] private TextMeshProUGUI mapDifficulty;
+    [SerializeField] private TextMeshProUGUI mapName;
+    [SerializeField] private TextMeshProUGUI mapObjective;
+    [SerializeField] private Image mapImage;
+    [SerializeField] private Transform spell_holder;
 
-    [SerializeField] private TextMeshProUGUI stage_name_text;
-    [SerializeField] private TextMeshProUGUI stage_reward_text;
+    [SerializeField] private Sprite stage_sprite_default;
+    [SerializeField] private GameObject spell_icon_origin;
 
-    private void Awake()
+    private Vector2 baseVector = new Vector2(50f, -50f);
+    private float xgap = 110f;
+    private float ygap = 110f;
+
+    public void SetStatus(StageInfo_so stageInfo)
     {
-        stage_name_text = GameObject.Find("MapName").GetComponent<TextMeshProUGUI>();
-        stage_reward_text = GameObject.Find("StageReward").GetComponent<TextMeshProUGUI>();
-    }
+        mapName.text = stageInfo.StageName;
+        mapImage.sprite = stageInfo.StageSprite != null ? stageInfo.StageSprite : stage_sprite_default;
 
-    private void Start()
-    {
-        Update_Status();
-    }
-
-    private void Update_Status()
-    {
-        int curID = stageInfo_so.CurID;
-        stage_name_text.text = string.Format("Stage Name : \n{0}", stageInfo_so.StageInfoList[curID].StageName);
-        stage_reward_text.text = "Reward\n";
-        if (stageInfo_so.StageInfoList[curID].Reward != null)
-            foreach (GameObjectNFloat reward in stageInfo_so.StageInfoList[curID].Reward.RewardList)
-                stage_reward_text.text += string.Format("{0}, {1}%\n", reward.obj.GetComponent<Spell>().GetName(), reward.value * 100);
-    }
-
-    public void Press_Reset_Button()
-    {
-        stageInfo_so.CurID = 1;
-        Update_Status();
-    }
-
-    public void Press_Update_Button()
-    {
-        Update_Status();
+        Spell_Icon[] remain = spell_holder.GetComponentsInChildren<Spell_Icon>();
+        for (int i = remain.Length - 1; i >= 0; i--)
+            Destroy(remain[i].gameObject);
+        if (stageInfo.Reward == null) return;
+        List<GameObjectNFloat> rewardList = stageInfo.Reward.RewardList;
+        for (int i = 0; i < rewardList.Count; i++)
+        {
+            GameObjectNFloat reward = rewardList[i];
+            GameObject clone = Instantiate(spell_icon_origin, spell_holder);
+            Vector2 pos = baseVector + new Vector2(i % 5 * xgap, (i / 5) * ygap);
+            clone.GetComponent<RectTransform>().anchoredPosition = pos;
+            clone.GetComponent<Spell_Icon>().SetIcon(reward.obj.GetComponent<Spell>());
+        }
     }
 }

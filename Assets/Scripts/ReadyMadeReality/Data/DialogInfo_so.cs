@@ -9,8 +9,12 @@ namespace ReadyMadeReality
     {
         [SerializeField] private List<DialogInfo> dialogList = new List<DialogInfo>();
         [SerializeField] private PortraitInfo_so portraitList;
+        [SerializeField] private bool isAuto;
+        [SerializeField] private DialogMode mode;
 
         public List<DialogInfo> DialogList { get => dialogList; set => dialogList = value; }
         public PortraitInfo_so PortraitList { get => portraitList; set => portraitList = value; }
+        public bool IsAuto { get => isAuto; set => isAuto = value; }
+        public DialogMode Mode { get => mode; set => mode = value; }
     } 
 }
