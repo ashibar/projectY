@@ -61,10 +61,25 @@ public class Projectile : Spell
                 stat_processed = stat_processed,
                 stat_spell = stat_spell,
             };
-            isProcessEnd = triggerEnterStackProcess(para);
+            isProcessEnd = StackProcess_Function(para);
             await Task.Yield();
         }
         Debug.Log("process End");
+    }
+
+    private bool StackProcess_Function(DelegateParameter para)
+    {
+        if (para.collider_stack.Count <= 0) return false;
+
+        for (int i = 0; i < Mathf.Min((int)(stat_spell.Spell_Amount_Tic), para.collider_stack.Count); i++)
+        {
+            para.collision = collider_stack[i];
+            triggerEnterStackProcess(para);
+            Destroy(para.projectile);
+        }
+        para.collider_stack.Clear();
+
+        return true;
     }
 
     /// <summary>
@@ -218,6 +233,7 @@ public class Projectile : Spell
     /// <param name="spell"></param>
     public void SetMainElement(Spell_Element spell)
     {
+        //Debug.Log(spell);
         main_element = spell;
         shootingFunction += spell.ShootingFunction;
     }

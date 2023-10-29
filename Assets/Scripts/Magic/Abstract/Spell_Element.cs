@@ -16,5 +16,12 @@ public class Spell_Element : Spell
         base.Awake();
         animationModule = GetComponentInChildren<Projectile_AnimationModule>();
         animationModule.SpriteChange_routine();
-    }    
+    }
+
+    public override void ShootingFunction(DelegateParameter para)
+    {
+        base.ShootingFunction(para);
+        SpriteRenderer sr = para.projectile.GetComponent<SpriteRenderer>();
+        sr.color = projectile_color;
+    }
 }

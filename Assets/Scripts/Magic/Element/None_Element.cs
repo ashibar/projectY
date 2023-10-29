@@ -16,7 +16,6 @@ public class None_Element : Spell_Element
     public override void ShootingFunction(DelegateParameter para)
     {
         base.ShootingFunction(para);
-        SpriteRenderer sr = para.projectile.GetComponent<SpriteRenderer>();
-        sr.color = projectile_color;
+        
     }
 }

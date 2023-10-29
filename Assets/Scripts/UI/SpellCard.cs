@@ -45,12 +45,26 @@ public class SpellCard : MonoBehaviour, IPointerClickHandler
         this.spell = spell;
         if (spell != null)
         {
-            spell_backBackground.color = Color.black;
+            spell_backBackground.color = SetColor(spell);
             spell_backImage.sprite = spell.sprite_back != null ? spell.sprite_back : sprite_backdesign_default;
-            spell_frontImage.color = new Color(0.2f, 0.2f, 0.2f, 1f);
+            spell_frontImage.color = SetColor(spell);
             spell_frontSpellImage.sprite = spell.sprite_spell != null ? spell.sprite_spell : sprite_spell_default;
             spell_name.text = spell.GetName();
         }
+    }
+
+    private Color SetColor(Spell spell)
+    {
+        if (spell is Spell_Core)
+            return new Color(0.8f, 0.7f, 0f);/*- new Color(0.2f, 0.2f, 0)*/
+        else if (spell is Spell_Part)
+            return new Color(0f, 0.7f, 0f);/* - new Color(0, 0.2f, 0)*/
+        else if (spell is Spell_Element)
+            return new Color(0.44f, 0.25f, 0.66f); /*- new Color(0.2f, 0.2f, 0.2f)*/
+        else if (spell is Spell_Passive)
+            return new Color(0.3f, 0.3f, 0.3f); /*- new Color(0.2f, 0.2f, 0.2f)*/
+        else
+            return new Color(0.3f, 0.3f, 0.3f); /*- new Color(0.2f, 0.2f, 0.2f)*/
     }
 
     public void AppearSpell()

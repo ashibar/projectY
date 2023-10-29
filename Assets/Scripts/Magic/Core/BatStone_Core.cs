@@ -37,21 +37,11 @@ public class BatStone_Core : Spell_Core
 
     public override bool TriggerEnterStackProcess(DelegateParameter para)
     {
-        if (para.collider_stack.Count > 0)
-        {
-            for (int i = 0; i < Mathf.Min((int)(stat_spell.Spell_Amount_Tic), para.collider_stack.Count); i++)
-            {
-                float damage = para.stat_processed.Damage * para.stat_spell.Spell_DMG;
-                //Debug.Log(string.Format("{0}, {1}, {2}", stat_processed.Damage, stat_spell.Spell_DMG, damage));
-                DamageCalculation dc = UnitManager.Instance.damageCalculation;
-                para.collider_stack[i].GetComponent<Unit>().stat.Hp_current -= dc.Calculate(owner, para.collider_stack[i].GetComponent<Unit>(), para.stat_processed, para.stat_spell, Color.white);
-                //damageTextRenderModule.Damagesend(para.projectile, (int)damage);
-                Destroy(para.projectile);
-            }
-            para.collider_stack.Clear();
-            return true;
-        }
-        return false;
+        float damage = para.stat_processed.Damage * para.stat_spell.Spell_DMG;
+        //Debug.Log(string.Format("{0}, {1}, {2}", stat_processed.Damage, stat_spell.Spell_DMG, damage));
+        DamageCalculation dc = UnitManager.Instance.damageCalculation;
+        para.collision.GetComponent<Unit>().stat.Hp_current -= dc.Calculate(owner, para.collision.GetComponent<Unit>(), para.stat_processed, para.stat_spell, Color.white);
+        return true;
     }
 
     public override void ShootingFunction(DelegateParameter para)

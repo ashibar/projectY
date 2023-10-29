@@ -21,5 +21,6 @@ MonoBehaviour:
   - {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
   element:
   - {fileID: 5515772338080239978, guid: 6c5923887f54aa144a6a2fc2f3f52414, type: 3}
+  - {fileID: 7941158254755749436, guid: bd222445ab2af204295b3c621da64a44, type: 3}
   passive:
   - {fileID: 6743049818794002840, guid: ad7b378ecfa5c8d4d9cbce9779cf3134, type: 3}

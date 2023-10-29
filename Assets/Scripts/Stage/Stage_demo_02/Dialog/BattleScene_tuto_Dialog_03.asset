@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49dacf86a98d8e4a9448c1c595bdc2e, type: 3}
+  m_Name: BattleScene_tuto_Dialog_03
+  m_EditorClassIdentifier: 
+  dialogList:
+  - sort: 0
+    left_portrait_id: 0
+    right_portrait_id: 3
+    text_name: 
+    text_value: "\uC774\uAC78 \uC804\uBD80 \uB2E4 \uD574\uCE58\uC6E0\uB2E4\uACE0?@
+      \uB124 \uCE5C\uAD6C \uC9C4\uC9DC \uC5C4\uCCAD\uB098\uC796\uC544?@\r\n\uC0AC\uC2E4
+      \uB098\uB3C4 \uB9D8\uB9CC \uBA39\uC73C\uBA74 \uADF8\uB807\uAC8C \uC5B4\uB824\uC6B4\uAC74
+      \uC544\uB2C8\uC600\uB294\uB370 \uC544\uC27D\uAC8C \uB410\uAD6C\uB9CC! \uD558\uD558!"
+    nameColor:
+      serializedVersion: 2
+      rgba: 0
+    colorPreset: 0
+    enableNameBox: 0
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 0
+    right_portrait_id: 3
+    text_name: 
+    text_value: "\uC544\uAE4C \uB3C4\uB9DD\uAC00\uB824 \uD588\uB358\uAC70 \uB2E4
+      \uBD24\uB2E4\uACE0?@ \uC5D0\uD5E4\uC774~ \uC900\uBE44\uB3D9\uC791\uC774\uC57C
+      \uC900\uBE44\uB3D9\uC791.@\r\n\uB124\uAC00 \uB0B4 \uBCF8 \uC2E4\uB825\uC744
+      \uBABB\uBD10\uC11C \uADF8\uB798~ \uC800 \uC815\uB3C4\uB294 \uC544\uBB34\uAC83\uB3C4
+      \uC544\uB2C8\uAC70\uB4E0!"
+    nameColor:
+      serializedVersion: 2
+      rgba: 0
+    colorPreset: 0
+    enableNameBox: 0
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 0
+    right_portrait_id: 3
+    text_name: 
+    text_value: "\uC544\uBB34\uD2BC \uB2F9\uC7A5\uC740 \uC704\uAE30\uB97C \uBAA8\uBA74\uD55C\uAC83
+      \uAC19\uC73C\uB2C8\uAE4C \uAC00\uB358 \uAE38\uC744 \uB9C8\uC800 \uAC00\uBCFC\uAE4C?@
+      \r\n\uC2AC\uC2AC \uC5B4\uB450\uC6CC\uC9C0\uACE0 \uC788\uC5B4,@ \uBC24\uC774\uB418\uBA74
+      \uC598\uB124\uB4E4\uC740 \uC544\uBB34\uAC83\uB3C4 \uC544\uB2D0\uC815\uB3C4\uB85C
+      \uD749\uC545\uD55C\r\n\uB188\uB4E4\uC774 \uD280\uC5B4\uB098\uC62C\uAC70\uC57C.
+      \uC11C\uB450\uB974\uC790."
+    nameColor:
+      serializedVersion: 2
+      rgba: 0
+    colorPreset: 0
+    enableNameBox: 0
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  portraitList: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
+  isAuto: 1
+  mode: 1

@@ -48,11 +48,13 @@ public class BuffManager : MonoBehaviour
         buffs.Remove(buff);
     }
 
-    public void AddBuff(GameObject buffobj)
+    public GameObject AddBuff(GameObject buffobj)
     {
-        Instantiate(buffobj, transform);
+        GameObject clone = Instantiate(buffobj, transform);
         buffs.Add(buffobj.GetComponent<Buff>());
         buffobj.GetComponent<Buff>().Init(unit.stat, this);
+
+        return clone;
     }
 
     //public void Buffcheck(Stat gstat, Stat pstat, Buff buff)

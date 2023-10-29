@@ -146,6 +146,7 @@ public class Spell_Core : Spell
         // 투사체의 행동 결정
         AddDelegate(clone.GetComponent<Projectile>());
 
+
         // 투사체에 하위 스펠 복제
         foreach (Spell_Part lower in spell_part)
             Instantiate(lower.gameObject, clone.transform);
@@ -304,7 +305,11 @@ public class Spell_Core : Spell
         AddDelegate(this);
         RegisterAllFromChildren();
         Stat_Process();
-        if (element_management != null) element_management.Init();
+        if (element_management != null)
+        {
+            element_management.Init();
+            element_management.GetElementInfo().AddDelegate(this);
+        }
     }
 
     private void OnDestroy()
