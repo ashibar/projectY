@@ -18,5 +18,3 @@ MonoBehaviour:
   stageSort: 0
   phases:
   - {fileID: 11400000, guid: 0edf986bca3af3d44822f63eff8cc2d6, type: 2}
-  - {fileID: 11400000, guid: edace8043f7f5a14a8c8e90570447f0c, type: 2}
-  - {fileID: 11400000, guid: 5fef3185f0dfa3e4d90b6aa138eec4ab, type: 2}

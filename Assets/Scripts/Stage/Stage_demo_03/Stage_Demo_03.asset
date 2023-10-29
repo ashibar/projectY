@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee40162851d1e5c48b47ec81f8a8c08c, type: 3}
   m_Name: Stage_Demo_03
   m_EditorClassIdentifier: 
-  stageName: "\uAC80\uC740\uC232"
-  stageSprite: {fileID: 0}
-  reward: {fileID: 11400000, guid: 695e9ee9833cece4a8cb6d4495710b1d, type: 2}
-  stageSort: 2
+  stageName: 
+  rewards: []
+  stageSort: 0
   phases:
   - {fileID: 11400000, guid: cc562b57e614e8b4bb7fe36e21bfc031, type: 2}
-  - {fileID: 11400000, guid: 360e521bad8fc664fa9dac27b67dd9cb, type: 2}
-  - {fileID: 11400000, guid: 959e63d8cb5756045bda7ce39d332f6f, type: 2}
