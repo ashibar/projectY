@@ -37,7 +37,12 @@ public class Enemy : Unit
 
     protected override void Start()
     {
-        
+        if (buffManager == null)
+        {
+            GameObject obj = new GameObject("BuffManager");
+            obj.transform.parent = transform;
+            buffManager = obj.AddComponent<BuffManager>();            
+        }
     }
 
     protected override void Update()

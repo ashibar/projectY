@@ -25,7 +25,7 @@ public class Spell : MonoBehaviour
     public delegate GameObject InstantiateProjectile_delegate(DelegateParameter para);
     public delegate void TriggerEnterTickFunction_delegate(DelegateParameter para);
     public delegate void TriggerEnterEndFunction_delegate(DelegateParameter para);
-    public delegate bool TriggerEnterStackProcess_delegate(DelegateParameter para);
+    public delegate void TriggerEnterStackProcess_delegate(DelegateParameter para);
     public delegate void ShootingFunction_delegate(DelegateParameter para);
     public delegate void DestroyFunction_delegate(DelegateParameter para);
 
@@ -92,9 +92,8 @@ public class Spell : MonoBehaviour
         
     }
 
-    public virtual bool TriggerEnterStackProcess(DelegateParameter para)
+    public virtual void TriggerEnterStackProcess(DelegateParameter para)
     {
-        return true;
     }
 
     public virtual void ShootingFunction(DelegateParameter para)

@@ -121,6 +121,33 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+  - no: 11
+    eventindex: 4
+    eventcode: Active Top Indicator
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 11
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
   - no: 5
     eventindex: 5
     eventcode: Set Dialog

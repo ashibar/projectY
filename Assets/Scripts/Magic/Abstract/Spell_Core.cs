@@ -35,7 +35,7 @@ public class Spell_Core : Spell
         damageTextRenderModule = GetComponentInChildren<DamageTextRenderModule>();
         //RegisterAllFromChildren();
         //Stat_Process();
-        if (element_management != null) element_management.Init();
+        //if (element_management != null) element_management.Init();
     }
 
     protected override void Update()
@@ -43,6 +43,9 @@ public class Spell_Core : Spell
         base.Update();
         if (!isActive) return;
         InstantiateDelayFunction();
+        //Debug.Log(element_management.GetElementInfo());
+        //List<Spell_Element> list = element_management.GetElementList();
+        //for (int i = 0; i < list.Count; i++) Debug.Log(string.Format("{0}, {1}", i, list[i]));
     }
 
     // Spell_Core [고정] 내부 함수
@@ -144,9 +147,8 @@ public class Spell_Core : Spell
         clone.GetComponent<Projectile>().SetVector(target, dir_toMove, dir_toShoot, pos_toShoot);
 
         // 투사체의 행동 결정
-        AddDelegate(clone.GetComponent<Projectile>());
-
-
+        //AddDelegate(clone.GetComponent<Projectile>());
+        SendDelegateToProjectile(clone.GetComponent<Projectile>());
         // 투사체에 하위 스펠 복제
         foreach (Spell_Part lower in spell_part)
             Instantiate(lower.gameObject, clone.transform);
@@ -200,9 +202,9 @@ public class Spell_Core : Spell
         //    Destroy(projectile);
     }
 
-    public override bool TriggerEnterStackProcess(DelegateParameter para)
+    public override void TriggerEnterStackProcess(DelegateParameter para)
     {
-        return true;
+        
     }
 
     public override void ShootingFunction(DelegateParameter para)
@@ -308,7 +310,9 @@ public class Spell_Core : Spell
         if (element_management != null)
         {
             element_management.Init();
-            element_management.GetElementInfo().AddDelegate(this);
+            Spell_Element main_element = element_management.GetElementInfo();
+            if (main_element != null)
+                main_element.AddDelegate(this);
         }
     }
 
@@ -317,4 +321,17 @@ public class Spell_Core : Spell
         cts?.Cancel();
     }
 
+    private void SendDelegateToProjectile(Projectile target)
+    {
+        target.instantiateOneProjectileFunction += instantiateOneProjectileFunction;
+        target.functionWhileCooltime += functionWhileCooltime;
+        target.functionWhileProjectileDelay += functionWhileProjectileDelay;
+        target.setAngle += setAngle;
+        target.instantiateProjectile += instantiateProjectile;
+        target.triggerEnterTickFunction += triggerEnterTickFunction;
+        target.triggerEnterEndFunction += triggerEnterEndFunction;
+        target.triggerEnterStackProcess += triggerEnterStackProcess;
+        target.shootingFunction += shootingFunction;
+        target.destroyFunction += destroyFunction;
+    }
 }
