@@ -61,7 +61,7 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
-      spawnInfo: {fileID: 11400000, guid: b0ecb31fd30f1064aa914ed1f76f046a, type: 2}
+      spawnInfo: {fileID: 11400000, guid: 2b02ac44127310744a547c02a26cec74, type: 2}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 8
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 5
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 15
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0

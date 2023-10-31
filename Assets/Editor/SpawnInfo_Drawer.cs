@@ -20,6 +20,11 @@ public class SpawnInfo_Drawer : PropertyDrawer
         SerializedProperty radius = property.FindPropertyRelative("radius");
         SerializedProperty angle1 = property.FindPropertyRelative("angle1");
         SerializedProperty angle2 = property.FindPropertyRelative("angle2");
+        SerializedProperty amount = property.FindPropertyRelative("amount");
+        SerializedProperty gap = property.FindPropertyRelative("gap");
+
+
+
 
         Rect rect1 = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
         EditorGUI.PropertyField(rect1, unit_prefab, new GUIContent("Unit Prefab"));
@@ -48,6 +53,24 @@ public class SpawnInfo_Drawer : PropertyDrawer
                 Rect rect5 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 2 + EditorGUIUtility.standardVerticalSpacing, position.width, EditorGUIUtility.singleLineHeight);
                 EditorGUI.PropertyField(rect5, list, new GUIContent("Position"));
                 recty.intValue = baseRecty + 3 + list.arraySize;
+                break;
+            case "Circle":
+                recty.intValue = baseRecty + 2;
+                Rect rect6 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 2 + EditorGUIUtility.standardVerticalSpacing, position.width, EditorGUIUtility.singleLineHeight);
+                EditorGUI.PropertyField(rect6, radius, new GUIContent("Radius"));
+                rect6.y += EditorGUIUtility.singleLineHeight;
+                EditorGUI.PropertyField(rect6, amount, new GUIContent("Amount"));
+                break;
+            case "Lines":
+                recty.intValue = baseRecty + 4;
+                Rect rect7 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 2 + EditorGUIUtility.standardVerticalSpacing, position.width, EditorGUIUtility.singleLineHeight);
+                EditorGUI.PropertyField(rect7, angle1, new GUIContent("Line Angle"));
+                rect7.y += EditorGUIUtility.singleLineHeight;
+                EditorGUI.PropertyField(rect7, amount, new GUIContent("Amount"));
+                rect7.y += EditorGUIUtility.singleLineHeight;
+                EditorGUI.PropertyField(rect7, point, new GUIContent("Position"));
+                rect7.y += EditorGUIUtility.singleLineHeight;
+                EditorGUI.PropertyField(rect7, gap, new GUIContent("gap"));
                 break;
             default:
                 recty.intValue = baseRecty;
