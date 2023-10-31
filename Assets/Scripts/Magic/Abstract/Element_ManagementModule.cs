@@ -14,19 +14,21 @@ public class Element_ManagementModule : MonoBehaviour
 
     private void MixElement()
     {
+        Spell_Element temp = null;
         foreach (Spell_Element element in spell_elements)
         {
             if (string.Equals(element.level.numberName, "Fire"))
             {
-                main_element = element;
+                temp = element;
                 high_priority = "Fire";
             }
             else if (!string.Equals(high_priority, "Fire") && string.Equals(element.level.numberName, "None"))
             {
-                main_element = element;
+                temp = element;
                 high_priority = "None";
             }
         }
+        main_element = temp;
     }
 
     private void RegisterElementAll()
@@ -52,6 +54,13 @@ public class Element_ManagementModule : MonoBehaviour
 
     public Spell_Element GetElementInfo()
     {
+
+        //MixElement();
         return main_element;
+    }
+
+    public List<Spell_Element> GetElementList()
+    {
+        return spell_elements;
     }
 }

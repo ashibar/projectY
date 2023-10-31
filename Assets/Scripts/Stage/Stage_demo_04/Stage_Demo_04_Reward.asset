@@ -15,5 +15,5 @@ MonoBehaviour:
   rewardList:
   - obj: {fileID: 7171416607448482314, guid: 197fc3658fa760b42818da744576975c, type: 3}
     value: 0.25
-  - obj: {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
+  - obj: {fileID: 6743049818794002840, guid: ad7b378ecfa5c8d4d9cbce9779cf3134, type: 3}
     value: 0.75

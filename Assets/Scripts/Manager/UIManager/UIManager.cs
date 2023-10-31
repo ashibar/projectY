@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Active Result Window",
         "Active Gameover Window",
         "Active StageInfo Window",
+        "Active Top Indicator",
     };
 
     private void Awake()
@@ -117,6 +118,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 ActiveGameoverWindow(para); break;
             case "Active StageInfo Window":
                 ActiveStageWindow(para); break;
+            case "Active Top Indicator":
+                ActiveTopIndicator(para); break;
             default:
                 break;
         }
@@ -195,6 +198,12 @@ public class UIManager : MonoBehaviour, IEventListener
 
         stageinfoText.gameObject.SetActive(true);
         stageinfoText.Active(stageName, stageCondition);
+    }
+
+    private void ActiveTopIndicator(ExtraParams para)
+    {
+        UnitManager.Instance.MaxDestroyed = para.Intvalue;
+        topIndicator.Sort = stageInfoContainer.StageInfoList[stageInfoContainer.CurID].StageSort;
     }
 
     // Dummy Code

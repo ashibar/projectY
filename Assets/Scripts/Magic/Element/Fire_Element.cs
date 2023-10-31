@@ -20,15 +20,16 @@ public class Fire_Element : Spell_Element
 
     }
 
-    public override bool TriggerEnterStackProcess(DelegateParameter para)
+    public override void TriggerEnterStackProcess(DelegateParameter para)
     {
-        base.triggerEnterStackProcess(para);
+        base.TriggerEnterStackProcess(para);
         BuffManager target_buffManager = para.collision.GetComponent<Unit>().buffManager;
         GameObject clone = target_buffManager.AddBuff(burn_buff_origin);
         Debug.Log(string.Format("{0} is burning, {1}", para.collision, target_buffManager));
         clone.GetComponent<Buff>().Buff_value = para.stat_processed.Damage * para.stat_spell.Spell_DMG * 0.1f;
         clone.GetComponent<Buff>().Buff_durationcrrent = 5;
         clone.GetComponent<Buff>().Buff_tick = 1;
-        return true;
+
+        clone.GetComponent<Buff>().Init(para.collision.GetComponent<Unit>().stat, target_buffManager);
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire_Element_stat_spell
   m_EditorClassIdentifier: 
   spell_Type: 2
-  spell_Name: "\uD654\uC5FC \uC18D\uC131"
+  spell_Name: "\uD654\uC5FC \uC6D0\uC18C"
   spell_Code: c1
   spell_DMG: 0
   spell_Speed: 0

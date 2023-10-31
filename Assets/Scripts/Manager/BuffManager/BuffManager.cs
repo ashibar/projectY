@@ -52,7 +52,6 @@ public class BuffManager : MonoBehaviour
     {
         GameObject clone = Instantiate(buffobj, transform);
         buffs.Add(buffobj.GetComponent<Buff>());
-        buffobj.GetComponent<Buff>().Init(unit.stat, this);
 
         return clone;
     }

@@ -24,4 +24,9 @@ public class Spell_Element : Spell
         SpriteRenderer sr = para.projectile.GetComponent<SpriteRenderer>();
         sr.color = projectile_color;
     }
+
+    public override void TriggerEnterStackProcess(DelegateParameter para)
+    {
+        base.TriggerEnterStackProcess(para);
+    }
 }
