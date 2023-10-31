@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 /// <summary>
 /// <para/><b>бсбс SpawnManager бсбс</b>
@@ -211,6 +212,8 @@ public class SpawnManager : MonoBehaviour, IEventListener
                 case "Point": Spawn_Point(si); break;
                 case "Border": Spawn_Border(si); break;
                 case "List": Spawn_List(si); break;
+                case "Circle": Spawn_Circle(si); break;
+                case "Lines": Spawn_Line(si); break;
                 default: break;
             }
         }
@@ -227,6 +230,48 @@ public class SpawnManager : MonoBehaviour, IEventListener
     {
         
     }
+    private void Spawn_Line(SpawnInfo si)
+    {
+        Vector2 pos = Player.Instance.transform.position;
+        Vector2 pos_standard = si.point;
+        float radius = si.radius;
+        float gap = si.gap;
+        int amount = si.amount;
+
+        for (int i = 0; i < amount; i++)
+        {
+            float angle = i * gap;
+            float radians = angle * (Mathf.PI / 180);
+            float coordX = pos_standard.x + pos.x + radius * Mathf.Cos(radians);
+            float coordY = pos_standard.y + pos.y + radius * Mathf.Sin(radians);
+
+            
+            Vector2 new_pos = new Vector2(coordX, coordY);
+            GameObject clone = Instantiate(si.unit_prefab, new_pos, Quaternion.identity, Holder.enemy_holder);
+            clone.name = UnitManager.Instance.Clones.Count.ToString();
+            UnitManager.Instance.Clones.Add(clone);
+        }
+
+    }
+
+    private void Spawn_Circle(SpawnInfo si)
+    {
+        Vector2 pos =  Player.Instance.transform.position;
+        float radius = si.radius;
+        int amount = si.amount;
+        for (int i = 0; i < amount; i++)
+        {
+            float angles = 2 * Mathf.PI * i / amount;
+            float coordX = pos.x + radius * Mathf.Cos(angles);
+            float coordY = pos.y + radius * Mathf.Sin(angles);
+
+            Vector2 new_pos = new Vector2(coordX, coordY);
+            GameObject clone = Instantiate(si.unit_prefab, new_pos, Quaternion.identity, Holder.enemy_holder);
+            clone.name = UnitManager.Instance.Clones.Count.ToString();
+            UnitManager.Instance.Clones.Add(clone);
+        }
+    }
+
 
     private void Spawn_List(SpawnInfo si)
     {

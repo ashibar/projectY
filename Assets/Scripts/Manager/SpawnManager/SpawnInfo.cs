@@ -14,9 +14,12 @@ public class SpawnInfo
     [SerializeField] public float angle1;
     [SerializeField] public float angle2;
     [SerializeField] public float noise;
+    [SerializeField] public int amount;
+    [SerializeField] public float gap;
+    
 
     [SerializeField] public int recty;
-    public static List<string> spawn_sort_preset = new List<string>() { "Point", "Border", "List" ,"Area" };
+    public static List<string> spawn_sort_preset = new List<string>() { "Point", "Border", "List" ,"Area","Circle","Lines",};
 
     public SpawnInfo()
     {
@@ -30,5 +33,7 @@ public class SpawnInfo
         this.angle2 = 0;
         this.noise = 0;
         this.recty = 2;
+        this.amount = 0;
+        this.gap = 1;
     }
 }

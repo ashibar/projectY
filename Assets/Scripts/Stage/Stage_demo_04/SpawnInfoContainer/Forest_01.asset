@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Forest_01
   m_EditorClassIdentifier: 
   spawnInfo:
-  - unit_prefab: {fileID: 7531231395964145883, guid: 0849a49e06061414ba40532d67848986, type: 3}
-    spawn_sort: List
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Border
     max: 0
     point: {x: 0, y: 0}
     position:
@@ -32,4 +32,6 @@ MonoBehaviour:
     angle1: 0
     angle2: 0
     noise: 0
-    recty: 16
+    amount: 0
+    gap: 1
+    recty: 6
