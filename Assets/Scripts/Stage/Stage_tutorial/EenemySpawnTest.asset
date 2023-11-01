@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - no: 0
-    eventindex: 5
-    eventcode: Set Dialog
+    eventindex: 0
+    eventcode: None
     condition:
-      sort: 1
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 1
+      targetNum: 0
       isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
-      name: 0
+      name: 
       intvalue: 0
       floatvalue: 0
       vecList: []
@@ -38,5 +38,5 @@ MonoBehaviour:
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
-      dialog_so: {fileID: 11400000, guid: e297b0a6f3c5a96438a1898d6f8a4a29, type: 2}
+      dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
