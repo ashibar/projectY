@@ -89,7 +89,7 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    public Spell_Core GetCore(int id)
+    public Spell_Core Get_Core(int id)
     {
         return cores[id];
     }
