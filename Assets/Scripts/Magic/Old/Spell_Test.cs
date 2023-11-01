@@ -1,31 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class Spell_Test : MonoBehaviour
 {
-    public delegate int TestFunction_delegate(int value);
-    public TestFunction_delegate testFunction;
+    [SerializeField] private float a = 0;
+    [SerializeField] private float b = 0;
 
-    public int TestFunction(int value)
-    {
-        Debug.Log("1," + value);
-        return value;
-    }
-
-    public int TestFunction2(int value)
-    {
-        Debug.Log("2," + value + 1);
-        return value + 1;
-    }
+    private CancellationTokenSource cts = new CancellationTokenSource();
 
     private void Awake()
     {
-        testFunction += TestFunction;
-        testFunction += TestFunction2;
+        Routine();
+    }
 
-        int result = testFunction(2);
-
-        Debug.Log("result = " + result);
+    private async void Routine()
+    {
+        while (!cts.IsCancellationRequested)
+        {
+            a = Time.time;
+            b += Time.deltaTime;
+            await Task.Yield();
+        }
     }
 }

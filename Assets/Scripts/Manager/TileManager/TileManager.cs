@@ -46,8 +46,8 @@ public class TileManager : MonoBehaviour
                 foreach (Vector2 pos in tilePos)
                     tileGenerater.SetTile(pos, new Vector2(distance, distance));
 
-            if (Input.GetKeyDown(KeyCode.G))
-                tileGenerater.SetTile(); 
+            //if (Input.GetKeyDown(KeyCode.G))
+            //    tileGenerater.SetTile(); 
         }
     }
 }
