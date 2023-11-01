@@ -27,4 +27,8 @@ public class Action_AI : MonoBehaviour
     {
         // ai가 할 행동
     }
+    protected virtual void ai_movement(Vector3 targetpos,Vector2 dir)
+    {
+        
+    }
 }

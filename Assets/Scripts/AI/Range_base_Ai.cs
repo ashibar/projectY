@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Range_base_Ai : MonoBehaviour
+public class Range_base_Ai : Action_AI
 {
     public float speed;
     public float ATK_Range = 5f;
     public float Ra_Range = 3f;
-    public Rigidbody2D target;
+    public Unit target;
     
 
     Rigidbody2D rigid;
@@ -15,52 +15,62 @@ public class Range_base_Ai : MonoBehaviour
     private void Awake()
     {
         GameObject player = GameObject.FindWithTag("Player");
-        target = player.GetComponent<Rigidbody2D>();
+        target = player.GetComponent<Player>();
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
 
 
     }
-    void FixedUpdate()
+
+    public override void ai_process()
     {
+        base.ai_process();
+        Vector2 dir = (Vector2)(target.transform.position - transform.position).normalized;
+        unit.dir_toShoot = dir;
+        unit.spellManager
+        float Distance = Vector2.Distance(target.transform.position, rigid.position);
         
-       
-        float Distance = Vector2.Distance(target.position, rigid.position);
+        
         if (Distance >= ATK_Range)
         {
-            MobMove();
+            ai_movement(target.transform.position,dir);
 
 
         }
-        else if(Distance >=0 && Distance < Ra_Range)
+        else if (Distance >= 0 && Distance < Ra_Range)
         {
-            RunAwayMob();
+            ai_movement(target.transform.position, -dir);
         }
-        else 
+        else
         {
-            Vector2 nextvac = Vector2.zero;
-            rigid.velocity = Vector2.zero;
-
-
+            //Vector2 nextvac = Vector2.zero;
+            //rigid.velocity = Vector2.zero;
         }
-
+    }
+    protected override void ai_movement(Vector3 targetpos, Vector2 dir)
+    {
+        base.ai_movement(targetpos, dir);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + (Vector3)dir, unit.stat.Speed * Time.deltaTime);
     }
     private void MoveCheck()
     {
         
     }
+
     private void MobMove()
     {
-        Vector2 dir = target.position - rigid.position;
-        Vector2 nextvac = dir.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextvac);
-        rigid.velocity = Vector2.zero;
+
+
+        //Vector2 dir = target.position - rigid.position;
+        //Vector2 nextvac = dir.normalized * speed * Time.fixedDeltaTime;
+        //rigid.MovePosition(rigid.position + nextvac);
+        //rigid.velocity = Vector2.zero;
     }
     private void RunAwayMob()
     {
-        Vector2 dir = target.position + rigid.position;
-        Vector2 nextvac = dir.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextvac);
-        rigid.velocity = Vector2.zero;
+        //Vector2 dir = target.position + rigid.position;
+        //Vector2 nextvac = dir.normalized * speed * Time.fixedDeltaTime;
+        //rigid.MovePosition(rigid.position + nextvac);
+        //rigid.velocity = Vector2.zero;
     }
 }
