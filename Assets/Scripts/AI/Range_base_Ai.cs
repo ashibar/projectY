@@ -8,11 +8,12 @@ public class Range_base_Ai : Action_AI
     public float ATK_Range = 5f;
     public float Ra_Range = 3f;
     public Unit target;
-    
+
+    [SerializeField] private float cooltime_attack = 3;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
-    private void Awake()
+    protected override void Awake()
     {
         GameObject player = GameObject.FindWithTag("Player");
         target = player.GetComponent<Player>();
@@ -21,13 +22,13 @@ public class Range_base_Ai : Action_AI
 
 
     }
-
     public override void ai_process()
     {
         base.ai_process();
         Vector2 dir = (Vector2)(target.transform.position - transform.position).normalized;
+        
         unit.dir_toShoot = dir;
-        unit.spellManager
+
         float Distance = Vector2.Distance(target.transform.position, rigid.position);
         
         
@@ -46,6 +47,11 @@ public class Range_base_Ai : Action_AI
             //Vector2 nextvac = Vector2.zero;
             //rigid.velocity = Vector2.zero;
         }
+    }
+    protected override void ai_Attack_base()
+    {
+        base.ai_Attack_base();
+        ai_Attack_cooltime(0, target.transform.position, unit.dir_toShoot, cooltime_attack);
     }
     protected override void ai_movement(Vector3 targetpos, Vector2 dir)
     {

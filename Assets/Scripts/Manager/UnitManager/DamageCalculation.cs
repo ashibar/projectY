@@ -20,12 +20,12 @@ public class DamageCalculation : MonoBehaviour
 
         damageTextRenderModule.Damagesend(target.gameObject, (int)damage, text_color);
 
-        return damage;
+        return damage >= 0 ? damage : 0;
     }
 
     public float Calculate(GameObject target, float damage, Color text_color)
     {
         damageTextRenderModule.Damagesend(target.gameObject, (int)damage, text_color);
-        return damage;
+        return damage >= 0 ? damage : 0;
     }
 }

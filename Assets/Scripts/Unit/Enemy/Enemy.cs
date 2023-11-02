@@ -43,6 +43,10 @@ public class Enemy : Unit
             obj.transform.parent = transform;
             buffManager = obj.AddComponent<BuffManager>();            
         }
+        if (spellManager != null)
+        {
+            spellManager.SetSpell();
+        }
     }
 
     protected override void Update()
@@ -51,7 +55,7 @@ public class Enemy : Unit
 
         //movement.MoveByDirection_transform(new Vector2(-1, -1), stat.Speed);
         //movement.MoveToPosition_transform(Player.instance.transform.position, stat.Speed);
-        action_ai.ai_process();
+        //action_ai.ai_process();
         if (stat.Hp_current <= 0)
         {
             Delete_FromCloneList();

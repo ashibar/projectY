@@ -48,3 +48,5 @@ MonoBehaviour:
   spell_elements: []
   element_level: []
   main_element: {fileID: 0}
+  spellPrefabContainer: {fileID: 11400000, guid: 6811ef9c2e70be94781501107caaf696, type: 2}
+  high_priority: 

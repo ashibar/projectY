@@ -33,7 +33,7 @@ public class Boss_base_Ai : Action_AI
     {
         float Distance = Vector2.Distance(target.position, rigid.position);
         //Debug.Log(Distance);
-        if ((Distance >= ATK_Range || isCooltime) && !isCasting)
+        if ((Distance >= ATK_Range || isCooltime_) && !isCasting)
         {
             MobMove();
         }
@@ -50,15 +50,15 @@ public class Boss_base_Ai : Action_AI
         rigid.MovePosition(rigid.position + nextvac);
         rigid.velocity = Vector2.zero;
     }
-    [SerializeField] private bool isCooltime;
+    [SerializeField] private bool isCooltime_;
     [SerializeField] private bool isCasting;
     [SerializeField] private bool isInterrupted;
     [SerializeField] private Vector2 dash_vec;
     private async void DashProcess()
     {
-        if (!isCooltime)
+        if (!isCooltime_)
         {
-            isCooltime = true;
+            isCooltime_ = true;
             isCasting = true;
             DashTimer(dashCooltime);
             await WaitBeforeCast(beforeDelay);
@@ -131,10 +131,6 @@ public class Boss_base_Ai : Action_AI
             }
             await Task.Yield();
         }
-        isCooltime = false;
-    }
-    private void OnDestroy()
-    {
-        isInterrupted = true;
+        isCooltime_ = false;
     }
 }
