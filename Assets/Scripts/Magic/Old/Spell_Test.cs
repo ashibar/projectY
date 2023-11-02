@@ -7,23 +7,11 @@ using UnityEngine;
 
 public class Spell_Test : MonoBehaviour
 {
-    [SerializeField] private float a = 0;
-    [SerializeField] private float b = 0;
-
-    private CancellationTokenSource cts = new CancellationTokenSource();
-
-    private void Awake()
+    private void Update()
     {
-        Routine();
-    }
-
-    private async void Routine()
-    {
-        while (!cts.IsCancellationRequested)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            a = Time.time;
-            b += Time.deltaTime;
-            await Task.Yield();
+            Player.Instance.spellManager.Get_Core(0).trigger = true;
         }
     }
 }

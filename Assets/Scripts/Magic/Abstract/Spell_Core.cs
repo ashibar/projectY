@@ -57,9 +57,9 @@ public class Spell_Core : Spell
     {
         if (!isCooltime && ((Input.GetKey(triggerKey) && (owner is Player)) || trigger))
         {
-            trigger = false;
             isCooltime = true;
             await InstantiateDelayFunction_routine();
+            trigger = false;
             isCooltime = false;
         }
     }
@@ -83,7 +83,7 @@ public class Spell_Core : Spell
         }
 
         // ´ë±â
-        while (Time.time < end && !cts.Token.IsCancellationRequested)
+        while (Time.time < end && !cts.Token.IsCancellationRequested && !trigger)
         {
             FunctionWhileCooltime();
             await Task.Yield();
