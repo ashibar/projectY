@@ -55,7 +55,7 @@ public class Spell_Core : Spell
     /// </summary>
     protected virtual async void InstantiateDelayFunction()
     {
-        if (!isCooltime && (Input.GetKey(triggerKey) || trigger))
+        if (!isCooltime && ((Input.GetKey(triggerKey) && (owner is Player)) || trigger))
         {
             trigger = false;
             isCooltime = true;

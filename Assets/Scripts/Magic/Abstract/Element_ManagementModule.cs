@@ -10,6 +10,8 @@ public class Element_ManagementModule : MonoBehaviour
     [SerializeField] private List<StringNNumber> element_level = new List<StringNNumber>();
     [SerializeField] private Spell_Element main_element;
 
+    [SerializeField] private SpellPrefabContainer spellPrefabContainer;
+
     [SerializeField] private string high_priority;
 
     private void MixElement()
@@ -54,7 +56,12 @@ public class Element_ManagementModule : MonoBehaviour
 
     public Spell_Element GetElementInfo()
     {
-
+        if (main_element == null)
+        {
+            GameObject origin = spellPrefabContainer.Search("c0");
+            Spell_Element element = Instantiate(origin, transform).GetComponent<Spell_Element>();
+            main_element = element;
+        }
         //MixElement();
         return main_element;
     }

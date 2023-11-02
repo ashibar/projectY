@@ -68,6 +68,13 @@ public class SpellManager : MonoBehaviour
             core.InitCore();
     }
 
+    public void SetSpell()
+    {
+        GetSpellCompoenents();
+        foreach (Spell_Core core in cores)
+            core.InitCore();
+    }
+
     public void SetActiveAll(bool value)
     {
         foreach (Spell_Core core in cores)
