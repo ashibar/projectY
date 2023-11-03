@@ -24,7 +24,17 @@ public class Element_ManagementModule : MonoBehaviour
                 temp = element;
                 high_priority = "Fire";
             }
-            else if (!string.Equals(high_priority, "Fire") && string.Equals(element.level.numberName, "None"))
+            if (string.Equals(element.level.numberName, "Water"))
+            {
+                temp = element;
+                high_priority = "Water";
+            }
+            if (string.Equals(element.level.numberName, "Earth"))
+            {
+                temp = element;
+                high_priority = "Earth";
+            }
+            else if (!string.Equals(high_priority, "Fire") && !string.Equals(high_priority, "Water") && !string.Equals(high_priority, "Earth") && string.Equals(element.level.numberName, "None"))
             {
                 temp = element;
                 high_priority = "None";

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54d6f669bef5224e926fd560d7b97fe, type: 3}
+  m_Name: Water_Element_animation_so
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 1c7408535faa929408787e3fc7972d9b, type: 3}
+  - {fileID: 21300000, guid: 81673e538db5c4047bd2c46ce148c6ef, type: 3}
+  - {fileID: 21300000, guid: 8dc068d400c978c44ab8a331f9abf781, type: 3}
+  - {fileID: 21300000, guid: e4f83b6042e649c4bb268f2b18be9c4a, type: 3}
+  - {fileID: 21300000, guid: 2afde003e811b694c9e7c9fe70d256f6, type: 3}
+  fixedMS: 1000
+  speed: 1.5
