@@ -130,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: -1409071387
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7a96dd555da23914c8da7085070f89c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5efa5d259726a6846bc799e21cbcdbdd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70683101085f3e428c19588fc425bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat_so: {fileID: 11400000, guid: fadc6a0cadf517140abf64fc6b8c3830, type: 2}
+  stat_so: {fileID: 11400000, guid: 3d0a434d426d6f3409c3c059d2c5bad3, type: 2}
   stat:
     hp: 0
     speed: 0
@@ -194,6 +194,8 @@ MonoBehaviour:
     cooldown: 0
     amount: 0
     hp_current: 0
+  spellManager: {fileID: 0}
+  buffManager: {fileID: 0}
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
   pos_toShoot: {x: 0, y: 0}
@@ -234,6 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  isCooltime: 
+  isActive_Spell: 
   speed: 2
   target: {fileID: 0}
 --- !u!95 &4608407249960536101
@@ -246,7 +250,7 @@ Animator:
   m_GameObject: {fileID: 7531231395964145883}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26fd51b611716304bb704c0d3ab2456e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a3ec4ebcc04092a4bb33b969748308ce, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

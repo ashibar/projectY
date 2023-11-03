@@ -182,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 1556280984215810568}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26fd51b611716304bb704c0d3ab2456e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2b12c6fd1b5145949a650461fd5a936c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -205,10 +205,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  isCooltime: 
+  isActive_Spell: 
   speed: 0
   ATK_Range: 7
   Ra_Range: 5
   target: {fileID: 0}
+  cooltime_attack: 3
 --- !u!1 &7182815128664691165
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +377,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7171416607448482313, guid: 197fc3658fa760b42818da744576975c, type: 3}
+      propertyPath: stat_spell_so
+      value: 
+      objectReference: {fileID: 11400000, guid: 4287babc28c2e4743aef4c268b8e2d82, type: 2}
+    - target: {fileID: 7171416607448482313, guid: 197fc3658fa760b42818da744576975c, type: 3}
+      propertyPath: projectile_origin.Array.data[0]
+      value: 
+      objectReference: {fileID: 3460534783554772344, guid: 97a2e78a2360c6d429b081bdcb1d155e, type: 3}
     - target: {fileID: 7171416607448482314, guid: 197fc3658fa760b42818da744576975c, type: 3}
       propertyPath: m_Name
       value: BatStone_Core

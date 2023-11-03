@@ -28,7 +28,7 @@ public class Range_base_Ai : Action_AI
         Vector2 dir = (Vector2)(target.transform.position - transform.position).normalized;
         
         unit.dir_toShoot = dir;
-
+        unit.GetComponent<SpriteRenderer>().flipX = dir.x > 0 ? false : true;
         float Distance = Vector2.Distance(target.transform.position, rigid.position);
         
         
