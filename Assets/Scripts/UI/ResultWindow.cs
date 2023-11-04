@@ -55,14 +55,27 @@ public class ResultWindow : AsyncFunction_template
 
         List<Spell> spells = new List<Spell>();
 
-        for (int i = 0; i < 4; i++)
+        int min = 0;
+        for (int i = 0; i < Mathf.Min(reward.Count, 4); i++)
+        {
+            if (reward[i].value == -1f)
+            {
+                Debug.Log(reward[i].obj.GetComponent<Spell>().GetName());
+                spells.Add(reward[i].obj.GetComponent<Spell>());
+                min++;
+            }
+        }
+
+        for (int i = min; i < 4; i++)
         {
             random_value = Random.Range(0f, 1f);
             accumulate = 0;
             foreach (GameObjectNFloat r in reward)
             {
+                if (r.value == -1f) break;
                 accumulate += r.value;
-                Debug.Log(string.Format("{0}, {1}, {2}",i, random_value, accumulate));
+                Debug.Log(string.Format("{0}, {1}, {2}",i, random_value, accumulate));                
+                
                 if (random_value <= accumulate)
                 {
                     Debug.Log(r.obj.GetComponent<Spell>().GetName());

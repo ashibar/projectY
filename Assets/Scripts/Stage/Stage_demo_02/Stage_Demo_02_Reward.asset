@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Stage_Demo_02_Reward
   m_EditorClassIdentifier: 
   rewardList:
-  - obj: {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
-    value: 0.2
-  - obj: {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
-    value: 0.2
-  - obj: {fileID: 3687709568715783824, guid: d89f871cc019da54fb3da539305b0ec6, type: 3}
-    value: 0.2
   - obj: {fileID: 7941158254755749436, guid: bd222445ab2af204295b3c621da64a44, type: 3}
+    value: -1
+  - obj: {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
+    value: 0.3
+  - obj: {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
+    value: 0.3
+  - obj: {fileID: 3687709568715783824, guid: d89f871cc019da54fb3da539305b0ec6, type: 3}
     value: 0.4
