@@ -9,5 +9,10 @@ public class InventoryIcon : MonoBehaviour
     public void Press_Button()
     {
         playerInfo_obj.SetActive(!playerInfo_obj.activeSelf);
+        if (playerInfo_obj.GetComponentInChildren<InventoryWindow>() != null)
+        {
+            playerInfo_obj.GetComponentInChildren<InventoryWindow>().Update_Status();
+            Debug.Log("Updated");
+        }
     }
 }

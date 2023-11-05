@@ -11,75 +11,47 @@ public class MapNode : MonoBehaviour
     [SerializeField] public MapNode up;
     [SerializeField] public MapNode down;
 
-    [SerializeField] private List<Sprite> spritelist;
-
-    [SerializeField] private float changeInterval = 0.3f;  // 스프라이트 변경 간격 (초 단위)
-    [SerializeField] private int currentSpriteIndex = 0;  // 현재 사용 중인 스프라이트의 인덱스
-    private float timer = 0.0f;
+    [SerializeField] private List<NodeLineRenderer> lrList = new List<NodeLineRenderer>();
+    [SerializeField] private List<Vector2> trIndex = new List<Vector2>();
+    [SerializeField] private GameObject lr_origin;
 
     private SpriteRenderer spriteRenderer;
-    private LineRenderer lr;
-    [SerializeField] private List<Transform> trList = new List<Transform>();
+    private SpriteRenderer spriteRenderer_;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        lr = GetComponent<LineRenderer>();
-        //trList.Add(transform);
-        //if (left != null) trList.Add(left.transform);
-        //if (right != null) trList.Add(right.transform);
-        //if (up != null) trList.Add(up.transform);
-        //if (down != null) trList.Add(down.transform);
-        lr.positionCount = trList.Count;
-        lr.sortingLayerName = "NPC";
+        spriteRenderer = GetComponentsInChildren<SpriteRenderer>()[0];
+        spriteRenderer_ = GetComponentsInChildren<SpriteRenderer>()[1];
+        SetLine();
     }
 
     private void Update()
     {
         Color c = spriteRenderer.color;
         spriteRenderer.color = new Color(c.r, c.g, c.b, isAccessable ? 1f : 0.5f);
-
-        LineRender();
+        spriteRenderer_.color = new Color(c.r, c.g, c.b, isAccessable ? 1f : 0.5f);
     }
 
-    private void LineRender()
+    private void SetLine()
     {
-        SetPostion();
-
-        timer += Time.deltaTime;
-
-        if (timer >= changeInterval)
+        foreach (Vector2 tr in trIndex)
         {
-            // 스프라이트 변경 간격에 도달했을 때
-            timer = 0.0f;  // 타이머 초기화
-
-            // 현재 사용 중인 스프라이트를 변경
-            currentSpriteIndex++;
-
-            // 스프라이트 리스트의 끝에 도달하면 처음 스프라이트로 돌아감
-            if (currentSpriteIndex >= spritelist.Count)
-            {
-                currentSpriteIndex = 0;
-            }
-
-            // 스프라이트를 변경된 스프라이트로 설정
-            ChangeSprite(currentSpriteIndex);
+            NodeLineRenderer lr = Instantiate(lr_origin, transform).GetComponent<NodeLineRenderer>();
+            lr.AddTransform(GetTransform((int)tr.x), GetTransform((int)tr.y));
+            lrList.Add(lr);
         }
     }
-
-    private void SetPostion()
+    
+    private Transform GetTransform(int id)
     {
-        for (int i = 0; i < trList.Count; i++)
+        switch (id)
         {
-            lr.SetPosition(i, trList[i].position);
-        }
-    }
-
-    private void ChangeSprite(int index)
-    {
-        if (spritelist.Count > 0 && index >= 0 && index < spritelist.Count)
-        {
-            lr.material.SetTexture("_MainTex", spritelist[index].texture);
+            case 0: return transform;
+            case 1: return left.transform ? left.transform : transform;
+            case 2: return right.transform ? right.transform : transform;
+            case 3: return up.transform ? up.transform : transform;
+            case 4: return down.transform ? down.transform : transform;
+            default: return transform;
         }
     }
 }
