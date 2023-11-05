@@ -52,6 +52,11 @@ public class MapSelectWindow : MonoBehaviour
                 Debug.Log("Left is Null");
                 return;
             }
+            if (!currentNode.left.isAccessable)
+            {
+                Debug.Log("Can't Access");
+                return;
+            }
             await mapPlayerControl.Move(currentNode.left);
             currentNode = currentNode.left;
             id = currentNode.index;
@@ -61,6 +66,11 @@ public class MapSelectWindow : MonoBehaviour
             if (currentNode.right == null)
             {
                 Debug.Log("Right is Null");
+                return;
+            }
+            if (!currentNode.right.isAccessable)
+            {
+                Debug.Log("Can't Access");
                 return;
             }
             await mapPlayerControl.Move(currentNode.right);
@@ -74,6 +84,11 @@ public class MapSelectWindow : MonoBehaviour
                 Debug.Log("Up is Null");
                 return;
             }
+            if (!currentNode.up.isAccessable)
+            {
+                Debug.Log("Can't Access");
+                return;
+            }
             await mapPlayerControl.Move(currentNode.up);
             currentNode = currentNode.up;
             id = currentNode.index;
@@ -83,6 +98,11 @@ public class MapSelectWindow : MonoBehaviour
             if (currentNode.down == null)
             {
                 Debug.Log("Down is Null");
+                return;
+            }
+            if (!currentNode.down.isAccessable)
+            {
+                Debug.Log("Can't Access");
                 return;
             }
             await mapPlayerControl.Move(currentNode.down);

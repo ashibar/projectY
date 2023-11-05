@@ -72,7 +72,7 @@ public class ResultWindow : AsyncFunction_template
             accumulate = 0;
             foreach (GameObjectNFloat r in reward)
             {
-                if (r.value == -1f) break;
+                if (r.value == -1f) continue;
                 accumulate += r.value;
                 Debug.Log(string.Format("{0}, {1}, {2}",i, random_value, accumulate));                
                 
@@ -84,7 +84,7 @@ public class ResultWindow : AsyncFunction_template
                 }
             }
         }
-
+        Debug.Log(spells.Count);
         card_animation_control.SetSpell(spells);
     }
 
