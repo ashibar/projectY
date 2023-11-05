@@ -8,10 +8,11 @@ using UnityEngine.UI;
 public class Spell_Icon : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
 {
     [SerializeField] private Image shadow;
-    [SerializeField] private Image background;
-    [SerializeField] private Image image;
+    [SerializeField] protected Image background;
+    [SerializeField] protected Image image;
 
-    [SerializeField] private Spell spell_;
+    [SerializeField] protected Spell spell_;
+    [SerializeField] protected int id;
 
     [SerializeField] private GameObject explain_textbox;
 
@@ -20,12 +21,13 @@ public class Spell_Icon : MonoBehaviour, IPointerExitHandler, IPointerEnterHandl
         explain_textbox = SpellExplainText.Instance.gameObject;
     }
 
-    public void SetIcon(Spell spell)
+    public void SetIcon(Spell spell, int id = 0)
     {
         if (background == null || image == null || spell == null)
             return;
 
         spell_ = spell;
+        this.id = id;
         image.sprite = spell.sprite_spell;
         switch (spell.GetStatSpell().Spell_Type)
         {
@@ -48,6 +50,7 @@ public class Spell_Icon : MonoBehaviour, IPointerExitHandler, IPointerEnterHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (spell_ == null) return;
         explain_textbox.SetActive(true);
         explain_textbox.transform.position = eventData.position;
         if (spell_ != null)

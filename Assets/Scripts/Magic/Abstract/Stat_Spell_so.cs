@@ -22,6 +22,8 @@ public class Stat_Spell_so : ScriptableObject
     [SerializeField] private float spell_Range_Area;         //범위기 넓이
     [SerializeField] private float spell_Amount_Tic = 1;     //틱당 상호작용하는 유닛의 개수
 
+    [SerializeField] private bool isInherence;
+
     public SpellType Spell_Type { get => spell_Type; set => spell_Type = value; }
     public string Spell_Name { get => spell_Name; set => spell_Name = value; }
     public string Spell_Code { get => spell_Code; set => spell_Code = value; }
@@ -36,6 +38,7 @@ public class Stat_Spell_so : ScriptableObject
     public float Spell_Multy_Radius { get => spell_Multy_Radius; set => spell_Multy_Radius = value; }
     public float Spell_Range_Area { get => spell_Range_Area; set => spell_Range_Area = value; }
     public float Spell_Amount_Tic { get => spell_Amount_Tic; set => spell_Amount_Tic = value; }
+    public bool IsInherence { get => isInherence; set => isInherence = value; }
 }
 
 public enum SpellType { Core, Part, Element, Passive };

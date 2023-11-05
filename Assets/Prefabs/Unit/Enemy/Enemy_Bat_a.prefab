@@ -194,6 +194,8 @@ MonoBehaviour:
     cooldown: 0
     amount: 0
     hp_current: 0
+  spellManager: {fileID: 0}
+  buffManager: {fileID: 0}
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
   pos_toShoot: {x: 0, y: 0}
@@ -234,6 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  isCooltime: 
+  isActive_Spell: 
   speed: 2
   target: {fileID: 0}
 --- !u!95 &4608407249960536101
