@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 936dca50e0533074ebb2cd6633af1588, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 603aed9b943a4e942ad1e5cb9b90be9d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 7991299790668304694}
   - component: {fileID: 3458727986099383874}
   - component: {fileID: 1798578857847402115}
-  - component: {fileID: 673215099026679805}
+  - component: {fileID: 4684969346321951063}
   m_Layer: 5
   m_Name: Spell_Icon_Inventory_CoreDisplay
   m_TagString: Untagged
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &673215099026679805
+--- !u!114 &4684969346321951063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,10 +240,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8487191290090695546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728df2d4e3f4ea7468c0352e721cab5c, type: 3}
+  m_Script: {fileID: 11500000, guid: c305ca3a66bb4d245b52f5bd6a068536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shadow: {fileID: 1798578857847402115}
   background: {fileID: 2265956236651419584}
   image: {fileID: 5534801693385890765}
+  spell_: {fileID: 0}
+  id: 0
   explain_textbox: {fileID: 0}
+  window: {fileID: 0}

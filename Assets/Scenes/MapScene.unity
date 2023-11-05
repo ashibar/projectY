@@ -7495,6 +7495,8 @@ MonoBehaviour:
   core_scrollview: {fileID: 1967224828}
   part_scrollview: {fileID: 2009973576}
   spell_icon_origin: {fileID: 4444795203468778022, guid: b0d1f26683512b8458bca03e5979e39b, type: 3}
+  spell_icon_clone: []
+  spell_displayed: {fileID: 0}
 --- !u!1 &1686412529
 GameObject:
   m_ObjectHideFlags: 0
@@ -10860,6 +10862,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4684969346321951063, guid: a62066f5001373447ab5a8b2fb22cb2a, type: 3}
+      propertyPath: window
+      value: 
+      objectReference: {fileID: 1619025051}
     - target: {fileID: 7991299790668304694, guid: a62066f5001373447ab5a8b2fb22cb2a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

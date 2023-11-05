@@ -35,6 +35,7 @@ public class Stat_Spell_SO_ClassDrawer : Editor
                 so.Spell_Multy_Radius = EditorGUILayout.FloatField("Projectile Multiply Radius", so.Spell_Multy_Radius, textFieldOptions);
                 so.Spell_Range_Area = EditorGUILayout.FloatField("Projectile Range Area", so.Spell_Range_Area, textFieldOptions);
                 so.Spell_Amount_Tic = EditorGUILayout.FloatField("Amount of Unit to interact", so.Spell_Amount_Tic, textFieldOptions);
+                so.IsInherence = EditorGUILayout.Toggle("is Inherence", so.IsInherence);
                 break;
             case SpellType.Part:
                 break;

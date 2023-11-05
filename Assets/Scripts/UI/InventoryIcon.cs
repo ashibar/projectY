@@ -11,6 +11,7 @@ public class InventoryIcon : MonoBehaviour
         playerInfo_obj.SetActive(!playerInfo_obj.activeSelf);
         if (playerInfo_obj.GetComponentInChildren<InventoryWindow>() != null)
         {
+            //playerInfo_obj.GetComponentInChildren<InventoryWindow>().spell_displayed = null;
             playerInfo_obj.GetComponentInChildren<InventoryWindow>().Update_Status();
             Debug.Log("Updated");
         }

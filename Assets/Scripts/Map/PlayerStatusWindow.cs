@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerStatusWindow : MonoBehaviour
 {
-    [SerializeField] private PlayerInfoContainer playerInfoContainer;
+    [SerializeField] public PlayerInfoContainer playerInfoContainer;
     [SerializeField] private SpellPrefabContainer spellPrefabContainer;
 
     [SerializeField] private TextMeshProUGUI player_name_text;

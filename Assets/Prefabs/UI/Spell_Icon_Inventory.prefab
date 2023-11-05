@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2774594379011645546}
   - component: {fileID: 7464792205629005598}
   - component: {fileID: 5805790572366880735}
-  - component: {fileID: 4697297988393031329}
+  - component: {fileID: 1584665486307392414}
   m_Layer: 5
   m_Name: Spell_Icon_Inventory
   m_TagString: Untagged
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4697297988393031329
+--- !u!114 &1584665486307392414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,13 +163,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4444795203468778022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728df2d4e3f4ea7468c0352e721cab5c, type: 3}
+  m_Script: {fileID: 11500000, guid: d10fb9404d2f93a40a89f8634d68610b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shadow: {fileID: 5805790572366880735}
   background: {fileID: 6275151470157932188}
   image: {fileID: 335530138098199185}
+  spell_: {fileID: 0}
   explain_textbox: {fileID: 0}
+  spell_icon_shadow_origin: {fileID: 1475596342840354086, guid: 0ce7651bf0aa6c7499f676c137af22a5, type: 3}
+  clone: {fileID: 0}
 --- !u!1 &6263196859203274541
 GameObject:
   m_ObjectHideFlags: 0
