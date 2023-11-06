@@ -9,9 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17d1706bd4c9c0c43ac5782a2206f5a6, type: 3}
-  m_Name: StageInfoContainer
+  m_Script: {fileID: 11500000, guid: d396d9c51e485f442a6be5ef754a5638, type: 3}
+  m_Name: PlayerInfoContainer_debug
   m_EditorClassIdentifier: 
-  curID: 0
-  stageInfoList:
-  - {fileID: 11400000, guid: 1a85ed31fc8523b42a8c6b0ed6399cd1, type: 2}
+  player_name: 
+  money: 0
+  spell_activated:
+  - string1: a1
+    string2: 
+  - string1: c0
+    string2: a1
+  - string1: a2
+    string2: 
+  spell_inventory: []

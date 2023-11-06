@@ -90,4 +90,9 @@ public class LoadingSceneController : MonoBehaviour
             }
         }
     }
+
+    public StageInfoContainer_so GetStageInfoContainer()
+    {
+        return stageInfoContainer;
+    }
 }

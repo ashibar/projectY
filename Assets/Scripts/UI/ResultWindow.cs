@@ -21,6 +21,7 @@ public class ResultWindow : AsyncFunction_template
 
     private void Awake()
     {
+        stageInfoContainer = LoadDataSingleton.Instance.StageInfoContainer();
         stage_clear_text_image = GetComponentInChildren<StageClearTextAnimation>();
         result_animation_control = GetComponentInChildren<ResultAnimationControl>();
         card_animation_control = GetComponentInChildren<CardAnimationControl>();

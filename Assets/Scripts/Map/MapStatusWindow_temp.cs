@@ -12,6 +12,7 @@ public class MapStatusWindow_temp : MonoBehaviour
 
     private void Awake()
     {
+        stageInfo_so = LoadDataSingleton.Instance.StageInfoContainer();
         stage_name_text = GameObject.Find("MapName").GetComponent<TextMeshProUGUI>();
         stage_reward_text = GameObject.Find("StageReward").GetComponent<TextMeshProUGUI>();
     }

@@ -19,6 +19,7 @@ public class MapSelectWindow_temp : MonoBehaviour
 
     private void Awake()
     {
+        stage_container = LoadDataSingleton.Instance.StageInfoContainer();
         left_button = GameObject.Find("LeftArrow").GetComponent<Button>();
         right_button = GameObject.Find("RightArrow").GetComponent<Button>();
         stage_image = GameObject.Find("CenterImage").GetComponent<Image>();

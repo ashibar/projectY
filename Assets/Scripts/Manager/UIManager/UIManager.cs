@@ -75,6 +75,7 @@ public class UIManager : MonoBehaviour, IEventListener
             Destroy(gameObject);
             return;
         }
+        stageInfoContainer = LoadDataSingleton.Instance.StageInfoContainer();
         resultWindow = GetComponentInChildren<ResultWindow>(true);
         SubscribeEvent();
     }    

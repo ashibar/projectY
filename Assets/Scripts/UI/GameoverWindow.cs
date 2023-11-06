@@ -16,6 +16,7 @@ public class GameoverWindow : AsyncFunction_template
 
     private void Awake()
     {
+        stageInfoContainer = LoadDataSingleton.Instance.StageInfoContainer();
         gameoverTextAnimation = GetComponentInChildren<GameoverTextAnimation>(true);
     }
 
