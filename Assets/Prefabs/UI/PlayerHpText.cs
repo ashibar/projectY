@@ -27,6 +27,8 @@ public class PlayerHpText : MonoBehaviour
 
     public void UpdateHpText()
     {
+        if (Player.Instance.stat == null) return;
+
         MaxHpText = Player.Instance.stat.Hp.ToString();
         if (Player.Instance.stat.Hp_current >= 0)
             CurHpText = Player.Instance.stat.Hp_current.ToString();

@@ -26,6 +26,7 @@ public class PlayerHp : MonoBehaviour
 
     public void PlayerHpUpdate()
     {
+        if (Player.Instance.stat == null) return;
         hpbar.value = Mathf.Lerp(hpbar.value,(float) Player.Instance.stat.Hp_current/ (float)Player.Instance.stat.Hp, speed * Time.deltaTime);
     }
 

@@ -58,6 +58,10 @@ public class SpellManager : MonoBehaviour
         foreach (Spell s in spells)
             if (s != null)
                 Destroy(s.gameObject);
+
+        cores.Clear();
+        parts.Clear();
+        passives.Clear();
     }
 
     public void SetSpell(GameObject temp)

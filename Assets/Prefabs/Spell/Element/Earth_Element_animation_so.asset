@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: Earth_Element_animation_so
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 10a6a80098804974e92b01a6eb349442, type: 3}
-  - {fileID: 21300000, guid: 0e5ca69e1451f704a8490b78050bba5d, type: 3}
-  - {fileID: 21300000, guid: 81b8cbcef9335e949be9a38ea05362d5, type: 3}
-  - {fileID: 21300000, guid: 171e2a5027df06e468af09515066cb5d, type: 3}
-  - {fileID: 21300000, guid: f2c41d01dda12154caed025c2ab15ac6, type: 3}
   - {fileID: 21300000, guid: c46b9816857cfc0459576628891c652c, type: 3}
   - {fileID: 21300000, guid: d3fcdfd3342615b4bbd60fed440c12e8, type: 3}
   - {fileID: 21300000, guid: 055fd888b3560a44bae62692d11b98bf, type: 3}

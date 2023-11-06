@@ -32,7 +32,8 @@ public class InventoryWindow : MonoBehaviour
 
     private void Awake()
     {
-        
+        playerInfoContainer = LoadDataSingleton.Instance.PlayerInfoContainer();
+        spellPrefabContainer = LoadDataSingleton.Instance.SpellPrefabContainer();
     }
 
     private void Start()
@@ -120,5 +121,11 @@ public class InventoryWindow : MonoBehaviour
             //    player_inventory_text.text += string.Format("{0}\n", prefab.GetComponent<Spell>().GetName());
             //}
         }
+    }
+
+    public void Reset_Status()
+    {
+        playerInfoContainer.Initiate();
+        Update_Status();
     }
 }

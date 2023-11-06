@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Stage_temp_Reward
   m_EditorClassIdentifier: 
   rewardList:
-  - obj: {fileID: 6743049818794002840, guid: 7ade8f6db17bb734884aa43f0b4bf20f, type: 3}
+  - obj: {fileID: 6743049818794002840, guid: ad7b378ecfa5c8d4d9cbce9779cf3134, type: 3}
     value: 1

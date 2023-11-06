@@ -26,6 +26,7 @@ public class Spell_Icon_CoreDisplay : Spell_Icon, IDropHandler
                     break;
                 case SpellType.Part:
                 case SpellType.Element:
+                    if (spell_ == null) return;
                     string code = spell_.GetCode();
                     window.playerInfoContainer.AddSpellToPlayerInfo_detailed(new StringNString(spell.GetCode(), code));
                     window.playerInfoContainer.Spell_inventory.RemoveAt(SpellExplainText.Instance.id);

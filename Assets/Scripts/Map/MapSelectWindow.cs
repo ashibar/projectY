@@ -16,6 +16,7 @@ public class MapSelectWindow : MonoBehaviour
 
     private void Awake()
     {
+        stageInfoContainer = LoadDataSingleton.Instance.StageInfoContainer();
         mapStatusWindow = GetComponentInChildren<MapStatusWindow>();
         currentNode = nodeSet.startNode;
         mapPlayerControl.transform.position = currentNode.transform.position;

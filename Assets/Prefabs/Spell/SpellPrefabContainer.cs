@@ -10,6 +10,11 @@ public class SpellPrefabContainer : ScriptableObject
     [SerializeField] private List<GameObject> element = new List<GameObject>();
     [SerializeField] private List<GameObject> passive = new List<GameObject>();
 
+    public List<GameObject> Core { get => core; set => core = value; }
+    public List<GameObject> Part { get => part; set => part = value; }
+    public List<GameObject> Element { get => element; set => element = value; }
+    public List<GameObject> Passive { get => passive; set => passive = value; }
+
     public GameObject Search(string code)
     {
         char sort = code[0];
