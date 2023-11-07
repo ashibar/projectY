@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: 00
   m_EditorClassIdentifier: 
   spawnInfo:
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: List
+  - unit_prefab: {fileID: 7531231395964145883, guid: cf700550e47b62a499179d73095edeb2, type: 3}
+    spawn_sort: Point
     max: 0
-    point: {x: 0, y: 0}
+    point: {x: 0, y: 5}
     position:
     - {x: 0, y: 10}
     - {x: 0, y: -10}
@@ -28,4 +28,20 @@ MonoBehaviour:
     noise: 0
     amount: 0
     gap: 1
-    recty: 10
+    recty: 4
+  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
+    spawn_sort: Point
+    max: 0
+    point: {x: 0, y: -5}
+    position:
+    - {x: 0, y: 10}
+    - {x: 0, y: -10}
+    - {x: 5, y: -10}
+    - {x: -5, y: 10}
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    amount: 0
+    gap: 1
+    recty: 4

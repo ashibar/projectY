@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c37b3404280fb0d4e9729a5e3c3c3e97, type: 3}
-  m_Name: 01
+  m_Name: 02
   m_EditorClassIdentifier: 
   spawnInfo:
-  - unit_prefab: {fileID: 7531231395964145883, guid: 87690fbceb096054cb946628657febc6, type: 3}
-    spawn_sort: List
+  - unit_prefab: {fileID: 7531231395964145883, guid: cf700550e47b62a499179d73095edeb2, type: 3}
+    spawn_sort: Circle
     max: 0
     point: {x: 0, y: 0}
     position:
-    - {x: 5, y: 7}
-    - {x: -5, y: 7}
-    radius: 0
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    radius: 5
     angle1: 0
     angle2: 0
     noise: 0
-    amount: 0
+    amount: 3
     gap: 0
-    recty: 8
+    recty: 5
