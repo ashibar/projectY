@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageName: tuto3
   stageSprite: {fileID: 21300000, guid: 357acd14d72fccd4e99371904a2d15e2, type: 3}
-  reward: {fileID: 11400000, guid: 7b751b47ec93ee7478378856a2894ddb, type: 2}
+  reward: {fileID: 11400000, guid: 8bc387b8c0abb3e48baed281a2ab4069, type: 2}
   stageSort: 0
   phases:
-  - {fileID: 11400000, guid: 26bcb33ab83508044a0fc18c4b09a753, type: 2}
-  - {fileID: 11400000, guid: 5def1133d84cd8d44a46f20215a6cfad, type: 2}
-  - {fileID: 11400000, guid: a9f3d1f3cd35714439f529f88eecdea4, type: 2}
+  - {fileID: 11400000, guid: 7742b37f90c57844992895e80e9f5d9c, type: 2}
+  - {fileID: 11400000, guid: b8c6ed7d86e4f174c8ef21b8b14007e6, type: 2}
+  - {fileID: 11400000, guid: fb0944aca31e77948bdd38e7be0e19aa, type: 2}
