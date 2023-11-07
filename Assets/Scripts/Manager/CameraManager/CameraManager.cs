@@ -8,6 +8,28 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class CameraManager : MonoBehaviour, IEventListener
 {
+    private static CameraManager instance;
+    public static CameraManager Instance
+    {
+        get
+        {
+            if (instance == null) // instance가 비어있다
+            {
+                var obj = FindObjectOfType<CameraManager>();
+                if (obj != null)
+                {
+                    instance = obj;                                             // 전체 찾아봤는데? 있네? 그걸 넣자
+                }
+                else
+                {
+                    var newObj = new GameObject().AddComponent<CameraManager>(); // 전체 찾아봤는데? 없네? 새로만들자
+                    instance = newObj;
+                }
+            }
+            return instance; // 안비어있네? 그냥 그대로 가져와
+        }
+    }
+    
     public Transform target; // 카메라가 따라다닐 대상의 Transform 컴포넌트
     public Vector2 offset; // 대상과 카메라 간의 오프셋
     public float padding = 0.1f; // 대상과 화면 경계 사이의 여유 공간
@@ -32,6 +54,12 @@ public class CameraManager : MonoBehaviour, IEventListener
 
     private void Awake()
     {
+        var objs = FindObjectsOfType<CameraManager>();
+        if (objs.Length != 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
         SubscribeEvent();
         mainCamera = Camera.main;
         ppVolume = GetComponent<PostProcessVolume>();
@@ -163,6 +191,7 @@ public class CameraManager : MonoBehaviour, IEventListener
 
     private void Mode_Fix()
     {
+        if (target == null) return;
         mainCamera.transform.position = new Vector3(target.position.x, target.position.y, mainCamera.transform.position.z);
     }
 

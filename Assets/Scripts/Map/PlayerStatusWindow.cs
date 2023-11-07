@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerStatusWindow : MonoBehaviour
 {
-    [SerializeField] private PlayerInfoContainer playerInfoContainer;
+    [SerializeField] public PlayerInfoContainer playerInfoContainer;
     [SerializeField] private SpellPrefabContainer spellPrefabContainer;
 
     [SerializeField] private TextMeshProUGUI player_name_text;
@@ -18,6 +18,8 @@ public class PlayerStatusWindow : MonoBehaviour
 
     private void Awake()
     {
+        playerInfoContainer = LoadDataSingleton.Instance.PlayerInfoContainer();
+        spellPrefabContainer = LoadDataSingleton.Instance.SpellPrefabContainer();
         player_name_text = GameObject.Find("PlayerName").GetComponent<TextMeshProUGUI>();
         player_money_text = GameObject.Find("PlayerMoney").GetComponent<TextMeshProUGUI>();
         player_spell_text = GameObject.Find("PlayerSpell").GetComponent<TextMeshProUGUI>();

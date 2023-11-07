@@ -16,6 +16,7 @@ public class Element_ManagementModule : MonoBehaviour
 
     private void MixElement()
     {
+        spellPrefabContainer = LoadDataSingleton.Instance.SpellPrefabContainer();
         Spell_Element temp = null;
         foreach (Spell_Element element in spell_elements)
         {

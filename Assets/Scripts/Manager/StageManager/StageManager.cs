@@ -70,6 +70,9 @@ public class StageManager : MonoBehaviour, IEventListener
             Destroy(gameObject);
             return;
         }
+        stageInfoContainer_so = LoadDataSingleton.Instance.StageInfoContainer();
+        playerInfoContainer_so = LoadDataSingleton.Instance.PlayerInfoContainer();
+        SpellPrefabContainer_so = LoadDataSingleton.Instance.SpellPrefabContainer();
         conditionChecker = GetComponentInChildren<ConditionChecker>();
         eventTimer = GetComponentInChildren<EventTimer>();
         stageEndCheck = GetComponentInChildren<StageEndCheck>();
@@ -152,7 +155,7 @@ public class StageManager : MonoBehaviour, IEventListener
     /// <summary>
     /// <para/> <b>로딩 시 플레이어의 스펠을 불러옴</b>
     /// </summary>
-    private void LoadPlayerSpell()
+    public void LoadPlayerSpell()
     {
         Player.Instance.spellManager.ClearSpell();
         List<StringNString> codes = playerInfoContainer_so.Spell_activated;

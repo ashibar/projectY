@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class InventoryWindow : MonoBehaviour
 {
-    [SerializeField] private PlayerInfoContainer playerInfoContainer;
+    [SerializeField] public PlayerInfoContainer playerInfoContainer;
     [SerializeField] private SpellPrefabContainer spellPrefabContainer;
 
     [SerializeField] private TextMeshProUGUI player_name_text;
@@ -25,12 +25,15 @@ public class InventoryWindow : MonoBehaviour
     [SerializeField] private GameObject spell_icon_origin;
     [SerializeField] private List<GameObject> spell_icon_clone = new List<GameObject>();
 
+    public Spell spell_displayed;
+
     private float xgap = 160f;
     private float ygap = 160f;
 
     private void Awake()
     {
-        
+        playerInfoContainer = LoadDataSingleton.Instance.PlayerInfoContainer();
+        spellPrefabContainer = LoadDataSingleton.Instance.SpellPrefabContainer();
     }
 
     private void Start()
@@ -61,9 +64,11 @@ public class InventoryWindow : MonoBehaviour
                 Spell spell = prefab.GetComponent<Spell>();
                 switch (codes_p[i].string1[0])
                 {
-                    case 'a':                        
+                    case 'a':
+                        if (spell.GetStatSpell().IsInherence)
+                            break;
                         GameObject clone = Instantiate(spell_icon_origin, core_scrollview.content_rt);
-                        Vector2 pos = baseVector + new Vector2(0, core_cnt * ygap);
+                        Vector2 pos = baseVector + new Vector2(0, - core_cnt * ygap);
                         clone.GetComponent<RectTransform>().anchoredPosition = pos;
                         clone.GetComponent<Spell_Icon>().SetIcon(spell);
                         spell_icon_clone.Add(clone);
@@ -72,8 +77,12 @@ public class InventoryWindow : MonoBehaviour
                     case 'b':
                     case 'c':
                     case 'e':
+                        if (spell_displayed == null)
+                            break;
+                        if (!string.Equals(spell_displayed.GetCode(), codes_p[i].string2))
+                            break;
                         clone = Instantiate(spell_icon_origin, attached_scrollview.content_rt);
-                        pos = baseVector + new Vector2(part_cnt % 4 * xgap, (part_cnt / 4) * ygap);
+                        pos = baseVector + new Vector2(part_cnt % 4 * xgap, -(part_cnt / 4) * ygap);
                         clone.GetComponent<RectTransform>().anchoredPosition = pos;
                         clone.GetComponent<Spell_Icon>().SetIcon(spell);
                         spell_icon_clone.Add(clone);
@@ -95,9 +104,9 @@ public class InventoryWindow : MonoBehaviour
                     case 'c':
                     case 'e':
                         GameObject clone = Instantiate(spell_icon_origin, part_scrollview.content_rt);
-                        Vector2 pos = baseVector + new Vector2(part_cnt % 3 * xgap, (part_cnt / 3) * ygap);
+                        Vector2 pos = baseVector + new Vector2(part_cnt % 3 * xgap, -(part_cnt / 3) * ygap);
                         clone.GetComponent<RectTransform>().anchoredPosition = pos;
-                        clone.GetComponent<Spell_Icon>().SetIcon(spell);
+                        clone.GetComponent<Spell_Icon>().SetIcon(spell, part_cnt);
                         spell_icon_clone.Add(clone);
                         part_cnt++;
                         break;
@@ -112,5 +121,11 @@ public class InventoryWindow : MonoBehaviour
             //    player_inventory_text.text += string.Format("{0}\n", prefab.GetComponent<Spell>().GetName());
             //}
         }
+    }
+
+    public void Reset_Status()
+    {
+        playerInfoContainer.Initiate();
+        Update_Status();
     }
 }

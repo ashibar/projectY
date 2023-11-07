@@ -25,6 +25,10 @@ public class SpellExplainText : MonoBehaviour
             return instance; // 안비어있네? 그냥 그대로 가져와
         }
     }
+
+    public Spell spell;
+    public int id;
+    
     private void Awake()
     {
         var objs = FindObjectsOfType<SpellExplainText>(true);

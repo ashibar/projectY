@@ -33,6 +33,7 @@ public class Player : Unit
             }
             return instance; // 안비어있네? 그냥 그대로 가져와
         }
+        set { instance = value; }
     }
 
     // stat은 상위 클래스인 Unit으로 올렸습니다.
@@ -71,7 +72,7 @@ public class Player : Unit
     private bool isDead;
     private void PlayerDeathSender()
     {
-        if (!isDead)
+        if (!isDead && stat != null)
             if (stat.Hp_current <= 0)
             {
                 isDead = true;
