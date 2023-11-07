@@ -115,7 +115,7 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
-      spawnInfo: {fileID: 11400000, guid: 502aa947734cbdf4ca6624182dba44fb, type: 2}
+      spawnInfo: {fileID: 11400000, guid: 879864b781791d14eadc29839b4c892b, type: 2}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -125,13 +125,40 @@ MonoBehaviour:
     eventindex: 2
     eventcode: Spawn By Spawn Info
     condition:
-      sort: 1
+      sort: 4
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
+      targetFlag: AllUnit
+      flagValue: 1
+      targetNum: 2
+      isSatisfied: 0
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: 
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 11400000, guid: c693ddf3234d1c940a1449e9505653cb, type: 2}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 5
+    eventindex: 2
+    eventcode: Spawn By Spawn Info
+    condition:
+      sort: 4
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: AllUnit
+      flagValue: 1
       targetNum: 5
       isSatisfied: 0
       isContinued: 1
@@ -142,7 +169,7 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
-      spawnInfo: {fileID: 11400000, guid: 367febed9f0a7594ca83e836bc188c92, type: 2}
+      spawnInfo: {fileID: 11400000, guid: 2300ca4762984c34bb15982400840d7b, type: 2}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -152,14 +179,14 @@ MonoBehaviour:
     eventindex: 8
     eventcode: Set Trigger
     condition:
-      sort: 1
+      sort: 4
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 1
+      targetFlag: AllUnit
+      flagValue: 1
+      targetNum: 8
       isSatisfied: 0
       isContinued: 1
     extraParams:

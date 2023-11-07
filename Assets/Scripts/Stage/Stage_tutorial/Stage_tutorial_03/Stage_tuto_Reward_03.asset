@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Stage_tuto_Reward_03
   m_EditorClassIdentifier: 
   rewardList:
-  - obj: {fileID: 534651683196564303, guid: ed17cfb5733376646b66ef0484390cff, type: 3}
-    value: 0.5
-  - obj: {fileID: 3086861205089503544, guid: 584819a9e17c5744fa5c73442d11eeb4, type: 3}
-    value: 0.5
+  - obj: {fileID: 6743049818794002840, guid: ad7b378ecfa5c8d4d9cbce9779cf3134, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: 5d45aafca9665ba4da5b00aa60ecb6fe, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: 5903796eed1b0dc4b9ac55b09ed70d14, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: f6d762027af9b104fa8fbd44e4a3ffe4, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: d5d511b28f924e64d82703b2070900bb, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: 7c3295d5c2b9c874c867eb79a7fc47be, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: ffa8d89143cdc434a96674d1790a3142, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: b6c1478f909e8504a86b5942593da8ad, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: 52168f49dea8a9e46819b2286156a345, type: 3}
+    value: 0.1
+  - obj: {fileID: 6743049818794002840, guid: 32581c216e2a29140b29b30ed6d22104, type: 3}
+    value: 0.1
