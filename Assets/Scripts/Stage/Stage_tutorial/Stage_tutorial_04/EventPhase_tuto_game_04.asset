@@ -103,8 +103,8 @@ MonoBehaviour:
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
+      targetFlag: AllUnit
+      flagValue: 1
       targetNum: 2
       isSatisfied: 0
       isContinued: 1
@@ -125,14 +125,14 @@ MonoBehaviour:
     eventindex: 2
     eventcode: Spawn By Spawn Info
     condition:
-      sort: 1
+      sort: 4
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 5
+      targetFlag: AllUnit
+      flagValue: 1
+      targetNum: 2
       isSatisfied: 0
       isContinued: 1
     extraParams:
@@ -152,14 +152,14 @@ MonoBehaviour:
     eventindex: 2
     eventcode: Spawn By Spawn Info
     condition:
-      sort: 1
+      sort: 4
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 12
+      targetFlag: AllUnit
+      flagValue: 1
+      targetNum: 10
       isSatisfied: 0
       isContinued: 1
     extraParams:
@@ -179,14 +179,14 @@ MonoBehaviour:
     eventindex: 8
     eventcode: Set Trigger
     condition:
-      sort: 1
+      sort: 4
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 1
+      targetFlag: AllUnit
+      flagValue: 1
+      targetNum: 21
       isSatisfied: 0
       isContinued: 1
     extraParams:
