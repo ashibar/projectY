@@ -13,135 +13,15 @@ MonoBehaviour:
   m_Name: 01
   m_EditorClassIdentifier: 
   spawnInfo:
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
+  - unit_prefab: {fileID: 7531231395964145883, guid: 8ae1830068d022d409c8620192631db7, type: 3}
+    spawn_sort: Circle
     max: 0
     point: {x: 5, y: -5}
     position: []
-    radius: 0
+    radius: 10
     angle1: 0
     angle2: 0
     noise: 0
-    amount: 0
+    amount: 8
     gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: 4, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: 3, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: 2, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: 1, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: 0, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: -1, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: -2, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: -3, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: -4, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
-  - unit_prefab: {fileID: 7531231395964145883, guid: 8f585c78f24be3d4caf880ee99898aca, type: 3}
-    spawn_sort: Point
-    max: 0
-    point: {x: -5, y: -5}
-    position: []
-    radius: 0
-    angle1: 0
-    angle2: 0
-    noise: 0
-    amount: 0
-    gap: 1
-    recty: 4
+    recty: 5
