@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 00
   m_EditorClassIdentifier: 
   spawnInfo:
-  - unit_prefab: {fileID: 7531231395964145883, guid: 0849a49e06061414ba40532d67848986, type: 3}
+  - unit_prefab: {fileID: 7531231395964145883, guid: 8ae1830068d022d409c8620192631db7, type: 3}
     spawn_sort: List
     max: 0
     point: {x: 0, y: 0}
@@ -24,4 +24,6 @@ MonoBehaviour:
     angle1: 0
     angle2: 0
     noise: 0
+    amount: 0
+    gap: 1
     recty: 8

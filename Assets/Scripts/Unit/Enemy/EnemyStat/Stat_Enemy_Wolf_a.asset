@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   name_unit: wolf1
-  hp: 100
-  speed: 5
+  hp: 20
+  speed: 4
   hp_regen: 0
   armor: 0
   damage: 2
