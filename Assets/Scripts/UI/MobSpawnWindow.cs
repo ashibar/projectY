@@ -12,7 +12,7 @@ public class MobSpawnWindow : MonoBehaviour
     [SerializeField] private List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown>();
     [SerializeField] private GameObject reset_text;
 
-    [SerializeField] private Vector2 spawn_point = new Vector2(10, 0);
+    [SerializeField] private Vector2 spawn_point = new Vector2(14, 0);
 
     private void Awake()
     {

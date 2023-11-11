@@ -15,6 +15,6 @@ MonoBehaviour:
   stageName: 
   stageSprite: {fileID: 0}
   reward: {fileID: 11400000, guid: 9c390dceaf902d54c9a9bc91474a88f8, type: 2}
-  stageSort: 0
+  stageSort: 3
   phases:
   - {fileID: 11400000, guid: a9e2911d7d8b0e84aa17ef0b8c6f3617, type: 2}

@@ -1,103 +1,109 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss_base_Ai : Action_AI
 {
-    public Rigidbody2D target;
-    Rigidbody2D rigid;
-    SpriteRenderer spriter;
+    [SerializeField] private Unit target;                   // 대쉬 및 공격 대상
 
-    [SerializeField] private Animator anim;
-    [SerializeField] private float ATK_Range = 5f; //플레이어 간격
-    [SerializeField] private float beforeDelay = 1f;
-    [SerializeField] private float dashSpeed = 2f;
-    [SerializeField] private float dashDuration = 0.3f;
-    [SerializeField] private float afterDelay = 1.5f;
-    [SerializeField] private float dashCooltime = 5f;
-    [SerializeField] private bool smartDash;
-    [SerializeField] private AfterImage afterImage;
+    [SerializeField] private float ATK_Range = 5f;          // 플레이어 간격
+    [SerializeField] private float beforeDelay = 1f;        // 대쉬스펠 선딜
+    [SerializeField] private float dashSpeed = 2f;          // 대쉬스펠 돌진속도 
+    [SerializeField] private float dashDuration = 0.3f;     // 대쉬스펠 지속시간
+    [SerializeField] private float afterDelay = 1.5f;       // 대쉬스펠 후딜
+    [SerializeField] private float dashCooltime = 5f;       // 대쉬스펠 쿨타임
+    [SerializeField] private bool smartDash;                // 스마트 대쉬(돌진 방향을 선딜 이후에 결정)
+
+    [SerializeField] private Rigidbody2D rb2d;
+    [SerializeField] private Animator animator;             // 애니메이터
+    [SerializeField] private AfterImage afterImage;         // 잔상 모듈
 
     protected override void Awake()
     {
-        anim = GetComponent<Animator>();
         GameObject player = GameObject.FindWithTag("Player");
-        target = player.GetComponent<Rigidbody2D>();
-        rigid = GetComponent<Rigidbody2D>();
-        spriter = GetComponent<SpriteRenderer>();
+        target = player.GetComponent<Player>();
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         afterImage = GetComponent<AfterImage>();
     }
     public override void ai_process()
     {
-        float Distance = Vector2.Distance(target.position, rigid.position);
+        float Distance = Vector2.Distance(target.transform.position, transform.position);
+        Vector2 dir = (Vector2)(target.transform.position - transform.position).normalized;
+        unit.dir_toShoot = dir;
+        rb2d.velocity = Vector2.zero;
         //Debug.Log(Distance);
-        if ((Distance >= ATK_Range || isCooltime_) && !isCasting)
+        if (!isDashCasting)
         {
-            MobMove();
+            unit.GetComponent<SpriteRenderer>().flipX = dir.x > 0 ? false : true;
+            SummonProcess();
+        }
+        if ((Distance >= ATK_Range || isDashCooltime) && !isDashCasting)
+        {
+            if (!isSummonCasting)
+            {
+                //Debug.Log(dir);
+                ai_movement(target.transform.position, dir);
+            }
+                            
         }
         else
         {
             DashProcess();
         }
     }
-    private void MobMove()
+
+    protected override void ai_movement(Vector3 targetpos, Vector2 dir)
     {
-        Vector2 dir = target.position - rigid.position;
-        Vector2 nextvac = dir.normalized;
-        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + nextvac, unit.stat.Speed * Time.deltaTime);
-        rigid.MovePosition(rigid.position + nextvac);
-        rigid.velocity = Vector2.zero;
+        base.ai_movement(targetpos, dir);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + (Vector3)dir, unit.stat.Speed * Time.deltaTime);
     }
-    [SerializeField] private bool isCooltime_;
-    [SerializeField] private bool isCasting;
+
+    [SerializeField] private bool isDashCooltime;
+    [SerializeField] private bool isDashCasting;
     [SerializeField] private bool isInterrupted;
     [SerializeField] private Vector2 dash_vec;
     private async void DashProcess()
     {
-        if (!isCooltime_)
+        if (!isDashCooltime)
         {
-            isCooltime_ = true;
-            isCasting = true;
+            isDashCooltime = true;
+            isDashCasting = true;
             DashTimer(dashCooltime);
             await WaitBeforeCast(beforeDelay);
             await DashCast(dashDuration);
             await SlashCast(afterDelay);
         }
-        if (isInterrupted)
-        {
-            isInterrupted = false;
-        }
     }
     private async Task WaitBeforeCast(float duration)
     {
+        if (cts.Token.IsCancellationRequested)
+            return;
+
         float end = Time.time + duration;
         if (!smartDash)
-            dash_vec = (target.position - rigid.position).normalized;
-        anim.SetTrigger("isBeforeDelay");
-        while (Time.time < end)
+            dash_vec = (target.transform.position - transform.position).normalized;
+        animator.SetTrigger("isBeforeDelay");
+        while (Time.time < end && !cts.Token.IsCancellationRequested)
         {
-            if (isInterrupted)
-            {
-                await Task.FromResult(0);
-            }
             // 선 동작
             await Task.Yield();
         }
-        if (smartDash)
-            dash_vec = (target.position - rigid.position).normalized;
+        if (smartDash && !cts.Token.IsCancellationRequested)
+            dash_vec = (target.transform.position - transform.position).normalized;
     }
     private async Task DashCast(float duration)
     {
+        if (cts.Token.IsCancellationRequested)
+            return;
+
         float end = Time.time + duration;
-        while (Time.time < end)
+        while (Time.time < end && !cts.Token.IsCancellationRequested)
         {
-            if (isInterrupted)
-            {
-                await Task.FromResult(0);
-            }
-            afterImage.SetImage(gameObject);
+            afterImage.SetImage(gameObject, unit.GetComponent<SpriteRenderer>().flipX);
             afterImage.IsActive = true;
             transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + dash_vec, dashSpeed * Time.deltaTime);
 
@@ -106,31 +112,92 @@ public class Boss_base_Ai : Action_AI
     }
     private async Task SlashCast(float duration)
     {
+        if (cts.Token.IsCancellationRequested)
+            return;
+
         float end = Time.time + duration;
-        anim.SetTrigger("isSlash");
+        animator.SetTrigger("isSlash");
         afterImage.IsActive = false;
-        while (Time.time < end)
+        while (Time.time < end && !cts.Token.IsCancellationRequested)
         {
-            if (isInterrupted)
-            {
-                await Task.FromResult(0);
-            }
-            await Task.Yield();
+           await Task.Yield();
         }
-        anim.SetTrigger("isWalk");
-        isCasting = false;
+        animator.SetTrigger("isWalk");
+        isDashCasting = false;
     }
     private async void DashTimer(float duration)
     {
+        if (cts.Token.IsCancellationRequested)
+            return;
+
         float end = Time.time + duration;
-        while (Time.time < end)
+        while (Time.time < end && !cts.Token.IsCancellationRequested)
         {
-            if (isInterrupted)
-            {
-                await Task.FromResult(0);
-            }
+           await Task.Yield();
+        }
+        isDashCooltime = false;
+    }
+
+    [SerializeField] private bool isSummonCooltime;
+    [SerializeField] private bool isSummonCasting;
+    [SerializeField] private SpawnInfoContainer spawnInfo;
+    private async void SummonProcess()
+    {
+        if (!isSummonCooltime)
+        {
+            isSummonCooltime = true;
+            isSummonCasting = true;
+            SummonTimer(7f);
+            Debug.Log("a");
+            await WaitBeforeSummon(beforeDelay);
+            Debug.Log("b");
+            await SummonCast(0.5f);
+        }
+    }
+    private async Task WaitBeforeSummon(float duration)
+    {
+        if (cts.Token.IsCancellationRequested)
+            return;
+
+        float end = Time.time + duration;
+
+        // 소환 모션
+        while (Time.time < end && !cts.Token.IsCancellationRequested)
+        {
             await Task.Yield();
         }
-        isCooltime_ = false;
+
+    }
+    private async Task SummonCast(float duration)
+    {
+        if (cts.Token.IsCancellationRequested)
+            return;
+
+        float end = Time.time + duration;
+
+        Debug.Log("summon");
+        ExtraParams para = new ExtraParams();
+        para.SpawnInfo = spawnInfo;
+        EventManager.Instance.PostNotification("Spawn By Spawn Info", this, null, para);
+
+        while (Time.time < end && !cts.Token.IsCancellationRequested)
+        {
+            await Task.Yield();
+        }
+
+        isSummonCasting = false;
+    }
+    private async void SummonTimer(float duration)
+    {
+        if (cts.Token.IsCancellationRequested)
+            return;
+
+        float end = Time.time + duration;
+        while (Time.time < end && !cts.Token.IsCancellationRequested)
+        {
+            await Task.Yield();
+        }
+        
+        isSummonCooltime = false;
     }
 }
