@@ -24,8 +24,8 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: AllUnit
       flagValue: 1
-      targetNum: 1
-      isSatisfied: 1
+      targetNum: 21
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 1
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
