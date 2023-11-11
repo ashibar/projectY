@@ -45,7 +45,7 @@ public class Dash_Core : Spell_Core
         float end = Time.time + stat_spell.Spell_CoolTime;
         while ((Time.time < end - (stat_spell.Spell_CoolTime - dash_duration)) && !cts.Token.IsCancellationRequested)
         {
-            afterImage.SetImage(owner.gameObject);
+            afterImage.SetImage(owner.gameObject, owner.GetComponent<SpriteRenderer>().flipX);
             afterImage.IsActive = true;
             owner.transform.position = Vector2.MoveTowards(owner.transform.position, (Vector2)owner.transform.position + dir_toMove, dash_speed);
 

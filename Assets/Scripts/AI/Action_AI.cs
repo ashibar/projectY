@@ -12,7 +12,7 @@ public class Action_AI : MonoBehaviour
     [SerializeField] protected List<bool> isCooltime = new List<bool>();
     [SerializeField] protected List<bool> isActive_Spell = new List<bool>();
 
-    private CancellationTokenSource cts = new CancellationTokenSource();
+    protected CancellationTokenSource cts = new CancellationTokenSource();
 
     protected virtual void Awake()
     {
@@ -87,6 +87,11 @@ public class Action_AI : MonoBehaviour
             if (unit.spellManager.Get_Core(id) != null)
                 unit.spellManager.Get_Core(id).trigger = true;
     }
+    public void SetActive(bool value)
+    {
+        isActive = value;
+    }
+
     protected void OnDestroy()
     {
         cts?.Cancel();

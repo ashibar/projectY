@@ -66,6 +66,8 @@ public class UnitManager : MonoBehaviour, IEventListener
         "Unit Set Position",
         "Delete All Enemy",
         "Set Active Spell Manager",
+        "Set Target By Name",
+        "Set Unit AI",
     };
 
     private void Awake()
@@ -132,6 +134,10 @@ public class UnitManager : MonoBehaviour, IEventListener
                 DeleteAllEnemy((ExtraParams)param[0]); break;
             case "Set Active Spell Manager":
                 SetActiveSpellManager((ExtraParams)param[0]); break;
+            case "Set Target By Name":
+                SetTargetByName((ExtraParams)param[0]); break;
+            case "Set Unit AI":
+                SetUnitAI((ExtraParams)param[0]); break;
             default:
                 break;
         }
@@ -250,6 +256,31 @@ public class UnitManager : MonoBehaviour, IEventListener
         {
             if (string.Equals(c.tag, par.Name))
                 c.GetComponentInChildren<SpellManager>().SetActiveAll(par.Boolvalue);
+        }
+    }
+
+    private void SetTargetByName(ExtraParams par)
+    {
+        foreach (GameObject obj in clones)
+        {
+            //Debug.Log(obj.GetComponent<Unit>().stat_so.Name_unit + "," + par.Name);
+            if (string.Equals(obj.GetComponent<Unit>().stat_so.Name_unit, par.Name))
+            {
+                targetUnit = obj.GetComponent<Unit>();
+                break;
+            }
+        }
+    }
+
+    private void SetUnitAI(ExtraParams par)
+    {
+        foreach (GameObject obj in clones)
+        {
+            if (string.Equals(obj.GetComponent<Unit>().stat_so.Name_unit, par.Name))
+            {
+                obj.GetComponent<Action_AI>().SetActive(par.Boolvalue);
+                break;
+            }
         }
     }
 

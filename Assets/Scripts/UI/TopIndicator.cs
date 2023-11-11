@@ -75,7 +75,7 @@ public class TopIndicator : MonoBehaviour
         
         float cur = targetUnit.stat.Hp_current;
         float max = targetUnit.stat.Hp;
-        Debug.Log(cur + ", " + max);
+        //Debug.Log(cur + ", " + max);
 
         float rate = cur / max;
         targetHPBar.value = Mathf.Lerp(targetHPBar.value, rate, barSpeed * Time.deltaTime);
