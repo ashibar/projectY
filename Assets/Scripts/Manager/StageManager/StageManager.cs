@@ -94,8 +94,8 @@ public class StageManager : MonoBehaviour, IEventListener
         SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
         if (UIManager.Instance.TopIndicator)
         {
-            UIManager.Instance.TopIndicator.Sort = stageInfo.StageSort;
-            UIManager.Instance.TopIndicator.SetActive();
+            //UIManager.Instance.TopIndicator.Sort = stageInfo.StageSort;
+            //UIManager.Instance.TopIndicator.SetActive();
         }
         SetTargetUnit();
         LoadPlayerSpell();

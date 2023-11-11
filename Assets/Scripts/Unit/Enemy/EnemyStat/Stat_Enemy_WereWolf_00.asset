@@ -18,7 +18,7 @@ MonoBehaviour:
   speed: 1.2
   hp_regen: 0
   armor: 0
-  damage: 20
+  damage: 1
   speed_projectile: 0
   duration_projectile: 0
   range_projectile: 0

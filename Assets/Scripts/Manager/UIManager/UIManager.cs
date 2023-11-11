@@ -205,6 +205,7 @@ public class UIManager : MonoBehaviour, IEventListener
     {
         UnitManager.Instance.MaxDestroyed = para.Intvalue;
         topIndicator.Sort = stageInfoContainer.StageInfoList[stageInfoContainer.CurID].StageSort;
+        topIndicator.SetActive();
     }
 
     // Dummy Code

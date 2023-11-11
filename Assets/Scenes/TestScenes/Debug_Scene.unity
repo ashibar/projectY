@@ -10298,7 +10298,7 @@ MonoBehaviour:
   player_obj: {fileID: 186989428}
   dropdowns: []
   reset_text: {fileID: 684486297}
-  spawn_point: {x: 10, y: 0}
+  spawn_point: {x: 14, y: 0}
 --- !u!1001 &464207597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22246,6 +22246,18 @@ PrefabInstance:
     - target: {fileID: 1542764009537502856, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542764009747200178, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542764009747200178, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542764009747200178, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1542764009917555475, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
       propertyPath: m_Pivot.x

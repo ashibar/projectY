@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee40162851d1e5c48b47ec81f8a8c08c, type: 3}
   m_Name: Stage_Demo_05
   m_EditorClassIdentifier: 
-  stageName: 
-  rewards: []
+  stageName: "\uBC84\uB824\uC9C4 \uC57C\uC601\uC9C0"
+  stageSprite: {fileID: 21300000, guid: c003dedf3f59a6b4585e6d3640cade6c, type: 3}
+  reward: {fileID: 11400000, guid: 880d90bb52a01c54cb1fb2acdf0aca8b, type: 2}
   stageSort: 3
-  eventList_so:
-  - {fileID: 11400000, guid: 64aa608ba1b59f94dab9bbacb771cfc9, type: 2}
-  spawners:
-  - {fileID: 6779653628060644938, guid: 79bbb1833a8beeb4c80e9b660e8b37d8, type: 3}
+  phases:
+  - {fileID: 11400000, guid: ff80ce172daf0b64ca0060654d9fe1a5, type: 2}
+  - {fileID: 11400000, guid: 037280e88ee197a4fbcc77194da94cec, type: 2}
+  - {fileID: 11400000, guid: 18e53e34349f7e9408fff81198372cbe, type: 2}
