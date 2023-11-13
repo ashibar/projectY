@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee40162851d1e5c48b47ec81f8a8c08c, type: 3}
+  m_Name: Demo_Progress_02_
+  m_EditorClassIdentifier: 
+  stageName: Demo_Progress_00
+  stageSprite: {fileID: 0}
+  reward: {fileID: 0}
+  stageSort: 0
+  phases:
+  - {fileID: 11400000, guid: de944ae3b6810ea44959dca764d8545f, type: 2}

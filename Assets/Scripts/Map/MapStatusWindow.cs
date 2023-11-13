@@ -33,7 +33,7 @@ public class MapStatusWindow : MonoBehaviour
         {
             GameObjectNFloat reward = rewardList[i];
             GameObject clone = Instantiate(spell_icon_origin, spell_holder);
-            Vector2 pos = baseVector + new Vector2(i % 5 * xgap, (i / 5) * ygap);
+            Vector2 pos = baseVector + new Vector2(i % 5 * xgap, -(i / 5) * ygap);
             clone.GetComponent<RectTransform>().anchoredPosition = pos;
             clone.GetComponent<Spell_Icon>().SetIcon(reward.obj.GetComponent<Spell>());
         }

@@ -76,10 +76,23 @@ public class Player : Unit
             if (stat.Hp_current <= 0)
             {
                 isDead = true;
+                StartCoroutine(DeathCamZoom());
+                animationManager.AnimationControl("Dead");
                 ExtraParams para = new ExtraParams();
                 para.Name = "isFail";
                 para.Boolvalue = true;
                 EventManager.Instance.PostNotification("Add New Trigger", this, null, para);
             }
+    }
+
+    private IEnumerator DeathCamZoom()
+    {
+        float end = Time.time + 1f;
+
+        while (Time.time < end)
+        {
+            Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, 6f, Time.deltaTime * 2);
+            yield return null;
+        }
     }
 }

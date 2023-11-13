@@ -9,11 +9,13 @@ public class PlayerInfoContainer : ScriptableObject
     [SerializeField] private float money;
     [SerializeField] private List<StringNString> spell_activated = new List<StringNString>();
     [SerializeField] private List<StringNString> spell_inventory = new List<StringNString>();
+    [SerializeField] private int progress_step;
 
     public string Player_name { get => player_name; set => player_name = value; }
     public float Money { get => money; set => money = value; }
     public List<StringNString> Spell_activated { get => spell_activated; set => spell_activated = value; }
     public List<StringNString> Spell_inventory { get => spell_inventory; set => spell_inventory = value; }
+    public int Progress_step { get => progress_step; set => progress_step = value; }
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class PlayerInfoContainer : ScriptableObject
         spell_activated.Add(new StringNString("a2", ""));
         spell_inventory.Clear();
         money = 0;
+        progress_step = 0;
     }
 
     /// <summary>
@@ -37,7 +40,14 @@ public class PlayerInfoContainer : ScriptableObject
     /// <param name="spell_code">Ãß°¡ ½ºÆç</param>
     public void AddSpellToPlayerInfo(StringNString spell_code)
     {
-        Spell_inventory.Add(spell_code);
+        if (spell_code.string1[0] == 'd')
+        {
+            spell_activated.Add(spell_code);
+        }
+        else
+        {
+            Spell_inventory.Add(spell_code);
+        }
     }
 
     public void AddSpellToPlayerInfo_detailed(StringNString spell_code)
