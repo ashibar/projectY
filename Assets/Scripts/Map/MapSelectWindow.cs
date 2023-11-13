@@ -19,7 +19,6 @@ public class MapSelectWindow : MonoBehaviour
         stageInfoContainer = LoadDataSingleton.Instance.StageInfoContainer();
         mapStatusWindow = GetComponentInChildren<MapStatusWindow>();
         currentNode = nodeSet.startNode;
-        mapPlayerControl.transform.position = currentNode.transform.position;
         mapStatusWindow.SetStatus(stageInfoContainer.StageInfoList[id]);
     }
 
@@ -30,7 +29,7 @@ public class MapSelectWindow : MonoBehaviour
 
     private void MovePlayerUI()
     {
-        if (mapPlayerControl.isActive)
+        if (mapPlayerControl.isMoving)
         {
             renderFlag = true;
             //mapStatusWindow.gameObject.SetActive(false);
@@ -46,6 +45,9 @@ public class MapSelectWindow : MonoBehaviour
 
     private async void PlayerMovement()
     {
+        if (mapPlayerControl.isActive == false)
+            return;
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (currentNode.left == null)
@@ -124,7 +126,7 @@ public class MapSelectWindow : MonoBehaviour
 
     public void Press_Start()
     {
-        if (mapPlayerControl.isActive) return;
+        if (mapPlayerControl.isMoving) return;
         LoadingSceneController.LoadScene("BattleScene", stageInfoContainer.CurID);
     }
 }

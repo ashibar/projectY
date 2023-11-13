@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49dacf86a98d8e4a9448c1c595bdc2e, type: 3}
+  m_Name: Demo_Progress_01_dialog_00
+  m_EditorClassIdentifier: 
+  dialogList:
+  - sort: 0
+    left_portrait_id: 0
+    right_portrait_id: 0
+    text_name: 
+    text_value: "\uB300\uCDA9 3\uC2A4\uD14C\uC774\uC9C0\uB77C\uB294 \uB0B4\uC6A9"
+    nameColor:
+      serializedVersion: 2
+      rgba: 0
+    colorPreset: 0
+    enableNameBox: 1
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  portraitList: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
+  isAuto: 1
+  mode: 1

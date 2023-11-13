@@ -15,6 +15,7 @@ public class AnimationManager : MonoBehaviour
         "isMove",
         "isHit",
         "isGaze",
+        "isDead",
     };
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class AnimationManager : MonoBehaviour
             case "Move": SetState("isMove"); break;
             case "Gaze": SetState("isGaze"); break;
             case "Hit": SetState("isHit"); break;
+            case "Dead": SetState("isDead"); break;
         }
     }
 

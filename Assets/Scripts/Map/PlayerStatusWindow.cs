@@ -8,6 +8,7 @@ public class PlayerStatusWindow : MonoBehaviour
 {
     [SerializeField] public PlayerInfoContainer playerInfoContainer;
     [SerializeField] private SpellPrefabContainer spellPrefabContainer;
+    [SerializeField] private MapNodeSet mapNodeSet;
 
     [SerializeField] private TextMeshProUGUI player_name_text;
     [SerializeField] private TextMeshProUGUI player_money_text;
@@ -78,5 +79,15 @@ public class PlayerStatusWindow : MonoBehaviour
         playerInfoContainer.AddSpellToPlayerInfo_detailed(new StringNString(playerInfoContainer.Spell_inventory[0].string1, code));
         playerInfoContainer.Spell_inventory.RemoveAt(0);
         Update_Status();
+    }
+
+    public void Press_OpenMapAll()
+    {
+        List<MapNode> nodes = new List<MapNode>(mapNodeSet.GetComponentsInChildren<MapNode>());
+
+        nodes[1].isAccessable = true;
+        nodes[2].isAccessable = true;
+        nodes[4].isAccessable = true;
+        nodes[5].isAccessable = true;
     }
 }

@@ -105,7 +105,7 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 1
+      targetNum: 4
       isSatisfied: 0
       isContinued: 1
     extraParams:

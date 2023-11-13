@@ -156,7 +156,7 @@ namespace ReadyMadeReality
 
         [SerializeField] private bool isAuto;
         [SerializeField] private bool isAutoRunning;
-        [SerializeField] private float auto_delay = 1f;
+        //[SerializeField] private float auto_delay = 2f;
 
         private CancellationTokenSource cts = new CancellationTokenSource();
 
@@ -268,6 +268,11 @@ namespace ReadyMadeReality
                     InitString(); 
                 }
                 phaseEndFlag = false;
+            }
+            if (dialog_cnt >= dialog_list.Count)
+            {
+                isActive = false;
+                dialogArea.SetActive(false);
             }
         }
 
@@ -396,7 +401,7 @@ namespace ReadyMadeReality
             {
                 isAutoRunning = true;
 
-                float end = Time.time + auto_delay;
+                float end = Time.time + word_max * 0.03f + 0.5f;
 
                 while (Time.time < end && !cts.Token.IsCancellationRequested)
                 {

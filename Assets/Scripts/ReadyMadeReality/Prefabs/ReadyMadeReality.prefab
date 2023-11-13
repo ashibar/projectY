@@ -941,7 +941,7 @@ MonoBehaviour:
   isInterrupted: 0
   isAuto: 0
   isAutoRunning: 0
-  auto_delay: 1
+  auto_delay: 2
 --- !u!1 &7617927617374073681
 GameObject:
   m_ObjectHideFlags: 0
