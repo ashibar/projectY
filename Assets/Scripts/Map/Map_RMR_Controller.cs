@@ -160,10 +160,13 @@ public class Map_RMR_Controller : AsyncFunction_template, IEventListener
                 break;
             case 2:
                 nodeSet.startNode = nodes[2];
+                nodes[2].isAccessable = true;
                 nodes[4].isAccessable = true;
                 break;
             case 3:
                 nodeSet.startNode = nodes[4];
+                nodes[2].isAccessable = true;
+                nodes[4].isAccessable = true;
                 nodes[5].isAccessable = true;
                 break;
         }
