@@ -31,6 +31,7 @@ public class EnemyMeleeAttack_Core : Spell_Core
         float end = Time.time + duration;
         DamageCalculation dc = UnitManager.Instance.damageCalculation;
         collision.gameObject.GetComponent<Unit>().stat.Hp_current -= dc.Calculate(null, collision.gameObject.GetComponent<Unit>(), owner.stat, stat_spell, Color.red);
+        collision.gameObject.GetComponent<Unit>().ActiveBlink();
         //stat_spell.Spell_DMG * owner.stat.Damage
         Debug.Log("damage");
         while (Time.time < end && !cts.Token.IsCancellationRequested)

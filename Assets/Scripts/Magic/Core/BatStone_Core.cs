@@ -41,7 +41,7 @@ public class BatStone_Core : Spell_Core
         //Debug.Log(string.Format("{0}, {1}, {2}", stat_processed.Damage, stat_spell.Spell_DMG, damage));
         DamageCalculation dc = UnitManager.Instance.damageCalculation;
         para.collision.GetComponent<Unit>().stat.Hp_current -= dc.Calculate(owner, para.collision.GetComponent<Unit>(), para.stat_processed, para.stat_spell, Color.white);
-        
+        para.collision.GetComponent<Unit>().ActiveBlink();
     }
 
     public override void ShootingFunction(DelegateParameter para)

@@ -52,7 +52,7 @@ public class InventoryDebugArea : MonoBehaviour
             case 2:
                 playerInfoContainer.Spell_inventory.Add(new StringNString(spellPrefab.Element[dropdowns[id].value].GetComponent<Spell>().GetCode(), "")); break;
             case 3:
-                playerInfoContainer.Spell_inventory.Add(new StringNString(spellPrefab.Passive[dropdowns[id].value].GetComponent<Spell>().GetCode(), "")); break;
+                playerInfoContainer.Spell_activated.Add(new StringNString(spellPrefab.Passive[dropdowns[id].value].GetComponent<Spell>().GetCode(), "")); break;
         }
         inventoryWindow.Update_Status();
     }

@@ -401,7 +401,7 @@ namespace ReadyMadeReality
             {
                 isAutoRunning = true;
 
-                float end = Time.time + word_max * 0.03f + 0.5f;
+                float end = Time.time + word_max * 0.05f + 0.5f;
 
                 while (Time.time < end && !cts.Token.IsCancellationRequested)
                 {

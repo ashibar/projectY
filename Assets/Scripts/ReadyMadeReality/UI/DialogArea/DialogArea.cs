@@ -52,7 +52,7 @@ namespace ReadyMadeReality
             para.Boolvalue = !value;
             if (transform.parent.parent.GetComponentInChildren<Map_RMR_Controller>() != null)
             {
-                //Debug.Log("!!");
+                Debug.Log("!!");
                 EventManager.Instance.PostNotification("Set Actvie Map Player", this, null, para);
             }
         }
