@@ -4973,7 +4973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 42409067864619031, guid: 8d19c8bac9e9e5f4c8c130f73d49b6b4, type: 3}
       propertyPath: m_Name
-      value: MenuPanel
+      value: MenuPanels
       objectReference: {fileID: 0}
     - target: {fileID: 42409069033004871, guid: 8d19c8bac9e9e5f4c8c130f73d49b6b4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
