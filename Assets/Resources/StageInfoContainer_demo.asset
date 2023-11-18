@@ -15,7 +15,7 @@ MonoBehaviour:
   curID: 2
   stageInfoList:
   - {fileID: 11400000, guid: ae319b141ebc41249bb85d6755cd5ef6, type: 2}
-  - {fileID: 11400000, guid: 0cdee5a5913cf5b44a4a11754fd6fbfc, type: 2}
   - {fileID: 11400000, guid: 0b9393ed140e2674a87e66c62ab5ecf9, type: 2}
-  - {fileID: 11400000, guid: 3a08abc32a1b8c746a54cf18a31e2ef5, type: 2}
+  - {fileID: 11400000, guid: e8d961cf83cfb8d40bd9550457f01331, type: 2}
+  - {fileID: 11400000, guid: 635031c1a6fa78b4184bea7fb2cb7f2c, type: 2}
   - {fileID: 11400000, guid: edbfc087f338a9b498f7b0c5eebe15b9, type: 2}
