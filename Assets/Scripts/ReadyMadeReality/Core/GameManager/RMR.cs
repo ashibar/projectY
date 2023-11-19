@@ -70,7 +70,7 @@ namespace ReadyMadeReality
         private void SetDialog(ExtraParams param)
         {
             dialogArea.SetActive(true);
-            dialogArea.SetDialog(param.Dialog_so);
+            dialogArea.SetDialog(param.Dialog_so);            
         }
     } 
 }

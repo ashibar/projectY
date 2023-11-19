@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour, IEventListener
     [SerializeField] private StageinfoText stageinfoText;
     [SerializeField] private TopIndicator topIndicator;
     [SerializeField] private TutorialLogo tutorialLogo;
+    [SerializeField] private List<GameObject> indicatorList = new List<GameObject>();
 
     [SerializeField] private StageInfoContainer_so stageInfoContainer;
 
@@ -65,6 +66,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Active Gameover Window",
         "Active StageInfo Window",
         "Active Top Indicator",
+        "Set Active Indicator",
     };
 
     private void Awake()
@@ -121,6 +123,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 ActiveStageWindow(para); break;
             case "Active Top Indicator":
                 ActiveTopIndicator(para); break;
+            case "Set Active Indicator":
+                SetActiveIndicator(para); break;
             default:
                 break;
         }
@@ -208,6 +212,20 @@ public class UIManager : MonoBehaviour, IEventListener
         topIndicator.SetActive();
     }
 
+    private void SetActiveIndicator(ExtraParams para)
+    {
+        string indicator_name = para.Name;
+        bool isActive = para.Boolvalue;
+        Vector2 pos = para.VecList.Count > 0 ? para.VecList[0] : Vector2.zero;
+
+        foreach (GameObject ind in indicatorList)
+        {
+            if (string.Equals(ind.gameObject.name, indicator_name))
+            {
+                ind.GetComponent<Indicator>().SetActive(isActive, pos);
+            }
+        }
+    }
     // Dummy Code
     //[SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
     //private void EventReciever()

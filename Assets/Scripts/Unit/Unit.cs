@@ -47,4 +47,42 @@ public class Unit : MonoBehaviour
     {
 
     }
+
+    [SerializeField] protected bool isBlinkCooltime;
+    [SerializeField] protected float blinkCooltime = 0.1f;
+    [SerializeField] protected Color color_origin;
+
+    public void ActiveBlink()
+    {
+        if (!isBlinkCooltime)
+            StartCoroutine(Blink_Routine());
+    }
+
+    private IEnumerator Blink_Routine()
+    {
+        float end = Time.time + blinkCooltime / 2;
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr == null)
+            yield break;
+
+        color_origin = sr.color;
+        isBlinkCooltime = true;
+        sr.color = Color.red;
+
+        while (Time.time < end)
+        {
+            yield return null;
+        }
+
+        sr.color = color_origin;
+        end = Time.time + blinkCooltime / 2;
+
+        while (Time.time < end)
+        {
+            yield return null;
+        }
+
+        isBlinkCooltime = false;
+    }
+
 }

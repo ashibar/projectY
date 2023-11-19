@@ -23,8 +23,15 @@ public class Spell_Icon : MonoBehaviour, IPointerExitHandler, IPointerEnterHandl
 
     public void SetIcon(Spell spell, int id = 0)
     {
-        if (background == null || image == null || spell == null)
+        if (background == null || image == null)
             return;
+        else if (spell == null)
+        {
+            image.sprite = Resources.Load<Sprite>("transparent_sprite");
+            background.color = Color.white;
+            spell_ = null;
+            return;
+        }
 
         spell_ = spell;
         this.id = id;

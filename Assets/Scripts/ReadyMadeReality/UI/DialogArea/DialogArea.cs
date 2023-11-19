@@ -47,6 +47,14 @@ namespace ReadyMadeReality
         {
             gameObject.SetActive(value);
             dialogBox.SetActive(value);
+
+            ExtraParams para = new ExtraParams();
+            para.Boolvalue = !value;
+            if (transform.parent.parent.GetComponentInChildren<Map_RMR_Controller>() != null)
+            {
+                Debug.Log("!!");
+                EventManager.Instance.PostNotification("Set Actvie Map Player", this, null, para);
+            }
         }
 
         public void RenderDialog()

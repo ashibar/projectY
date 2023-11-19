@@ -23,6 +23,7 @@ public class Stat_Spell
     [SerializeField] private float spell_Amount_Tic = 1;     //틱당 상호작용하는 유닛의 개수
 
     [SerializeField] private bool isInherence;               //고유 스펠, 부속 착용불가
+    [SerializeField] private string spell_detail;
 
     public Stat_Spell(Stat_Spell_so spell)
     {
@@ -41,6 +42,7 @@ public class Stat_Spell
         this.spell_Range_Area = spell.Spell_Range_Area;
         this.spell_Amount_Tic = spell.Spell_Amount_Tic;
         this.isInherence = spell.IsInherence;
+        this.spell_detail = spell.Spell_detail;
     }
 
 
@@ -61,6 +63,7 @@ public class Stat_Spell
         this.spell_Range_Area = spell.spell_Range_Area;
         this.spell_Amount_Tic = spell.Spell_Amount_Tic;
         this.isInherence = spell.IsInherence;
+        this.spell_detail = spell.Spell_detail;
     }
 
     public SpellType Spell_Type { get => spell_Type; set => spell_Type = value; }
@@ -78,4 +81,5 @@ public class Stat_Spell
     public float Spell_ProjectileDelay { get => spell_ProjectileDelay; set => spell_ProjectileDelay = value; }
     public float Spell_Amount_Tic { get => spell_Amount_Tic; set => spell_Amount_Tic = value; }
     public bool IsInherence { get => isInherence; set => isInherence = value; }
+    public string Spell_detail { get => spell_detail; set => spell_detail = value; }
 }

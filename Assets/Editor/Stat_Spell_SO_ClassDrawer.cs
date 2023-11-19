@@ -16,6 +16,11 @@ public class Stat_Spell_SO_ClassDrawer : Editor
             GUILayout.ExpandWidth(true),
             GUILayout.Height(20)
         };
+        GUILayoutOption[] textAreaOptions =
+        {
+            GUILayout.ExpandWidth(true),
+            GUILayout.Height(200)
+        };
 
         so.Spell_Name = EditorGUILayout.TextField("Spell Name", so.Spell_Name, textFieldOptions);
         so.Spell_Code = EditorGUILayout.TextField("Spell Name", so.Spell_Code, textFieldOptions);
@@ -44,6 +49,10 @@ public class Stat_Spell_SO_ClassDrawer : Editor
             case SpellType.Passive:
                 break;
         }
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.PrefixLabel("Detail");
+        so.Spell_detail = EditorGUILayout.TextArea(so.Spell_detail, textAreaOptions);
+        EditorGUILayout.EndHorizontal();
 
         EditorUtility.SetDirty(target);
     }

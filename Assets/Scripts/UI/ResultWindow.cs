@@ -100,6 +100,7 @@ public class ResultWindow : AsyncFunction_template
         await card_animation_control.SpellSelected(cts.Token, id);
         Debug.Log("?");
         map_button.gameObject.SetActive(true);
+        LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step = LoadDataSingleton.Instance.StageInfoContainer().CurID;
     }
 
     private void OnDestroy()

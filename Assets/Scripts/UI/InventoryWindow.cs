@@ -22,8 +22,11 @@ public class InventoryWindow : MonoBehaviour
     [SerializeField] private ScrollView_Management core_scrollview;
     [SerializeField] private ScrollView_Management part_scrollview;
 
-    [SerializeField] private GameObject spell_icon_origin;
+    [SerializeField] private GameObject spell_icon_inventory_origin;
+    [SerializeField] private GameObject spell_icon_normal_origin;
     [SerializeField] private List<GameObject> spell_icon_clone = new List<GameObject>();
+
+    [SerializeField] private Spell_Icon_CoreDisplay coreDisplay;
 
     public Spell spell_displayed;
 
@@ -67,7 +70,7 @@ public class InventoryWindow : MonoBehaviour
                     case 'a':
                         if (spell.GetStatSpell().IsInherence)
                             break;
-                        GameObject clone = Instantiate(spell_icon_origin, core_scrollview.content_rt);
+                        GameObject clone = Instantiate(spell_icon_inventory_origin, core_scrollview.content_rt);
                         Vector2 pos = baseVector + new Vector2(0, - core_cnt * ygap);
                         clone.GetComponent<RectTransform>().anchoredPosition = pos;
                         clone.GetComponent<Spell_Icon>().SetIcon(spell);
@@ -76,12 +79,21 @@ public class InventoryWindow : MonoBehaviour
                         break;
                     case 'b':
                     case 'c':
-                    case 'e':
                         if (spell_displayed == null)
                             break;
                         if (!string.Equals(spell_displayed.GetCode(), codes_p[i].string2))
                             break;
-                        clone = Instantiate(spell_icon_origin, attached_scrollview.content_rt);
+                        clone = Instantiate(spell_icon_normal_origin, attached_scrollview.content_rt);
+                        pos = baseVector + new Vector2(part_cnt % 4 * xgap, -(part_cnt / 4) * ygap);
+                        clone.GetComponent<RectTransform>().anchoredPosition = pos;
+                        clone.GetComponent<Spell_Icon>().SetIcon(spell);
+                        spell_icon_clone.Add(clone);
+                        part_cnt++;
+                        break;
+                    case 'd':
+                        if (spell_displayed != null)
+                            break;
+                        clone = Instantiate(spell_icon_normal_origin, attached_scrollview.content_rt);
                         pos = baseVector + new Vector2(part_cnt % 4 * xgap, -(part_cnt / 4) * ygap);
                         clone.GetComponent<RectTransform>().anchoredPosition = pos;
                         clone.GetComponent<Spell_Icon>().SetIcon(spell);
@@ -102,8 +114,8 @@ public class InventoryWindow : MonoBehaviour
                         break;
                     case 'b':
                     case 'c':
-                    case 'e':
-                        GameObject clone = Instantiate(spell_icon_origin, part_scrollview.content_rt);
+                    case 'd':
+                        GameObject clone = Instantiate(spell_icon_inventory_origin, part_scrollview.content_rt);
                         Vector2 pos = baseVector + new Vector2(part_cnt % 3 * xgap, -(part_cnt / 3) * ygap);
                         clone.GetComponent<RectTransform>().anchoredPosition = pos;
                         clone.GetComponent<Spell_Icon>().SetIcon(spell, part_cnt);
@@ -126,6 +138,13 @@ public class InventoryWindow : MonoBehaviour
     public void Reset_Status()
     {
         playerInfoContainer.Initiate();
+        Update_Status();
+    }
+
+    public void Reset_Displayed_Spell()
+    {
+        spell_displayed = null;
+        coreDisplay.SetIcon(null);
         Update_Status();
     }
 }
