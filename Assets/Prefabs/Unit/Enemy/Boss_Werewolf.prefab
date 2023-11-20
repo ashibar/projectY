@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 1827238772}
   - component: {fileID: 5831956014742857518}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: Boss_Werewolf
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,6 +184,9 @@ MonoBehaviour:
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
   pos_toShoot: {x: 0, y: 0}
+  isBlinkCooltime: 0
+  blinkCooltime: 0.1
+  color_origin: {r: 0, g: 0, b: 0, a: 0}
   spawner_pointer: {fileID: 0}
   action_ai: {fileID: 0}
   meleeAttack: {fileID: 0}
@@ -203,13 +206,14 @@ MonoBehaviour:
   isCooltime: 
   isActive_Spell: 
   target: {fileID: 0}
-  ATK_Range: 10
+  ATK_Range: 15
   beforeDelay: 0.5
   dashSpeed: 70
   dashDuration: 0.25
   afterDelay: 0.7
   dashCooltime: 4
   smartDash: 1
+  rb2d: {fileID: 0}
   animator: {fileID: 0}
   afterImage: {fileID: 0}
   isDashCooltime: 0
