@@ -221,7 +221,8 @@ public class SpawnManager : MonoBehaviour, IEventListener
 
     private void Spawn_Point(SpawnInfo si)
     {
-        GameObject clone = Instantiate(si.unit_prefab, si.point, Quaternion.identity, Holder.enemy_holder);
+        Vector2 pos = Player.Instance.transform.position;
+        GameObject clone = Instantiate(si.unit_prefab, pos + si.point, Quaternion.identity, Holder.enemy_holder);
         clone.name = UnitManager.Instance.Clones.Count.ToString();
         UnitManager.Instance.Clones.Add(clone);
     }

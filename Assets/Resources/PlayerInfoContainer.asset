@@ -21,7 +21,5 @@ MonoBehaviour:
     string2: a1
   - string1: a2
     string2: 
-  - string1: d04
-    string2: 
   spell_inventory: []
-  progress_step: 2
+  progress_step: 0

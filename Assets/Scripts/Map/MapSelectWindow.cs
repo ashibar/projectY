@@ -18,7 +18,12 @@ public class MapSelectWindow : MonoBehaviour
     {
         stageInfoContainer = LoadDataSingleton.Instance.StageInfoContainer();
         mapStatusWindow = GetComponentInChildren<MapStatusWindow>();
+    }
+
+    private void Start()
+    {
         currentNode = nodeSet.startNode;
+        id = nodeSet.startNode.index;
         mapStatusWindow.SetStatus(stageInfoContainer.StageInfoList[id]);
     }
 

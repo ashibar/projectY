@@ -21,19 +21,19 @@ namespace ReadyMadeReality
 
         }
 
-        public void FormByMode(DialogMode mode)
+        public virtual void FormByMode(DialogMode mode)
         {
-            switch (mode)
-            {
-                case DialogMode.Normal:
-                    rt.anchoredPosition = new Vector2(-100, 210);
-                    rt.sizeDelta = new Vector2(600, 750);
-                    break;
-                case DialogMode.Battle:
-                    rt.anchoredPosition = new Vector2(-100, 140);
-                    rt.sizeDelta = new Vector2(360, 450);
-                    break;
-            }
+            //switch (mode)
+            //{
+            //    case DialogMode.Normal:
+            //        rt.anchoredPosition = new Vector2(-100, 210);
+            //        rt.sizeDelta = new Vector2(600, 750);
+            //        break;
+            //    case DialogMode.Battle:
+            //        rt.anchoredPosition = new Vector2(-100, 140);
+            //        rt.sizeDelta = new Vector2(360, 450);
+            //        break;
+            //}
         }
     } 
 }

@@ -22,6 +22,18 @@ MonoBehaviour:
     - {x: -12, y: 0}
     - {x: 0, y: 12}
     - {x: 0, y: -12}
+    radius: 0
+    angle1: 0
+    angle2: 0
+    noise: 0
+    amount: 0
+    gap: 1
+    recty: 10
+  - unit_prefab: {fileID: 1556280984215810568, guid: b749b606ac1656d4db4124a3bf621e0a, type: 3}
+    spawn_sort: List
+    max: 0
+    point: {x: 0, y: 0}
+    position:
     - {x: 8.4, y: 8.4}
     - {x: 8.4, y: -8.4}
     - {x: -8.4, y: 8.4}
@@ -30,4 +42,6 @@ MonoBehaviour:
     angle1: 0
     angle2: 0
     noise: 0
-    recty: 14
+    amount: 0
+    gap: 1
+    recty: 10
