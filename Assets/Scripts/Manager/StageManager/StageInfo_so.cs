@@ -23,5 +23,6 @@ public enum StageSort
     None,
     Timer,
     targetDestroy,
-    targetHp
+    targetHp,
+    infinite,
 }

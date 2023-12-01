@@ -60,6 +60,8 @@ public class StageManager : MonoBehaviour, IEventListener
     {
         "Goto Next Phase",
         "Force Load",
+        "Set Stage Info By ID",
+        "Set Next Stage Of Infinite Mode",
     };
 
     private void Awake()
@@ -90,7 +92,8 @@ public class StageManager : MonoBehaviour, IEventListener
         //    Instantiate(g, SpawnManager.Instance.spawner_holder);
         //}
         //SpawnManager.Instance.SetSpawner();
-
+        Debug.Log(stageInfoContainer_so.name);
+        Debug.Log("id = " + stageInfoContainer_so.CurID.ToString());
         SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
         if (UIManager.Instance.TopIndicator)
         {
@@ -123,6 +126,10 @@ public class StageManager : MonoBehaviour, IEventListener
                 GotoNextPhase((ExtraParams)param[0]); break;
             case "Force Load":
                 ForceLoad((ExtraParams)param[0]); break;
+            case "Set Stage Info By ID":
+                SetStageInfoByID((ExtraParams)param[0]); break;
+            case "Set Next Stage Of Infinite Mode":
+                SetNextStageOfInfiniteMode((ExtraParams)param[0]); break;
         }
     }
 
@@ -137,6 +144,18 @@ public class StageManager : MonoBehaviour, IEventListener
         LoadingSceneController.LoadScene(para.Name, para.Intvalue);
     }
 
+    private void SetStageInfoByID(ExtraParams para)
+    {
+        SetStageInfo(stageInfoContainer_so.StageInfoList[Mathf.Clamp(para.Intvalue, 0, stageInfoContainer_so.StageInfoList.Count)]);
+    }
+
+    private void SetNextStageOfInfiniteMode(ExtraParams para)
+    {
+        LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step_infinite += 1;
+        int progress = LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step_infinite;
+        SetStageInfo(stageInfoContainer_so.StageInfoList[Mathf.Clamp(progress, 0, stageInfoContainer_so.StageInfoList.Count - 1)]);
+    }
+
     /// <summary>
     /// <para/> <b>로딩 시 StageManager에 스테이지 정보를 넣기 위한 함수</b>
     /// </summary>
@@ -146,7 +165,7 @@ public class StageManager : MonoBehaviour, IEventListener
         stageInfo_so = _stageInfo_so;
         stageInfo = new StageInfo(_stageInfo_so);
 
-        //SetTestPara();
+        eventTimer.ClearPhase();
         foreach(EventPhase_so phase in stageInfo.Phases)
             eventTimer.AddPhase(phase);
         //conditionChecker.SetPara(stageInfo.Para);

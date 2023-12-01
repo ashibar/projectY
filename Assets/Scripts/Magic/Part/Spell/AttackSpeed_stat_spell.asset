@@ -26,3 +26,5 @@ MonoBehaviour:
   spell_Multy_Radius: 0
   spell_Range_Area: 0
   spell_Amount_Tic: 1
+  isInherence: 0
+  spell_detail: 

@@ -27,6 +27,17 @@ MonoBehaviour:
       targetNum: 0.5
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -53,6 +64,17 @@ MonoBehaviour:
       flagValue: 0
       targetNum: 1
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -81,6 +103,17 @@ MonoBehaviour:
       targetNum: 0
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: isClear
@@ -107,6 +140,17 @@ MonoBehaviour:
       flagValue: 0
       targetNum: 0
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -135,6 +179,17 @@ MonoBehaviour:
       targetNum: 0
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -162,6 +217,17 @@ MonoBehaviour:
       targetNum: 2.5
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -187,7 +253,18 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 3
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -214,8 +291,9 @@ MonoBehaviour:
       targetFlag: AllUnit
       flagValue: 1
       targetNum: 1
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
+    conditions: []
     extraParams:
       id: 0
       name: 
@@ -241,8 +319,9 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 2
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
+    conditions: []
     extraParams:
       id: 0
       name: 
@@ -268,8 +347,9 @@ MonoBehaviour:
       targetFlag: AllUnit
       flagValue: 1
       targetNum: 3
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
+    conditions: []
     extraParams:
       id: 0
       name: 
@@ -295,8 +375,9 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 1
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
+    conditions: []
     extraParams:
       id: 0
       name: 
@@ -322,8 +403,9 @@ MonoBehaviour:
       targetFlag: AllUnit
       flagValue: 1
       targetNum: 11
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
+    conditions: []
     extraParams:
       id: 0
       name: 
@@ -349,8 +431,9 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 12
-      isSatisfied: 1
+      isSatisfied: 0
       isContinued: 1
+    conditions: []
     extraParams:
       id: 0
       name: isClear

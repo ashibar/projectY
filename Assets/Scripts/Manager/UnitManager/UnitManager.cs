@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -68,6 +69,7 @@ public class UnitManager : MonoBehaviour, IEventListener
         "Set Active Spell Manager",
         "Set Target By Name",
         "Set Unit AI",
+        "Set Unit AI By Tag",
     };
 
     private void Awake()
@@ -138,6 +140,8 @@ public class UnitManager : MonoBehaviour, IEventListener
                 SetTargetByName((ExtraParams)param[0]); break;
             case "Set Unit AI":
                 SetUnitAI((ExtraParams)param[0]); break;
+            case "Set Unit AI By Tag":
+                SetUnitAIByTag((ExtraParams)param[0]); break;
             default:
                 break;
         }
@@ -277,6 +281,18 @@ public class UnitManager : MonoBehaviour, IEventListener
         foreach (GameObject obj in clones)
         {
             if (string.Equals(obj.GetComponent<Unit>().stat_so.Name_unit, par.Name))
+            {
+                obj.GetComponent<Action_AI>().SetActive(par.Boolvalue);
+                break;
+            }
+        }
+    }
+
+    private void SetUnitAIByTag(ExtraParams par)
+    {
+        foreach (GameObject obj in clones)
+        {
+            if (string.Equals(obj.GetComponent<Unit>().gameObject.tag, par.Name))
             {
                 obj.GetComponent<Action_AI>().SetActive(par.Boolvalue);
                 break;

@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class Spell_Icon_CoreDisplay : Spell_Icon, IDropHandler
                 case SpellType.Element:
                     if (spell_ == null) return;
                     string code = spell_.GetCode();
+                    CloneInGame(code, spell.GetCode());
                     window.playerInfoContainer.AddSpellToPlayerInfo_detailed(new StringNString(spell.GetCode(), code));
                     window.playerInfoContainer.Spell_inventory.RemoveAt(SpellExplainText.Instance.id);
                     window.Update_Status();
@@ -36,5 +38,18 @@ public class Spell_Icon_CoreDisplay : Spell_Icon, IDropHandler
             
             
         }
+    }
+
+    private void CloneInGame(string core_code, string parts_code)
+    {
+        if (!window.isBattleScene)
+            return;
+
+        Spell_Core core = Player.Instance.spellManager.Get_Core(core_code);
+        GameObject spell_prefab = LoadDataSingleton.Instance.SpellPrefabContainer().Search(parts_code);
+        Debug.Log(spell_prefab);
+        Debug.Log(core);
+        GameObject spell_clone = Instantiate(spell_prefab, core.transform);
+        Player.Instance.spellManager.SetSpell();
     }
 }

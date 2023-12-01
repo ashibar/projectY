@@ -262,6 +262,8 @@ public class Spell_Core : Spell
     {
         Spell_Element[] elements = GetComponentsInChildren<Spell_Element>();
         Spell_Part[] parts = GetComponentsInChildren<Spell_Part>();
+        spell_element.Clear();
+        spell_part.Clear();
         foreach (Spell_Element spell in elements)
             RegisterSpellElement(spell);
         foreach (Spell_Part spell in parts)
@@ -273,7 +275,7 @@ public class Spell_Core : Spell
     /// </summary>
     /// <param name="spell">불러올 하위 스펠</param>
     public void RegisterSpellElement(Spell_Element spell) 
-    {
+    {        
         spell_element.Add(spell);
         //spell.AddDelegate(this);
     }
@@ -302,8 +304,13 @@ public class Spell_Core : Spell
         this.pos_toShoot = pos_toShoot;
     }
 
+    /// <summary>
+    /// ★★★ 중요 ★★★
+    /// 코어 초기화 함수
+    /// </summary>
     public void InitCore()
     {
+        ResetDelegate(this);
         AddDelegate(this);
         RegisterAllFromChildren();
         Stat_Process();

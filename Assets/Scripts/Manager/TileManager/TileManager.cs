@@ -25,8 +25,9 @@ public class TileManager : MonoBehaviour
     {
         if (isActive)
         {
+            //Debug.Log(Camera.main.orthographicSize);
             if (distanceByCamera)
-                distance = Camera.main.orthographicSize * 4f;
+                distance = Camera.main.orthographicSize * 3.8f;
             for (int i = -1; i <= 1; i++)
                 for (int j = -1; j <= 1; j++)
                     tileGenerater.SetTile(Camera.main.transform.position + new Vector3(i, j) * distance, new Vector2(distance, distance)); 
@@ -38,7 +39,7 @@ public class TileManager : MonoBehaviour
         if (isActive)
         {
             if (distanceByCamera)
-                distance = Camera.main.orthographicSize * 4f;
+                distance = Camera.main.orthographicSize * 3.8f;
             tilePositionSetter.distance = distance;
 
             List<Vector2> tilePos = new List<Vector2>(tilePositionSetter.SetTilePosition());

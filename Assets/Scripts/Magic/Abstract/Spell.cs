@@ -122,7 +122,21 @@ public class Spell : MonoBehaviour
         target.triggerEnterStackProcess += TriggerEnterStackProcess;
         target.shootingFunction += ShootingFunction;
         target.destroyFunction += DestroyFunction;
-}
+    }
+
+    public virtual void ResetDelegate(Spell target)
+    {
+        target.instantiateOneProjectileFunction = null;
+        target.functionWhileCooltime = null;
+        target.functionWhileProjectileDelay = null;
+        target.setAngle = null;
+        target.instantiateProjectile = null;
+        target.triggerEnterTickFunction = null;
+        target.triggerEnterEndFunction = null;
+        target.triggerEnterStackProcess = null;
+        target.shootingFunction = null;
+        target.destroyFunction = null;
+    }
 
     /// <summary>
     /// 모듈의 주인과 공격할 타겟 태그 설정

@@ -27,6 +27,17 @@ MonoBehaviour:
       targetNum: 0.5
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -41,33 +52,6 @@ MonoBehaviour:
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
   - no: 1
-    eventindex: 4
-    eventcode: Active StageInfo Window
-    condition:
-      sort: 1
-      targetTag: 
-      targetPos: {x: 0, y: 0}
-      targetRange: {x: 0, y: 0}
-      targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 1
-      isSatisfied: 1
-      isContinued: 1
-    extraParams:
-      id: 0
-      name: 
-      intvalue: 0
-      floatvalue: 0
-      vecList: []
-      mobLists: {fileID: 0}
-      spawnInfo: {fileID: 0}
-      name2: 
-      boolvalue: 0
-      nextPhase: {fileID: 0}
-      dialog_so: {fileID: 0}
-      audioclip: {fileID: 0}
-  - no: 2
     eventindex: 8
     eventcode: Add New Number
     condition:
@@ -80,6 +64,17 @@ MonoBehaviour:
       flagValue: 0
       targetNum: 0
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -94,7 +89,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 3
+  - no: 2
     eventindex: 2
     eventcode: Spawn By Spawn Info
     condition:
@@ -107,6 +102,17 @@ MonoBehaviour:
       flagValue: 0
       targetNum: 0
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -121,7 +127,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 4
+  - no: 3
     eventindex: 3
     eventcode: Set Unit AI
     condition:
@@ -134,6 +140,55 @@ MonoBehaviour:
       flagValue: 0
       targetNum: 0
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
+    extraParams:
+      id: 0
+      name: WereWolf
+      intvalue: 0
+      floatvalue: 0
+      vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
+      name2: 
+      boolvalue: 0
+      nextPhase: {fileID: 0}
+      dialog_so: {fileID: 0}
+      audioclip: {fileID: 0}
+  - no: 4
+    eventindex: 3
+    eventcode: Set Target By Name
+    condition:
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -149,33 +204,6 @@ MonoBehaviour:
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
   - no: 5
-    eventindex: 3
-    eventcode: Set Target By Name
-    condition:
-      sort: 0
-      targetTag: 
-      targetPos: {x: 0, y: 0}
-      targetRange: {x: 0, y: 0}
-      targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 0
-      isSatisfied: 1
-      isContinued: 1
-    extraParams:
-      id: 0
-      name: WereWolf
-      intvalue: 0
-      floatvalue: 0
-      vecList: []
-      mobLists: {fileID: 0}
-      spawnInfo: {fileID: 0}
-      name2: 
-      boolvalue: 0
-      nextPhase: {fileID: 0}
-      dialog_so: {fileID: 0}
-      audioclip: {fileID: 0}
-  - no: 6
     eventindex: 9
     eventcode: Change Camera Mode
     condition:
@@ -188,6 +216,17 @@ MonoBehaviour:
       flagValue: 0
       targetNum: 0
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -202,7 +241,7 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 7
+  - no: 6
     eventindex: 9
     eventcode: Camera Move At Vector
     condition:
@@ -215,6 +254,17 @@ MonoBehaviour:
       flagValue: 0
       targetNum: 0
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -230,9 +280,9 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
-  - no: 8
-    eventindex: 4
-    eventcode: Active Top Indicator
+  - no: 6
+    eventindex: 1
+    eventcode: Goto Next Phase
     condition:
       sort: 1
       targetTag: 
@@ -241,8 +291,19 @@ MonoBehaviour:
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 3
+      targetNum: 4
       isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -254,60 +315,6 @@ MonoBehaviour:
       spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
-      nextPhase: {fileID: 0}
-      dialog_so: {fileID: 0}
-      audioclip: {fileID: 0}
-  - no: 9
-    eventindex: 9
-    eventcode: Change Camera Mode
-    condition:
-      sort: 0
-      targetTag: 
-      targetPos: {x: 0, y: 0}
-      targetRange: {x: 0, y: 0}
-      targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 0
-      isSatisfied: 1
-      isContinued: 1
-    extraParams:
-      id: 0
-      name: 
-      intvalue: 1
-      floatvalue: 0
-      vecList: []
-      mobLists: {fileID: 0}
-      spawnInfo: {fileID: 0}
-      name2: 
-      boolvalue: 0
-      nextPhase: {fileID: 0}
-      dialog_so: {fileID: 0}
-      audioclip: {fileID: 0}
-  - no: 10
-    eventindex: 3
-    eventcode: Set Unit AI
-    condition:
-      sort: 0
-      targetTag: 
-      targetPos: {x: 0, y: 0}
-      targetRange: {x: 0, y: 0}
-      targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
-      targetNum: 0
-      isSatisfied: 1
-      isContinued: 1
-    extraParams:
-      id: 0
-      name: WereWolf
-      intvalue: 0
-      floatvalue: 0
-      vecList: []
-      mobLists: {fileID: 0}
-      spawnInfo: {fileID: 0}
-      name2: 
-      boolvalue: 1
-      nextPhase: {fileID: 0}
+      nextPhase: {fileID: 11400000, guid: 1a808983d9b84e14297a2f6af540b965, type: 2}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}

@@ -23,7 +23,7 @@ public class Map_RMR_Controller : AsyncFunction_template, IEventListener
     private void Awake()
     {
         SubscribeEvent();
-        stageinfo_id = LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step;
+        stageinfo_id = LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step_demo;
         NodeAccessControl();
     }
 
@@ -40,17 +40,26 @@ public class Map_RMR_Controller : AsyncFunction_template, IEventListener
         {
             case "Set Actvie Map Player":
                 SetActiveMapPlayer((ExtraParams)param[0]); break;
+            case "Goto Next Phase":
+                GotoNextPhase((ExtraParams)param[0]); break;
         }
     }
 
     public void SubscribeEvent()
     {
         EventManager.Instance.AddListener("Set Actvie Map Player", this);
+        EventManager.Instance.AddListener("Goto Next Phase", this);
     }
 
     private void SetActiveMapPlayer(ExtraParams para)
     {
         mapPlayerControl.isActive = para.Boolvalue;
+    }
+
+    private void GotoNextPhase(ExtraParams para)
+    {
+        phase.Add(para.NextPhase);
+        Start_Routine(phase.Count - 1);
     }
 
     public async void Start_Routine(int no)
@@ -111,6 +120,17 @@ public class Map_RMR_Controller : AsyncFunction_template, IEventListener
                             start = Time.time;
                     }
                 }
+            }
+            if (no < phase.Count)
+            {
+                bool allCheck = true;
+                foreach (EventParams p in phase[no].Events)
+                {
+                    if (p.condition.IsSatisfied == false)
+                        allCheck = false;
+                }
+                if (allCheck)
+                    break;
             }
             await Task.Yield();
         }

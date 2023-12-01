@@ -27,6 +27,17 @@ MonoBehaviour:
       targetNum: 0
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -34,6 +45,7 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -53,6 +65,17 @@ MonoBehaviour:
       targetNum: 1
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -60,6 +83,7 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -79,6 +103,17 @@ MonoBehaviour:
       targetNum: 4
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -86,6 +121,7 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
@@ -105,6 +141,17 @@ MonoBehaviour:
       targetNum: 8
       isSatisfied: 1
       isContinued: 1
+    conditions:
+    - sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
     extraParams:
       id: 0
       name: 
@@ -112,8 +159,9 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
-      nextPhase: {fileID: 11400000, guid: bb0c270a3d1e95c4090147ff74a2b112, type: 2}
+      nextPhase: {fileID: 11400000, guid: c470dd8fda05da1468071357e94fbdfd, type: 2}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}

@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: Demo_Progress_01_dialog_00
   m_EditorClassIdentifier: 
   dialogList:
-  - sort: 0
+  - sort: 1
     left_portrait_id: 0
-    right_portrait_id: 0
+    right_portrait_id: 3
     text_name: 
-    text_value: "\uB300\uCDA9 3\uC2A4\uD14C\uC774\uC9C0\uB77C\uB294 \uB0B4\uC6A9"
+    text_value: "\uC88B\uC544. \uC5EC\uAE30\uB77C\uBA74 \uC7A0\uC2DC \uC26C\uC5B4\uB3C4
+      \uC88B\uC744\uAC70\uC57C.@\n\uC26C\uB294 \uACB8\uC5D0 \uC7A0\uAE50 \uC640\uC11C
+      \uC774\uAC83 \uC880 \uBCFC\uB798?"
     nameColor:
       serializedVersion: 2
       rgba: 0
     colorPreset: 0
-    enableNameBox: 1
+    enableNameBox: 0
     nameBoxPos: 0
-    phaseList: []
+    phaseList:
+    - {fileID: 11400000, guid: b1b702e71cbeb964b94c4531e32d0d59, type: 2}
     select_list: []
     select_dialog: []
   portraitList: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}

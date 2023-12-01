@@ -9,13 +9,19 @@ public class PlayerInfoContainer : ScriptableObject
     [SerializeField] private float money;
     [SerializeField] private List<StringNString> spell_activated = new List<StringNString>();
     [SerializeField] private List<StringNString> spell_inventory = new List<StringNString>();
-    [SerializeField] private int progress_step;
+    [SerializeField] private int progress_step_demo;
+    [SerializeField] private int progress_step_infinite;
+    [SerializeField] private bool isTutorialCleared;
+    [SerializeField] private bool isTutorialAnimCleared;
 
     public string Player_name { get => player_name; set => player_name = value; }
     public float Money { get => money; set => money = value; }
     public List<StringNString> Spell_activated { get => spell_activated; set => spell_activated = value; }
     public List<StringNString> Spell_inventory { get => spell_inventory; set => spell_inventory = value; }
-    public int Progress_step { get => progress_step; set => progress_step = value; }
+    public int Progress_step_demo { get => progress_step_demo; set => progress_step_demo = value; }
+    public int Progress_step_infinite { get => progress_step_infinite; set => progress_step_infinite = value; }
+    public bool IsTutorialCleared { get => isTutorialCleared; set => isTutorialCleared = value; }
+    public bool IsTutorialAnimCleared { get => isTutorialAnimCleared; set => isTutorialAnimCleared = value; }
 
     private void Awake()
     {
@@ -31,7 +37,7 @@ public class PlayerInfoContainer : ScriptableObject
         spell_activated.Add(new StringNString("a2", ""));
         spell_inventory.Clear();
         money = 0;
-        progress_step = 0;
+        progress_step_demo = 0;
     }
 
     /// <summary>

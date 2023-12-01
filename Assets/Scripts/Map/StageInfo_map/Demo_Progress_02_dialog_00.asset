@@ -15,9 +15,43 @@ MonoBehaviour:
   dialogList:
   - sort: 0
     left_portrait_id: 0
+    right_portrait_id: 3
+    text_name: 
+    text_value: "\uC624! \uC774\uBC88\uC5D0 \uC5BB\uC740 \uB9C8\uC11D\uC740 \uAF64
+      \uD76C\uADC0\uD55C \uB9C8\uC11D\uC774\uC57C."
+    nameColor:
+      serializedVersion: 2
+      rgba: 0
+    colorPreset: 0
+    enableNameBox: 1
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 0
+    right_portrait_id: 3
+    text_name: 
+    text_value: "\uC774 \uB9C8\uC11D\uC740 \uC804\uC5D0 \uC5BB\uC740 \uB9C8\uC11D\uC774\uB791
+      \uB2E4\uB974\uAC8C \uC790\uB3D9\uC73C\uB85C \uB108\uC758 \uBC15\uC950\uAC00
+      \uAC15\uD654\uB418\uB294\n\uBC29\uC2DD\uC774 \uC544\uB2C8\uC57C.@ \uB300\uC2E0
+      \uB124\uAC00 \uAC00\uBC29\uC744 \uC5F4\uC5B4 \uC9C1\uC811 \uC801\uC6A9\uD574\uC918\uC57C\uD574.@\n\uC5B4\uB824\uC6B4\uAC74
+      \uC544\uB2C8\uB2C8\uAE4C \uCC28\uADFC\uCC28\uADFC \uB530\uB77C\uD574\uBD10."
+    nameColor:
+      serializedVersion: 2
+      rgba: 0
+    colorPreset: 0
+    enableNameBox: 1
+    nameBoxPos: 0
+    phaseList: []
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 0
     right_portrait_id: 0
     text_name: 
-    text_value: "\uB300\uCDA9 4\uC2A4\uD14C\uC774\uC9C0\uB77C\uB294 \uB0B4\uC6A9"
+    text_value: "\uC6B0\uC120 \uAC00\uBC29\uC744 \uC5F4\uC5B4\uBCFC\uB798?@ \uAC00\uBC29\uC740
+      \uC67C\uCABD \uC544\uB798 \uB05D\uC5D0 \uC788\uC5B4."
     nameColor:
       serializedVersion: 2
       rgba: 0

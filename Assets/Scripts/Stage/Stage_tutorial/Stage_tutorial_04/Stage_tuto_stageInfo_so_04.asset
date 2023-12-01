@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee40162851d1e5c48b47ec81f8a8c08c, type: 3}
   m_Name: Stage_tuto_stageInfo_so_04
   m_EditorClassIdentifier: 
-  stageName: tuto3
+  stageName: "\uAE4A\uC740 \uC232"
   stageSprite: {fileID: 21300000, guid: 357acd14d72fccd4e99371904a2d15e2, type: 3}
   reward: {fileID: 11400000, guid: 3bd0bbb2a0b243d4bb595884fe7b1c92, type: 2}
-  stageSort: 0
+  stageSort: 2
   phases:
   - {fileID: 11400000, guid: 617b92cb03c446741ae1157c77cf59ef, type: 2}
   - {fileID: 11400000, guid: b4115297738f6144fa6bd62e64f70590, type: 2}

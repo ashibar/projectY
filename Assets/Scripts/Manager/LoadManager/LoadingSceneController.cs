@@ -38,6 +38,7 @@ public class LoadingSceneController : MonoBehaviour
             return;
         }
         //DontDestroyOnLoad(gameObject);
+        stageInfoContainer = LoadDataSingleton.Instance.StageInfoContainer();
     }
 
     private void Start()

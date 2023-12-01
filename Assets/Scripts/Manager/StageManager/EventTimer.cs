@@ -314,8 +314,18 @@ public class EventTimer : MonoBehaviour, IEventListener
                     }
                 }
             }
+            if (no < phase.Count)
+            {
+                bool allCheck = true;
+                foreach (EventParams p in phase[no].Events)
+                {
+                    if (p.condition.IsSatisfied == false)
+                        allCheck = false;
+                }
+                if (allCheck)
+                    break; 
+            }
 
-            
             await Task.Yield();
             
         }
@@ -485,7 +495,10 @@ public class EventTimer : MonoBehaviour, IEventListener
         CTS(this.phase.Count - 1);
     }
 
-    
+    public void ClearPhase()
+    {
+        phase.Clear();
+    }
 
 
     // 더미 코드

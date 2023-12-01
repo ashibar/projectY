@@ -21,6 +21,9 @@ public class Boss_base_Ai : Action_AI
     [SerializeField] private Animator animator;             // 애니메이터
     [SerializeField] private AfterImage afterImage;         // 잔상 모듈
 
+    public float spd_temp = 0.02f;
+    public float spd_sync = 0.02f;
+
     protected override void Awake()
     {
         GameObject player = GameObject.FindWithTag("Player");
@@ -60,6 +63,7 @@ public class Boss_base_Ai : Action_AI
     {
         base.ai_movement(targetpos, dir);
         transform.position = Vector3.MoveTowards(transform.position, transform.position + (Vector3)dir, unit.stat.Speed * Time.deltaTime);
+        //spd_temp = unit.stat.Speed * Time.deltaTime *  ;
     }
 
     [SerializeField] private bool isDashCooltime;
@@ -103,11 +107,15 @@ public class Boss_base_Ai : Action_AI
         float end = Time.time + duration;
         while (Time.time < end && !cts.Token.IsCancellationRequested)
         {
+            float start = Time.time;
             afterImage.SetImage(gameObject, unit.GetComponent<SpriteRenderer>().flipX);
             afterImage.IsActive = true;
+            //Debug.Log(spd_temp);
             transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + dash_vec, dashSpeed * Time.deltaTime);
-
-            await Task.Yield();
+            
+            await Task.Delay(1);
+            Debug.Log(Time.time - start);
+            spd_sync = spd_temp;
         }
     }
     private async Task SlashCast(float duration)
@@ -200,4 +208,5 @@ public class Boss_base_Ai : Action_AI
         
         isSummonCooltime = false;
     }
+    
 }

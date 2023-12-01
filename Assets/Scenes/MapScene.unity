@@ -1693,8 +1693,8 @@ MonoBehaviour:
   stageInfoList:
   - {fileID: 11400000, guid: 0a63ae6df1b3901449e9e0acf68ef7a4, type: 2}
   - {fileID: 11400000, guid: 750800b173cf510469a1f389077c8951, type: 2}
-  - {fileID: 11400000, guid: 750800b173cf510469a1f389077c8951, type: 2}
-  - {fileID: 11400000, guid: 750800b173cf510469a1f389077c8951, type: 2}
+  - {fileID: 11400000, guid: ff1ef055b4279f944a5072e2f239d3c5, type: 2}
+  - {fileID: 11400000, guid: a0544604947381a4a85dcbd2f84818c3, type: 2}
   phase: []
   trigger: []
   stageinfo_id: 0
