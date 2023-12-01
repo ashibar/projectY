@@ -268,12 +268,20 @@ namespace ReadyMadeReality
                     InitString(); 
                 }
                 phaseEndFlag = false;
+                if (dialog_cnt >= dialog_list.Count)
+                {
+                    if (dialog_list[dialog_cnt - 1].Sort == DialogSort.SelectWindow && dialog_list[dialog_cnt - 1].PhaseList.Count > 0)
+                    {
+                        ExtraParams para = new ExtraParams();
+                        para.NextPhase = dialog_list[dialog_cnt - 1].PhaseList[0];
+                        EventManager.Instance.PostNotification("Goto Next Phase", this, null, para);
+                    }                        
+                    isActive = false;
+                    dialogArea.SetActive(false);
+                    return;
+                }
             }
-            if (dialog_cnt >= dialog_list.Count)
-            {
-                isActive = false;
-                dialogArea.SetActive(false);
-            }
+            
         }
 
         private void SplitCheck()
@@ -401,7 +409,7 @@ namespace ReadyMadeReality
             {
                 isAutoRunning = true;
 
-                float end = Time.time + word_max * 0.05f + 0.5f;
+                float end = Time.time + word_max * 0.02f + 1f;
 
                 while (Time.time < end && !cts.Token.IsCancellationRequested)
                 {

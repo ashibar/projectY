@@ -15,19 +15,23 @@ public class CardAnimationControl : AsyncFunction_template
             spell_card[i].index = i;
     }
 
-    public async Task AppearAnimation(CancellationToken cts)
+    public async Task AppearAnimation(CancellationToken cts, bool isScaled = true)
     {
         if (cts.IsCancellationRequested)
             return;
+        //SetActive(true);
 
         foreach (SpellCard card in spell_card)
         {
             if (card != null)
+            {
+                card.GetComponent<CanvasGroup>().alpha = 1;
                 card.AppearSpell();
-            await Wait(cts, 0.5f);
+            }
+            await Wait(cts, 0.5f, isScaled);
         }
 
-        await Wait(cts, 1f);
+        await Wait(cts, 1f, isScaled);
 
         foreach (SpellCard card in spell_card)
         {
@@ -36,7 +40,7 @@ public class CardAnimationControl : AsyncFunction_template
         await Task.Yield();
     }
 
-    public async Task SpellSelected(CancellationToken cts, int id)
+    public async Task SpellSelected(CancellationToken cts, int id, bool isScaled = true)
     {
         if (cts.IsCancellationRequested)
             return;
@@ -49,7 +53,7 @@ public class CardAnimationControl : AsyncFunction_template
                 spell_card[i].DeleteSpellAnimation();
         }
 
-        await Wait(cts, 2f);
+        await Wait(cts, 2f, isScaled);
     }
 
     public void SetSpell(List<Spell> list)
@@ -68,5 +72,11 @@ public class CardAnimationControl : AsyncFunction_template
         {
             card.isInteractable = value;
         }
+    }
+
+    public void SetActive(bool value)
+    {
+        foreach (SpellCard card in spell_card)
+            card.gameObject.SetActive(value);
     }
 }

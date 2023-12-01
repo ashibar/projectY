@@ -170,6 +170,11 @@ public class EventParam_Window : EditorWindow
             phaseInfo.Events[index].condition.IsSatisfied = EditorGUILayout.Toggle("isSatisfied", phaseInfo.Events[index].condition.IsSatisfied, innerFieldOption);
             GUILayout.EndHorizontal();
 
+            if (phaseInfo.Events[index].conditions.Count <= 0)
+            {
+                phaseInfo.Events[index].conditions.Add(new Condition());
+                Debug.Log("Empty");
+            }
             switch (phaseInfo.Events[index].condition.Sort)
             {
                 case ConditionSort.None:

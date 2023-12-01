@@ -18,8 +18,11 @@ public class TopIndicator : MonoBehaviour
     public StageSort Sort { get => sort; set => sort = value; }
     public Unit TargetUnit { get => targetUnit; set => targetUnit = value; }
 
+    private float startTime = 0;
+
     private void Start()
     {
+        startTime = Time.time;
         unitManager = UnitManager.Instance;
         stageManager = StageManager.Instance;
     }
@@ -38,6 +41,9 @@ public class TopIndicator : MonoBehaviour
                 break;
             case StageSort.targetHp:
                 UpdateTargetIndicator_TargetHP();
+                break;
+            case StageSort.infinite:
+                UpdateTargetIndicator_Infinite();
                 break;
         }
     }
@@ -80,6 +86,18 @@ public class TopIndicator : MonoBehaviour
         float rate = cur / max;
         targetHPBar.value = Mathf.Lerp(targetHPBar.value, rate, barSpeed * Time.deltaTime);
         topText.text = targetName;
+    }
+
+    private void UpdateTargetIndicator_Infinite()
+    {
+        int time_int = (int)(Time.time - startTime);
+        int min = time_int / 60;
+        int sec = time_int % 60;
+
+        string zero_min = min < 10 ? "0" + min.ToString() : min.ToString();
+        string zero_sec = sec < 10 ? "0" + sec.ToString() : sec.ToString();
+
+        topText.text = string.Format("{0} : {1}", min, sec);
     }
 
     private void OnValidate()

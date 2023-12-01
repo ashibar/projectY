@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogList:
   - sort: 0
-    left_portrait_id: 1
+    left_portrait_id: 5
     right_portrait_id: 0
     text_name: 
     text_value: ...!
@@ -22,9 +22,11 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4278223103
     colorPreset: 2
-    enableNameBox: 1
+    enableNameBox: 0
     nameBoxPos: 1
+    phaseList: []
     select_list: []
+    select_dialog: []
   - sort: 0
     left_portrait_id: 1
     right_portrait_id: 3
@@ -37,7 +39,9 @@ MonoBehaviour:
     colorPreset: 1
     enableNameBox: 1
     nameBoxPos: 2
+    phaseList: []
     select_list: []
+    select_dialog: []
   - sort: 0
     left_portrait_id: 1
     right_portrait_id: 3
@@ -50,7 +54,9 @@ MonoBehaviour:
     colorPreset: 1
     enableNameBox: 1
     nameBoxPos: 2
+    phaseList: []
     select_list: []
+    select_dialog: []
   - sort: 0
     left_portrait_id: 1
     right_portrait_id: 3
@@ -66,7 +72,9 @@ MonoBehaviour:
     colorPreset: 1
     enableNameBox: 1
     nameBoxPos: 2
+    phaseList: []
     select_list: []
+    select_dialog: []
   - sort: 0
     left_portrait_id: 1
     right_portrait_id: 3
@@ -80,13 +88,15 @@ MonoBehaviour:
     colorPreset: 1
     enableNameBox: 1
     nameBoxPos: 2
+    phaseList: []
     select_list: []
+    select_dialog: []
   - sort: 0
     left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
-    text_value: "\uADFC\uB370 \uAC11\uC790\uAE30!@ \uB124 \uC190\uC5D0\uC11C \uAC80\uC740
-      \uBB54\uAC00\uAC00 \uD409! \uD558\uACE0\n\uBB54\uAC00 \uBFDC\uC5B4\uC838 \uB098\uC624\uB354\uB77C\uACE0!@\n\uADF8\uB7EC\uACE0\uB294
+    text_value: "\uADFC\uB370 \uAC11\uC790\uAE30!@ \uB124 \uC190\uC5D0\uC11C \uBB54\uAC00
+      \uAC80\uC740\uAC8C \uD409! \uD558\uACE0 \uBFDC\uC5B4\uC838 \uB098\uC624\uB354\uB77C\uACE0!@\n\uADF8\uB7EC\uACE0\uB294
       \uADF8\uB300\uB85C \uC800 \uAC70\uB300\uD55C \uBC15\uC950\uB97C \uD55C\uBC88\uC5D0
       \uC9D1\uC5B4 \uC0BC\uCF1C\uBC84\uB9AC\uB354\uB2C8\uAE4C?"
     nameColor:
@@ -95,7 +105,9 @@ MonoBehaviour:
     colorPreset: 1
     enableNameBox: 1
     nameBoxPos: 2
+    phaseList: []
     select_list: []
+    select_dialog: []
   - sort: 0
     left_portrait_id: 1
     right_portrait_id: 3
@@ -108,17 +120,112 @@ MonoBehaviour:
     colorPreset: 1
     enableNameBox: 1
     nameBoxPos: 2
+    phaseList: []
     select_list: []
+    select_dialog: []
   - sort: 0
     left_portrait_id: 1
     right_portrait_id: 3
     text_name: "\uBBFC\uD2B8"
-    text_value: "\uC7A0\uAE50\uC7A0\uAE50 \uC624\uD574\uD558\uC9C0\uB9D0\uACE0 \uB4E4\uC5B4\uBD10!"
+    text_value: "\uC5B4\uB5BB\uAC8C \uB41C\uC9C0\uB294 \uBAB0\uB77C\uB3C4 \uC9C0\uAE08
+      \uC774 \uB140\uC11D\uC740 \uADF8\uB807\uAC8C \uC704\uD611\uC801\uC774\uAC8C
+      \uBCF4\uC774\uC9C0\uB294 \uC54A\uC9C0?@\n\uD639\uC2DC \uB0B4\uAC00 \uC4F0\uB2E4
+      \uB4EC\uC5B4\uB3C4 \uAD1C\u314A"
     nameColor:
       serializedVersion: 2
       rgba: 4278190335
     colorPreset: 1
     enableNameBox: 1
     nameBoxPos: 2
+    phaseList:
+    - {fileID: 0}
     select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 2
+    right_portrait_id: 0
+    text_name: ???
+    text_value: "\uADF8\uB974\uB974\uB974\uB974\uB974....."
+    nameColor:
+      serializedVersion: 2
+      rgba: 4278223103
+    colorPreset: 2
+    enableNameBox: 1
+    nameBoxPos: 0
+    phaseList:
+    - {fileID: 0}
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 5
+    right_portrait_id: 3
+    text_name: "\uBBFC\uD2B8"
+    text_value: "\uBBF8\uC548 \uB2E4\uC2DC\uB294 \uADF8\uB7EC\uC9C0 \uC54A\uC744\uAC8C.@"
+    nameColor:
+      serializedVersion: 2
+      rgba: 4278190335
+    colorPreset: 1
+    enableNameBox: 1
+    nameBoxPos: 2
+    phaseList:
+    - {fileID: 0}
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 1
+    right_portrait_id: 3
+    text_name: "\uBBFC\uD2B8"
+    text_value: "\uC544\uBB34\uD2BC \uBC15\uC950\uB294 \uADF8\uB807\uB2E4 \uCCD0\uB3C4,
+      \uC5EC\uAE30\uB294 \uC774\uB807\uAC8C \uAC00\uB9CC\uD788 \uBA40\uB6B1\uAC70\uB9AC\uACE0
+      \uC788\uAE30\uC5D0\uB294\n\uB108\uBB34 \uC704\uD5D8\uD55C \uACF3\uC774\uC57C."
+    nameColor:
+      serializedVersion: 2
+      rgba: 4278190335
+    colorPreset: 1
+    enableNameBox: 1
+    nameBoxPos: 2
+    phaseList:
+    - {fileID: 0}
+    select_list: []
+    select_dialog: []
+  - sort: 0
+    left_portrait_id: 1
+    right_portrait_id: 3
+    text_name: "\uBBFC\uD2B8"
+    text_value: "\uB0A0\uC774 \uC5B4\uB450\uC6CC\uC9C0\uAE30 \uC804\uC5D0 \uC548\uC804\uD55C
+      \uACF3\uC73C\uB85C \uC6C0\uC9C1\uC774\uC790.@\n\uB2E4\uD589\uD788 \uBA40\uC9C0
+      \uC54A\uC740 \uACF3\uC5D0 \uB3D9\uB8CC\uB4E4\uC774 \uC788\uB294 \uC57C\uC601\uC9C0\uAC00
+      \uC788\uC5B4.@\n\uC232\uC5D0\uC11C \uBC14\uB85C \uB098\uC624\uC9C0\uB294 \uBABB\uD574\uB3C4
+      \uADF8\uACF3\uC774\uB77C\uBA74 \uC77C\uB2E8 \uC704\uD5D8\uD558\uC9C4 \uC54A\uC744\uAC70\uC57C."
+    nameColor:
+      serializedVersion: 2
+      rgba: 4278190335
+    colorPreset: 1
+    enableNameBox: 1
+    nameBoxPos: 2
+    phaseList:
+    - {fileID: 0}
+    select_list: []
+    select_dialog: []
+  - sort: 1
+    left_portrait_id: 1
+    right_portrait_id: 3
+    text_name: "\uBBFC\uD2B8"
+    text_value: "\uC57C\uC601\uC9C0\uAC00 \uC5B4\uB514\uC788\uB0D0\uACE0?@ \uC790\uC8FC
+      \uB2E4\uB2C8\uB294 \uAE38\uC774\uB77C \uB0B4\uAC00 \uC55E\uC7A5\uC11C\uBA74
+      \uB418\uAE34\uD558\uB294\uB370...@\n\uADF8\uB798\uB3C4 \uB9D0\uB85C\uD558\uB294
+      \uAC83\uBCF4\uB2E4\uB294 \uC9C0\uB3C4\uB85C \uC124\uBA85\uD574\uC8FC\uB294\uAC8C
+      \uB354 \uB0AB\uACA0\uC9C0?@\n\uC5EC\uAE30\uB85C \uD55C\uBC88 \uC640\uBCFC\uB798?@"
+    nameColor:
+      serializedVersion: 2
+      rgba: 4278190335
+    colorPreset: 1
+    enableNameBox: 1
+    nameBoxPos: 2
+    phaseList:
+    - {fileID: 11400000, guid: bb0c270a3d1e95c4090147ff74a2b112, type: 2}
+    select_list: []
+    select_dialog: []
   portraitList: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}
+  isAuto: 0
+  mode: 0

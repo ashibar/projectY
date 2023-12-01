@@ -36,6 +36,10 @@ public class SpellCard : MonoBehaviour, IPointerClickHandler
         if (isInteractable)
         {
             StageManager.Instance.playerInfoContainer_so.AddSpellToPlayerInfo(new StringNString(spell.GetCode()));
+            GameObject spell_prefab = LoadDataSingleton.Instance.SpellPrefabContainer().Search(spell.GetCode());
+            if (spell.GetCode()[0] == 'd')
+                Instantiate(spell_prefab, Player.Instance.spellManager.transform);
+            Player.Instance.spellManager.SetSpell();
             resultWindow.SpellSelected(index); 
         }
     }
@@ -73,6 +77,11 @@ public class SpellCard : MonoBehaviour, IPointerClickHandler
         animator.SetTrigger("isAppears");
     }
 
+    public Spell GetSpell()
+    {
+        return spell;
+    }
+
     public void RevealSpell()
     {
         animator.SetTrigger("isReveals");
@@ -86,5 +95,10 @@ public class SpellCard : MonoBehaviour, IPointerClickHandler
     public void DeleteSpellAnimation()
     {
         animator.SetTrigger("isDeleted");
+    }
+
+    public void ResetSpellAnimation()
+    {
+        animator.SetTrigger("isReset");
     }
 }

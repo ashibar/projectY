@@ -19,6 +19,13 @@ public class SpellManager : MonoBehaviour
         //GetSpellCompoenents();
     }
 
+    private void ResetSpellComponents()
+    {
+        cores.Clear();
+        parts.Clear();
+        passives.Clear();
+    }
+
     private void GetSpellCompoenents()
     {
         cores.AddRange(GetComponentsInChildren<Spell_Core>());
@@ -66,6 +73,7 @@ public class SpellManager : MonoBehaviour
 
     public void SetSpell(GameObject temp)
     {
+        ResetSpellComponents();
         MoveChildrenToTarget(temp.transform, gameObject.transform);
         GetSpellCompoenents();
         foreach (Spell_Core core in cores)
@@ -74,6 +82,7 @@ public class SpellManager : MonoBehaviour
 
     public void SetSpell()
     {
+        ResetSpellComponents();
         GetSpellCompoenents();
         foreach (Spell_Core core in cores)
             core.InitCore();
@@ -103,5 +112,16 @@ public class SpellManager : MonoBehaviour
     public Spell_Core Get_Core(int id)
     {
         return cores[id];
+    }
+
+    public Spell_Core Get_Core(string code)
+    {
+        foreach (Spell_Core c in cores)
+        {
+            Debug.Log(c.GetCode() + ", " + code);
+            if (string.Equals(c.GetCode(), code))
+                return c;
+        }
+        return null;
     }
 }

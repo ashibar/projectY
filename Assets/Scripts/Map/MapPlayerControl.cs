@@ -42,7 +42,7 @@ public class MapPlayerControl : MonoBehaviour
         spriteRenderer.flipX = dir.x >= 0 ? false : true;
         //transform.localScale = dir.x >= 0 ? new Vector3(1, s.y, s.z) : new Vector3(-1, s.y, s.z);
 
-        while (!cts.IsCancellationRequested && isMoving && Vector2.Distance(pos, transform.position) > 0.1f)
+        while (!cts.IsCancellationRequested && isMoving && Vector2.Distance(pos, transform.position) > 0.3f)
         {
             transform.position = (Vector3)Vector2.MoveTowards(transform.position, (Vector2)transform.position + dir, Time.deltaTime * speed) + new Vector3(0, 0, -2);            
             await Task.Yield();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 [CreateAssetMenu(fileName = "Default Tile Asset", menuName = "Scriptable Object/Tile Asset SO", order = int.MaxValue)]
 public class TileAsset_so : ScriptableObject

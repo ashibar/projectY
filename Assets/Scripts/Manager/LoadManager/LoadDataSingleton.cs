@@ -40,6 +40,8 @@ public class LoadDataSingleton : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+        Application.targetFrameRate = 60;
+        Time.timeScale = 1.0f;
     }
 
     public StageInfoContainer_so StageInfoContainer()
@@ -77,5 +79,18 @@ public class LoadDataSingleton : MonoBehaviour
         }
 
         return enemyList;
+    }
+    public void SetStageInfoContainer(string sceneName)
+    {
+        switch (sceneName)
+        {
+            case "TutorialScene":
+                stageInfoContainer = Resources.Load("StageInfoContainer_demo") as StageInfoContainer_so ; break;
+            case "BattleScene":
+                stageInfoContainer = Resources.Load("StageInfoContainer_infinite") as StageInfoContainer_so;
+                playerInfoContainer = Resources.Load("PlayerInfoContainer_infinite") as PlayerInfoContainer; break;
+            case "MapScene":
+                stageInfoContainer = Resources.Load("StageInfoContainer_demo") as StageInfoContainer_so; break;
+        }
     }
 }

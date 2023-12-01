@@ -5150,7 +5150,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212001790}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -5297,7 +5297,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212001790}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -10236,7 +10236,7 @@ RectTransform:
   - {fileID: 835879252}
   - {fileID: 1926931968}
   m_Father: {fileID: 212001790}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -15233,7 +15233,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212001790}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16045,6 +16045,10 @@ PrefabInstance:
     - target: {fileID: 4157852591953737777, guid: f2fe81db4cb829642aee30df6066af91, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157852591953737777, guid: f2fe81db4cb829642aee30df6066af91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4157852591953737780, guid: f2fe81db4cb829642aee30df6066af91, type: 3}
       propertyPath: m_Color.b
@@ -22346,6 +22350,10 @@ PrefabInstance:
     - target: {fileID: 1542764009917555695, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
       propertyPath: m_Name
       value: UIManager_BattleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740923508582794027, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}

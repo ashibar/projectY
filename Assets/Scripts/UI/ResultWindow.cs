@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Threading.Tasks;
 using System.Threading;
+using Mono.Cecil.Cil;
 
 public class ResultWindow : AsyncFunction_template
 {
@@ -16,6 +17,9 @@ public class ResultWindow : AsyncFunction_template
 
     [SerializeField] public List<Image> spell_card_images;
     [SerializeField] public Button map_button;
+    [SerializeField] public Button resume_button;
+    [SerializeField] public Button inventory_button;
+    [SerializeField] public InventoryWindow inventoryWindow;
 
     private CancellationTokenSource cts = new CancellationTokenSource();
 
@@ -35,14 +39,24 @@ public class ResultWindow : AsyncFunction_template
             card.resultWindow = this;
     }
 
-    public async void Active()
+    public async void Active_Full()
     {
+        Time.timeScale = 0;
         PickSpell();
         await stage_clear_text_image.Active(cts.Token);
-        await Wait(cts.Token, 3f);
+        await Wait(cts.Token, 3f, false);
         await result_animation_control.Active(cts.Token);
-        await card_animation_control.AppearAnimation(cts.Token);
-        await Wait(cts.Token, 1f);
+        await card_animation_control.AppearAnimation(cts.Token, false);
+        await Wait(cts.Token, 1f, false);
+        card_animation_control.SetInteratable(true);
+    }
+
+    public async void Active_RewardOnly()
+    {
+        Time.timeScale = 0;
+        PickSpell();
+        await card_animation_control.AppearAnimation(cts.Token, false);
+        await Wait(cts.Token, 1f, false);
         card_animation_control.SetInteratable(true);
     }
 
@@ -51,8 +65,9 @@ public class ResultWindow : AsyncFunction_template
         float accumulate = 0;
         float random_value = Random.Range(0f, 1f);
 
-        if (stageInfoContainer.StageInfoList[stageInfoContainer.CurID].Reward == null) return;
-        List<GameObjectNFloat> reward = stageInfoContainer.StageInfoList[stageInfoContainer.CurID].Reward.RewardList;
+        int id = stageInfoContainer.CurID < stageInfoContainer.StageInfoList.Count ? stageInfoContainer.CurID : stageInfoContainer.StageInfoList.Count - 1;
+        if (stageInfoContainer.StageInfoList[id].Reward == null) return;
+        List<GameObjectNFloat> reward = stageInfoContainer.StageInfoList[id].Reward.RewardList;
 
         List<Spell> spells = new List<Spell>();
 
@@ -92,15 +107,48 @@ public class ResultWindow : AsyncFunction_template
     public void Press_ToTheMap()
     {
         LoadingSceneController.LoadScene("MapScene", stageInfoContainer.CurID);
+        Time.timeScale = 1f;
+    }
+
+    public void Press_Resume()
+    {
+        ExtraParams para = new ExtraParams();
+        para.Boolvalue = true;
+        para.Name = "Player";
+        EventManager.Instance.PostNotification("Player Move Input", this, null, para);
+        EventManager.Instance.PostNotification("Set Active Spell Manager", this, null, para);
+        para.Name = "Enemy";
+        EventManager.Instance.PostNotification("Set Active Spell Manager", this, null, para);
+        EventManager.Instance.PostNotification("Set Unit AI By Tag", this, null, para);
+        LoadDataSingleton.Instance.StageInfoContainer().CurID += 1;
+
+        inventory_button.gameObject.SetActive(false);
+        inventoryWindow.gameObject.SetActive(false);
+        resume_button.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public async void SpellSelected(int id)
     {
         card_animation_control.SetInteratable(false);
-        await card_animation_control.SpellSelected(cts.Token, id);
-        Debug.Log("?");
-        map_button.gameObject.SetActive(true);
-        LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step = LoadDataSingleton.Instance.StageInfoContainer().CurID;
+        await card_animation_control.SpellSelected(cts.Token, id, false);
+        StageSort sort = LoadDataSingleton.Instance.StageInfoContainer().StageInfoList[LoadDataSingleton.Instance.StageInfoContainer().CurID].StageSort;
+        if (sort != StageSort.infinite)
+        {
+            map_button.gameObject.SetActive(true);
+            LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step_demo = LoadDataSingleton.Instance.StageInfoContainer().CurID;
+        }            
+        else
+        {
+            await Wait(cts.Token, 2f, false);
+            foreach (SpellCard card in card_animation_control.spell_card)
+                card.ResetSpellAnimation();
+            await Wait(cts.Token, 0.1f, false);
+            card_animation_control.SetActive(false);
+            inventory_button.gameObject.SetActive(true);
+            resume_button.gameObject.SetActive(true);
+        }        
     }
 
     private void OnDestroy()

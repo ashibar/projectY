@@ -9,6 +9,7 @@ public class EventParams
     [SerializeField] public int eventindex;
     [SerializeField] public string eventcode;
     [SerializeField] public Condition condition;
+    [SerializeField] public List<Condition> conditions;
     [SerializeField] public ExtraParams extraParams;
 
     public EventParams(int no)
@@ -17,24 +18,27 @@ public class EventParams
         this.eventindex = 0;
         this.eventcode = "None";
         this.condition = new Condition();
+        this.conditions = new List<Condition>();
         this.extraParams = new ExtraParams();
     }
 
-    public EventParams(int no, string eventcode, Condition condition)
+    public EventParams(int no, string eventcode, Condition condition, List<Condition> conditions)
     {
         this.no = no;
         this.eventindex = 0;
         this.eventcode = eventcode;
         this.condition = condition;
+        this.conditions = conditions;
         this.extraParams = new ExtraParams();
     }
 
-    public EventParams(int no, string eventcode, Condition condition, ExtraParams para)
+    public EventParams(int no, string eventcode, Condition condition, List<Condition> conditions, ExtraParams para)
     {
         this.no = no;
         this.eventindex = 0;
         this.eventcode = eventcode;
         this.condition = condition;
+        this.conditions = conditions;
         this.extraParams = para;
     }
 }

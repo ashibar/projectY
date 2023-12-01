@@ -28,7 +28,6 @@ public class TileGenerater : MonoBehaviour
 
     public void SetTile(Vector2 pos, Vector2 size)
     {
-        // 에셋에서 타일 정보 불러오기
         List<Sprite> base_tile = tile_asset.base_tile;
         List<Sprite> noise_tile = tile_asset.noise_tile;
         float tileSize = tile_asset.tileSize;

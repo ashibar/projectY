@@ -1958,6 +1958,7 @@ MonoBehaviour:
   gameoverWindow: {fileID: 3434054313561377261}
   stageinfoText: {fileID: 5887283061527375271}
   topIndicator: {fileID: 1542764009104593871}
+  hpIndicator: {fileID: 1542764009963085001}
   tutorialLogo: {fileID: 0}
   indicatorList: []
   stageInfoContainer: {fileID: 11400000, guid: 8f4e7c3c035e1644c97cb7d7bd553088, type: 2}

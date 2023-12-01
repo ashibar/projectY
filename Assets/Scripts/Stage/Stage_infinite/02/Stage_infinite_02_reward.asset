@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d1d13754d53b946811fffade457d7b, type: 3}
+  m_Name: Stage_infinite_02_reward
+  m_EditorClassIdentifier: 
+  rewardList:
+  - obj: {fileID: 7941158254755749436, guid: bd222445ab2af204295b3c621da64a44, type: 3}
+    value: 1

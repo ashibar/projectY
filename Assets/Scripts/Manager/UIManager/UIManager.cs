@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour, IEventListener
     [SerializeField] private GameoverWindow gameoverWindow;
     [SerializeField] private StageinfoText stageinfoText;
     [SerializeField] private TopIndicator topIndicator;
+    [SerializeField] private Transform hpIndicator;
     [SerializeField] private TutorialLogo tutorialLogo;
     [SerializeField] private List<GameObject> indicatorList = new List<GameObject>();
 
@@ -67,6 +68,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Active StageInfo Window",
         "Active Top Indicator",
         "Set Active Indicator",
+        "Set Active UI",
     };
 
     private void Awake()
@@ -125,6 +127,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 ActiveTopIndicator(para); break;
             case "Set Active Indicator":
                 SetActiveIndicator(para); break;
+            case "Set Active UI":
+                SetActiveUI(para); break;
             default:
                 break;
         }
@@ -170,8 +174,13 @@ public class UIManager : MonoBehaviour, IEventListener
         if (resultWindow == null)
             return;
 
+        bool isRewardOnly = para.Boolvalue;
+
         resultWindow.gameObject.SetActive(true);
-        resultWindow.Active();
+        if (!isRewardOnly)
+            resultWindow.Active_Full();
+        else
+            resultWindow.Active_RewardOnly();
     }
 
     private void ActiveGameoverWindow(ExtraParams para)
@@ -199,6 +208,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 stageCondition = "제한시간까지 생존"; break;
             case StageSort.targetDestroy:
                 stageCondition = "목표 제거"; break;
+            case StageSort.infinite:
+                stageCondition = "살아남으세요"; break;
         }
 
         stageinfoText.gameObject.SetActive(true);
@@ -225,6 +236,12 @@ public class UIManager : MonoBehaviour, IEventListener
                 ind.GetComponent<Indicator>().SetActive(isActive, pos);
             }
         }
+    }
+
+    private void SetActiveUI(ExtraParams para)
+    {
+        topIndicator.gameObject.SetActive(para.Boolvalue);
+        hpIndicator.gameObject.SetActive(para.Boolvalue);
     }
     // Dummy Code
     //[SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();

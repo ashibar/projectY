@@ -42,18 +42,19 @@ MonoBehaviour:
     phaseList: []
     select_list: []
     select_dialog: []
-  - sort: 0
+  - sort: 1
     left_portrait_id: 0
     right_portrait_id: 3
     text_name: 
-    text_value: "\uC9C0 \uC625 \uC5D0 \uC11C \uBD88 \uD0C0 \uBC84 \uB824 \uC57C \uD574"
+    text_value: "\uC9C0 \uC625 \uC5D0 \uC11C \uBD88 \uD0C0 \uBC84 \uB824 \uC57C \uD574@ "
     nameColor:
       serializedVersion: 2
       rgba: 0
     colorPreset: 0
     enableNameBox: 0
     nameBoxPos: 0
-    phaseList: []
+    phaseList:
+    - {fileID: 11400000, guid: 05ced5b448eb96c47b302fa002fcea4c, type: 2}
     select_list: []
     select_dialog: []
   portraitList: {fileID: 11400000, guid: 83c6c030dca172b4a832f50d6f156e09, type: 2}

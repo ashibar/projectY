@@ -33,6 +33,8 @@ public class InventoryWindow : MonoBehaviour
     private float xgap = 160f;
     private float ygap = 160f;
 
+    public bool isBattleScene;
+
     private void Awake()
     {
         playerInfoContainer = LoadDataSingleton.Instance.PlayerInfoContainer();

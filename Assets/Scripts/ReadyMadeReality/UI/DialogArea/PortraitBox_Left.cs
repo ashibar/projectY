@@ -9,6 +9,9 @@ namespace ReadyMadeReality
         public override void SetSprite(DialogInfo_so dialogInfo_so, int _cnt)
         {
             base.SetSprite(dialogInfo_so, _cnt);
+            //Debug.Log(dialogInfo_so.PortraitList.portraitList);
+            //Debug.Log(dialogInfo_so.DialogList[_cnt].Left_portrait_id);
+            //Debug.Log(dialogInfo_so.PortraitList.portraitList[dialogInfo_so.DialogList[_cnt].Left_portrait_id]);
             image.sprite = dialogInfo_so.PortraitList.portraitList[dialogInfo_so.DialogList[_cnt].Left_portrait_id];
         }
 

@@ -22,5 +22,5 @@ MonoBehaviour:
   speed_projectile: 0
   duration_projectile: 0
   range_projectile: 0
-  cooldown: -0.2
+  cooldown: 0.2
   amount: 0
