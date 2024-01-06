@@ -20,7 +20,7 @@ MonoBehaviour:
   armor: 0
   damage: -0.4
   speed_projectile: 0
-  duration_projectile: 0
+  duration_projectile: -1
   range_projectile: 0
   cooldown: 0
-  amount: 2
+  amount: 4

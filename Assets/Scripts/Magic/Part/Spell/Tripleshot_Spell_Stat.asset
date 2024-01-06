@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spell_Type: 1
   spell_Name: "\uD2B8\uB9AC\uD50C \uC0F7"
-  spell_Code: s04
+  spell_Code: b04
   spell_DMG: 0
   spell_Speed: 0
   spell_CoolTime: 0
@@ -26,3 +26,5 @@ MonoBehaviour:
   spell_Multy_Radius: 0
   spell_Range_Area: 0
   spell_Amount_Tic: 1
+  isInherence: 0
+  spell_detail: 

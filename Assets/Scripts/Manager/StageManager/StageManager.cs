@@ -72,6 +72,8 @@ public class StageManager : MonoBehaviour, IEventListener
             Destroy(gameObject);
             return;
         }
+        if (SceneManager.GetActiveScene().name == "Debug_Scene")
+            LoadDataSingleton.Instance.SetStageInfoContainer("Debug_Scene");
         stageInfoContainer_so = LoadDataSingleton.Instance.StageInfoContainer();
         playerInfoContainer_so = LoadDataSingleton.Instance.PlayerInfoContainer();
         SpellPrefabContainer_so = LoadDataSingleton.Instance.SpellPrefabContainer();

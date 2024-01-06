@@ -27,12 +27,12 @@ public class TilePositionSetter : MonoBehaviour
     {
         Vector3 p = cam_tr.position;
         Vector2[] vecList = new Vector2[] { };
-        if (p.x > pos_post.x + distance)
+        if (p.x > pos_post.x + distance * 2)
         {
             vecList = new Vector2[] {
-                new Vector2(pos_post.x + distance * 2, pos_post.y + distance * 1),
-                new Vector2(pos_post.x + distance * 2, pos_post.y + distance * 0),
-                new Vector2(pos_post.x + distance * 2, pos_post.y + distance * -1),
+                new Vector2(pos_post.x + distance * 4, pos_post.y + distance * 2),
+                new Vector2(pos_post.x + distance * 4, pos_post.y + distance * 0),
+                new Vector2(pos_post.x + distance * 4, pos_post.y + distance * -2),
             };
             List<GameObject> list = tileManager.tile_group;
             for (int i = list.Count - 1; i >= 0; i--)
@@ -45,14 +45,14 @@ public class TilePositionSetter : MonoBehaviour
                     Destroy(obj);
                 }
             }
-            pos_post = new Vector2(pos_post.x + distance, pos_post.y);            
+            pos_post = new Vector2(pos_post.x + distance * 2, pos_post.y);            
         }            
-        else if (p.x < pos_post.x - distance)
+        else if (p.x < pos_post.x - distance * 2)
         {
             vecList = new Vector2[] {
-                new Vector2(pos_post.x - distance * 2, pos_post.y + distance * 1),
-                new Vector2(pos_post.x - distance * 2, pos_post.y + distance * 0),
-                new Vector2(pos_post.x - distance * 2, pos_post.y + distance * -1),
+                new Vector2(pos_post.x - distance * 4, pos_post.y + distance * 2),
+                new Vector2(pos_post.x - distance * 4, pos_post.y + distance * 0),
+                new Vector2(pos_post.x - distance * 4, pos_post.y + distance * -2),
             };
             List<GameObject> list = tileManager.tile_group;
             for (int i = list.Count - 1; i >= 0; i--)
@@ -65,14 +65,14 @@ public class TilePositionSetter : MonoBehaviour
                     Destroy(obj);
                 }
             }
-            pos_post = new Vector2(pos_post.x - distance, pos_post.y);
+            pos_post = new Vector2(pos_post.x - distance * 2, pos_post.y);
         }
-        else if (p.y > pos_post.y + distance)
+        else if (p.y > pos_post.y + distance * 2)
         {
             vecList = new Vector2[] {
-                new Vector2(pos_post.x + distance * -1, pos_post.y + distance * 2),
-                new Vector2(pos_post.x + distance * 0, pos_post.y + distance * 2),
-                new Vector2(pos_post.x + distance * 1, pos_post.y + distance * 2),
+                new Vector2(pos_post.x + distance * -2, pos_post.y + distance * 4),
+                new Vector2(pos_post.x + distance * 0, pos_post.y + distance * 4),
+                new Vector2(pos_post.x + distance * 2, pos_post.y + distance * 4),
             };
             List<GameObject> list = tileManager.tile_group;
             for (int i = list.Count - 1; i >= 0; i--)
@@ -85,14 +85,14 @@ public class TilePositionSetter : MonoBehaviour
                     Destroy(obj);
                 }
             }
-            pos_post = new Vector2(pos_post.x, pos_post.y + distance);
+            pos_post = new Vector2(pos_post.x, pos_post.y + distance * 2);
         }
-        else if (p.y < pos_post.y - distance)
+        else if (p.y < pos_post.y - distance * 2)
         {
             vecList = new Vector2[] {
-                new Vector2(pos_post.x + distance * -1, pos_post.y + distance * -2),
-                new Vector2(pos_post.x + distance * 0, pos_post.y + distance * -2),
-                new Vector2(pos_post.x + distance * 1, pos_post.y + distance * -2),
+                new Vector2(pos_post.x + distance * -2, pos_post.y + distance * -4),
+                new Vector2(pos_post.x + distance * 0, pos_post.y + distance * -4),
+                new Vector2(pos_post.x + distance * 2, pos_post.y + distance * -4),
             };
             List<GameObject> list = tileManager.tile_group;
             for (int i = list.Count - 1; i >= 0; i--)
@@ -105,7 +105,7 @@ public class TilePositionSetter : MonoBehaviour
                     Destroy(obj);
                 }
             }
-            pos_post = new Vector2(pos_post.x, pos_post.y - distance);
+            pos_post = new Vector2(pos_post.x, pos_post.y - distance * 2);
         }
         return vecList;
     }

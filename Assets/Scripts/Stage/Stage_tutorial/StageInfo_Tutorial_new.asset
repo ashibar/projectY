@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: StageInfo_Tutorial_new
   m_EditorClassIdentifier: 
   stageName: StageInfo_Tutorial_new
-  rewards: []
+  stageSprite: {fileID: 0}
+  difficulty: 1
+  reward: {fileID: 0}
   stageSort: 0
   phases:
   - {fileID: 11400000, guid: 396748fdabcd27047a5897f8903ae77a, type: 2}

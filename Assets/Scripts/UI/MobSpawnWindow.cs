@@ -13,6 +13,7 @@ public class MobSpawnWindow : MonoBehaviour
     [SerializeField] private GameObject reset_text;
 
     [SerializeField] private Vector2 spawn_point = new Vector2(14, 0);
+    [SerializeField] private SpawnInfoContainer show_container;
 
     private void Awake()
     {
@@ -40,7 +41,15 @@ public class MobSpawnWindow : MonoBehaviour
         GameObject origin = enemyList.prefabs[dropdowns[0].value];
         Vector2 pos = (Vector2)Player.Instance.transform.position;
 
-        Instantiate(origin , spawn_point + pos, Quaternion.identity, Holder.enemy_holder);
+        GameObject clone = Instantiate(origin , spawn_point + pos, Quaternion.identity, Holder.enemy_holder);
+        UnitManager.Instance.Clones.Add(clone);
+    }
+
+    public void Press_Show()
+    {
+        ExtraParams para = new ExtraParams();
+        para.SpawnInfo = show_container;
+        EventManager.Instance.PostNotification("Spawn By Spawn Info", this, null, para);
     }
 
     private bool isWaiting;

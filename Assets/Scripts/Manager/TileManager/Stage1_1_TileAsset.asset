@@ -31,4 +31,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d9b32f258c18fb4fb2f3e0c8dc18cfd, type: 3}
   - {fileID: 21300000, guid: f59b0a69da750c742b4382587c97d62d, type: 3}
   - {fileID: 21300000, guid: 4abb1cc685f19454f8d573a06ebbadc8, type: 3}
-  tileSize: 1
+  tileSize: 2

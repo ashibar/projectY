@@ -43,7 +43,7 @@ public class TileGenerater : MonoBehaviour
         {
             for (int j = 0; j < size.x; j++)
             {
-                Vector2 relativePos = new Vector2(i - (size.x / 2), j - (size.y / 2)) * tileSize;
+                Vector2 relativePos = new Vector2(i - (size.x / 4), j - (size.y / 4)) * tileSize;
                 float r = Random.Range(0f, 1f);
                 int id;
 

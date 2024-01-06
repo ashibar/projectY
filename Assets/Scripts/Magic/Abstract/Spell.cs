@@ -18,10 +18,10 @@ public class Spell : MonoBehaviour
     [SerializeField] public Sprite sprite_spell;
 
     // 공통 배당 대리자
-    public delegate void InstantiateOneProjectileFunction_delegate();
+    public delegate void InstantiateOneProjectileFunction_delegate(DelegateParameter para);
     public delegate void FunctionWhileCooltime_delegate();
     public delegate void FunctionWhileProjectileDelay_delegate();
-    public delegate Quaternion SetAngle_delegate();
+    public delegate void SetAngle_delegate(DelegateParameter para);
     public delegate GameObject InstantiateProjectile_delegate(DelegateParameter para);
     public delegate void TriggerEnterTickFunction_delegate(DelegateParameter para);
     public delegate void TriggerEnterEndFunction_delegate(DelegateParameter para);
@@ -55,7 +55,7 @@ public class Spell : MonoBehaviour
     // Spell_Core [상속] 내부 함수
     // 상속 시 오버라이딩 하여 고유 기능 개발
 
-    protected virtual void InstantiateOneProjectileFunction()
+    public virtual void InstantiateOneProjectileFunction(DelegateParameter para)
     {
         
     }    
@@ -70,9 +70,9 @@ public class Spell : MonoBehaviour
 
     }
 
-    protected virtual Quaternion SetAngle()
+    public virtual void SetAngle(DelegateParameter para)
     {
-        return Quaternion.identity;
+        
     }
 
     protected virtual GameObject InstantiateProjectile(DelegateParameter para)

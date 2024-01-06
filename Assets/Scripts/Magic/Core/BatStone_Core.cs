@@ -15,11 +15,11 @@ public class BatStone_Core : Spell_Core
         base.Update();
     }
 
-    protected override Quaternion SetAngle()
+    public override void SetAngle(DelegateParameter para)
     {
         float angle = Mathf.Atan2(dir_toShoot.y, dir_toShoot.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
-        return rotation;
+        para.rotation = rotation;
     }
 
     protected override GameObject InstantiateProjectile(DelegateParameter para)
@@ -48,7 +48,8 @@ public class BatStone_Core : Spell_Core
     {
         if (para.cts_t.IsCancellationRequested) return;
         Vector3 pos = para.projectile.transform.position;
-        para.projectile.transform.position = Vector3.MoveTowards(pos, pos + (Vector3)para.dir_toShoot, para.stat_spell.Spell_Speed * Time.deltaTime);
+        //para.projectile.transform.position = Vector3.MoveTowards(pos, pos + (Vector3)para.dir_toShoot, para.stat_spell.Spell_Speed * Time.deltaTime);
+        para.projectile.GetComponent<Rigidbody2D>().velocity = para.dir_toShoot * para.stat_spell.Spell_Speed;
         para.projectile.GetComponent<SpriteRenderer>().sprite = para.anim_module.GetSprite();
     }
 }

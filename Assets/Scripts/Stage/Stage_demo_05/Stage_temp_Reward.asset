@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d1d13754d53b946811fffade457d7b, type: 3}
   m_Name: Stage_temp_Reward
   m_EditorClassIdentifier: 
-  rewardList:
-  - obj: {fileID: 6743049818794002840, guid: ad7b378ecfa5c8d4d9cbce9779cf3134, type: 3}
-    value: 1
+  rewardList: []

@@ -15,4 +15,5 @@ public class DelegateParameter
     public Stat_Spell stat_spell;
     public Vector2 dir_toShoot;
     public Quaternion rotation;
+    public int proj_cnt;
 }
