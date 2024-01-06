@@ -7,6 +7,7 @@ public class StageInfo_so : ScriptableObject
 {
     [SerializeField] private string stageName;
     [SerializeField] private Sprite stageSprite;
+    [SerializeField] private int difficulty;
     [SerializeField] private Reward_so reward;
     [SerializeField] private StageSort stageSort;
     [SerializeField] private List<EventPhase_so> phases = new List<EventPhase_so>();
@@ -16,6 +17,7 @@ public class StageInfo_so : ScriptableObject
     public Reward_so Reward { get => reward; set => reward = value; }
     public StageSort StageSort { get => stageSort; set => stageSort = value; }
     public List<EventPhase_so> Phases { get => phases; set => phases = value; }
+    public int Difficulty { get => difficulty; set => difficulty = value; }
 }
 
 public enum StageSort

@@ -364,14 +364,14 @@ namespace ReadyMadeReality
 
         private async Task Base_routine(float duration)
         {
-            float end = Time.time + duration;
+            float end = Time.unscaledTime + duration;
             //Debug.Log(string.Format(string.Format("{0}/{1} : {2}/{3} : {4}/{5}", split_cnt, split_max, line_cnt, line_max, word_cnt, word_max)));
             //Debug.Log(stringList.Count);
             //countText.text = string.Format("{0}/{1} : {2}/{3} : {4}/{5}", split_cnt, split_max, line_cnt, line_max, word_cnt, word_max);
             dialogText.text += stringList[split_cnt][line_cnt][word_cnt];
             word_cnt += 1;
 
-            while (Time.time < end)
+            while (Time.unscaledTime < end)
             {
                 await Task.Yield();
             }
@@ -409,9 +409,9 @@ namespace ReadyMadeReality
             {
                 isAutoRunning = true;
 
-                float end = Time.time + word_max * 0.02f + 1f;
+                float end = Time.unscaledTime + word_max * 0.02f + 1f;
 
-                while (Time.time < end && !cts.Token.IsCancellationRequested)
+                while (Time.unscaledTime < end && !cts.Token.IsCancellationRequested)
                 {
 
                     await Task.Yield();

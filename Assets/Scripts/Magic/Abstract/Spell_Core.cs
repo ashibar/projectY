@@ -101,18 +101,30 @@ public class Spell_Core : Spell
         for (int i = 0; i < (int)stat_part_applied.Amount + stat_spell.Spell_Multy_EA; i++)
         {
             // 투사체간 딜레이
-            float end = Time.time + stat_spell.Spell_ProjectileDelay;
+            float end = Time.time + stat_spell.Spell_ProjectileDelay * stat_part_applied.Duration_projectile;
 
             // 투사체 한개 생성
-            instantiateOneProjectileFunction();
-            //InstantiateOneProjectileFunction();
-
-            // 대기
-            while (Time.time < end && !cts.Token.IsCancellationRequested)
+            DelegateParameter para_proj = new DelegateParameter()
             {
+                proj_cnt = i,
+            };
+            instantiateOneProjectileFunction(para_proj);
+            //InstantiateOneProjectileFunction();
+            //Debug.Log(stat_spell.Spell_ProjectileDelay * stat_processed.Duration_projectile);
+            // 대기
+            if (stat_spell.Spell_ProjectileDelay * stat_part_applied.Duration_projectile == 0)
+            {
+                
                 FunctionWhileProjectileDelay();
-                await Task.Yield();
             }
+            else
+            {
+                while (Time.time < end && !cts.Token.IsCancellationRequested)
+                {
+                    FunctionWhileProjectileDelay();
+                    await Task.Yield();
+                }
+            }            
         }
     }
 
@@ -128,23 +140,35 @@ public class Spell_Core : Spell
     /// <b>6. 하위 스펠 파츠 복제</b>
     /// <b>7. 투사체 초기화 함수 실행</b>
     /// </summary>
-    protected override void InstantiateOneProjectileFunction()
+    public override void InstantiateOneProjectileFunction(DelegateParameter para)
     {
         // 발사 각도
-        Quaternion rotation = SetAngle();
+        DelegateParameter para_angle = new DelegateParameter()
+        {
+            projectile = projectile_origin[0],
+            dir_toShoot = dir_toShoot,
+            stat_processed = stat_part_applied,
+            proj_cnt = para.proj_cnt,
+        };
+        setAngle(para_angle);
+        Quaternion rotation = para_angle.rotation;
+        float angle = rotation.eulerAngles.z * Mathf.Deg2Rad;
+        Vector2 dir_toShoot_processed = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        
 
         // 투사체 생성
-        DelegateParameter para = new DelegateParameter()
+        DelegateParameter para_clone = new DelegateParameter()
         {
             projectile = projectile_origin[0],
             rotation = rotation,
+            dir_toShoot = dir_toShoot,
         };
-        GameObject clone = InstantiateProjectile(para);
+        GameObject clone = InstantiateProjectile(para_clone);
 
         // 투사체에 백터 정보, 타겟 태그 넣기
         //Debug.Log("dmg = " + stat_part_applied.Damage);
         clone.GetComponent<Projectile>().SetStat(stat_part_applied, stat_spell);
-        clone.GetComponent<Projectile>().SetVector(target, dir_toMove, dir_toShoot, pos_toShoot);
+        clone.GetComponent<Projectile>().SetVector(target, dir_toMove, dir_toShoot_processed, pos_toShoot);
 
         // 투사체의 행동 결정
         //AddDelegate(clone.GetComponent<Projectile>());
@@ -177,11 +201,11 @@ public class Spell_Core : Spell
 
     }
 
-    protected override Quaternion SetAngle()
+    public override void SetAngle(DelegateParameter para)
     {
         float angle = Mathf.Atan2(dir_toShoot.y, dir_toShoot.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
-        return rotation;
+        para.rotation = rotation;
     }
 
     protected override GameObject InstantiateProjectile(DelegateParameter para)

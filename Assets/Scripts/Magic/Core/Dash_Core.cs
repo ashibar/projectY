@@ -22,11 +22,11 @@ public class Dash_Core : Spell_Core
         base.Update();
     }
 
-    protected override Quaternion SetAngle()
+    public override void SetAngle(DelegateParameter para)
     {
         float angle = Mathf.Atan2(dir_toShoot.y, dir_toShoot.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
-        return rotation;
+        para.rotation = rotation;
     }
 
     protected override async void InstantiateDelayFunction()

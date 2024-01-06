@@ -90,4 +90,9 @@ public class PlayerStatusWindow : MonoBehaviour
         nodes[4].isAccessable = true;
         nodes[5].isAccessable = true;
     }
+
+    public void Press_DebugMap()
+    {
+        LoadingSceneController.LoadScene("Debug_Scene");
+    }
 }

@@ -22,7 +22,7 @@ MonoBehaviour:
   - string1: a2
     string2: 
   spell_inventory: []
-  progress_step_demo: 3
+  progress_step_demo: 0
   progress_step_infinite: 0
   isTutorialCleared: 0
   isTutorialAnimCleared: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadDataSingleton : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class LoadDataSingleton : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         Application.targetFrameRate = 60;
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1.0f;        
     }
 
     public StageInfoContainer_so StageInfoContainer()
@@ -91,6 +92,10 @@ public class LoadDataSingleton : MonoBehaviour
                 playerInfoContainer = Resources.Load("PlayerInfoContainer_infinite") as PlayerInfoContainer; break;
             case "MapScene":
                 stageInfoContainer = Resources.Load("StageInfoContainer_demo") as StageInfoContainer_so; break;
+            case "Debug_Scene":
+                stageInfoContainer = Resources.Load("StageInfoContainer_Debug") as StageInfoContainer_so;
+                playerInfoContainer = Resources.Load("PlayerInfoContainer_debug") as PlayerInfoContainer;
+                Debug.Log("Debug!!!"); break;
         }
     }
 }

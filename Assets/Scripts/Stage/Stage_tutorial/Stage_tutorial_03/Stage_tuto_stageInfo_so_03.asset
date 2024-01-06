@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Stage_tuto_stageInfo_so_03
   m_EditorClassIdentifier: 
   stageName: "\uAE4A\uC740 \uC232"
-  stageSprite: {fileID: 21300000, guid: 357acd14d72fccd4e99371904a2d15e2, type: 3}
+  stageSprite: {fileID: 21300000, guid: 5efa5d259726a6846bc799e21cbcdbdd, type: 3}
+  difficulty: 0
   reward: {fileID: 11400000, guid: 7b751b47ec93ee7478378856a2894ddb, type: 2}
   stageSort: 2
   phases:
