@@ -17,6 +17,7 @@ MonoBehaviour:
     eventindex: 3
     eventcode: Player Move Input
     condition:
+      no: 0
       sort: 2
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -28,13 +29,14 @@ MonoBehaviour:
       isSatisfied: 0
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 2
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
+      targetFlag: isFail
+      flagValue: 1
       targetNum: 0
       isSatisfied: 0
       isContinued: 1
@@ -51,10 +53,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 0
     eventindex: 3
     eventcode: Delete All Enemy
     condition:
+      no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -66,7 +70,8 @@ MonoBehaviour:
       isSatisfied: 0
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -89,10 +94,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 1
     eventindex: 3
     eventcode: Set Active Spell Manager
     condition:
+      no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -104,7 +111,8 @@ MonoBehaviour:
       isSatisfied: 0
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -127,10 +135,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 2
     eventindex: 4
     eventcode: Fade Out
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -142,14 +152,15 @@ MonoBehaviour:
       isSatisfied: 0
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
+      targetNum: 2
       isSatisfied: 0
       isContinued: 1
     extraParams:
@@ -165,10 +176,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 3
     eventindex: 1
     eventcode: Force Load
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -180,14 +193,15 @@ MonoBehaviour:
       isSatisfied: 0
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
+      targetNum: 2
       isSatisfied: 0
       isContinued: 1
     extraParams:
@@ -203,3 +217,4 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

@@ -17,6 +17,7 @@ MonoBehaviour:
     eventindex: 4
     eventcode: Fade Out
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -28,14 +29,15 @@ MonoBehaviour:
       isSatisfied: 0
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
+      targetNum: 1
       isSatisfied: 0
       isContinued: 1
     extraParams:
@@ -51,3 +53,4 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

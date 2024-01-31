@@ -12,18 +12,18 @@ public class ScriptableObjectModifier : MonoBehaviour
         List<EventPhase_so> scriptableObjects = new List<EventPhase_so>();
 
         //// 에셋 데이터베이스에서 모든 ScriptableObject 찾기
-        //string[] guids = AssetDatabase.FindAssets("t:EventPhase_so");
-        //foreach (string guid in guids)
-        //{
-        //    string path = AssetDatabase.GUIDToAssetPath(guid);
-        //    EventPhase_so scriptableObject = AssetDatabase.LoadAssetAtPath<EventPhase_so>(path);
+        string[] guids = AssetDatabase.FindAssets("t:EventPhase_so");
+        foreach (string guid in guids)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            EventPhase_so scriptableObject = AssetDatabase.LoadAssetAtPath<EventPhase_so>(path);
 
-        //    // ScriptableObject이면 리스트에 추가
-        //    if (scriptableObject != null)
-        //    {
-        //        scriptableObjects.Add(scriptableObject);
-        //    }
-        //}
+            // ScriptableObject이면 리스트에 추가
+            if (scriptableObject != null)
+            {
+                scriptableObjects.Add(scriptableObject);
+            }
+        }
 
         phases.Clear();
         phases.AddRange(scriptableObjects);
@@ -37,10 +37,14 @@ public class ScriptableObjectModifier : MonoBehaviour
             {
                 if (e.conditions == null)
                     e.conditions = new List<Condition>();
+                else
+                    e.conditions.Clear();
 
                 if (e.condition != null)
                     e.conditions.Add(e.condition);
+
             }
+            EditorUtility.SetDirty(phase);
         }
     }
 }

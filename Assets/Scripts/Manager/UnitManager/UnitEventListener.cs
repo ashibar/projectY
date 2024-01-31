@@ -23,9 +23,9 @@ public class UnitEventListener : MonoBehaviour
 
     private void EventReciever()
     {
-        int error = StageManager.Instance.SearchMassage(3, messageBuffer);
-        if (error == -1)
-            return;
+        //int error = StageManager.Instance.SearchMassage(3, messageBuffer);
+        //if (error == -1)
+        //    return;
     }
 
     private void EventListener()

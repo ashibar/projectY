@@ -6,13 +6,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// <para/><b>■■ StageManager ■■</b>
-/// <para/>담당자 : 이용욱
-/// <para/>요약 : 스테이지 데이터 및 하위모듈 관리
-/// <para/>비고 : 
-/// <para/>업데이트 내역 : 
-/// <para/> - (23.08.22) : 요약문 생성
-/// <para/>
+/// <b>■■ StageManager ■■</b> <br></br>
+/// 담당자 : 이용욱 <br></br>
+/// 요약 : 스테이지 데이터 및 하위모듈 관리 <br></br>
+/// 비고 :  <br></br>
+/// 업데이트 내역 :  <br></br>
+///  - (23.08.22) : 요약문 생성  <br></br>
+///  <br></br>
 /// </summary>
 
 public class StageManager : MonoBehaviour, IEventListener
@@ -50,11 +50,13 @@ public class StageManager : MonoBehaviour, IEventListener
     [SerializeField] public PlayerInfoContainer playerInfoContainer_so;
     [SerializeField] public SpellPrefabContainer SpellPrefabContainer_so;
 
+    // 하위 모듈    
     public ConditionChecker ConditionChecker { get => conditionChecker; set => conditionChecker = value; }
     public EventTimer EventTimer { get => eventTimer; set => eventTimer = value; }
     public StageEndCheck StageEndCheck { get => stageEndCheck; set => stageEndCheck = value; }
 
-    public List<EventMessage> messageBuffer = new List<EventMessage>();
+    // 디버그
+    [SerializeField] private bool verbose;
 
     public static List<string> event_code = new List<string>
     {
@@ -64,61 +66,92 @@ public class StageManager : MonoBehaviour, IEventListener
         "Set Next Stage Of Infinite Mode",
     };
 
+    /// <summary>
+    /// <b>스크립트 첫 활성화 시 가장 먼저 실행되는 함수.</b><br></br>
+    /// <br></br>
+    /// - 싱글톤 처리 <br></br>
+    /// - 데이터 로드 <br></br>
+    /// - 하위 모듈 로드 <br></br>
+    /// - 이벤트 구독 <br></br>
+    /// </summary>
     private void Awake()
     {
+        // 싱글톤 오브젝트 단일화
         var objs = FindObjectsOfType<StageManager>();
         if (objs.Length != 1)
         {
             Destroy(gameObject);
             return;
         }
+
+        // 디버그씬 전용 예외 처리
+        // 디버그씬인것이 감지되었을 때 StageInfoContainer를 디버그씬 전용으로 교체
         if (SceneManager.GetActiveScene().name == "Debug_Scene")
             LoadDataSingleton.Instance.SetStageInfoContainer("Debug_Scene");
+        
+        // LoadDataSingleton으로부터 데이터를 불러옴
         stageInfoContainer_so = LoadDataSingleton.Instance.StageInfoContainer();
         playerInfoContainer_so = LoadDataSingleton.Instance.PlayerInfoContainer();
         SpellPrefabContainer_so = LoadDataSingleton.Instance.SpellPrefabContainer();
+        
+        // 하위 모듈 불러옴
         conditionChecker = GetComponentInChildren<ConditionChecker>();
         eventTimer = GetComponentInChildren<EventTimer>();
         stageEndCheck = GetComponentInChildren<StageEndCheck>();
-        messageBuffer.Clear();
+
+        // 전체 시간 배율 초기화
         Time.timeScale = 1.0f;
 
-        SubscribeEvent(); // 나중에 로딩할때 대체
-        //SetStageInfo_(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
+        // 이벤트 구독
+        SubscribeEvent();
     }
 
+    /// <summary>
+    /// <b>스크립트 첫 활성화 시 두번째로 실행되는 함수.</b><br></br>
+    /// <br></br>
+    /// 
+    /// </summary>
     private void Start()
     {
-        //foreach (GameObject g in stageInfo.spawners)
-        //{
-        //    Instantiate(g, SpawnManager.Instance.spawner_holder);
-        //}
-        //SpawnManager.Instance.SetSpawner();
-        Debug.Log(stageInfoContainer_so.name);
-        Debug.Log("id = " + stageInfoContainer_so.CurID.ToString());
-        SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
-        if (UIManager.Instance.TopIndicator)
+        if (verbose)
         {
-            //UIManager.Instance.TopIndicator.Sort = stageInfo.StageSort;
-            //UIManager.Instance.TopIndicator.SetActive();
+            Debug.Log(stageInfoContainer_so.name);
+            Debug.Log("id = " + stageInfoContainer_so.CurID.ToString());
         }
-        SetTargetUnit();
+
+        // ★★★
+        // StageInfoContainer를 EventTimer모듈에 전달 후 이벤트 실행을 위한 비동기 서브루틴 생성
+        SetStageInfo(stageInfoContainer_so.StageInfoList[stageInfoContainer_so.CurID]);
+
+        // ★★★
+        // LoadDataSingleton으로부터 기존 저장된 스펠 정보를 불러와 씬 시작 시 적용
         LoadPlayerSpell();
+
+        // 상단 체력바 표시를 위한 주요 적 설정
+        SetTargetUnit();
     }
 
     private void Update()
     {
-        //if (UIManager.Instance.ResultWindow)
-        //    TestStageClear();
-        //Async_Function();
+        
     }
 
+    /// <summary>
+    /// 이벤트 구독
+    /// </summary>
     public void SubscribeEvent()
     {
         foreach (string code in event_code)
             EventManager.Instance.AddListener(code, this);
     }
 
+    /// <summary>
+    /// 이벤트 매니저가 방송하는 이벤트와 비교후 실행하는 함수
+    /// </summary>
+    /// <param name="event_type">이벤트 코드</param>
+    /// <param name="sender">송신자</param>
+    /// <param name="condition">조건</param>
+    /// <param name="param">매개변수 묶음</param>
     public void OnEvent(string event_type, Component sender, Condition condition, params object[] param)
     {
 
@@ -135,22 +168,47 @@ public class StageManager : MonoBehaviour, IEventListener
         }
     }
 
+    /// <summary>
+    /// <b>[OnEvent] 다음 Phase로 전환</b> <br></br>
+    /// NextPhase : 전환될 다음 Phase(EventPhase_so) <br></br>
+    /// </summary>
+    /// <param name="par"></param>
     private void GotoNextPhase(ExtraParams par)
     {
-        Debug.Log(par.NextPhase);
-        eventTimer.AddPhase(par.NextPhase);
+        if (verbose)
+        {
+            Debug.Log(par.NextPhase); 
+        }
+        eventTimer.AddPhaseToPhaseList_And_CreatePhaseSubroutine(par.NextPhase);
     }
 
+    /// <summary>
+    /// <b>[OnEvent] 씬이름을 매개변수로 받아 강제 로드</b> <br></br>
+    /// Name : 로드 될 씬 이름 <br></br>
+    /// Int : 맵 번호가 필요할 경우, 맵 번호
+    /// </summary>
+    /// <param name="para"></param>
     private void ForceLoad(ExtraParams para)
     {
         LoadingSceneController.LoadScene(para.Name, para.Intvalue);
     }
 
+    /// <summary>
+    /// <b>[OnEvent] 맵 번호를 받아 BattleScene의 이벤트 타이머 서브루틴 생성</b> <br></br>
+    /// Int : 맵 번호
+    /// </summary>
+    /// <param name="para"></param>
     private void SetStageInfoByID(ExtraParams para)
     {
         SetStageInfo(stageInfoContainer_so.StageInfoList[Mathf.Clamp(para.Intvalue, 0, stageInfoContainer_so.StageInfoList.Count)]);
     }
 
+    /// <summary>
+    /// <b>[OnEvent] 무한모드 시 스테이지 설정, 이벤트 서브루틴 생성</b> <br></br>
+    /// 매개변수 X
+    /// PlayerInfoContainer의 progress_step_infinite값의 영향을 받음
+    /// </summary>
+    /// <param name="para"></param>
     private void SetNextStageOfInfiniteMode(ExtraParams para)
     {
         LoadDataSingleton.Instance.PlayerInfoContainer().Progress_step_infinite += 1;
@@ -159,7 +217,7 @@ public class StageManager : MonoBehaviour, IEventListener
     }
 
     /// <summary>
-    /// <para/> <b>로딩 시 StageManager에 스테이지 정보를 넣기 위한 함수</b>
+    /// <b>로딩 시 StageManager에 스테이지 정보를 넣기 위한 함수</b> <br></br>
     /// </summary>
     /// <param name="_stageInfo_so">스테이지 데이터 so파일</param>
     public void SetStageInfo(StageInfo_so _stageInfo_so)
@@ -169,7 +227,7 @@ public class StageManager : MonoBehaviour, IEventListener
 
         eventTimer.ClearPhase();
         foreach(EventPhase_so phase in stageInfo.Phases)
-            eventTimer.AddPhase(phase);
+            eventTimer.AddPhaseToPhaseList_And_CreatePhaseSubroutine(phase);
         //conditionChecker.SetPara(stageInfo.Para);
     }
 
@@ -228,44 +286,6 @@ public class StageManager : MonoBehaviour, IEventListener
     //    stageInfo.Para.Add(new EventParams(2, "Spawn Enemy At Vector List By ID", condition1, p2));
     //}
 
-    /// <summary>
-    /// <b>다른 모듈들이 StageManager의 메시지버퍼를 참조하기 위한 함수</b><br/>
-    /// <br/>
-    /// - Module List -<br/>
-    /// 1.<br/>
-    /// 2. SpawnManager<br/>
-    /// 3. UnitManager<br/>
-    /// 4. AnimationManager<br/>
-    /// 5. UIManager<br/>
-    /// </summary>
-    /// <param name="moduleID"></param>
-    /// <param name="buffer"></param>
-    /// <returns></returns>
-    public int SearchMassage(int moduleID, List<EventMessage> buffer)
-    {
-        if (messageBuffer.Count == 0)
-            return -1;
-
-        List<EventMessage> addition = new List<EventMessage>();
-
-        for (int i = 0; i < messageBuffer.Count; i++)
-        {
-            if (messageBuffer[i].ModuleID == moduleID) 
-            {
-                EventMessage tmp = messageBuffer[i];
-                messageBuffer.RemoveAt(i);
-                addition.Add(tmp);
-            }
-        }
-
-        if (addition.Count > 0)
-        {
-            buffer.AddRange(addition);
-            return 0;
-        }
-        else
-            return -1;
-    }
 
     /// <summary>
     /// 테스트용 결과창 윈도우 출력 함수 <br/>

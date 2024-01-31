@@ -70,6 +70,7 @@ public class EventManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Scene이 로드되었을 때 실행될 함수 <br></br>
     /// 
     /// </summary>
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)

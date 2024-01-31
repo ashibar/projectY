@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 8
     eventcode: Add New Trigger
     condition:
+      no: 0
+      sort: 0
+      targetTag: Player
+      targetPos: {x: 3, y: 3}
+      targetRange: {x: 1, y: 1}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 0
       targetTag: Player
       targetPos: {x: 3, y: 3}
@@ -33,15 +46,31 @@ MonoBehaviour:
       intvalue: 1
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 1
     eventindex: 8
     eventcode: Add New Number
     condition:
+      no: 0
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: TestN
+      flagValue: 1
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -58,15 +87,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 2
     eventindex: 7
     eventcode: Event B
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -83,15 +128,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 3
     eventindex: 7
     eventcode: Event C
     condition:
+      no: 0
+      sort: 2
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: Test
+      flagValue: 1
+      targetNum: 1
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 2
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -108,15 +169,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 3
     eventindex: 9
     eventcode: Zoom At Vector
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -134,8 +211,11 @@ MonoBehaviour:
       floatvalue: 0.3
       vecList:
       - {x: -3, y: 0}
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

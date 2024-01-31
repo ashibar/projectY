@@ -6,6 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class Condition
 {
+    [SerializeField] public int no;
     [SerializeField] private ConditionSort sort;
     [SerializeField] private Type target;
     [SerializeField] private string targetTag;
@@ -29,6 +30,15 @@ public class Condition
     public float TargetNum { get => targetNum; set => targetNum = value; }
     public bool IsSatisfied { get => isSatisfied; set => isSatisfied = value; }
     public bool IsContinued { get => isContinued; set => isContinued = value; }
+
+    public Condition()
+    {
+
+    }
+
+    public Condition(int no) {
+        this.no = no;
+    }
 }
 
 public enum ConditionSort

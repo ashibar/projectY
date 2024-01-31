@@ -11,6 +11,7 @@ public class EventParams
     [SerializeField] public Condition condition;
     [SerializeField] public List<Condition> conditions;
     [SerializeField] public ExtraParams extraParams;
+    [SerializeField] public bool isSatisfied;
 
     public EventParams(int no)
     {

@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 3
     eventcode: Player Move Input
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -33,15 +46,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 5
     eventindex: 3
     eventcode: Set Unit Animation Trigger
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -58,15 +87,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: isWiggle
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 1
     eventindex: 3
     eventcode: Player Animation
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -83,15 +128,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 2
     eventindex: 3
     eventcode: Player Animation
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -108,15 +169,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 3
     eventindex: 3
     eventcode: Emotion Effect
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -133,15 +210,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 4
     eventindex: 3
     eventcode: Player Animation
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -158,15 +251,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 5
     eventindex: 3
     eventcode: Player Move Input
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -183,8 +292,11 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

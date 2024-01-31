@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 2
     eventcode: Spawn By Spawn Info
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -40,10 +53,24 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 1
     eventindex: 1
     eventcode: Goto Next Phase
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: AllUnit
+      flagValue: 0
+      targetNum: 8
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -67,3 +94,4 @@ MonoBehaviour:
       nextPhase: {fileID: 11400000, guid: b6a69a7422007b543aa5002a227ad8fa, type: 2}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

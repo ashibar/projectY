@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 1
     eventcode: Goto Next Phase
     condition:
+      no: 0
+      sort: 3
+      targetTag: Player
+      targetPos: {x: 40, y: 0}
+      targetRange: {x: 0.1, y: 5}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 3
       targetTag: Player
       targetPos: {x: 40, y: 0}
@@ -33,8 +46,11 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 11400000, guid: 28f989b1d24009e42960173144b586ba, type: 2}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

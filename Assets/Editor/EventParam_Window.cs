@@ -9,6 +9,7 @@ public class EventParam_Window : EditorWindow
 {
     [SerializeField] private EventPhase_so phaseInfo;
     [SerializeField] private int index;
+    [SerializeField] private int index_c;
 
     [SerializeField] private List<string> sort = new List<string> {
         "None",
@@ -160,25 +161,73 @@ public class EventParam_Window : EditorWindow
             GUILayout.Label("Condtions", labelFieldOption);
             GUILayout.EndHorizontal();
 
+            // condition ¿Œµ¶Ω∫
+            if (phaseInfo.Events[index].conditions == null)
+                phaseInfo.Events[index].conditions = new List<Condition>();
+            if (phaseInfo.Events[index].conditions.Count <= 0)
+                phaseInfo.Events[index].conditions.Add(new Condition(0));
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            phaseInfo.Events[index].condition.Sort = (ConditionSort)EditorGUILayout.EnumPopup("Condtition Sort", phaseInfo.Events[index].condition.Sort, enumFieldOption);
+            index_c = EditorGUILayout.IntField("Event Index", Mathf.Clamp(index_c, 0, phaseInfo.Events[index].conditions.Count - 1), indexFieldStyle, indexFieldOption);
+            if (GUILayout.Button("<", buttonOption))
+            {
+                GUI.FocusControl(null);
+                index_c = index_c > 0 ? index_c - 1 : index_c;
+            }
+            if (GUILayout.Button(">", buttonOption))
+            {
+                GUI.FocusControl(null);
+                index_c = index_c < phaseInfo.Events[index].conditions.Count - 1 ? index_c + 1 : index_c;
+            }
+            EditorGUILayout.LabelField("Max", smallFieldOption);
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUILayout.IntField(phaseInfo.Events[index].conditions.Count, indexFieldStyle, smallFieldOption);
+            EditorGUI.EndDisabledGroup();
+            if (GUILayout.Button("+", buttonOption))
+            {
+                GUI.FocusControl(null);
+                if (index_c == phaseInfo.Events[index].conditions.Count - 1)
+                    phaseInfo.Events[index].conditions.Add(new Condition(phaseInfo.Events[index].conditions.Count - 1));
+                else if (phaseInfo.Events[index].conditions.Count - 1 > 0)
+                    phaseInfo.Events[index].conditions.Insert(index_c + 1, new Condition(phaseInfo.Events[index].conditions.Count - 1));
+                else
+                    phaseInfo.Events[index].conditions.Add(new Condition(0));
+            }
+            if (GUILayout.Button("-", buttonOption))
+            {
+                GUI.FocusControl(null);
+                if (phaseInfo.Events[index].conditions.Count > 0)
+                {
+                    phaseInfo.Events[index].conditions.RemoveAt(index_c);
+                    index_c = index_c >= phaseInfo.Events[index].conditions.Count ? phaseInfo.Events[index].conditions.Count - 1 : index_c;
+                    for (int i = 0; i < phaseInfo.Events[index].conditions.Count; i++)
+                        phaseInfo.Events[index].conditions[i].no = i;
+                }
+                else
+                    Debug.Log("Already Empty");
+            }
+            GUILayout.EndHorizontal();
+
+            // condition[index_c]
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            phaseInfo.Events[index].conditions[index_c].Sort = (ConditionSort)EditorGUILayout.EnumPopup("Condtition Sort", phaseInfo.Events[index].conditions[index_c].Sort, enumFieldOption);
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            phaseInfo.Events[index].condition.IsSatisfied = EditorGUILayout.Toggle("isSatisfied", phaseInfo.Events[index].condition.IsSatisfied, innerFieldOption);
+            phaseInfo.Events[index].conditions[index_c].IsSatisfied = EditorGUILayout.Toggle("isSatisfied", phaseInfo.Events[index].conditions[index_c].IsSatisfied, innerFieldOption);
             GUILayout.EndHorizontal();
 
             if (phaseInfo.Events[index].conditions.Count <= 0)
             {
-                phaseInfo.Events[index].conditions.Add(new Condition());
+                phaseInfo.Events[index].conditions.Add(new Condition(0));
                 Debug.Log("Empty");
             }
-            switch (phaseInfo.Events[index].condition.Sort)
+            switch (phaseInfo.Events[index].conditions[index_c].Sort)
             {
                 case ConditionSort.None:
-                    Con_Tinue(innerFieldOption);
+                    //Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.Time:
                     Con_Num(innerFieldOption);
@@ -187,20 +236,20 @@ public class EventParam_Window : EditorWindow
                 case ConditionSort.Trigger:
                     Con_Flag(innerFieldOption);
                     Con_FlagValue(innerFieldOption);
-                    Con_Tinue(innerFieldOption);
+                    //Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.MoveToPos:
                     Con_Tag(innerFieldOption);
                     Con_Pos(innerFieldOption);
                     Con_Range(innerFieldOption);
                     Con_Num(innerFieldOption);
-                    Con_Tinue(innerFieldOption);
+                    //Con_Tinue(innerFieldOption);
                     break;
                 case ConditionSort.Number:
                     Con_Flag(innerFieldOption);
                     Con_UpOrDown(innerFieldOption);
                     Con_Num(innerFieldOption);
-                    Con_Tinue(innerFieldOption);
+                    //Con_Tinue(innerFieldOption);
                     break;
                 default:
                     break;
@@ -303,48 +352,48 @@ public class EventParam_Window : EditorWindow
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].condition.TargetNum = EditorGUILayout.FloatField("Target Num", phaseInfo.Events[index].condition.TargetNum, options);
+        phaseInfo.Events[index].conditions[index_c].TargetNum = EditorGUILayout.FloatField("Target Num", phaseInfo.Events[index].conditions[index_c].TargetNum, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Tinue(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].condition.IsContinued = EditorGUILayout.Toggle("isContinued", phaseInfo.Events[index].condition.IsContinued, options);
+        phaseInfo.Events[index].conditions[index_c].IsContinued = EditorGUILayout.Toggle("isContinued", phaseInfo.Events[index].conditions[index_c].IsContinued, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Flag(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].condition.TargetFlag = EditorGUILayout.TextField("Target Flag", phaseInfo.Events[index].condition.TargetFlag, options);
+        phaseInfo.Events[index].conditions[index_c].TargetFlag = EditorGUILayout.TextField("Target Flag", phaseInfo.Events[index].conditions[index_c].TargetFlag, options);
         GUILayout.EndHorizontal();
     }
     private void Con_FlagValue(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].condition.FlagValue = EditorGUILayout.Toggle("Flag Value", phaseInfo.Events[index].condition.FlagValue, options);
+        phaseInfo.Events[index].conditions[index_c].FlagValue = EditorGUILayout.Toggle("Flag Value", phaseInfo.Events[index].conditions[index_c].FlagValue, options);
         GUILayout.EndHorizontal();
     }
     private void Con_UpOrDown(GUILayoutOption[] options)
     {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].condition.FlagValue = EditorGUILayout.Toggle("More than", phaseInfo.Events[index].condition.FlagValue, options);
+        phaseInfo.Events[index].conditions[index_c].FlagValue = EditorGUILayout.Toggle("More than", phaseInfo.Events[index].conditions[index_c].FlagValue, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Tag(GUILayoutOption[] options) {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        phaseInfo.Events[index].condition.TargetTag = EditorGUILayout.TextField("Target Tag", phaseInfo.Events[index].condition.TargetTag, options);
+        phaseInfo.Events[index].conditions[index_c].TargetTag = EditorGUILayout.TextField("Target Tag", phaseInfo.Events[index].conditions[index_c].TargetTag, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Pos(GUILayoutOption[] options) {
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         EditorGUIUtility.wideMode = true;
-        phaseInfo.Events[index].condition.TargetPos = EditorGUILayout.Vector2Field("Target Position", phaseInfo.Events[index].condition.TargetPos, options);
+        phaseInfo.Events[index].conditions[index_c].TargetPos = EditorGUILayout.Vector2Field("Target Position", phaseInfo.Events[index].conditions[index_c].TargetPos, options);
         GUILayout.EndHorizontal();
     }
     private void Con_Range(GUILayoutOption[] options)
@@ -352,7 +401,7 @@ public class EventParam_Window : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         EditorGUIUtility.wideMode = true;
-        phaseInfo.Events[index].condition.TargetRange = EditorGUILayout.Vector2Field("Detect Range", phaseInfo.Events[index].condition.TargetRange, options);
+        phaseInfo.Events[index].conditions[index_c].TargetRange = EditorGUILayout.Vector2Field("Detect Range", phaseInfo.Events[index].conditions[index_c].TargetRange, options);
         GUILayout.EndHorizontal();
     }
     private void Par_No(GUILayoutOption[] options)
