@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 3
     eventcode: Player Move Input
     condition:
+      no: 0
+      sort: 1
+      targetTag: Player
+      targetPos: {x: 40, y: 0}
+      targetRange: {x: 0.1, y: 5}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: Player
       targetPos: {x: 40, y: 0}
@@ -33,15 +46,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 1
     eventindex: 3
     eventcode: Player Animation
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -58,15 +87,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 2
     eventindex: 6
     eventcode: Play Sound
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -83,15 +128,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0.2
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: b4ec287aa22490e488d81d6662a93b12, type: 3}
+    isSatisfied: 0
   - no: 3
     eventindex: 3
     eventcode: Set Unit Animation Trigger
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -108,15 +169,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: isWiggle
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 4
     eventindex: 9
     eventcode: Zoom At Vector
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -134,15 +211,31 @@ MonoBehaviour:
       floatvalue: 2
       vecList:
       - {x: 33, y: 2.5}
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 5
     eventindex: 6
     eventcode: Play Sound
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -159,15 +252,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0.3
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: b4ec287aa22490e488d81d6662a93b12, type: 3}
+    isSatisfied: 0
   - no: 6
     eventindex: 3
     eventcode: Set Unit Animation Trigger
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -184,15 +293,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: isWiggle
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 7
     eventindex: 3
     eventcode: FlipX Unit
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -209,15 +334,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 8
     eventindex: 6
     eventcode: Play Sound
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -234,15 +375,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 1
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: b4ec287aa22490e488d81d6662a93b12, type: 3}
+    isSatisfied: 0
   - no: 9
     eventindex: 3
     eventcode: Set Unit Animation Trigger
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -259,15 +416,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: isWiggle
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 10
     eventindex: 3
     eventcode: Unit Force Move
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -285,15 +458,31 @@ MonoBehaviour:
       floatvalue: 10
       vecList:
       - {x: 34, y: 0}
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 11
     eventindex: 3
     eventcode: Unit Force Move
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -311,15 +500,31 @@ MonoBehaviour:
       floatvalue: 5
       vecList:
       - {x: 41, y: 0}
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 12
     eventindex: 9
     eventcode: Camera Move At Vector
     condition:
+      no: 0
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -337,15 +542,31 @@ MonoBehaviour:
       floatvalue: 6
       vecList:
       - {x: 38, y: 0}
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 13
     eventindex: 4
     eventcode: Set Mouse Indicator
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -362,15 +583,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 14
     eventindex: 3
     eventcode: Unit Force Move
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -388,15 +625,31 @@ MonoBehaviour:
       floatvalue: 1
       vecList:
       - {x: 40, y: 0}
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 17
     eventindex: 8
     eventcode: Add New Trigger
     condition:
+      no: 0
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -413,15 +666,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 15
     eventindex: 9
     eventcode: Camera Distortion
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -438,15 +707,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 16
     eventindex: 9
     eventcode: Camera Move At Vector
     condition:
+      no: 0
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -464,15 +749,31 @@ MonoBehaviour:
       floatvalue: 0.3
       vecList:
       - {x: 40, y: 0}
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 17
     eventindex: 8
     eventcode: Set Trigger
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 5
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -489,8 +790,11 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

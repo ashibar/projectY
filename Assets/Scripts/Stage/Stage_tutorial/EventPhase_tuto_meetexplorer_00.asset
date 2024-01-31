@@ -17,6 +17,7 @@ MonoBehaviour:
     eventindex: 3
     eventcode: Unit Set Position
     condition:
+      no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -28,7 +29,8 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -36,7 +38,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -52,10 +54,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 6
     eventindex: 3
     eventcode: FlipX Unit
     condition:
+      no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -67,7 +71,8 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -75,7 +80,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -90,10 +95,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 0
     eventindex: 9
     eventcode: Camera Move At Vector Instant
     condition:
+      no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -105,7 +112,8 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -113,7 +121,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -129,10 +137,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 1
     eventindex: 4
     eventcode: Fade In
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -144,15 +154,16 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
-      isSatisfied: 0
+      targetNum: 1
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -167,10 +178,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 2
     eventindex: 3
     eventcode: Set Unit Animation Trigger
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -182,15 +195,16 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
-      isSatisfied: 0
+      targetNum: 3
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -205,10 +219,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 3
     eventindex: 6
     eventcode: Play Sound
     condition:
+      no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -220,7 +236,8 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -228,7 +245,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -243,10 +260,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: b4ec287aa22490e488d81d6662a93b12, type: 3}
+    isSatisfied: 0
   - no: 4
     eventindex: 3
     eventcode: Unit Force Move
     condition:
+      no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -258,7 +277,8 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
@@ -266,7 +286,7 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -282,10 +302,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 5
     eventindex: 5
     eventcode: Set Dialog
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -297,14 +319,15 @@ MonoBehaviour:
       isSatisfied: 0
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
+      targetNum: 2
       isSatisfied: 0
       isContinued: 1
     extraParams:
@@ -320,3 +343,4 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 11400000, guid: fa46950e865ae5a4cacf31f4aade3908, type: 2}
       audioclip: {fileID: 0}
+    isSatisfied: 0

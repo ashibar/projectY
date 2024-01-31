@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 5
     eventcode: Set Dialog
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -40,3 +53,4 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 11400000, guid: bf3b4d5081686d14e9f6e4a0620d6980, type: 2}
       audioclip: {fileID: 0}
+    isSatisfied: 0

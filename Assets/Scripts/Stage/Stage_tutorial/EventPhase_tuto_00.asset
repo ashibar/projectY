@@ -17,6 +17,7 @@ MonoBehaviour:
     eventindex: 4
     eventcode: Fade In
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -25,7 +26,19 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0.1
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0.1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -34,15 +47,18 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 1
   - no: 0
     eventindex: 3
     eventcode: Unit Force Move
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -51,7 +67,19 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -61,15 +89,18 @@ MonoBehaviour:
       vecList:
       - {x: 1, y: 0}
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 1
   - no: 5
     eventindex: 3
     eventcode: Player Combat
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -78,7 +109,19 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -87,15 +130,18 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 1
   - no: 4
     eventindex: 6
     eventcode: Play Sound
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -104,7 +150,19 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -113,15 +171,18 @@ MonoBehaviour:
       floatvalue: 0.3
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 1
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: 29b5778eccd682d42ba344adf368f62f, type: 3}
+    isSatisfied: 1
   - no: 1
     eventindex: 3
     eventcode: Player Animation
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -130,7 +191,19 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -139,15 +212,18 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 1
   - no: 2
     eventindex: 3
     eventcode: Player Move Input
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -156,7 +232,19 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 0
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -165,15 +253,18 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 1
   - no: 3
     eventindex: 1
     eventcode: Goto Next Phase
     condition:
+      no: 0
       sort: 3
       targetTag: Player
       targetPos: {x: 1, y: 0}
@@ -182,7 +273,19 @@ MonoBehaviour:
       targetFlag: 
       flagValue: 0
       targetNum: 1
-      isSatisfied: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
+      sort: 3
+      targetTag: Player
+      targetPos: {x: 1, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 0
       isContinued: 1
     extraParams:
       id: 0
@@ -191,8 +294,10 @@ MonoBehaviour:
       floatvalue: 0
       vecList: []
       mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 11400000, guid: 11cf6bd9222ef974284d5f3336282ffb, type: 2}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

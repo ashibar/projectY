@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour, IEventListener
     private void Update()
     {
         TestSpawn();
-        EventReciever();
+        //EventReciever();
         EventListener();
         //if (!iscoroutineRunning)
         //{
@@ -326,12 +326,12 @@ public class SpawnManager : MonoBehaviour, IEventListener
     }
 
     private List<EventMessage> messageBuffer = new List<EventMessage>();
-    private void EventReciever()
-    {
-        int error = StageManager.Instance.SearchMassage(2, messageBuffer);
-        if (error == -1)
-            return;
-    }
+    //private void EventReciever()
+    //{
+    //    int error = StageManager.Instance.SearchMassage(2, messageBuffer);
+    //    if (error == -1)
+    //        return;
+    //}
 
     private void EventListener()
     {

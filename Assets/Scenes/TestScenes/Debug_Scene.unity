@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2531535863990576321, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
+      propertyPath: verbose
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531535863990576321, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
+      propertyPath: trigger.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531535863990576321, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
+      propertyPath: trigger.Array.data[0].triggerName
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531535863990576321, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
+      propertyPath: trigger.Array.data[0].triggerValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2531535864606983284, guid: 7d7a6c0e9b08a2e4db917730441936c3, type: 3}
       propertyPath: stageInfoContainer_so
       value: 

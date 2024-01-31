@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 5
     eventcode: Set Dialog
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 2
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -33,8 +46,11 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 11400000, guid: 63ef89bc6f2dd4c43a769382381f2dfc, type: 2}
       audioclip: {fileID: 0}
+    isSatisfied: 0

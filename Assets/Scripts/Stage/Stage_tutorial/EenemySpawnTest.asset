@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 0
     eventcode: None
     condition:
+      no: 0
+      sort: 0
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 1
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 0
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -40,3 +53,4 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

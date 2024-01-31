@@ -17,6 +17,19 @@ MonoBehaviour:
     eventindex: 6
     eventcode: Play Sound
     condition:
+      no: 0
+      sort: 3
+      targetTag: Player
+      targetPos: {x: 19, y: 0}
+      targetRange: {x: 0.1, y: 10}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 1
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 3
       targetTag: Player
       targetPos: {x: 19, y: 0}
@@ -33,15 +46,31 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0.7
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 8300000, guid: b4ec287aa22490e488d81d6662a93b12, type: 3}
+    isSatisfied: 0
   - no: 0
     eventindex: 1
     eventcode: Goto Next Phase
     condition:
+      no: 0
+      sort: 1
+      targetTag: 
+      targetPos: {x: 0, y: 0}
+      targetRange: {x: 0, y: 0}
+      targetAreaID: 0
+      targetFlag: 
+      flagValue: 0
+      targetNum: 0
+      isSatisfied: 0
+      isContinued: 1
+    conditions:
+    - no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -58,8 +87,11 @@ MonoBehaviour:
       intvalue: 0
       floatvalue: 0
       vecList: []
+      mobLists: {fileID: 0}
+      spawnInfo: {fileID: 0}
       name2: 
       boolvalue: 0
       nextPhase: {fileID: 11400000, guid: 4b8fd8d5e2555384094dee56c81a546a, type: 2}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0

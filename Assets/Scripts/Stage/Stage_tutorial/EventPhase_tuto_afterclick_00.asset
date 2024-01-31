@@ -17,6 +17,7 @@ MonoBehaviour:
     eventindex: 4
     eventcode: Fade Out
     condition:
+      no: 0
       sort: 2
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -28,15 +29,16 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 2
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
-      targetFlag: 
-      flagValue: 0
+      targetFlag: isClicked
+      flagValue: 1
       targetNum: 0
-      isSatisfied: 0
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -51,10 +53,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 0
     eventindex: 9
     eventcode: Camera Distortion
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -66,15 +70,16 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
-      isSatisfied: 0
+      targetNum: 1
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -89,10 +94,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 1
     eventindex: 4
     eventcode: Logo Appears
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -104,15 +111,16 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
-      isSatisfied: 0
+      targetNum: 4
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -127,10 +135,12 @@ MonoBehaviour:
       nextPhase: {fileID: 0}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
   - no: 2
     eventindex: 1
     eventcode: Goto Next Phase
     condition:
+      no: 0
       sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
@@ -142,15 +152,16 @@ MonoBehaviour:
       isSatisfied: 1
       isContinued: 1
     conditions:
-    - sort: 0
+    - no: 0
+      sort: 1
       targetTag: 
       targetPos: {x: 0, y: 0}
       targetRange: {x: 0, y: 0}
       targetAreaID: 0
       targetFlag: 
       flagValue: 0
-      targetNum: 0
-      isSatisfied: 0
+      targetNum: 8
+      isSatisfied: 1
       isContinued: 1
     extraParams:
       id: 0
@@ -165,3 +176,4 @@ MonoBehaviour:
       nextPhase: {fileID: 11400000, guid: c470dd8fda05da1468071357e94fbdfd, type: 2}
       dialog_so: {fileID: 0}
       audioclip: {fileID: 0}
+    isSatisfied: 0
