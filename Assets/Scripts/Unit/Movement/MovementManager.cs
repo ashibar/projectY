@@ -5,8 +5,8 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
     private Player player;
-    private PlayerMovement playermovement;
-    private AimPoint aimpoint;
+    public PlayerMovement playermovement;
+    public AimPoint aimpoint;
     private void Awake()
     {
         player = GetComponentInParent<Player>();

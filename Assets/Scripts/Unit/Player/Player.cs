@@ -38,11 +38,8 @@ public class Player : Unit
 
     // stat은 상위 클래스인 Unit으로 올렸습니다.
 
-    public MovementManager movementManger;
-    public PlayerMovement playerMovement;
+    public MovementManager movementManager;
     public AnimationManager animationManager;
-    public GameManager manger;
-
 
     protected override void Awake()
     {
@@ -53,8 +50,7 @@ public class Player : Unit
             Destroy(gameObject);
             return;
         }
-        movementManger = GetComponentInChildren<MovementManager>();
-        playerMovement = GetComponentInChildren<PlayerMovement>();
+        movementManager = GetComponentInChildren<MovementManager>();
         animationManager = GetComponentInChildren<AnimationManager>();
         
     }

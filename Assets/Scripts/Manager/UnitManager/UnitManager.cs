@@ -178,7 +178,7 @@ public class UnitManager : MonoBehaviour, IEventListener
 
     private void PlayerMoveInput(ExtraParams par)
     {
-        player.GetComponent<Player>().playerMovement.IsMove = par.Boolvalue;
+        player.GetComponent<Player>().movementManager.playermovement.IsMove = par.Boolvalue;
         //Debug.Log(string.Equals(m.TargetSTR, "true"));
     }
 
@@ -205,7 +205,7 @@ public class UnitManager : MonoBehaviour, IEventListener
 
     private void PlayerCombat(ExtraParams par)
     {
-        player.GetComponent<Player>().playerMovement.IsCombat = par.Boolvalue;
+        player.GetComponent<Player>().movementManager.playermovement.IsCombat = par.Boolvalue;
     }
 
     private void SetUnitAnimationBool(ExtraParams par)
