@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b72d4b9f18ae543968b204b1a4cbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playermovement: {fileID: 4157852592143681262}
+  aimpoint: {fileID: 4157852591554710490}
 --- !u!1 &4157852591554710468
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,14 +398,16 @@ MonoBehaviour:
     cooldown: 0
     amount: 0
     hp_current: 0
+  spellManager: {fileID: 0}
+  buffManager: {fileID: 0}
   dir_toMove: {x: 0, y: 0}
   dir_toShoot: {x: 0, y: 0}
   pos_toShoot: {x: 0, y: 0}
-  movementManger: {fileID: 0}
-  playerMovement: {fileID: 0}
-  spellManager: {fileID: 0}
+  isBlinkCooltime: 0
+  blinkCooltime: 0.1
+  color_origin: {r: 0, g: 0, b: 0, a: 0}
+  movementManager: {fileID: 0}
   animationManager: {fileID: 0}
-  manger: {fileID: 0}
 --- !u!1 &4157852592143681256
 GameObject:
   m_ObjectHideFlags: 0
