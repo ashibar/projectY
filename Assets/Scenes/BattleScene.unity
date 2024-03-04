@@ -19796,6 +19796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager_BattleScene
       objectReference: {fileID: 0}
+    - target: {fileID: 2437509785777276704, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3687002930520178188, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
       propertyPath: m_IsActive
       value: 0

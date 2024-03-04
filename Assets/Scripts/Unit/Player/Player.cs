@@ -68,7 +68,7 @@ public class Player : Unit
     private bool isDead;
     private void PlayerDeathSender()
     {
-        if (!isDead && stat != null)
+        if (!isDead && stat_so != null)
             if (stat.Hp_current <= 0)
             {
                 isDead = true;

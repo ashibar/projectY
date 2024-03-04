@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour, IEventListener
     [SerializeField] private TopIndicator topIndicator;
     [SerializeField] private Transform hpIndicator;
     [SerializeField] private TutorialLogo tutorialLogo;
+    [SerializeField] private CenterText centerText;
     [SerializeField] private List<GameObject> indicatorList = new List<GameObject>();
 
     // 스테이지 정보 변수
@@ -77,6 +78,7 @@ public class UIManager : MonoBehaviour, IEventListener
         "Active Top Indicator",
         "Set Active Indicator",
         "Set Active UI",
+        "Set Center Text",
     };
 
     /// <summary>
@@ -162,6 +164,8 @@ public class UIManager : MonoBehaviour, IEventListener
                 SetActiveIndicator(para); break;
             case "Set Active UI":
                 SetActiveUI(para); break;
+            case "Set Center Text":
+                SetCenterText(para); break;
             default:
                 break;
         }
@@ -356,7 +360,19 @@ public class UIManager : MonoBehaviour, IEventListener
         hpIndicator.gameObject.SetActive(para.Boolvalue);
     }
     
-    
+    /// <summary>
+    /// [OnEvent] 화면 중심에 UI출력
+    /// Name : 출력할 텍스트
+    /// int : 폰트 사이즈 (기본값 70, 0입력 시 적용)
+    /// float : 출력을 지속시킬 시간 (기본값 3초, 0입력 시 적용)
+    /// bool : true는 강제 비활성화
+    /// </summary>
+    /// <param name="para"></param>
+    private void SetCenterText(ExtraParams para)
+    {
+        centerText.ActiveText(para.Name, para.Floatvalue, para.Intvalue, para.Boolvalue);
+    }
+
     // Dummy Code
     //[SerializeField] private List<EventMessage> messageBuffer = new List<EventMessage>();
     //private void EventReciever()

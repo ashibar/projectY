@@ -236,6 +236,9 @@ public class StageManager : MonoBehaviour, IEventListener
     /// </summary>
     public void LoadPlayerSpell()
     {
+        if (!Player.Instance.spellManager)
+            return;
+        
         Player.Instance.spellManager.ClearSpell();
         List<StringNString> codes = playerInfoContainer_so.Spell_activated;
         List<GameObject> cloneList = new List<GameObject>();
