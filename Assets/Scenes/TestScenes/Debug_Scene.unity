@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4698882302826513952, guid: 0b3e7381f663d324a8923d026f0d4763, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4698882302826513952, guid: 0b3e7381f663d324a8923d026f0d4763, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5166,7 +5166,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212001790}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -5313,7 +5313,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212001790}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -15250,7 +15250,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212001790}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22504,9 +22504,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager_BattleScene
       objectReference: {fileID: 0}
+    - target: {fileID: 2437509785777276704, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4740923508582794027, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240718377768176296, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}
+      propertyPath: m_text
+      value: <size=70%>Team <size=100%> PANDORA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f54fd2e05b2128f48a7897eae13ede88, type: 3}

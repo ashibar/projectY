@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class AnimationTest : MonoBehaviour
 {
-    private Animator animator;
+    [SerializeField] private Animator animator;
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI log;
+    [SerializeField] private Transform sprite_transform;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        
     }
 
     private void Update()
@@ -26,8 +27,8 @@ public class AnimationTest : MonoBehaviour
 
         if (dir.sqrMagnitude > 0)
         {
-            if (x > 0) transform.localScale = new Vector3(-1, 1, 1);
-            else transform.localScale = new Vector3(1, 1, 1);
+            if (x > 0) sprite_transform.localScale = new Vector3(-1, 1, 1);
+            else sprite_transform.localScale = new Vector3(1, 1, 1);
 
             animator.SetBool("isWalk", true);
             Vector3 pos = transform.position;
